@@ -1,3 +1,5 @@
+#Gemini version 
+
 import os
 import json
 import sys
@@ -6,7 +8,8 @@ import dotenv
 import argparse
 
 import langchain_core.exceptions
-from langchain_openai import ChatOpenAI
+# 导入 Google Gemini 相关的 LangChain 类
+from langchain_google_generativeai import ChatGoogleGenerativeAI # 修改点1
 from langchain.prompts import (
   ChatPromptTemplate,
   SystemMessagePromptTemplate,
@@ -45,7 +48,8 @@ def main():
 
     print('Open:', args.data, file=sys.stderr)
 
-    llm = ChatOpenAI(model=model_name).with_structured_output(Structure, method="function_calling")
+    # 实例化 ChatGoogleGenerativeAI 并应用结构化输出 # 修改点2
+    llm = ChatGoogleGenerativeAI(model=model_name).with_structured_output(Structure)
     print('Connect to:', model_name, file=sys.stderr)
     prompt_template = ChatPromptTemplate.from_messages([
         SystemMessagePromptTemplate.from_template(system),
