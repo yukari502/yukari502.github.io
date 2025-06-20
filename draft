@@ -1,0 +1,4 @@
+        print(f"extracting done: {output_filename} saved to {MONTH_AGGREGATE_DIR}/")
+    else:
+        print(f"no matched files ({current_month_key}) found, nothing to write.")
+
