@@ -5,7 +5,7 @@ backend:
   auth_type: oauth
   # Client ID，确保 # 号前有空格
   app_id: 0v23liTh7GSKN8EjzrGt
-  
+
 # 媒体 (图片) 配置
 media_folder: "static/uploads" # 图片上传后保存的文件夹
 public_folder: "/uploads"      # 网站访问图片的 URL 路径
