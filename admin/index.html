@@ -6,7 +6,12 @@
   <title>Content Manager</title>
 </head>
 <body>
-  <!-- 将脚本从 head 移到 body 的末尾 -->
+  <!-- Decap CMS main script -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  
+  <!-- Add this script to manually initialize the CMS -->
+  <script>
+    window.CMS.init();
+  </script>
 </body>
 </html>
