@@ -2,8 +2,9 @@ backend:
   name: github
   repo: yukari502/my-blog
   branch: main
-  auth_type: oauth
-  # Client ID，确保 # 号前有空格
+  # 使用专为静态网站设计的 PKCE 认证方式
+  auth_type: pkce
+  # 【请将您刚刚从 GitHub 官方页面复制的、100%正确的 Client ID 粘贴到这里】
   app_id: Ov23liTh7GSkN8EjzrGt
 
 # 媒体 (图片) 配置
