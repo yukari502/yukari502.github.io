@@ -9,9 +9,14 @@
   <!-- Decap CMS main script -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   
-  <!-- Add this script to manually initialize the CMS -->
+  <!-- 
+    This improved script waits for the page to be fully ready 
+    before initializing the CMS to prevent race conditions.
+  -->
   <script>
-    window.CMS.init();
+    window.addEventListener('DOMContentLoaded', (event) => {
+      window.CMS.init();
+    });
   </script>
 </body>
 </html>
