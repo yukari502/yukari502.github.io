@@ -1,8 +1,9 @@
 backend:
   name: github
   repo: yukari502/my-blog # 您的数据仓库
-  branch: main # 您的数据仓库的默认分支
-
+  branch: main # 您的数据仓库分支
+  auth_type: implicit # 添加这一行
+  app_id: Ov23li9SRmRk89u9c91w # 添加这一行，并粘贴您刚刚复制的 Client ID
 media_folder: "static/images/uploads" # 上传的媒体文件将存储在此处
 public_folder: "/images/uploads" # 媒体文件的公共路径
 
