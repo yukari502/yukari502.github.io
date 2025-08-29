@@ -10,11 +10,11 @@
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   
   <!-- 
-    这个改进后的脚本会等待页面完全准备就绪
-    然后再初始化CMS，以防止竞态条件。
+    这个最终脚本使用 'load' 事件，
+    确保所有资源都加载完毕后再初始化，以提供最大程度的稳定性。
   -->
   <script>
-    window.addEventListener('DOMContentLoaded', (event) => {
+    window.addEventListener('load', (event) => {
       window.CMS.init();
     });
   </script>
