@@ -1,9 +1,10 @@
-# 后端配置: 连接到您的 GitHub 仓库
 backend:
   name: github
-  repo: yukari502/my-blog  # 您的 Hugo 源代码仓库
-  branch: main             # 您的主分支名称
-
+  repo: yukari502/my-blog
+  branch: main
+  auth_type: oauth              # 指定认证类型为 OAuth
+  app_id: Ov23liTh7GSkN8EjzrGt # 将您的 Client ID 粘贴到这里
+  
 # 媒体 (图片) 配置
 media_folder: "static/uploads" # 图片上传后保存的文件夹
 public_folder: "/uploads"      # 网站访问图片的 URL 路径
