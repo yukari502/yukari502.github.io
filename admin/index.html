@@ -4,9 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>博客内容管理</title>
-  <!-- 加载 Decap CMS 的核心脚本 -->
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </head>
 <body>
+  <!-- 
+    将脚本从 head 移到 body 的末尾，
+    以确保在脚本加载和执行前，body 元素已经存在。
+  -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>
