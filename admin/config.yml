@@ -1,0 +1,23 @@
+# 后端配置: 连接到您的 GitHub 仓库
+backend:
+  name: github
+  repo: yukari502/my-blog  # 您的 Hugo 源代码仓库
+  branch: main             # 您的主分支名称
+
+# 媒体 (图片) 配置
+media_folder: "static/uploads" # 图片上传后保存的文件夹
+public_folder: "/uploads"      # 网站访问图片的 URL 路径
+
+# 内容集合: 定义您要管理的内容类型
+collections:
+  - name: "blog"                 # 集合的内部名称 (ID)
+    label: "博客文章"            # 显示在 CMS 后台左侧菜单的名称
+    folder: "content/posts"      # 您的 Markdown 文章实际存放的文件夹
+    create: true                 # 允许在后台创建新文章
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # 新文章的文件名格式
+    fields: # 定义在编辑器中看到的表单字段
+      - { label: "文章标题", name: "title", widget: "string" }
+      - { label: "发布日期", name: "date", widget: "datetime" }
+      - { label: "标签", name: "tags", widget: "list", required: false }
+      - { label: "是否为草稿", name: "draft", widget: "boolean", default: true }
+      - { label: "正文内容", name: "body", widget: "markdown" }
