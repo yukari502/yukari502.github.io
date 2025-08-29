@@ -6,17 +6,9 @@
   <title>Content Manager</title>
 </head>
 <body>
-  <!-- Decap CMS main script -->
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  
-  <!-- 
-    This improved script waits for the page to be fully ready 
-    before initializing the CMS to prevent race conditions.
-  -->
+
   <script>
-    window.addEventListener('DOMContentLoaded', (event) => {
-      window.CMS.init();
-    });
+    window.CMS.init();
   </script>
 </body>
 </html>
