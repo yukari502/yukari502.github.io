@@ -2,13 +2,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const articlesListDiv = document.getElementById('articles-list');
     // Removed mainContentSection as it's no longer used for replacement
 
-    // Helper function to attach listeners to "Read more" links
-    function attachReadMoreListeners() {
-        document.querySelectorAll('.article-item a').forEach(link => {
-            link.addEventListener('click', async (e) => {
-                e.preventDefault();
-                const articlePath = link.dataset.path;
-                const articleTitle = link.dataset.title;
+    // --- MODIFICATION 1: Renamed function for clarity ---
+    // Helper function to attach listeners to the entire article card
+    function attachArticleClickListeners() {
+        // --- MODIFICATION 2: Changed selector from '.article-item a' to '.article-item' ---
+        document.querySelectorAll('.article-item').forEach(item => {
+            item.addEventListener('click', async (e) => {
+                e.preventDefault(); // Prevents any default action, like following the 'Read more' link
+                // --- MODIFICATION 3: Get data from the item (the div) itself ---
+                const articlePath = item.dataset.path;
+                const articleTitle = item.dataset.title;
                 await displayArticleContent(articlePath, articleTitle);
             });
         });
@@ -38,16 +41,22 @@ document.addEventListener('DOMContentLoaded', () => {
             articles.forEach(article => {
                 const articleCard = document.createElement('div');
                 articleCard.className = 'article-item';
+
+                // --- MODIFICATION 4: Moved data attributes from <a> to the parent div ---
+                articleCard.dataset.path = article.path;
+                articleCard.dataset.title = article.title;
+
                 articleCard.innerHTML = `
                     <h3>${article.title}</h3>
                     <p>${article.description || ''}</p>
-                    <a href="#" data-path="${article.path}" data-title="${article.title}">Read more →</a>
+                    <a href="#">Read more →</a>
                 `;
                 articlesListDiv.appendChild(articleCard);
             });
 
-            // Add event listeners to "Read more" links
-            attachReadMoreListeners();
+            // --- MODIFICATION 5: Called the updated function ---
+            // Add event listeners to the article cards
+            attachArticleClickListeners();
 
         } catch (error) {
             console.error('Error loading articles:', error);
@@ -84,7 +93,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.preventDefault();
                 // Restore original content and re-attach listeners
                 articlesListDiv.innerHTML = originalArticlesListContent;
-                attachReadMoreListeners(); // Re-attach listeners for "Read more" links
+                // --- MODIFICATION 6: Called the updated function ---
+                attachArticleClickListeners(); // Re-attach listeners for the article cards
             });
 
         } catch (error) {
@@ -103,7 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.preventDefault();
                 // Restore original content and re-attach listeners
                 articlesListDiv.innerHTML = originalArticlesListContent;
-                attachReadMoreListeners();
+                // --- MODIFICATION 7: Called the updated function ---
+                attachArticleClickListeners();
             });
         }
     }
