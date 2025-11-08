@@ -14,16 +14,10 @@
     "date": "2025-11-09"
   },
   {
-    "title": "A Test Article",
+    "title": "test",
     "description": "This is a test article to check indexing and display.",
     "path": "Articles/test.md",
     "category": "Testing",
     "date": "2025-11-09"
-  },
-  {
-    "title": "My First Blog Post",
-    "description": "This is the content of my first blog post. It's written in Markdown and will be displayed on my personal blog.",
-    "category": "General",
-    "date": "2023-10-27"
   }
 ]
