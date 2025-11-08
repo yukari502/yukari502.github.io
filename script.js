@@ -88,33 +88,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             let articles = await articlesResponse.json();
 
-            // Fetch pinned article paths to filter them out from latest articles
-            let pinnedArticlePaths = [];
-            try {
-                const pinnedResponse = await fetch('pinned-articles.json');
-                if (pinnedResponse.ok) {
-                    pinnedArticlePaths = await pinnedResponse.json();
-                }
-            } catch (e) {
-                console.warn('pinned-articles.json not found or could not be fetched. All articles will be considered latest.');
-            }
-
-            // Filter out pinned articles
-            const latestArticles = articles.filter(article =>
-                !pinnedArticlePaths.some(path => path === article.path)
-            );
-
-            // Sort latest articles by date (descending)
-            latestArticles.sort((a, b) => new Date(b.date) - new Date(a.date));
+            // Sort all articles by date (descending) - including pinned articles
+            articles.sort((a, b) => new Date(b.date) - new Date(a.date));
 
             articlesListDiv.innerHTML = ''; // Clear loading message
 
-            if (latestArticles.length === 0) {
-                articlesListDiv.innerHTML = '<p>No latest articles found.</p>';
+            if (articles.length === 0) {
+                articlesListDiv.innerHTML = '<p>No articles found.</p>';
                 return;
             }
 
-            latestArticles.forEach(article => {
+            articles.forEach(article => {
                 renderArticleCard(article, 'articles-list');
             });
 
@@ -153,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('main').appendChild(articleViewSection);
 
             // Add event listener for the back button
-            document.getElementById('back-to-articles').addEventListener('click', (e) => {
+            document.getElementById('back-to-articles').addEventListener('click', async (e) => {
                 e.preventDefault();
                 // Remove the article view section
                 articleViewSection.remove();
@@ -163,11 +147,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('articles').style.display = '';
                 document.getElementById('contact').style.display = '';
                 // Re-render lists and re-attach listeners
-                loadLatestArticles().then(() => {
-                    loadPinnedArticles();
-                }).then(() => {
-                    attachArticleClickListeners();
-                });
+                await loadLatestArticles();
+                await loadPinnedArticles();
+                attachArticleClickListeners();
             });
 
         } catch (error) {
@@ -182,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             document.querySelector('main').appendChild(errorViewSection);
 
-            document.getElementById('back-to-articles').addEventListener('click', (e) => {
+            document.getElementById('back-to-articles').addEventListener('click', async (e) => {
                 e.preventDefault();
                 errorViewSection.remove();
                 document.getElementById('about').style.display = '';
@@ -190,11 +172,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('articles').style.display = '';
                 document.getElementById('contact').style.display = '';
                 // Re-render lists and re-attach listeners
-                loadLatestArticles().then(() => {
-                    loadPinnedArticles();
-                }).then(() => {
-                    attachArticleClickListeners();
-                });
+                await loadLatestArticles();
+                await loadPinnedArticles();
+                attachArticleClickListeners();
             });
         }
     }
