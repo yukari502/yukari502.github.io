@@ -1,0 +1,366 @@
+/* CSS Variables for Theme Switching */
+:root {
+    /* Light mode variables */
+    --bg-color: #f0f2f5;
+    --text-color: #333;
+    --heading-color: #2c3e50;
+    --link-color: #3498db;
+    --link-hover-color: #2980b9;
+    
+    /* Markdown content variables */
+    --markdown-bg: #ffffff;
+    --markdown-text: #333;
+    --markdown-heading: #34495e;
+    --markdown-border: #ecf0f1;
+    --markdown-blockquote-bg: #f8f9fa;
+    --markdown-blockquote-border: #e9ecef;
+    --markdown-code-bg: #f8f9fa;
+    --markdown-pre-bg: #f8f9fa;
+}
+
+[data-theme="dark"] {
+    /* Dark mode variables */
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --heading-color: #ffffff;
+    --link-color: #61afef;
+    --link-hover-color: #88c0f0;
+
+    /* Dark mode Markdown content variables */
+    --markdown-bg: #2d2d2d;
+    --markdown-text: #ffffff;
+    --markdown-heading: #ffffff;
+    --markdown-border: #404040;
+    --markdown-blockquote-bg: #363636;
+    --markdown-blockquote-border: #404040;
+    --markdown-code-bg: #363636;
+    --markdown-pre-bg: #363636;
+}
+
+/* Media query for users who have not explicitly set a theme */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        /* Same as dark mode variables */
+        --bg-color: #1a1a1a;
+        --text-color: #e0e0e0;
+        --heading-color: #ffffff;
+        --link-color: #61afef;
+        --link-hover-color: #88c0f0;
+    }
+}
+
+/* Basic reset and body styles */
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.7;
+    color: var(--text-color);
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: var(--bg-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Header styles */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    position: relative; /* Needed for absolute positioning of the toggle button */
+}
+
+header h1 {
+    color: var(--heading-color);
+    font-size: 2.5em;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+/* Navigation styles */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+}
+
+/* Theme Toggle Button Styles */
+#theme-toggle {
+    position: absolute; /* Position relative to header */
+    top: 50%;
+    right: 0; /* Align to the right of the header */
+    transform: translateY(-50%); /* Vertically center */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: var(--link-color); /* Use link color for background */
+    color: #ffffff; /* White icon color */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+#theme-toggle:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+#theme-toggle svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+#theme-toggle .sun-icon {
+    display: none;
+}
+
+#theme-toggle .moon-icon {
+    display: block;
+}
+
+[data-theme="dark"] #theme-toggle .sun-icon {
+    display: block;
+}
+
+[data-theme="dark"] #theme-toggle .moon-icon {
+    display: none;
+}
+
+/* Main content section styles */
+main {
+    margin-bottom: 40px;
+}
+
+section {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: var(--markdown-bg); /* Use markdown background variable */
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+section h2 {
+    color: var(--markdown-heading); /* Use markdown heading color */
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--markdown-border);
+    padding-bottom: 10px;
+}
+
+/* Article list styles */
+#articles-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.article-item {
+    background-color: var(--markdown-bg); /* Use markdown background variable */
+    border: 1px solid var(--markdown-border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer; /* Indicate it's clickable */
+}
+
+.article-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.12);
+}
+
+.article-item h3 {
+    color: var(--markdown-heading); /* Use markdown heading color */
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+.article-item p {
+    font-size: 0.95em;
+    color: var(--markdown-text); /* Use markdown text color */
+    margin-bottom: 15px;
+    flex-grow: 1; /* Allows description to take available space */
+}
+
+.article-item a {
+    color: var(--link-color); /* Use link color variable */
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.article-item a:hover {
+    color: var(--link-hover-color); /* Use link hover color variable */
+    text-decoration: underline;
+}
+
+/* Styles for when an article is being viewed - making it more full-screen */
+#article-view {
+    position: fixed; /* Fix it to the viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color); /* Use body background color */
+    color: var(--text-color); /* Use body text color */
+    z-index: 1000; /* Ensure it's on top of other content */
+    overflow-y: auto; /* Allow scrolling if content is long */
+    padding: 30px; /* Add padding around the content */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+}
+
+#article-view a#back-to-articles {
+    position: absolute; /* Position the back button */
+    top: 20px;
+    left: 30px; /* Align with padding */
+    z-index: 1001; /* Ensure it's above the article content */
+    color: var(--link-color);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+#article-view a#back-to-articles:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+}
+
+#article-view h2 {
+    margin-top: 60px; /* Space for the back button */
+    margin-bottom: 20px;
+    color: var(--heading-color);
+    font-size: 2.5em;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.article-content {
+    width: 100%;
+    max-width: 800px; /* Limit width for readability */
+    margin: 0 auto; /* Center the content */
+    padding: 0 20px; /* Add some horizontal padding */
+    box-sizing: border-box;
+    color: var(--markdown-text); /* Use markdown text color */
+}
+
+/* Ensure markdown styles are applied correctly within article-content */
+.article-content h2, .article-content h3, .article-content h4, .article-content h5, .article-content h6 {
+    color: var(--markdown-heading);
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+    border-bottom: 1px solid var(--markdown-border);
+    padding-bottom: 0.3em;
+}
+
+.article-content p, .article-content ul, .article-content ol, .article-content blockquote, .article-content pre {
+    margin-bottom: 1em;
+    color: var(--markdown-text);
+}
+
+.article-content code {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: var(--markdown-code-bg);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+}
+
+.article-content pre {
+    background-color: var(--markdown-pre-bg);
+    padding: 1em;
+    border-radius: 5px;
+    overflow-x: auto;
+    white-space: pre-wrap; /* Wrap long lines */
+    word-wrap: break-word;
+}
+
+.article-content pre code {
+    background-color: transparent;
+    padding: 0;
+}
+
+.article-content blockquote {
+    border-left: 4px solid var(--markdown-blockquote-border);
+    padding-left: 15px;
+    margin-left: 0;
+    font-style: italic;
+    color: var(--markdown-text);
+}
+
+/* Responsive adjustments for full-screen article view */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+    header h1 {
+        font-size: 2em;
+    }
+    nav ul li {
+        margin: 0 10px;
+    }
+    section {
+        padding: 15px;
+    }
+    section h2 {
+        font-size: 1.5em;
+    }
+    #articles-list {
+        grid-template-columns: 1fr;
+    }
+    .article-item {
+        padding: 15px;
+    }
+    /* Adjust theme toggle position for smaller screens */
+    #theme-toggle {
+        top: 15px;
+        right: 15px;
+        width: 35px;
+        height: 35px;
+    }
+    #theme-toggle svg {
+        width: 20px;
+        height: 20px;
+    }
+    /* Adjust full-screen article view for smaller screens */
+    #article-view {
+        padding: 20px;
+    }
+    #article-view a#back-to-articles {
+        top: 15px;
+        left: 20px;
+    }
+    #article-view h2 {
+        margin-top: 50px;
+        font-size: 2em;
+    }
+    .article-content {
+        padding: 0 10px;
+    }
+}
