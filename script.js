@@ -162,8 +162,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('pinned-articles').style.display = '';
                 document.getElementById('articles').style.display = '';
                 document.getElementById('contact').style.display = '';
-                // Re-attach listeners as they might have been lost
-                attachArticleClickListeners();
+                // Re-render lists and re-attach listeners
+                loadLatestArticles().then(() => {
+                    loadPinnedArticles();
+                }).then(() => {
+                    attachArticleClickListeners();
+                });
             });
 
         } catch (error) {
@@ -185,7 +189,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('pinned-articles').style.display = '';
                 document.getElementById('articles').style.display = '';
                 document.getElementById('contact').style.display = '';
-                attachArticleClickListeners();
+                // Re-render lists and re-attach listeners
+                loadLatestArticles().then(() => {
+                    loadPinnedArticles();
+                }).then(() => {
+                    attachArticleClickListeners();
+                });
             });
         }
     }
