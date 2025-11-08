@@ -30,7 +30,7 @@ def generate_articles_json():
     print(f"Current working directory: {os.getcwd()}")
     
     articles_dir = 'Articles'
-    output_file = 'articles.json'
+    output_file = 'article-index.json' # Changed from articles.json
     articles_data = []
 
     print(f"Articles directory: {os.path.abspath(articles_dir)}")

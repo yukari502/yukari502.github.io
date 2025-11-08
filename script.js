@@ -38,15 +38,15 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const pinnedResponse = await fetch('pinned-articles.json');
             if (!pinnedResponse.ok) {
-                console.warn('pinned-articles.json not found or could not be fetched. Proceeding without pinned articles.');
+                console.Dwarn('pinned-articles.json not found or could not be fetched. Proceeding without pinned articles.');
                 pinnedArticlesListDiv.innerHTML = ''; // Clear loading message if no pinned articles
                 return;
             }
             const pinnedArticlePaths = await pinnedResponse.json();
 
-            const articlesResponse = await fetch('articles.json');
+            const articlesResponse = await fetch('article-index.json'); // Changed from articles.json
             if (!articlesResponse.ok) {
-                throw new Error(`HTTP error! status: ${articlesResponse.status}`);
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
             const allArticles = await articlesResponse.json();
 
