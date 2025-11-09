@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Removed mainContentSection as it's no longer used for replacement
-
     const pinnedArticlesListDiv = document.getElementById('pinned-articles-list');
     const articlesListDiv = document.getElementById('articles-list');
 
@@ -16,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         articleCard.innerHTML = `
             <h3>${article.title}</h3>
+            <p class="article-meta">${article.date}</p>
             <p>${article.description || ''}</p>
         `;
         targetDiv.appendChild(articleCard);
@@ -33,22 +32,64 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Function to get all articles using hierarchical indexing
+    async function getAllArticles() {
+        try {
+            // Try to load main index first (hierarchical approach)
+            const mainIndexResponse = await fetch('Index/index.json');
+            if (mainIndexResponse.ok) {
+                const mainIndex = await mainIndexResponse.json();
+                console.log('Using hierarchical indexing with', mainIndex.years.length, 'years');
+                
+                // Load articles from all yearly index files
+                const allArticles = [];
+                for (const year of mainIndex.years) {
+                    try {
+                        const yearIndexResponse = await fetch(`Index/index_${year}.json`);
+                        if (yearIndexResponse.ok) {
+                            const yearIndex = await yearIndexResponse.json();
+                            allArticles.push(...yearIndex.articles);
+                        }
+                    } catch (error) {
+                        console.warn(`Failed to load index for year ${year}:`, error);
+                    }
+                }
+                
+                // Sort by date (newest first)
+                allArticles.sort((a, b) => new Date(b.date) - new Date(a.date));
+                return allArticles;
+            }
+        } catch (error) {
+            console.warn('Hierarchical indexing not available, falling back to flat articles.json');
+        }
+
+        // Fallback to flat articles.json for backward compatibility
+        try {
+            const articlesResponse = await fetch('articles.json');
+            if (articlesResponse.ok) {
+                const articles = await articlesResponse.json();
+                console.log('Using flat articles.json with', articles.length, 'articles');
+                return articles;
+            }
+        } catch (error) {
+            console.error('Failed to load articles from any source:', error);
+        }
+
+        return [];
+    }
+
     // Function to fetch and display pinned articles
     async function loadPinnedArticles() {
         try {
             const pinnedResponse = await fetch('pinned-articles.json');
             if (!pinnedResponse.ok) {
-                console.Dwarn('pinned-articles.json not found or could not be fetched. Proceeding without pinned articles.');
+                console.warn('pinned-articles.json not found or could not be fetched. Proceeding without pinned articles.');
                 pinnedArticlesListDiv.innerHTML = ''; // Clear loading message if no pinned articles
                 return;
             }
             const pinnedArticlePaths = await pinnedResponse.json();
 
-            const articlesResponse = await fetch('article-index.json'); // Changed from articles.json
-            if (!articlesResponse.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const allArticles = await articlesResponse.json();
+            const allArticles = await getAllArticles();
 
             // Filter for pinned articles
             const pinnedArticles = allArticles.filter(article =>
@@ -82,23 +123,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to fetch and display latest articles
     async function loadLatestArticles() {
         try {
-            const articlesResponse = await fetch('articles.json');
-            if (!articlesResponse.ok) {
-                throw new Error(`HTTP error! status: ${articlesResponse.status}`);
-            }
-            let articles = await articlesResponse.json();
-
-            // Sort all articles by date (descending) - including pinned articles
-            articles.sort((a, b) => new Date(b.date) - new Date(a.date));
+            const allArticles = await getAllArticles();
 
             articlesListDiv.innerHTML = ''; // Clear loading message
 
-            if (articles.length === 0) {
+            if (allArticles.length === 0) {
                 articlesListDiv.innerHTML = '<p>No articles found.</p>';
                 return;
             }
 
-            articles.forEach(article => {
+            // Display all articles (already sorted by date)
+            allArticles.forEach(article => {
                 renderArticleCard(article, 'articles-list');
             });
 

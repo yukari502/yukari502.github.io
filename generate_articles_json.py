@@ -2,6 +2,7 @@ import os
 import json
 import datetime
 import re
+import glob
 
 # Function to parse YAML frontmatter from markdown content
 def parse_frontmatter(content):
@@ -23,115 +24,156 @@ def parse_frontmatter(content):
                     frontmatter[key.strip()] = value.strip()
         except Exception as e:
             print(f"Error parsing frontmatter: {e}")
-    return frontmatter
+    return frontmatter, match
 
-def generate_articles_json():
-    print(f"Starting generate_articles_json.py...")
+def generate_hierarchical_index():
+    """
+    Generate a hierarchical index similar to Ref folder approach:
+    - main index.json with list of years
+    - yearly index files with articles for each year
+    - maintain compatibility with existing pinned articles
+    """
+    print(f"Starting generate_hierarchical_index.py...")
     print(f"Current working directory: {os.getcwd()}")
     
     articles_dir = 'Articles'
-    output_file = 'article-index.json' # Changed from articles.json
-    articles_data = []
-
+    index_dir = 'Index'
+    main_index_file = os.path.join(index_dir, 'index.json')
+    articles_json_file = 'articles.json'  # For backward compatibility
+    
     print(f"Articles directory: {os.path.abspath(articles_dir)}")
-    print(f"Output file: {os.path.abspath(output_file)}")
+    print(f"Index directory: {os.path.abspath(index_dir)}")
+    print(f"Main index file: {os.path.abspath(main_index_file)}")
+    print(f"Articles JSON file: {os.path.abspath(articles_json_file)}")
 
-    # Get current date for default if not found in frontmatter
-    today = datetime.date.today()
-    default_date = today.strftime('%Y-%m-%d')
-    print(f"Default date for new articles: {default_date}")
+    # Create Index directory if it doesn't exist
+    if not os.path.exists(index_dir):
+        print(f"Creating Index directory: {os.path.abspath(index_dir)}")
+        os.makedirs(index_dir)
 
     if not os.path.exists(articles_dir):
         print(f"Directory '{articles_dir}' not found. Creating it.")
         os.makedirs(articles_dir)
-        # Add a placeholder if the directory was just created and is empty
         if not os.listdir(articles_dir):
             print("Articles directory is empty. No articles to process.")
-            # Optionally create a dummy article or just exit
-            # For now, we'll just ensure articles.json is created if it doesn't exist
-            pass
+            # Create empty index files
+            with open(main_index_file, 'w', encoding='utf-8') as f:
+                json.dump({"updated": datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "years": []}, f, ensure_ascii=False, indent=2)
+            with open(articles_json_file, 'w', encoding='utf-8') as f:
+                json.dump([], f, ensure_ascii=False, indent=2)
+            return
 
-    # Read existing articles.json if it exists, to preserve existing entries
-    existing_articles = []
-    if os.path.exists(output_file):
-        print(f"Reading existing '{output_file}'...")
+    # Get all markdown files
+    md_files = glob.glob(os.path.join(articles_dir, '*.md'))
+    print(f"Found {len(md_files)} markdown files")
+    
+    # Process all files into a list with metadata
+    articles_data = []
+    for file_path in md_files:
+        file_name = os.path.basename(file_path)
+        print(f"Processing file: {file_path}")
+        
         try:
-            with open(output_file, 'r', encoding='utf-8') as f:
-                existing_articles = json.load(f)
-            print(f"Successfully read {len(existing_articles)} existing articles.")
-        except json.JSONDecodeError:
-            print(f"Error decoding JSON from {output_file}. Starting with an empty list.")
-        except Exception as e:
-            print(f"Error reading {output_file}: {e}. Starting with an empty list.")
-    else:
-        print(f"'{output_file}' not found. Starting with an empty list.")
+            with open(file_path, 'r', encoding='utf-8') as f:
+                content = f.read()
 
-    # Create a set of existing article paths for quick lookup
-    existing_paths = {article.get('path') for article in existing_articles if article.get('path')}
-    print(f"Found {len(existing_paths)} existing article paths.")
+            frontmatter, frontmatter_match = parse_frontmatter(content)
 
-    print(f"Scanning directory '{articles_dir}' for markdown files...")
-    files_processed = 0
-    for filename in os.listdir(articles_dir):
-        if filename.endswith(".md"):
-            filepath = os.path.join(articles_dir, filename)
+            # Extract data, using defaults if not found in frontmatter
+            title = frontmatter.get('title', file_name.replace('.md', '').replace('_', ' ').title())
+            date_str = frontmatter.get('date', datetime.date.today().strftime('%Y-%m-%d'))
+
+            # Generate description from article content (first 30 characters)
+            # Remove frontmatter and markdown formatting for clean text
+            content_without_frontmatter = content
+            if frontmatter_match:
+                content_without_frontmatter = content[frontmatter_match.end():]
             
-            # Skip if this article path is already in existing_articles
-            if filepath in existing_paths:
-                print(f"Skipping '{filepath}' as it already exists in articles.json.")
-                continue
+            # Remove markdown formatting and get clean text
+            clean_text = re.sub(r'[#*`\[\]]', '', content_without_frontmatter)
+            clean_text = re.sub(r'\n+', ' ', clean_text).strip()
+            
+            # Take first 30 characters and add ellipsis
+            if len(clean_text) > 30:
+                description = clean_text[:30] + '......'
+            else:
+                description = clean_text
 
-            files_processed += 1
-            print(f"Processing file: {filepath}")
+            # Ensure date is in YYYY-MM-DD format
             try:
-                with open(filepath, 'r', encoding='utf-8') as f:
-                    content = f.read()
+                date_obj = datetime.datetime.strptime(date_str, '%Y-%m-%d')
+                formatted_date = date_obj.strftime('%Y-%m-%d')
+                year = formatted_date[:4]
+            except ValueError:
+                print(f"Warning: Invalid date format '{date_str}' for {file_name}. Using today's date.")
+                formatted_date = datetime.date.today().strftime('%Y-%m-%d')
+                year = formatted_date[:4]
 
-                frontmatter = parse_frontmatter(content)
+            article_info = {
+                "title": title,
+                "description": description,
+                "path": file_path,
+                "date": formatted_date,
+                "year": year,
+                "filename": file_name
+            }
+            articles_data.append(article_info)
+            print(f"Successfully parsed: {title} ({formatted_date})")
+            
+        except Exception as e:
+            print(f"Error processing file {file_path}: {e}")
 
-                # Extract data, using defaults if not found in frontmatter
-                title = frontmatter.get('title', filename.replace('.md', '').replace('_', ' ').title())
-                description = frontmatter.get('description', 'A brief description of the article.')
-                category = frontmatter.get('category', 'General')
-                date_str = frontmatter.get('date', default_date)
+    if not articles_data:
+        print("No articles found to process.")
+        # Create empty index files
+        with open(main_index_file, 'w', encoding='utf-8') as f:
+            json.dump({"updated": datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "years": []}, f, ensure_ascii=False, indent=2)
+        with open(articles_json_file, 'w', encoding='utf-8') as f:
+            json.dump([], f, ensure_ascii=False, indent=2)
+        return
 
-                # Ensure date is in YYYY-MM-DD format
-                try:
-                    date_obj = datetime.datetime.strptime(date_str, '%Y-%m-%d')
-                    formatted_date = date_obj.strftime('%Y-%m-%d')
-                except ValueError:
-                    print(f"Warning: Invalid date format '{date_str}' for {filename}. Using default date {default_date}.")
-                    formatted_date = default_date
+    # Group articles by year
+    articles_by_year = {}
+    for article in articles_data:
+        year = article['year']
+        if year not in articles_by_year:
+            articles_by_year[year] = []
+        articles_by_year[year].append(article)
 
-                articles_data.append({
-                    "title": title,
-                    "description": description,
-                    "path": filepath,
-                    "category": category,
-                    "date": formatted_date
-                })
-                print(f"Successfully parsed: {title}")
-            except Exception as e:
-                print(f"Error processing file {filepath}: {e}")
+    # Sort articles within each year by date (descending)
+    for year in articles_by_year:
+        articles_by_year[year].sort(key=lambda x: x['date'], reverse=True)
 
-    if files_processed == 0:
-        print("No new markdown files found to process.")
+    # Generate yearly index files
+    for year, articles in articles_by_year.items():
+        year_index_data = {
+            'year': year,
+            'articles': articles,
+            'count': len(articles)
+        }
+        year_file_path = os.path.join(index_dir, f'index_{year}.json')
+        with open(year_file_path, 'w', encoding='utf-8') as f:
+            json.dump(year_index_data, f, ensure_ascii=False, indent=2)
+        print(f"Generated yearly index: {year_file_path} with {len(articles)} articles")
 
-    # Combine existing articles with newly found articles
-    # Ensure no duplicates based on path
-    all_articles = existing_articles + [
-        article for article in articles_data if article.get('path') not in existing_paths
-    ]
+    # Generate main index with list of years (sorted descending)
+    available_years = sorted(articles_by_year.keys(), reverse=True)
+    main_index = {
+        'updated': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+        'years': available_years,
+        'total_articles': len(articles_data)
+    }
+    
+    with open(main_index_file, 'w', encoding='utf-8') as f:
+        json.dump(main_index, f, ensure_ascii=False, indent=2)
+    print(f"Generated main index: {main_index_file} with {len(available_years)} years")
 
+    # Generate flat articles.json for backward compatibility
     # Sort all articles by date (descending)
-    all_articles.sort(key=lambda x: x.get('date', '1970-01-01'), reverse=True)
-
-    try:
-        with open(output_file, 'w', encoding='utf-8') as f:
-            json.dump(all_articles, f, indent=2, ensure_ascii=False)
-        print(f"Successfully generated '{output_file}' with {len(all_articles)} articles.")
-    except Exception as e:
-        print(f"Error writing to {output_file}: {e}")
+    all_articles = sorted(articles_data, key=lambda x: x['date'], reverse=True)
+    with open(articles_json_file, 'w', encoding='utf-8') as f:
+        json.dump(all_articles, f, ensure_ascii=False, indent=2)
+    print(f"Generated backward-compatible: {articles_json_file} with {len(all_articles)} articles")
 
 if __name__ == "__main__":
     # Check if PyYAML is installed, if not, print a message
@@ -143,4 +185,4 @@ if __name__ == "__main__":
         print("Install it using: pip install PyYAML")
         print("Proceeding with basic parsing for now.")
     
-    generate_articles_json()
+    generate_hierarchical_index()

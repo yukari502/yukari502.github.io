@@ -1,23 +1,26 @@
 [
   {
-    "title": "Daily-Bio-Arxiv: Automating Scientific Discovery with AI",
-    "description": "This project automatically fetches new papers from arXiv.org, uses an LLM to summarize them, and publishes the summaries to a GitHub Pages website.",
-    "path": "Articles/daily-bio-arxiv.md",
-    "category": "AI, Research Tools",
-    "date": "2025-11-09"
-  },
-  {
     "title": "First-Post",
-    "description": "A brief description of the article.",
+    "description": "Test This is the content of my......",
     "path": "Articles/first-post.md",
-    "category": "General",
-    "date": "2025-11-09"
+    "date": "2025-11-09",
+    "year": "2025",
+    "filename": "first-post.md"
   },
   {
-    "title": "test",
-    "description": "This is a test article to check indexing and display.",
-    "path": "Articles/test.md",
-    "category": "Testing",
-    "date": "2025-11-09"
+    "title": "Daily-Bio-Arxiv",
+    "description": "Daily-Bio-Arxiv: Automating Sc......",
+    "path": "Articles/daily-bio-arxiv.md",
+    "date": "2025-11-09",
+    "year": "2025",
+    "filename": "daily-bio-arxiv.md"
+  },
+  {
+    "title": "New-Test",
+    "description": "test",
+    "path": "Articles/New-test.md",
+    "date": "2025-11-09",
+    "year": "2025",
+    "filename": "New-test.md"
   }
 ]
