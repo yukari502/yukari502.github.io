@@ -11,7 +11,7 @@ on:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -31,6 +31,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetch full history for git date extraction
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Set up Python
@@ -45,6 +48,20 @@ jobs:
           echo "Listing generated files:"
           ls -l articles.json
           ls -R Index/
+      
+      - name: Commit and Push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add articles.json Index/
+          # Only commit if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update article index [skip ci]"
+            git push
+          fi
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
