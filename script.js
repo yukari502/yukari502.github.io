@@ -1,253 +1,217 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const pinnedArticlesListDiv = document.getElementById('pinned-articles-list');
-    const articlesListDiv = document.getElementById('articles-list');
+    // DOM Elements
+    const pinnedArticlesList = document.getElementById('pinned-articles-list');
+    const articlesList = document.getElementById('articles-list');
+    const searchInput = document.getElementById('search-input');
+    const themeToggle = document.getElementById('theme-toggle');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('.page-section');
+    const articleView = document.getElementById('article-view');
+    const markdownContent = document.getElementById('markdown-content');
+    const backButton = document.getElementById('back-button');
 
-    // Helper function to create and render an article card
-    function renderArticleCard(article, targetDivId) {
-        const targetDiv = document.getElementById(targetDivId);
-        if (!targetDiv) return; // Exit if the target div doesn't exist
+    // State
+    let allArticles = [];
 
-        const articleCard = document.createElement('div');
-        articleCard.className = 'article-item';
-        articleCard.dataset.path = article.path;
-        articleCard.dataset.title = article.title;
+    // --- Navigation Logic ---
+    function navigateTo(targetId) {
+        // Update Nav Links
+        navLinks.forEach(link => {
+            if (link.dataset.target === targetId) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
 
-        articleCard.innerHTML = `
-            <h3>${article.title}</h3>
-            <p class="article-meta">${article.date}</p>
-            <p>${article.description || ''}</p>
-        `;
-        targetDiv.appendChild(articleCard);
+        // Update Sections
+        sections.forEach(section => {
+            if (section.id === targetId) {
+                section.classList.add('active');
+            } else {
+                section.classList.remove('active');
+            }
+        });
+
+        // Special case: if navigating away from article-view, ensure it's hidden
+        if (targetId !== 'article-view') {
+            articleView.classList.remove('active');
+        }
+        
+        // Scroll to top
+        window.scrollTo(0, 0);
     }
 
-    // Helper function to attach listeners to the entire article card
-    function attachArticleClickListeners() {
-        document.querySelectorAll('.article-item').forEach(item => {
-            item.addEventListener('click', async (e) => {
-                e.preventDefault();
-                const articlePath = item.dataset.path;
-                const articleTitle = item.dataset.title;
-                await displayArticleContent(articlePath, articleTitle);
-            });
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = link.dataset.target;
+            navigateTo(target);
+        });
+    });
+
+    // --- Article Rendering ---
+    function createArticleCard(article) {
+        const card = document.createElement('div');
+        card.className = 'article-card';
+        card.dataset.path = article.path;
+        card.dataset.title = article.title;
+
+        card.innerHTML = `
+            <h3>${article.title}</h3>
+            <p class="article-meta">${article.date}</p>
+            <p class="article-desc">${article.description || 'No description available.'}</p>
+        `;
+
+        card.addEventListener('click', () => {
+            loadArticle(article.path, article.title);
+        });
+
+        return card;
+    }
+
+    function renderArticles(articles, container) {
+        container.innerHTML = '';
+        if (articles.length === 0) {
+            container.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-secondary);">No articles found.</p>';
+            return;
+        }
+        articles.forEach(article => {
+            container.appendChild(createArticleCard(article));
         });
     }
 
-    // Function to get all articles using hierarchical indexing
-    async function getAllArticles() {
+    // --- Data Fetching ---
+    async function fetchArticles() {
         try {
-            // Try to load main index first (hierarchical approach)
-            const mainIndexResponse = await fetch('Index/index.json');
-            if (mainIndexResponse.ok) {
-                const mainIndex = await mainIndexResponse.json();
-                console.log('Using hierarchical indexing with', mainIndex.years.length, 'years');
+            // Try hierarchical index first
+            const response = await fetch('Index/index.json');
+            if (response.ok) {
+                const mainIndex = await response.json();
+                const articles = [];
                 
-                // Load articles from all yearly index files
-                const allArticles = [];
                 for (const year of mainIndex.years) {
                     try {
-                        const yearIndexResponse = await fetch(`Index/index_${year}.json`);
-                        if (yearIndexResponse.ok) {
-                            const yearIndex = await yearIndexResponse.json();
-                            allArticles.push(...yearIndex.articles);
+                        const yearResponse = await fetch(`Index/index_${year}.json`);
+                        if (yearResponse.ok) {
+                            const yearData = await yearResponse.json();
+                            articles.push(...yearData.articles);
                         }
-                    } catch (error) {
-                        console.warn(`Failed to load index for year ${year}:`, error);
+                    } catch (e) {
+                        console.warn(`Failed to load year ${year}`, e);
                     }
                 }
-                
-                // Sort by date (newest first)
-                allArticles.sort((a, b) => new Date(b.date) - new Date(a.date));
-                return allArticles;
+                return articles.sort((a, b) => new Date(b.date) - new Date(a.date));
             }
-        } catch (error) {
-            console.warn('Hierarchical indexing not available, falling back to flat articles.json');
+        } catch (e) {
+            console.warn('Hierarchical index failed, trying fallback', e);
         }
 
-        // Fallback to flat articles.json for backward compatibility
+        // Fallback
         try {
-            const articlesResponse = await fetch('articles.json');
-            if (articlesResponse.ok) {
-                const articles = await articlesResponse.json();
-                console.log('Using flat articles.json with', articles.length, 'articles');
-                return articles;
-            }
-        } catch (error) {
-            console.error('Failed to load articles from any source:', error);
+            const response = await fetch('articles.json');
+            if (response.ok) return await response.json();
+        } catch (e) {
+            console.error('All fetch methods failed', e);
         }
-
         return [];
     }
 
-    // Function to fetch and display pinned articles
-    async function loadPinnedArticles() {
+    async function fetchPinned() {
         try {
-            const pinnedResponse = await fetch('pinned-articles.json');
-            if (!pinnedResponse.ok) {
-                console.warn('pinned-articles.json not found or could not be fetched. Proceeding without pinned articles.');
-                pinnedArticlesListDiv.innerHTML = ''; // Clear loading message if no pinned articles
-                return;
-            }
-            const pinnedArticlePaths = await pinnedResponse.json();
-
-            const allArticles = await getAllArticles();
-
-            // Filter for pinned articles
-            const pinnedArticles = allArticles.filter(article =>
-                pinnedArticlePaths.some(path => path === article.path)
-            );
-
-            // Sort pinned articles according to the order in pinned-articles.json
-            pinnedArticles.sort((a, b) => {
-                const indexA = pinnedArticlePaths.indexOf(a.path);
-                const indexB = pinnedArticlePaths.indexOf(b.path);
-                return indexA - indexB;
-            });
-
-            pinnedArticlesListDiv.innerHTML = ''; // Clear loading message
-
-            if (pinnedArticles.length === 0) {
-                pinnedArticlesListDiv.innerHTML = '<p>No pinned articles.</p>';
-                return;
-            }
-
-            pinnedArticles.forEach(article => {
-                renderArticleCard(article, 'pinned-articles-list');
-            });
-
-        } catch (error) {
-            console.error('Error loading pinned articles:', error);
-            pinnedArticlesListDiv.innerHTML = `<p class="error">Failed to load pinned articles. Please check console for details.</p>`;
+            const response = await fetch('pinned-articles.json');
+            if (response.ok) return await response.json();
+        } catch (e) {
+            console.warn('No pinned articles found');
         }
+        return [];
     }
 
-    // Function to fetch and display latest articles
-    async function loadLatestArticles() {
+    // --- Article Loading ---
+    async function loadArticle(path, title) {
         try {
-            const allArticles = await getAllArticles();
+            const response = await fetch(path);
+            if (!response.ok) throw new Error('Failed to load article');
+            
+            const text = await response.text();
+            
+            // Configure marked options if needed
+            // marked.setOptions({ ... });
 
-            articlesListDiv.innerHTML = ''; // Clear loading message
-
-            if (allArticles.length === 0) {
-                articlesListDiv.innerHTML = '<p>No articles found.</p>';
-                return;
-            }
-
-            // Display all articles (already sorted by date)
-            allArticles.forEach(article => {
-                renderArticleCard(article, 'articles-list');
-            });
-
-        } catch (error) {
-            console.error('Error loading latest articles:', error);
-            articlesListDiv.innerHTML = `<p class="error">Failed to load latest articles. Please check console for details.</p>`;
-        }
-    }
-
-    // Function to display the full content of a single article
-    async function displayArticleContent(articlePath, articleTitle) {
-        try {
-            const response = await fetch(articlePath);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const markdownContent = await response.text();
-            const htmlContent = marked.parse(markdownContent);
-
-            // Hide article lists and show article view
-            document.getElementById('about').style.display = 'none';
-            document.getElementById('pinned-articles').style.display = 'none';
-            document.getElementById('articles').style.display = 'none';
-            document.getElementById('contact').style.display = 'none'; // Also hide contact section
-
-            // Create and insert the article view section
-            const articleViewSection = document.createElement('section');
-            articleViewSection.id = 'article-view';
-            articleViewSection.innerHTML = `
-                <a href="#" id="back-to-articles">← Back to Articles</a>
-                <h2>${articleTitle}</h2>
-                <div class="article-content">
-                    ${htmlContent}
-                </div>
+            markdownContent.innerHTML = `
+                <h1>${title}</h1>
+                ${marked.parse(text)}
             `;
-            document.querySelector('main').appendChild(articleViewSection);
 
-            // Add event listener for the back button
-            document.getElementById('back-to-articles').addEventListener('click', async (e) => {
-                e.preventDefault();
-                // Remove the article view section
-                articleViewSection.remove();
-                // Show article lists again
-                document.getElementById('about').style.display = ''; // Restore default display
-                document.getElementById('pinned-articles').style.display = '';
-                document.getElementById('articles').style.display = '';
-                document.getElementById('contact').style.display = '';
-                // Re-render lists and re-attach listeners
-                await loadLatestArticles();
-                await loadPinnedArticles();
-                attachArticleClickListeners();
+            // Highlight code blocks
+            markdownContent.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightElement(block);
             });
 
-        } catch (error) {
-            console.error('Error loading article content:', error);
-            // Display error message in a way that allows going back
-            const errorViewSection = document.createElement('section');
-            errorViewSection.id = 'article-view'; // Use same ID for consistency
-            errorViewSection.innerHTML = `
-                <a href="#" id="back-to-articles">← Back to Articles</a>
-                <h2>Error loading article</h2>
-                <p class="error">Failed to load article content from ${articlePath}. Please check console for details.</p>
-            `;
-            document.querySelector('main').appendChild(errorViewSection);
+            // Show article view
+            sections.forEach(s => s.classList.remove('active'));
+            articleView.classList.add('active');
+            window.scrollTo(0, 0);
 
-            document.getElementById('back-to-articles').addEventListener('click', async (e) => {
-                e.preventDefault();
-                errorViewSection.remove();
-                document.getElementById('about').style.display = '';
-                document.getElementById('pinned-articles').style.display = '';
-                document.getElementById('articles').style.display = '';
-                document.getElementById('contact').style.display = '';
-                // Re-render lists and re-attach listeners
-                await loadLatestArticles();
-                await loadPinnedArticles();
-                attachArticleClickListeners();
-            });
+        } catch (e) {
+            console.error(e);
+            alert('Failed to load article content.');
         }
     }
 
-    // Theme toggle functionality
+    backButton.addEventListener('click', () => {
+        // Go back to articles or home depending on where we came from? 
+        // For now, default to articles list or just previous state.
+        // Simplest: Go to 'articles' tab
+        navigateTo('articles');
+    });
+
+    // --- Search Functionality ---
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        const filtered = allArticles.filter(article => 
+            article.title.toLowerCase().includes(query) || 
+            (article.description && article.description.toLowerCase().includes(query))
+        );
+        renderArticles(filtered, articlesList);
+    });
+
+    // --- Theme Toggle ---
     function initTheme() {
-        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-        const storedTheme = localStorage.getItem('theme');
+        const savedTheme = localStorage.getItem('theme') || 
+                          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
         
-        if (storedTheme) {
-            document.documentElement.setAttribute('data-theme', storedTheme);
-        } else if (prefersDarkScheme.matches) {
-            document.documentElement.setAttribute('data-theme', 'dark');
-        }
+        document.documentElement.setAttribute('data-theme', savedTheme);
 
-        const themeToggle = document.getElementById('theme-toggle');
-        if (themeToggle) { // Ensure the button exists before adding listener
-            themeToggle.addEventListener('click', () => {
-                const currentTheme = document.documentElement.getAttribute('data-theme');
-                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                
-                document.documentElement.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-            });
-        }
-
-        prefersDarkScheme.addEventListener('change', (e) => {
-            if (!localStorage.getItem('theme')) {
-                document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
-            }
+        themeToggle.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
         });
     }
 
-    // Initial load of articles
-    loadLatestArticles().then(() => {
-        loadPinnedArticles(); // Load pinned articles after latest articles are loaded
-    }).then(() => {
-        attachArticleClickListeners(); // Attach listeners after both lists are populated
-    });
-    initTheme(); // Initialize theme when the DOM is ready
+    // --- Initialization ---
+    async function init() {
+        initTheme();
+
+        // Load Data
+        const [articles, pinnedPaths] = await Promise.all([fetchArticles(), fetchPinned()]);
+        allArticles = articles;
+
+        // Render Latest
+        renderArticles(allArticles, articlesList);
+
+        // Render Pinned
+        if (pinnedPaths && pinnedPaths.length > 0) {
+            const pinned = allArticles.filter(a => pinnedPaths.includes(a.path));
+            // Sort by pinned order
+            pinned.sort((a, b) => pinnedPaths.indexOf(a.path) - pinnedPaths.indexOf(b.path));
+            renderArticles(pinned, pinnedArticlesList);
+        } else {
+            pinnedArticlesList.innerHTML = '<p>No pinned articles.</p>';
+        }
+    }
+
+    init();
 });

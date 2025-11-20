@@ -1,77 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A personal blog about technology, AI, and software engineering.">
     <title>My Personal Blog</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Link to marked.min.js for Markdown parsing -->
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Highlight.js for code syntax highlighting -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <!-- Marked.js for Markdown parsing -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<link rel="icon" href="/ico/favicon.ico" type="image/x-icon">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/ico/favicon.ico" type="image/x-icon">
 </head>
+
 <body>
-    <header>
-        <h1>My Personal Blog</h1>
-        <button id="theme-toggle" aria-label="Toggle dark mode">
-            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                <path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/>
-            </svg>
-            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                <path d="M11.38 2.019a7.5 7.5 0 1 0 10.6 10.6C21.662 17.854 17.316 22 12.001 22 6.477 22 2 17.523 2 12c0-5.315 4.146-9.661 9.38-9.981z"/>
-            </svg>
-        </button>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#articles">Articles</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section id="home">
-            <h2>Welcome to my blog!</h2>
-            <p>Here you'll find my thoughts, projects, and experiences.</p>
-        </section>
-
-        <section id="about">
-            <h2>About Me</h2>
-            <p>
-                I am a software engineer passionate about leveraging AI and automation to simplify complex processes. My projects include developing tools like the <strong>Daily-Bio-Arxiv</strong>, which uses AI to summarize scientific papers from arXiv and deploy them to GitHub Pages.
-            </p>
-            <p>
-                You can explore my work on <a href="https://github.com/yukari502/Daily-Bio-Arxiv" target="_blank">GitHub</a>.
-            </p>
-        </section>
-
-        <section id="pinned-articles">
-            <h2>Pinned Articles</h2>
-            <div id="pinned-articles-list">
-                <!-- Pinned articles will be loaded here by JavaScript -->
-                <p class="loading">Loading pinned articles...</p>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">Blog.</div>
+                <button id="theme-toggle" aria-label="Toggle dark mode">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
             </div>
-        </section>
-        <section id="articles">
-            <h2>Latest Articles</h2>
-            <div id="articles-list">
-                <!-- Articles will be loaded here by JavaScript -->
-                <p class="loading">Loading articles...</p>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="nav-link active" data-target="home">Home</a></li>
+                    <li><a href="#articles" class="nav-link" data-target="articles">Articles</a></li>
+                    <li><a href="#about" class="nav-link" data-target="about">About</a></li>
+                    <li><a href="#contact" class="nav-link" data-target="contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <p>&copy; 2023 My Blog</p>
             </div>
-        </section>
+        </aside>
 
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>Feel free to reach out!</p>
-        </section>
-    </main>
+        <main class="content-area">
+            <!-- Home Section -->
+            <section id="home" class="page-section active">
+                <div class="hero">
+                    <h1>Welcome to my digital garden.</h1>
+                    <p class="subtitle">Exploring ideas, code, and the future of tech.</p>
+                </div>
 
-    <footer>
-        <p>&copy; 2023 My Personal Blog. All rights reserved.</p>
-        <p>Powered by GitHub Pages</p>
-    </footer>
+                <div class="section-header">
+                    <h2>Pinned Articles</h2>
+                </div>
+                <div id="pinned-articles-list" class="articles-grid">
+                    <!-- Pinned articles loaded via JS -->
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                </div>
+            </section>
+
+            <!-- Articles Section -->
+            <section id="articles" class="page-section">
+                <div class="section-header">
+                    <h2>All Articles</h2>
+                    <div class="search-bar">
+                        <input type="text" id="search-input" placeholder="Search articles...">
+                    </div>
+                </div>
+                <div id="articles-list" class="articles-grid">
+                    <!-- Articles loaded via JS -->
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section id="about" class="page-section">
+                <div class="content-wrapper">
+                    <h2>About Me</h2>
+                    <div class="about-card">
+                        <p>
+                            I am a software engineer passionate about leveraging AI and automation to simplify complex
+                            processes.
+                            My work focuses on building tools that bridge the gap between cutting-edge research and
+                            practical application.
+                        </p>
+                        <p>
+                            One of my key projects is <strong>Daily-Bio-Arxiv</strong>, an automated system that
+                            summarizes scientific papers
+                            using Large Language Models.
+                        </p>
+                        <div class="social-links">
+                            <a href="https://github.com/yukari502" target="_blank" class="social-btn">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="page-section">
+                <div class="content-wrapper">
+                    <h2>Get in Touch</h2>
+                    <div class="contact-card">
+                        <p>Feel free to reach out for collaborations or just to say hi.</p>
+                        <a href="mailto:example@email.com" class="primary-btn">Send Email</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Article View (Hidden by default) -->
+            <section id="article-view" class="page-section">
+                <div class="article-container">
+                    <button id="back-button" class="back-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
+                        </svg>
+                        Back
+                    </button>
+                    <article id="markdown-content" class="markdown-body">
+                        <!-- Content loaded via JS -->
+                    </article>
+                </div>
+            </section>
+        </main>
+    </div>
 
     <script src="script.js"></script>
 </body>
+
 </html>
