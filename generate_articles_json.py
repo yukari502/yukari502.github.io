@@ -3,6 +3,8 @@ import json
 import datetime
 import re
 import glob
+import urllib.parse
+import subprocess
 
 # Function to parse YAML frontmatter from markdown content
 def parse_frontmatter(content):
@@ -25,6 +27,28 @@ def parse_frontmatter(content):
         except Exception as e:
             print(f"Error parsing frontmatter: {e}")
     return frontmatter, match
+
+def get_git_date(file_path):
+    """Try to get the creation date from git history."""
+    try:
+        # Get the date of the first commit that added the file
+        # %as gives YYYY-MM-DD
+        cmd = ['git', 'log', '--diff-filter=A', '--follow', '--format=%as', '-1', '--', file_path]
+        result = subprocess.run(cmd, capture_output=True, text=True)
+        date_str = result.stdout.strip()
+        if date_str:
+            return date_str
+            
+        # Fallback: try to get the last commit date if creation date fails
+        cmd = ['git', 'log', '-1', '--format=%as', '--', file_path]
+        result = subprocess.run(cmd, capture_output=True, text=True)
+        date_str = result.stdout.strip()
+        if date_str:
+            return date_str
+            
+    except Exception as e:
+        print(f"Git date extraction failed for {file_path}: {e}")
+    return None
 
 def generate_hierarchical_index():
     """
@@ -79,25 +103,60 @@ def generate_hierarchical_index():
 
             frontmatter, frontmatter_match = parse_frontmatter(content)
 
-            # Extract data, using defaults if not found in frontmatter
-            title = frontmatter.get('title', file_name.replace('.md', '').replace('_', ' ').title())
-            date_str = frontmatter.get('date', datetime.date.today().strftime('%Y-%m-%d'))
-
-            # Generate description from article content (first 30 characters)
-            # Remove frontmatter and markdown formatting for clean text
+            # 1. Title Extraction
+            title = frontmatter.get('title')
             content_without_frontmatter = content
             if frontmatter_match:
                 content_without_frontmatter = content[frontmatter_match.end():]
             
-            # Remove markdown formatting and get clean text
-            clean_text = re.sub(r'[#*`\[\]]', '', content_without_frontmatter)
-            clean_text = re.sub(r'\n+', ' ', clean_text).strip()
+            if not title:
+                # Try to find the first H1 header
+                h1_match = re.search(r'^#\s+(.+)$', content_without_frontmatter, re.MULTILINE)
+                if h1_match:
+                    title = h1_match.group(1).strip()
+                else:
+                    # Fallback to filename
+                    title = file_name.replace('.md', '').replace('_', ' ').title()
+
+            # 2. Date Extraction
+            date_str = frontmatter.get('date')
+            if not date_str:
+                # Try to get date from filename (YYYY-MM-DD-Title.md)
+                date_match = re.match(r'^(\d{4}-\d{2}-\d{2})', file_name)
+                if date_match:
+                    date_str = date_match.group(1)
+                else:
+                    # Try git history
+                    date_str = get_git_date(file_path)
             
-            # Take first 30 characters and add ellipsis
-            if len(clean_text) > 30:
-                description = clean_text[:30] + '......'
-            else:
-                description = clean_text
+            # Final fallback: today's date
+            if not date_str:
+                print(f"Warning: Could not determine date for {file_name}. Using today's date.")
+                date_str = datetime.date.today().strftime('%Y-%m-%d')
+
+            # 3. Description Extraction
+            description = frontmatter.get('description')
+            if not description:
+                # Remove markdown formatting and get clean text
+                clean_text = re.sub(r'[#*`\[\]]', '', content_without_frontmatter)
+                # Remove HTML tags
+                clean_text = re.sub(r'<[^>]+>', '', clean_text)
+                clean_text = re.sub(r'\n+', ' ', clean_text).strip()
+                
+                # Take first 150 characters (increased from 30 for better context)
+                if len(clean_text) > 150:
+                    description = clean_text[:150] + '...'
+                else:
+                    description = clean_text
+
+            # 4. Path Encoding
+            # We need to keep the directory structure but encode special chars
+            # os.path.join uses OS separator, but web URLs use /
+            # split path parts
+            path_parts = file_path.split(os.sep)
+            # encode each part
+            encoded_parts = [urllib.parse.quote(part) for part in path_parts]
+            encoded_path = "/".join(encoded_parts)
 
             # Ensure date is in YYYY-MM-DD format
             try:
@@ -112,7 +171,7 @@ def generate_hierarchical_index():
             article_info = {
                 "title": title,
                 "description": description,
-                "path": file_path,
+                "path": encoded_path,
                 "date": formatted_date,
                 "year": year,
                 "filename": file_name

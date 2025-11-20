@@ -40,7 +40,11 @@ jobs:
       - name: Install dependencies
         run: pip install PyYAML
       - name: Generate articles.json
-        run: python generate_articles_json.py
+        run: |
+          python generate_articles_json.py
+          echo "Listing generated files:"
+          ls -l articles.json
+          ls -R Index/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

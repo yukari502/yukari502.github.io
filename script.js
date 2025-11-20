@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (targetId !== 'article-view') {
             articleView.classList.remove('active');
         }
-        
+
         // Scroll to top
         window.scrollTo(0, 0);
     }
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok) {
                 const mainIndex = await response.json();
                 const articles = [];
-                
+
                 for (const year of mainIndex.years) {
                     try {
                         const yearResponse = await fetch(`Index/index_${year}.json`);
@@ -132,9 +132,9 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const response = await fetch(path);
             if (!response.ok) throw new Error('Failed to load article');
-            
+
             const text = await response.text();
-            
+
             // Configure marked options if needed
             // marked.setOptions({ ... });
 
@@ -169,8 +169,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Search Functionality ---
     searchInput.addEventListener('input', (e) => {
         const query = e.target.value.toLowerCase();
-        const filtered = allArticles.filter(article => 
-            article.title.toLowerCase().includes(query) || 
+        const filtered = allArticles.filter(article =>
+            article.title.toLowerCase().includes(query) ||
             (article.description && article.description.toLowerCase().includes(query))
         );
         renderArticles(filtered, articlesList);
@@ -178,9 +178,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Theme Toggle ---
     function initTheme() {
-        const savedTheme = localStorage.getItem('theme') || 
-                          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        
+        const savedTheme = localStorage.getItem('theme') ||
+            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
         document.documentElement.setAttribute('data-theme', savedTheme);
 
         themeToggle.addEventListener('click', () => {
@@ -204,9 +204,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Render Pinned
         if (pinnedPaths && pinnedPaths.length > 0) {
-            const pinned = allArticles.filter(a => pinnedPaths.includes(a.path));
+            const pinned = allArticles.filter(a => {
+                const decodedPath = decodeURIComponent(a.path);
+                return pinnedPaths.includes(decodedPath) || pinnedPaths.includes(a.path);
+            });
             // Sort by pinned order
-            pinned.sort((a, b) => pinnedPaths.indexOf(a.path) - pinnedPaths.indexOf(b.path));
+            pinned.sort((a, b) => {
+                const pathA = decodeURIComponent(a.path);
+                const pathB = decodeURIComponent(b.path);
+                const indexA = pinnedPaths.indexOf(pathA) !== -1 ? pinnedPaths.indexOf(pathA) : pinnedPaths.indexOf(a.path);
+                const indexB = pinnedPaths.indexOf(pathB) !== -1 ? pinnedPaths.indexOf(pathB) : pinnedPaths.indexOf(b.path);
+                return indexA - indexB;
+            });
             renderArticles(pinned, pinnedArticlesList);
         } else {
             pinnedArticlesList.innerHTML = '<p>No pinned articles.</p>';
