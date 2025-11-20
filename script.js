@@ -135,13 +135,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const text = await response.text();
 
-            // Configure marked options if needed
-            // marked.setOptions({ ... });
+            // Strip frontmatter if present
+            const contentBody = text.replace(/^---\s*\n[\s\S]*?\n---\s*\n/, '');
 
-            markdownContent.innerHTML = `
-                <h1>${title}</h1>
-                ${marked.parse(text)}
-            `;
+            const htmlContent = marked.parse(contentBody);
+
+            // Check if the content already starts with an H1
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = htmlContent;
+            const hasH1 = tempDiv.firstElementChild && tempDiv.firstElementChild.tagName === 'H1';
+
+            if (hasH1) {
+                markdownContent.innerHTML = htmlContent;
+            } else {
+                markdownContent.innerHTML = `<h1>${title}</h1>${htmlContent}`;
+            }
 
             // Highlight code blocks
             markdownContent.querySelectorAll('pre code').forEach((block) => {
