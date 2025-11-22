@@ -140,10 +140,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Custom code block renderer
             renderer.code = function (code, language) {
-                code = String(code || ''); // Ensure code is a string
-                const validLang = !!(language && hljs.getLanguage(language));
-                const highlighted = validLang ? hljs.highlight(code, { language }).value : hljs.highlightAuto(code).value;
-                const langLabel = language ? language.toUpperCase() : 'TEXT';
+                // In some marked versions or configurations, 'code' might be an object or token.
+                // But typically with renderer.code(code, lang, escaped), code is string.
+                // The issue '[object Object]' suggests 'code' is being stringified from an object.
+                // Let's handle the case where the first arg is an object (token).
+
+                let textToHighlight = code;
+                let lang = language;
+
+                if (typeof code === 'object' && code !== null) {
+                    textToHighlight = code.text || code.raw || '';
+                    lang = code.lang || language;
+                }
+
+                textToHighlight = String(textToHighlight || '');
+
+                const validLang = !!(lang && hljs.getLanguage(lang));
+                const highlighted = validLang ? hljs.highlight(textToHighlight, { language: lang }).value : hljs.highlightAuto(textToHighlight).value;
+                const langLabel = lang ? lang.toUpperCase() : 'TEXT';
 
                 return `
                 <div class="code-window">
@@ -161,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             </svg>
                         </button>
                     </div>
-                    <pre><code class="hljs ${language}">${highlighted}</code></pre>
+                    <pre><code class="hljs ${lang || ''}">${highlighted}</code></pre>
                 </div>`;
             };
 
