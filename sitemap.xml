@@ -1,63 +1,9 @@
-<?xml version="1.0" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://yukari502.github.io</loc>
+    <loc>https://yukari502.github.io/</loc>
     <lastmod>2025-11-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://yukari502.github.io/#home</loc>
-    <lastmod>2025-11-22</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://yukari502.github.io/#about</loc>
-    <lastmod>2025-11-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yukari502.github.io/#article/Articles/Markdown%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0.md</loc>
-    <lastmod>2025-11-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://yukari502.github.io/#article/Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6%20%E6%B0%B4%E5%88%86%E4%BB%A3%E8%B0%A2.md</loc>
-    <lastmod>2025-11-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://yukari502.github.io/#article/Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6%20%E6%A4%8D%E7%89%A9%E5%91%BC%E5%90%B8%E4%BD%9C%E7%94%A8.md</loc>
-    <lastmod>2025-11-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://yukari502.github.io/#article/Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6%20%E5%85%89%E5%90%88%E4%BD%9C%E7%94%A8.md</loc>
-    <lastmod>2025-11-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://yukari502.github.io/#article/Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6%20%E6%B0%B4%E4%B8%8E%E6%A4%8D%E7%89%A9%E7%BB%86%E8%83%9E.md</loc>
-    <lastmod>2025-11-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://yukari502.github.io/#article/Articles/About%20me.md</loc>
-    <lastmod>2025-11-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://yukari502.github.io/#article/Articles/daily-bio-arxiv.md</loc>
-    <lastmod>2025-11-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
 </urlset>

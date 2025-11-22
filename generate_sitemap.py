@@ -24,13 +24,11 @@ def generate_sitemap():
     # Create root element
     urlset = Element('urlset')
     urlset.set('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9')
-    urlset.set('xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance')
-    urlset.set('xsi:schemaLocation', 'http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd')
     
     # Add homepage
     url = SubElement(urlset, 'url')
     loc = SubElement(url, 'loc')
-    loc.text = base_url
+    loc.text = base_url + '/'
     lastmod = SubElement(url, 'lastmod')
     lastmod.text = datetime.now().strftime('%Y-%m-%d')
     changefreq = SubElement(url, 'changefreq')
@@ -38,55 +36,39 @@ def generate_sitemap():
     priority = SubElement(url, 'priority')
     priority.text = '1.0'
     
-    # Add static pages
-    static_pages = [
-        {'path': '/#home', 'freq': 'daily', 'priority': '1.0'},
-        {'path': '/#about', 'freq': 'monthly', 'priority': '0.8'},
-    ]
+    # For SPA with hash-based routing, we can only really index the main page
+    # Google's crawler can't properly index hash fragments
+    # So we'll keep it simple and just list the main pages
     
-    for page in static_pages:
-        url = SubElement(urlset, 'url')
-        loc = SubElement(url, 'loc')
-        loc.text = base_url + page['path']
-        lastmod = SubElement(url, 'lastmod')
-        lastmod.text = datetime.now().strftime('%Y-%m-%d')
-        changefreq = SubElement(url, 'changefreq')
-        changefreq.text = page['freq']
-        priority = SubElement(url, 'priority')
-        priority.text = page['priority']
-    
-    # Load and add articles
+    # Load articles for lastmod date of homepage
     if os.path.exists(articles_json):
         with open(articles_json, 'r', encoding='utf-8') as f:
             articles = json.load(f)
         
-        for article in articles:
-            url = SubElement(urlset, 'url')
-            loc = SubElement(url, 'loc')
-            # Articles are accessed via the main page, not direct URLs
-            # But for SEO, we can list them as fragments or use a different approach
-            # Since this is an SPA, we'll use the hash-based URL
-            article_path = article.get('path', '')
-            # The path in articles.json is like "Articles/About%20me.md"
-            # For sitemap, we might want to reference the article view
-            # But since it's all on one page with client-side routing, 
-            # we can't really have separate URLs for each article in the traditional sense
-            # Let's just reference them via their path for now
-            loc.text = f"{base_url}/#article/{article_path}"
-            
-            lastmod = SubElement(url, 'lastmod')
-            lastmod.text = article.get('date', datetime.now().strftime('%Y-%m-%d'))
-            
-            changefreq = SubElement(url, 'changefreq')
-            changefreq.text = 'monthly'
-            
-            priority = SubElement(url, 'priority')
-            priority.text = '0.6'
+        # Update homepage lastmod to the most recent article date
+        if articles:
+            most_recent = max(articles, key=lambda x: x.get('date', '1970-01-01'))
+            lastmod.text = most_recent.get('date', datetime.now().strftime('%Y-%m-%d'))
     
-    # Write to file
-    xml_str = prettify_xml(urlset)
+    # Write to file with proper XML declaration
+    tree = ElementTree(urlset)
+    with open(sitemap_file, 'wb') as f:
+        tree.write(f, encoding='utf-8', xml_declaration=True)
+    
+    # Post-process to add proper formatting
+    with open(sitemap_file, 'r', encoding='utf-8') as f:
+        content = f.read()
+    
+    # Parse and prettify
+    dom = minidom.parseString(content)
+    pretty_xml = dom.toprettyxml(indent="  ", encoding='utf-8')
+    
+    # Remove extra blank lines
+    lines = pretty_xml.decode('utf-8').split('\n')
+    lines = [line for line in lines if line.strip()]
+    
     with open(sitemap_file, 'w', encoding='utf-8') as f:
-        f.write(xml_str)
+        f.write('\n'.join(lines))
     
     print(f"Sitemap generated successfully: {sitemap_file}")
     print(f"Total URLs: {len(urlset.findall('url'))}")
