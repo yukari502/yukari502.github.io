@@ -135,6 +135,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const text = await response.text();
 
+            // Configure renderer
+            const renderer = new marked.Renderer();
+
+            // Custom code block renderer
+            renderer.code = function (code, language) {
+                const validLang = !!(language && hljs.getLanguage(language));
+                const highlighted = validLang ? hljs.highlight(code, { language }).value : hljs.highlightAuto(code).value;
+                const langLabel = language ? language.toUpperCase() : 'TEXT';
+
+                return `
+                <div class="code-window">
+                    <div class="window-header">
+                        <div class="window-controls">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <div class="window-title">${langLabel}</div>
+                        <button class="copy-btn" aria-label="Copy code" onclick="copyCode(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <pre><code class="hljs ${language}">${highlighted}</code></pre>
+                </div>`;
+            };
+
             // Strip frontmatter if present
             const contentBody = text.replace(/^---\s*\n[\s\S]*?\n---\s*\n/, '');
 
@@ -148,6 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // So 'filename' is 'About%20me'. This is perfect for the URL.
 
             const htmlContent = marked.parse(contentBody, {
+                renderer: renderer,
                 walkTokens: (token) => {
                     if (token.type === 'image') {
                         const href = token.href;
@@ -169,10 +199,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 markdownContent.innerHTML = `<h1>${title}</h1>${htmlContent}`;
             }
 
-            // Highlight code blocks
-            markdownContent.querySelectorAll('pre code').forEach((block) => {
-                hljs.highlightElement(block);
-            });
+            // Highlight code blocks (already done in renderer, but keep for safety or other blocks)
+            // Actually, since we render manually, we don't need hljs.highlightElement here for the main blocks.
+            // But let's keep it if there are inline codes or other things.
+            // markdownContent.querySelectorAll('pre code').forEach((block) => {
+            //    hljs.highlightElement(block);
+            // });
 
             // Show article view
             sections.forEach(s => s.classList.remove('active'));
@@ -184,6 +216,26 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Failed to load article content.');
         }
     }
+
+    // Make copyCode available globally
+    window.copyCode = function (btn) {
+        const codeBlock = btn.closest('.code-window').querySelector('code');
+        const text = codeBlock.innerText;
+
+        navigator.clipboard.writeText(text).then(() => {
+            const originalIcon = btn.innerHTML;
+            btn.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#27c93f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            `;
+            setTimeout(() => {
+                btn.innerHTML = originalIcon;
+            }, 2000);
+        }).catch(err => {
+            console.error('Failed to copy:', err);
+        });
+    };
 
     backButton.addEventListener('click', () => {
         // Go back to home

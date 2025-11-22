@@ -409,18 +409,91 @@ nav li {
     font-size: 0.9em;
 }
 
+/* Code Window Styles */
+.code-window {
+    background-color: #1e1e1e;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    margin: 1.5rem 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.window-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background-color: #252526;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.window-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.dot.red {
+    background-color: #ff5f56;
+}
+
+.dot.yellow {
+    background-color: #ffbd2e;
+}
+
+.dot.green {
+    background-color: #27c93f;
+}
+
+.window-title {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: #9ca3af;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-left: 1rem;
+}
+
+.copy-btn {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.copy-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
 .markdown-body pre {
-    background-color: var(--bg-tertiary);
-    padding: 1.5rem;
-    border-radius: 8px;
+    background-color: transparent;
+    padding: 1rem;
+    border-radius: 0;
+    margin-bottom: 0;
     overflow-x: auto;
-    margin-bottom: 1.5rem;
 }
 
 .markdown-body pre code {
     background-color: transparent;
     padding: 0;
     color: inherit;
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 .markdown-body blockquote {
