@@ -490,10 +490,63 @@ nav li {
 .markdown-body pre code {
     background-color: transparent;
     padding: 0;
-    color: inherit;
+    color: #e0e0e0;
+    /* Default text color: off-white */
     font-family: var(--font-mono);
     font-size: 0.95rem;
     line-height: 1.6;
+}
+
+/* Syntax Highlighting Overrides for Better Contrast */
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-section,
+.hljs-link {
+    color: #ff79c6;
+    /* Pink */
+}
+
+.hljs-function .hljs-keyword {
+    color: #ff79c6;
+}
+
+.hljs-string,
+.hljs-title,
+.hljs-name,
+.hljs-type,
+.hljs-attribute,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition,
+.hljs-variable,
+.hljs-template-tag,
+.hljs-template-variable {
+    color: #f1fa8c;
+    /* Yellow */
+}
+
+.hljs-comment,
+.hljs-quote,
+.hljs-meta {
+    color: #6272a4;
+    /* Blueish Grey */
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-title,
+.hljs-section,
+.hljs-doctag,
+.hljs-type,
+.hljs-name,
+.hljs-strong {
+    font-weight: bold;
+}
+
+.hljs-emphasis {
+    font-style: italic;
 }
 
 .markdown-body blockquote {
