@@ -242,9 +242,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 const indexB = pinnedPaths.indexOf(pathB) !== -1 ? pinnedPaths.indexOf(pathB) : pinnedPaths.indexOf(b.path);
                 return indexA - indexB;
             });
-            renderArticles(pinned, pinnedArticlesList);
+
+            // Render pinned items in sidebar
+            pinnedArticlesList.innerHTML = '';
+            pinned.forEach(article => {
+                const link = document.createElement('a');
+                link.className = 'pinned-item';
+                link.href = '#';
+                link.innerHTML = `
+                    <h4>${article.title}</h4>
+                    <span>${article.date}</span>
+                `;
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    loadArticle(article.path, article.title);
+                });
+                pinnedArticlesList.appendChild(link);
+            });
         } else {
-            pinnedArticlesList.innerHTML = '<p>No pinned articles.</p>';
+            pinnedArticlesList.innerHTML = '<p style="font-size: 0.8rem; color: var(--text-secondary);">No pinned articles.</p>';
         }
     }
 
