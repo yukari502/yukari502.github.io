@@ -87,8 +87,8 @@ def generate_hierarchical_index():
                 json.dump([], f, ensure_ascii=False, indent=2)
             return
 
-    # Get all markdown files
-    md_files = glob.glob(os.path.join(articles_dir, '*.md'))
+    # Get all markdown files recursively
+    md_files = glob.glob(os.path.join(articles_dir, '**', '*.md'), recursive=True)
     print(f"Found {len(md_files)} markdown files")
     
     # Process all files into a list with metadata
@@ -102,6 +102,23 @@ def generate_hierarchical_index():
                 content = f.read()
 
             frontmatter, frontmatter_match = parse_frontmatter(content)
+
+            # Determine Category from directory structure
+            # Get path relative to Articles dir
+            rel_path = os.path.relpath(file_path, articles_dir)
+            # Get directory name
+            category_dir = os.path.dirname(rel_path)
+            
+            # If file is directly in Articles, category is "Uncategorized" or empty
+            # But user wants "Article 栏目...展示各种分类", so maybe "General" or just use the folder name if present.
+            # If category_dir is empty (root of Articles), let's call it "General" or "Others" if we want to group them,
+            # or just leave it empty and handle in UI.
+            # Let's use the first folder name as the top-level category.
+            if category_dir and category_dir != '.':
+                # Use the first part of the path as the category
+                category = category_dir.split(os.sep)[0]
+            else:
+                category = "Uncategorized"
 
             # 1. Title Extraction
             title = frontmatter.get('title')
@@ -174,6 +191,7 @@ def generate_hierarchical_index():
                 "path": encoded_path,
                 "date": formatted_date,
                 "year": year,
+                "category": category,
                 "filename": file_name
             }
             articles_data.append(article_info)

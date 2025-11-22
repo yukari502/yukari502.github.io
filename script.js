@@ -348,6 +348,89 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             pinnedArticlesList.innerHTML = '<p style="font-size: 0.8rem; color: var(--text-secondary);">No pinned articles.</p>';
         }
+
+        // Render Categories
+        renderCategories(allArticles);
+    }
+
+    function renderCategories(articles) {
+        const categoriesList = document.getElementById('categories-list');
+        const categoriesToggle = document.getElementById('categories-toggle');
+
+        if (categoriesToggle) {
+            categoriesToggle.addEventListener('click', () => {
+                categoriesToggle.classList.toggle('collapsed');
+                categoriesList.classList.toggle('collapsed');
+            });
+        }
+
+        // Group by category
+        const categories = {};
+        articles.forEach(article => {
+            const cat = article.category || 'Uncategorized';
+            if (!categories[cat]) {
+                categories[cat] = [];
+            }
+            categories[cat].push(article);
+        });
+
+        categoriesList.innerHTML = '';
+
+        // Sort categories (Uncategorized last)
+        const sortedCats = Object.keys(categories).sort((a, b) => {
+            if (a === 'Uncategorized') return 1;
+            if (b === 'Uncategorized') return -1;
+            return a.localeCompare(b);
+        });
+
+        sortedCats.forEach(cat => {
+            const group = document.createElement('div');
+            group.className = 'category-group';
+
+            const title = document.createElement('div');
+            title.className = 'category-title';
+            title.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+                ${cat}
+            `;
+
+            const items = document.createElement('div');
+            items.className = 'category-items'; // Default expanded
+
+            // Toggle category collapse
+            title.addEventListener('click', (e) => {
+                // If clicking the title, maybe filter? Or just toggle?
+                // Let's toggle collapse
+                items.classList.toggle('collapsed');
+                title.querySelector('.chevron-icon').style.transform = items.classList.contains('collapsed') ? 'rotate(-90deg)' : 'rotate(0deg)';
+
+                // Also filter main view to show only this category?
+                // User said "Home page still displays all articles", but clicking a category usually implies filtering.
+                // Let's filter.
+                const filtered = categories[cat];
+                renderArticles(filtered, articlesList);
+                navigateTo('home');
+            });
+
+            categories[cat].forEach(article => {
+                const link = document.createElement('a');
+                link.className = 'category-link';
+                link.href = '#';
+                link.textContent = article.title;
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation(); // Prevent bubbling to category click
+                    loadArticle(article.path, article.title);
+                });
+                items.appendChild(link);
+            });
+
+            group.appendChild(title);
+            group.appendChild(items);
+            categoriesList.appendChild(group);
+        });
     }
 
     init();
