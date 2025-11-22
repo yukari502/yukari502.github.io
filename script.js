@@ -62,8 +62,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function createArticleCard(article) {
         const card = document.createElement('div');
         card.className = 'article-card';
-        card.dataset.path = article.path;
-        card.dataset.title = article.title;
+
+        // Generate the static page URL
+        const category = article.category || 'uncategorized';
+        const filename = article.filename || '';
+        const slug = filename.replace(/\.md$/i, '')
+            .toLowerCase()
+            .replace(/[^\w\s-]/g, '')
+            .replace(/[-\s]+/g, '-')
+            .trim();
+        const staticUrl = `/${category.toLowerCase().replace(/[^\w\s-]/g, '').replace(/[-\s]+/g, '-')}/${slug}.html`;
 
         card.innerHTML = `
             <h3>${article.title}</h3>
@@ -71,8 +79,10 @@ document.addEventListener('DOMContentLoaded', () => {
             <p class="article-desc">${article.description || 'No description available.'}</p>
         `;
 
+        // Make the card clickable and link to static page
+        card.style.cursor = 'pointer';
         card.addEventListener('click', () => {
-            loadArticle(article.path, article.title);
+            window.location.href = staticUrl;
         });
 
         return card;
@@ -334,15 +344,22 @@ document.addEventListener('DOMContentLoaded', () => {
             pinned.forEach(article => {
                 const link = document.createElement('a');
                 link.className = 'pinned-item';
-                link.href = '#';
+
+                // Generate static URL
+                const category = article.category || 'uncategorized';
+                const filename = article.filename || '';
+                const slug = filename.replace(/\.md$/i, '')
+                    .toLowerCase()
+                    .replace(/[^\w\s-]/g, '')
+                    .replace(/[-\s]+/g, '-')
+                    .trim();
+                const staticUrl = `/${category.toLowerCase().replace(/[^\w\s-]/g, '').replace(/[-\s]+/g, '-')}/${slug}.html`;
+
+                link.href = staticUrl;
                 link.innerHTML = `
                     <h4>${article.title}</h4>
                     <span>${article.date}</span>
                 `;
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    loadArticle(article.path, article.title);
-                });
                 pinnedArticlesList.appendChild(link);
             });
         } else {
@@ -401,29 +418,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Toggle category collapse
             title.addEventListener('click', (e) => {
-                // If clicking the title, maybe filter? Or just toggle?
-                // Let's toggle collapse
                 items.classList.toggle('collapsed');
                 title.querySelector('.chevron-icon').style.transform = items.classList.contains('collapsed') ? 'rotate(-90deg)' : 'rotate(0deg)';
-
-                // Also filter main view to show only this category?
-                // User said "Home page still displays all articles", but clicking a category usually implies filtering.
-                // Let's filter.
-                const filtered = categories[cat];
-                renderArticles(filtered, articlesList);
-                navigateTo('home');
             });
 
             categories[cat].forEach(article => {
                 const link = document.createElement('a');
                 link.className = 'category-link';
-                link.href = '#';
+
+                // Generate static URL
+                const category = article.category || 'uncategorized';
+                const filename = article.filename || '';
+                const slug = filename.replace(/\.md$/i, '')
+                    .toLowerCase()
+                    .replace(/[^\w\s-]/g, '')
+                    .replace(/[-\s]+/g, '-')
+                    .trim();
+                const staticUrl = `/${category.toLowerCase().replace(/[^\w\s-]/g, '').replace(/[-\s]+/g, '-')}/${slug}.html`;
+
+                link.href = staticUrl;
                 link.textContent = article.title;
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    e.stopPropagation(); // Prevent bubbling to category click
-                    loadArticle(article.path, article.title);
-                });
                 items.appendChild(link);
             });
 
