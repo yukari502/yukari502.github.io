@@ -275,87 +275,104 @@
     <script>
         // Render markdown content
         document.addEventListener('DOMContentLoaded', function () {
-            const markdownSource = document.getElementById('markdown-source').textContent;
-            const contentDiv = document.getElementById('article-content');
+            if (typeof marked === 'undefined') {
+                console.error('Marked.js not loaded');
+                document.getElementById('article-content').innerHTML = '<p style="color:red">Error: Markdown parser not loaded. Please check your internet connection.</p>';
+                return;
+            }
 
-            // Configure marked renderer for code blocks with macOS style
-            const renderer = new marked.Renderer();
-            // Custom code block renderer
-            renderer.code = function (code, language) {
-                code = String(code || '');
-                let textToHighlight = code;
-                let lang = language;
+            try {
+                const markdownSource = document.getElementById('markdown-source').textContent;
+                const contentDiv = document.getElementById('article-content');
 
-                if (typeof code === 'object' && code !== null) {
-                    textToHighlight = code.text || code.raw || '';
-                    lang = code.lang || language;
-                }
+                // Configure marked renderer for code blocks with macOS style
+                const renderer = new marked.Renderer();
+                // Custom code block renderer
+                renderer.code = function (code, language) {
+                    code = String(code || '');
+                    let textToHighlight = code;
+                    let lang = language;
 
-                textToHighlight = String(textToHighlight || '');
-
-                const validLang = !!(lang && hljs.getLanguage(lang));
-                const highlighted = validLang ? hljs.highlight(textToHighlight, { language: lang }).value : hljs.highlightAuto(textToHighlight).value;
-                const langLabel = lang ? lang.toUpperCase() : 'TEXT';
-
-                return `
-                <div class="code-window">
-                    <div class="window-header">
-                        <div class="window-controls">
-                            <span class="dot red"></span>
-                            <span class="dot yellow"></span>
-                            <span class="dot green"></span>
-                        </div>
-                        <div class="window-title">${langLabel}</div>
-                        <button class="copy-btn" aria-label="Copy code" onclick="copyCode(this)">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                        </button>
-                    </div>
-                    <pre><code class="hljs ${lang || ''}">${highlighted}</code></pre>
-                </div>`;
-            };
-
-            // Custom image renderer to fix paths
-            renderer.image = function (href, title, text) {
-                if (href && !href.startsWith('http') && !href.startsWith('/')) {
-                    // If path starts with 'Pic/', make it absolute '/Pic/'
-                    if (href.startsWith('Pic/')) {
-                        href = '/' + href;
-                    } else {
-                        // Otherwise, assume it might be relative to article, but for this blog structure
-                        // images seem to be in root Pic folder. 
-                        // Let's try to be smart: if it looks like a relative path to Pic, fix it.
-                        // Or just prepend / if it doesn't have it?
-                        // Safest for this specific user case:
-                        href = '/' + href;
+                    if (typeof code === 'object' && code !== null) {
+                        textToHighlight = code.text || code.raw || '';
+                        lang = code.lang || language;
                     }
+
+                    textToHighlight = String(textToHighlight || '');
+
+                    const validLang = !!(lang && hljs.getLanguage(lang));
+                    const highlighted = validLang ? hljs.highlight(textToHighlight, { language: lang }).value : hljs.highlightAuto(textToHighlight).value;
+                    const langLabel = lang ? lang.toUpperCase() : 'TEXT';
+
+                    return `
+                    <div class="code-window">
+                        <div class="window-header">
+                            <div class="window-controls">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <div class="window-title">${langLabel}</div>
+                            <button class="copy-btn" aria-label="Copy code" onclick="copyCode(this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <pre><code class="hljs ${lang || ''}">${highlighted}</code></pre>
+                    </div>`;
+                };
+
+                // Custom image renderer to fix paths
+                renderer.image = function (href, title, text) {
+                    if (!href) return '';
+
+                    if (!href.startsWith('http') && !href.startsWith('/')) {
+                        // If path starts with 'Pic/', make it absolute '/Pic/'
+                        if (href.startsWith('Pic/')) {
+                            href = '/' + href;
+                        } else {
+                            // Otherwise, assume it might be relative to article, but for this blog structure
+                            // images seem to be in root Pic folder. 
+                            // Let's try to be smart: if it looks like a relative path to Pic, fix it.
+                            // Or just prepend / if it doesn't have it?
+                            // Safest for this specific user case:
+                            href = '/' + href;
+                        }
+                    }
+
+                    // Escape quotes in text and title to prevent HTML breakage
+                    const safeText = (text || '').replace(/"/g, '&quot;');
+                    const safeTitle = (title || '').replace(/"/g, '&quot;');
+
+                    let out = `<img src="${href}" alt="${safeText}"`;
+                    if (title) {
+                        out += ` title="${safeTitle}"`;
+                    }
+                    out += ' class="img-fluid">';
+                    return out;
+                };
+
+                // Parse markdown
+                const htmlContent = marked.parse(markdownSource, { renderer: renderer });
+                contentDiv.innerHTML = htmlContent;
+
+                // Initialize KaTeX rendering
+                if (window.renderMathInElement) {
+                    renderMathInElement(contentDiv, {
+                        delimiters: [
+                            { left: '$$', right: '$$', display: true },
+                            { left: '$', right: '$', display: false },
+                            { left: '\\(', right: '\\)', display: false },
+                            { left: '\\[', right: '\\]', display: true }
+                        ],
+                        throwOnError: false
+                    });
                 }
-
-                let out = `<img src="${href}" alt="${text}"`;
-                if (title) {
-                    out += ` title="${title}"`;
-                }
-                out += ' class="img-fluid">';
-                return out;
-            };
-
-            // Parse markdown
-            const htmlContent = marked.parse(markdownSource, { renderer: renderer });
-            contentDiv.innerHTML = htmlContent;
-
-            // Initialize KaTeX rendering
-            if (window.renderMathInElement) {
-                renderMathInElement(contentDiv, {
-                    delimiters: [
-                        { left: '$$', right: '$$', display: true },
-                        { left: '$', right: '$', display: false },
-                        { left: '\\(', right: '\\)', display: false },
-                        { left: '\\[', right: '\\]', display: true }
-                    ],
-                    throwOnError: false
-                });
+            } catch (e) {
+                console.error('Error rendering markdown:', e);
+                document.getElementById('article-content').innerHTML = '<p style="color:red">Error rendering content. Please check console for details.</p>';
             }
         });
 

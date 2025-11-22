@@ -9,6 +9,7 @@ import json
 import re
 import urllib.parse
 import glob
+import html
 from pathlib import Path
 
 def read_markdown_file(file_path):
@@ -74,13 +75,13 @@ def generate_article_html(article, template_content, base_url, output_dir):
     output_url = article.get('url', f"/posts/{slug}.html") # This might be wrong in fallback but we expect url to be there
     
     replacements = {
-        '{TITLE}': article['title'],
-        '{DESCRIPTION}': article.get('description', '')[:160],  # Limit for meta description
-        '{KEYWORDS}': f"{article.get('category', '')}, {article['title']}",
+        '{TITLE}': html.escape(article['title']),
+        '{DESCRIPTION}': html.escape(article.get('description', '')[:160]),  # Limit for meta description
+        '{KEYWORDS}': html.escape(f"{article.get('category', '')}, {article['title']}"),
         '{URL}': f"{base_url}{output_url}",
         '{DATE}': article.get('date', ''),
         '{CATEGORY}': article.get('category', 'Uncategorized'),
-        '{CONTENT}': markdown_content  # We'll process this with marked.js on client side
+        '{CONTENT}': markdown_content.replace('</script>', '<\\/script>')  # Prevent script injection
     }
     
     # Replace placeholders in template
