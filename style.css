@@ -801,3 +801,26 @@ nav li {
         grid-template-columns: 1fr;
     }
 }
+
+/* Mermaid Diagram Styles */
+.mermaid {
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mermaid svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Override Mermaid default theme colors to match our design */
+[data-theme="dark"] .mermaid {
+    background-color: var(--bg-tertiary);
+}

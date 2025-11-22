@@ -57,6 +57,18 @@ jobs:
           echo "Generated article pages:"
           ls -R posts/
       
+      - name: Generate article pages
+        run: |
+          python generate_article_pages.py
+          echo "Generated article pages:"
+          ls -R posts/
+
+      - name: Cleanup orphaned posts
+        run: |
+          python cleanup_posts.py
+          echo "Cleanup completed"
+          ls -R posts/
+
       - name: Commit and Push changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"

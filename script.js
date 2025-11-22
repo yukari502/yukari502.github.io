@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     textToHighlight = code.text || code.raw || '';
                     lang = code.lang || language || '';
                 }
-                
+
                 // Now convert to string
                 textToHighlight = String(textToHighlight || '');
 
@@ -131,6 +131,36 @@ document.addEventListener('DOMContentLoaded', () => {
                         { left: '\\[', right: '\\]', display: true }
                     ],
                     throwOnError: false
+                });
+            }
+
+            // Render Mermaid diagrams
+            if (window.mermaid) {
+                // Find all mermaid code blocks
+                const mermaidBlocks = contentDiv.querySelectorAll('pre code.language-mermaid, pre code.mermaid');
+
+                mermaidBlocks.forEach((block, index) => {
+                    try {
+                        const code = block.textContent;
+                        const pre = block.closest('pre');
+
+                        // Create a div for mermaid to render into
+                        const mermaidDiv = document.createElement('div');
+                        mermaidDiv.className = 'mermaid';
+                        mermaidDiv.textContent = code;
+
+                        // Replace the pre element with the mermaid div
+                        if (pre && pre.parentNode) {
+                            pre.parentNode.replaceChild(mermaidDiv, pre);
+                        }
+                    } catch (e) {
+                        console.error('Error rendering mermaid diagram:', e);
+                    }
+                });
+
+                // Initialize mermaid rendering
+                mermaid.run({
+                    querySelector: '.mermaid',
                 });
             }
         } catch (e) {

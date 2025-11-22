@@ -31,9 +31,11 @@
 - ✅ **客户端渲染**：使用 `marked.js` 解析 Markdown
 - ✅ **代码高亮**：使用 `highlight.js` + 自定义 macOS 风格窗口
 - ✅ **数学公式**：使用 `KaTeX` 渲染
+- ✅ **图表渲染**：使用 `Mermaid.js` 渲染流程图、时序图等
 - ✅ **图片管理**：按文章 Slug 组织，支持相对路径
 - ✅ **SEO 优化**：自动生成 meta 标签、sitemap.xml
 - ✅ **响应式设计**：适配桌面和移动设备
+- ✅ **自动清理**：同步删除已移除文章的生成文件
 
 ---
 
@@ -49,6 +51,7 @@
 - **Markdown 解析**：[marked.js](https://marked.js.org/)
 - **代码高亮**：[highlight.js](https://highlightjs.org/)
 - **数学渲染**：[KaTeX](https://katex.org/)
+- **图表渲染**：[Mermaid.js](https://mermaid.js.org/) - 支持流程图、时序图、甘特图等
 - **字体**：Google Fonts (Outfit, JetBrains Mono)
 
 ### 部署平台
@@ -87,6 +90,7 @@
 ├── generate_articles_json.py          # [构建脚本] 步骤1：解析 Markdown，生成索引
 ├── generate_article_pages.py          # [构建脚本] 步骤2：生成 HTML 页面
 ├── generate_sitemap.py                # [构建脚本] 步骤3：生成 sitemap.xml
+├── cleanup_posts.py                   # [维护脚本] 清理已删除文章的孤立HTML文件
 │
 ├── article-template.html              # [模板] 文章页面的 HTML 模板
 ├── index.html                         # [入口] 网站主页（SPA 模式）
@@ -153,7 +157,8 @@ graph TD
     D --> E[运行 generate_articles_json.py]
     E --> F[运行 generate_article_pages.py]
     F --> G[运行 generate_sitemap.py]
-    G --> H[提交生成的文件]
+    G --> J[运行 cleanup_posts.py]
+    J --> H[提交生成的文件]
     H --> I[部署到 GitHub Pages]
 ```
 
@@ -370,7 +375,26 @@ relative_root = os.path.relpath('.', article_output_dir)
     <priority>0.8</priority>
   </url>
 </urlset>
+
 ```
+
+---
+
+### 5.4 `cleanup_posts.py`
+
+**作用**：在 `posts/` 目录中删除已在 `Articles/` 中被移除的对应 HTML 文件，保持生成目录与源文章同步。
+
+**实现要点**：
+- 读取最新的 `articles.json`，获取所有有效的文章 URL（`url` 字段）。
+- 遍历 `posts/` 下的所有 `.html` 文件，若其相对路径不在有效 URL 集合中，则执行 `os.remove` 删除。
+- 删除后若目录为空，会自动移除空的分类文件夹。
+- 在 CI 中作为独立步骤运行，确保每次部署前目录干净。
+
+**使用方式**（在本地）：
+```bash
+python3 cleanup_posts.py
+```
+
 
 ---
 
