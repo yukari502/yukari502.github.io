@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Markdown 语法学习 这是一个 Markdown 语法学习文档  1. 多级标题 Markdown 支持六级标题，通过在行首添加不同数量的  符号来表示。  1.1 三级标题示例 markdown  这是一个三级标题  1.1.1 四级标题示例 markdown  这是一个四级标题  1.1....">
+    <meta name="keywords" content="Uncategorized, Markdown 语法学习">
+    <meta name="author" content="Yukari502">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://yukari502.github.io/uncategorized/markdown语法学习.html">
+    <meta property="og:title" content="Markdown 语法学习">
+    <meta property="og:description" content="Markdown 语法学习 这是一个 Markdown 语法学习文档  1. 多级标题 Markdown 支持六级标题，通过在行首添加不同数量的  符号来表示。  1.1 三级标题示例 markdown  这是一个三级标题  1.1.1 四级标题示例 markdown  这是一个四级标题  1.1....">
+    <meta property="og:site_name" content="Digital Garden">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yukari502.github.io/uncategorized/markdown语法学习.html">
+    <meta property="twitter:title" content="Markdown 语法学习">
+    <meta property="twitter:description" content="Markdown 语法学习 这是一个 Markdown 语法学习文档  1. 多级标题 Markdown 支持六级标题，通过在行首添加不同数量的  符号来表示。  1.1 三级标题示例 markdown  这是一个三级标题  1.1.1 四级标题示例 markdown  这是一个四级标题  1.1....">
+
+    <title>Markdown 语法学习 - Digital Garden</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" href="/ico/favicon.ico" type="image/x-icon">
+
+    <style>
+        .article-page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .article-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            transition: transform 0.2s;
+        }
+
+        .back-link:hover {
+            transform: translateX(-4px);
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .article-page {
+                padding: 1rem;
+            }
+
+            .article-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="article-page">
+        <a href="/" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            返回主页
+        </a>
+
+        <div class="article-header">
+            <h1 class="article-title">Markdown 语法学习</h1>
+            <div class="article-meta">
+                <span>📅 2025-11-22</span>
+                <span>📂 Uncategorized</span>
+            </div>
+        </div>
+
+        <article class="article-content markdown-body" id="article-content">
+            <!-- Content will be rendered here -->
+        </article>
+
+        <!-- Store markdown content in a script tag -->
+        <script type="text/markdown" id="markdown-source">
+# Markdown 语法学习
+
+这是一个 Markdown 语法学习文档
+
+## 1. 多级标题
+
+Markdown 支持六级标题，通过在行首添加不同数量的 `#` 符号来表示。
+
+### 1.1 三级标题示例
+
+```markdown
+### 这是一个三级标题
+```
+
+#### 1.1.1 四级标题示例
+
+```markdown
+#### 这是一个四级标题
+```
+
+##### 1.1.1.1 五级标题示例
+
+```markdown
+##### 这是一个五级标题
+```
+
+###### 1.1.1.1.1 六级标题示例
+
+```markdown
+###### 这是一个六级标题
+```
+
+## 2. 文本样式
+
+### 2.1 加粗
+
+使用两个星号 `**` 或两个下划线 `__` 包裹文本可以使其加粗。
+
+**示例：**
+
+```markdown
+**这是加粗的文本**
+__这也是加粗的文本__
+```
+
+**效果：**
+**这是加粗的文本**
+**这也是加粗的文本**
+
+### 2.2 斜体
+
+使用一个星号 `*` 或一个下划线 `_` 包裹文本可以使其斜体。
+
+**示例：**
+
+```markdown
+*这是斜体的文本*
+_这也是斜体的文本_
+```
+
+**效果：**
+*这是斜体的文本*
+*这也是斜体的文本*
+
+### 2.3 加粗斜体
+
+同时使用三个星号 `***` 或三个下划线 `___` 包裹文本可以使其加粗并斜体。
+
+**示例：**
+
+```markdown
+***这是加粗斜体的文本***
+___这也是加粗斜体的文本___
+```
+
+**效果：**
+***这是加粗斜体的文本***
+***这也是加粗斜体的文本***
+
+### 2.4 划掉 (删除线)
+
+使用两个波浪线 `~~` 包裹文本可以使其显示删除线。
+
+**示例：**
+
+```markdown
+~~这是被划掉的文本~~
+```
+
+**效果：**
+~~这是被划掉的文本~~
+
+## 3. 链接与图片
+
+### 3.1 添加超链接
+
+使用方括号 `[]` 包裹链接文本，后面紧跟圆括号 `()` 包裹链接地址。
+
+**示例：**
+
+```markdown
+[访问 Codeium 官网](https://www.codeium.com)
+```
+
+**效果：**
+[访问 Codeium 官网](https://www.codeium.com)
+
+### 3.2 添加图片
+
+图片语法与超链接类似，但在方括号前多一个感叹号 `!`。方括号内是图片的替代文本，圆括号内是图片地址（可以是本地路径或网络 URL）。
+
+**示例：**
+
+```markdown
+![Markdown Logo](https://www.csdn.net/favicon.ico)
+```
+
+**效果：**
+![Markdown Logo](https://www.csdn.net/favicon.ico)
+
+## 4. 代码块
+
+### 4.1 行内代码
+
+使用反引号 `` ` `` 包裹文本可以表示行内代码。
+
+**示例：**
+
+```markdown
+这是一个 `行内代码` 示例。
+```
+
+**效果：**
+这是一个 `行内代码` 示例。
+
+### 4.2 代码块 (Fenced Code Block)
+
+使用三个反引号 ``` ` `` ` 包裹多行代码，并在第一个反引号后指定语言可以实现语法高亮。
+
+**示例 (Python):**
+
+````markdown
+```python
+def hello_world():
+    print("Hello, Markdown!")
+
+hello_world()
+```
+````
+
+**效果：**
+
+```python
+def hello_world():
+    print("Hello, Markdown!")
+
+hello_world()
+```
+
+**示例 (JavaScript):**
+
+````markdown
+```javascript
+function greet(name) {
+  console.log(`Hello, ${name}!`);
+}
+greet("Codeium");
+```
+````
+
+**效果：**
+
+```javascript
+function greet(name) {
+  console.log(`Hello, ${name}!`);
+}
+greet("Codeium");
+```
+
+## 5. 表格
+
+使用 `|` 分隔列，使用 `-` 分隔表头和表体。冒号 `:` 可以控制对齐方式。
+
+**示例：**
+
+```markdown
+| 左对齐 | 居中对齐 | 右对齐 |
+| :----- | :------: | -----: |
+| 单元格1 | 单元格2  | 单元格3 |
+| 单元格A | 单元格B  | 单元格C |
+```
+
+**效果：**
+
+| 左对齐 | 居中对齐 | 右对齐 |
+| :----- | :------: | -----: |
+| 单元格1 | 单元格2  | 单元格3 |
+| 单元格A | 单元格B  | 单元格C |
+
+## 6. 文本对齐 (使用 HTML)
+
+Markdown 本身不直接支持文本对齐，但可以通过内嵌 HTML 标签来实现。
+
+**示例：**
+
+```markdown
+<p align="left">这段文字将左对齐。</p>
+<p align="center">这段文字将居中对齐。</p>
+<p align="right">这段文字将右对齐。</p>
+```
+
+**效果：**
+<p align="left">这段文字将左对齐。</p>
+<p align="center">这段文字将居中对齐。</p>
+<p align="right">这段文字将右对齐。</p>
+
+        </script>
+    </div>
+
+    <script>
+        // Render markdown content
+        document.addEventListener('DOMContentLoaded', function () {
+            const markdownSource = document.getElementById('markdown-source').textContent;
+            const contentDiv = document.getElementById('article-content');
+
+            // Configure marked renderer for code blocks with macOS style
+            const renderer = new marked.Renderer();
+            renderer.code = function (code, language) {
+                code = String(code || '');
+                let textToHighlight = code;
+                let lang = language;
+
+                if (typeof code === 'object' && code !== null) {
+                    textToHighlight = code.text || code.raw || '';
+                    lang = code.lang || language;
+                }
+
+                textToHighlight = String(textToHighlight || '');
+
+                const validLang = !!(lang && hljs.getLanguage(lang));
+                const highlighted = validLang ? hljs.highlight(textToHighlight, { language: lang }).value : hljs.highlightAuto(textToHighlight).value;
+                const langLabel = lang ? lang.toUpperCase() : 'TEXT';
+
+                return `
+                <div class="code-window">
+                    <div class="window-header">
+                        <div class="window-controls">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <div class="window-title">${langLabel}</div>
+                        <button class="copy-btn" aria-label="Copy code" onclick="copyCode(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <pre><code class="hljs ${lang || ''}">${highlighted}</code></pre>
+                </div>`;
+            };
+
+            // Parse markdown
+            const htmlContent = marked.parse(markdownSource, { renderer: renderer });
+            contentDiv.innerHTML = htmlContent;
+
+            // Initialize KaTeX rendering
+            if (window.renderMathInElement) {
+                renderMathInElement(contentDiv, {
+                    delimiters: [
+                        { left: '$$', right: '$$', display: true },
+                        { left: '$', right: '$', display: false },
+                        { left: '\\(', right: '\\)', display: false },
+                        { left: '\\[', right: '\\]', display: true }
+                    ],
+                    throwOnError: false
+                });
+            }
+        });
+
+        // Copy code function
+        window.copyCode = function (btn) {
+            const codeBlock = btn.closest('.code-window').querySelector('code');
+            const text = codeBlock.innerText;
+
+            navigator.clipboard.writeText(text).then(() => {
+                const originalIcon = btn.innerHTML;
+                btn.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#27c93f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                `;
+                setTimeout(() => {
+                    btn.innerHTML = originalIcon;
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+            });
+        };
+    </script>
+</body>
+
+</html>
