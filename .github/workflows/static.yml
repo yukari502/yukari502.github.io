@@ -49,11 +49,17 @@ jobs:
           ls -l articles.json
           ls -R Index/
       
+      - name: Generate sitemap.xml
+        run: |
+          python generate_sitemap.py
+          echo "Sitemap generated:"
+          ls -l sitemap.xml
+      
       - name: Commit and Push changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add articles.json Index/
+          git add articles.json Index/ sitemap.xml
           # Only commit if there are changes
           if git diff --staged --quiet; then
             echo "No changes to commit"
