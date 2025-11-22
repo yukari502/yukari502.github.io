@@ -138,7 +138,20 @@ document.addEventListener('DOMContentLoaded', () => {
             // Strip frontmatter if present
             const contentBody = text.replace(/^---\s*\n[\s\S]*?\n---\s*\n/, '');
 
-            const htmlContent = marked.parse(contentBody);
+            // Configure renderer to rewrite image paths
+            const renderer = new marked.Renderer();
+            const filename = path.split('/').pop().replace(/\.md$/i, '');
+            const articleFolderName = decodeURIComponent(filename);
+
+            renderer.image = function (href, title, text) {
+                // Check if absolute or already pointing to Pic
+                if (href && !href.startsWith('http') && !href.startsWith('https') && !href.startsWith('/') && !href.startsWith('data:') && !href.startsWith('Pic/')) {
+                    href = `Pic/${articleFolderName}/${href}`;
+                }
+                return `<img src="${href}" alt="${text}"${title ? ` title="${title}"` : ''}>`;
+            };
+
+            const htmlContent = marked.parse(contentBody, { renderer: renderer });
 
             // Check if the content already starts with an H1
             const tempDiv = document.createElement('div');
