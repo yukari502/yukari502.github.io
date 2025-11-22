@@ -229,6 +229,19 @@ document.addEventListener('DOMContentLoaded', () => {
             //    hljs.highlightElement(block);
             // });
 
+            // Render Math using KaTeX
+            if (window.renderMathInElement) {
+                renderMathInElement(markdownContent, {
+                    delimiters: [
+                        { left: '$$', right: '$$', display: true },
+                        { left: '$', right: '$', display: false },
+                        { left: '\\(', right: '\\)', display: false },
+                        { left: '\\[', right: '\\]', display: true }
+                    ],
+                    throwOnError: false
+                });
+            }
+
             // Show article view
             sections.forEach(s => s.classList.remove('active'));
             articleView.classList.add('active');
