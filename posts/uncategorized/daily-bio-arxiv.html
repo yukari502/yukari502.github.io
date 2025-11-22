@@ -7,6 +7,7 @@
     <meta name="description" content="Daily-Bio-Arxiv Daily-Bio-Arxiv 项目是一个简单的的工具，旨在简化跟踪最新科学研究的过程。它每天自动抓取 arXiv 存储库，重点关注生物学和计算机科学等特定类别。该项目利用大型语言模型（LLM），以您选择的语言生成新论文的简洁摘要。这些摘要随后会自动发布到一个简洁、易...">
     <meta name="keywords" content="Uncategorized, Daily-Bio-Arxiv">
     <meta name="author" content="Yukari502">
+    <meta name="article-slug" content="daily-bio-arxiv">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
@@ -110,14 +111,6 @@
             }
         }
     </style>
-    <script>
-        // Initialize theme immediately to prevent flash
-        (function () {
-            const savedTheme = localStorage.getItem('theme') ||
-                (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-            document.documentElement.setAttribute('data-theme', savedTheme);
-        })();
-    </script>
 </head>
 
 <body>
@@ -177,134 +170,7 @@
         </script>
     </div>
 
-    <script>
-        // Render markdown content
-        document.addEventListener('DOMContentLoaded', function () {
-            if (typeof marked === 'undefined') {
-                console.error('Marked.js not loaded');
-                document.getElementById('article-content').innerHTML = '<p style="color:red">Error: Markdown parser not loaded. Please check your internet connection.</p>';
-                return;
-            }
-
-            try {
-                const markdownSource = document.getElementById('markdown-source').textContent;
-                const contentDiv = document.getElementById('article-content');
-                const articleSlug = 'daily-bio-arxiv';
-
-                // Configure marked renderer for code blocks with macOS style
-                const renderer = new marked.Renderer();
-                // Custom code block renderer
-                renderer.code = function (code, language) {
-                    code = String(code || '');
-                    let textToHighlight = code;
-                    let lang = language;
-
-                    if (typeof code === 'object' && code !== null) {
-                        textToHighlight = code.text || code.raw || '';
-                        lang = code.lang || language;
-                    }
-
-                    textToHighlight = String(textToHighlight || '');
-
-                    // Check if hljs is loaded
-                    if (typeof hljs === 'undefined') {
-                        console.warn('Highlight.js not loaded');
-                        return `<pre><code class="hljs ${lang || ''}">${textToHighlight}</code></pre>`;
-                    }
-
-                    const validLang = !!(lang && hljs.getLanguage(lang));
-                    const highlighted = validLang ? hljs.highlight(textToHighlight, { language: lang }).value : hljs.highlightAuto(textToHighlight).value;
-                    const langLabel = lang ? lang.toUpperCase() : 'TEXT';
-
-                    return `
-                    <div class="code-window">
-                        <div class="window-header">
-                            <div class="window-controls">
-                                <span class="dot red"></span>
-                                <span class="dot yellow"></span>
-                                <span class="dot green"></span>
-                            </div>
-                            <div class="window-title">${langLabel}</div>
-                            <button class="copy-btn" aria-label="Copy code" onclick="copyCode(this)">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                                </svg>
-                            </button>
-                        </div>
-                        <pre><code class="hljs ${lang || ''}">${highlighted}</code></pre>
-                    </div>`;
-                };
-
-                // Custom image renderer to fix paths
-                renderer.image = function (href, title, text) {
-                    if (!href) return '';
-
-                    if (!href.startsWith('http') && !href.startsWith('/')) {
-                        // If path starts with 'Pic/', make it absolute '/Pic/'
-                        if (href.startsWith('Pic/')) {
-                            href = '/' + href;
-                        } else {
-                            // Otherwise, assume it is relative to the article's folder in Pic
-                            // e.g. Pic/daily-bio-arxiv/image.png
-                            href = '/Pic/' + articleSlug + '/' + href;
-                        }
-                    }
-
-                    // Escape quotes in text and title to prevent HTML breakage
-                    const safeText = (text || '').replace(/"/g, '&quot;');
-                    const safeTitle = (title || '').replace(/"/g, '&quot;');
-
-                    let out = `<img src="${href}" alt="${safeText}"`;
-                    if (title) {
-                        out += ` title="${safeTitle}"`;
-                    }
-                    out += ' class="img-fluid">';
-                    return out;
-                };
-
-                // Parse markdown
-                const htmlContent = marked.parse(markdownSource, { renderer: renderer });
-                contentDiv.innerHTML = htmlContent;
-
-                // Initialize KaTeX rendering
-                if (window.renderMathInElement) {
-                    renderMathInElement(contentDiv, {
-                        delimiters: [
-                            { left: '$$', right: '$$', display: true },
-                            { left: '$', right: '$', display: false },
-                            { left: '\\(', right: '\\)', display: false },
-                            { left: '\\[', right: '\\]', display: true }
-                        ],
-                        throwOnError: false
-                    });
-                }
-            } catch (e) {
-                console.error('Error rendering markdown:', e);
-                document.getElementById('article-content').innerHTML = '<p style="color:red">Error rendering content. Please check console for details.</p>';
-            }
-        });
-
-        // Copy code function
-        window.copyCode = function (btn) {
-            const codeBlock = btn.closest('.code-window').querySelector('code');
-            const text = codeBlock.innerText;
-
-            navigator.clipboard.writeText(text).then(() => {
-                const originalIcon = btn.innerHTML;
-                btn.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#27c93f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                `;
-                setTimeout(() => {
-                    btn.innerHTML = originalIcon;
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy:', err);
-            });
-        };
-    </script>
+    <script src="/script.js"></script>
 </body>
 
 </html>
