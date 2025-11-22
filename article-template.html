@@ -157,6 +157,7 @@
 
             // Configure marked renderer for code blocks with macOS style
             const renderer = new marked.Renderer();
+            // Custom code block renderer
             renderer.code = function (code, language) {
                 code = String(code || '');
                 let textToHighlight = code;
@@ -191,6 +192,30 @@
                     </div>
                     <pre><code class="hljs ${lang || ''}">${highlighted}</code></pre>
                 </div>`;
+            };
+
+            // Custom image renderer to fix paths
+            renderer.image = function (href, title, text) {
+                if (href && !href.startsWith('http') && !href.startsWith('/')) {
+                    // If path starts with 'Pic/', make it absolute '/Pic/'
+                    if (href.startsWith('Pic/')) {
+                        href = '/' + href;
+                    } else {
+                        // Otherwise, assume it might be relative to article, but for this blog structure
+                        // images seem to be in root Pic folder. 
+                        // Let's try to be smart: if it looks like a relative path to Pic, fix it.
+                        // Or just prepend / if it doesn't have it?
+                        // Safest for this specific user case:
+                        href = '/' + href;
+                    }
+                }
+
+                let out = `<img src="${href}" alt="${text}"`;
+                if (title) {
+                    out += ` title="${title}"`;
+                }
+                out += ' class="img-fluid">';
+                return out;
             };
 
             // Parse markdown
