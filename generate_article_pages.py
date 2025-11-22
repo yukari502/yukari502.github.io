@@ -74,6 +74,24 @@ def generate_article_html(article, template_content, base_url, output_dir):
     # Use the pre-generated URL or construct it
     output_url = article.get('url', f"/posts/{slug}.html") # This might be wrong in fallback but we expect url to be there
     
+    # Calculate relative path to root for resources (script.js, style.css, Pic/)
+    # The current working directory is assumed to be the project root.
+    # The output_file is like 'posts/category/slug.html'
+    # We need the path from the directory of output_file to the project root.
+    
+    # Get the directory where the current article HTML will be saved
+    article_output_dir = os.path.dirname(output_file)
+    
+    # Calculate the relative path from the article's output directory to the project root
+    # If article_output_dir is 'posts/category', and root is '.', relpath will be '../../'
+    relative_root = os.path.relpath('.', article_output_dir)
+    
+    # Ensure it ends with slash if it's not empty (it shouldn't be empty if inside posts/)
+    if relative_root == '.':
+        relative_root = ''
+    else:
+        relative_root += '/'
+
     replacements = {
         '{TITLE}': html.escape(article['title']),
         '{DESCRIPTION}': html.escape(article.get('description', '')[:160]),  # Limit for meta description
@@ -82,7 +100,8 @@ def generate_article_html(article, template_content, base_url, output_dir):
         '{DATE}': article.get('date', ''),
         '{CATEGORY}': article.get('category', 'Uncategorized'),
         '{CONTENT}': markdown_content.replace('</script>', '<\\/script>'),  # Prevent script injection
-        '{SLUG}': html.escape(slug)
+        '{SLUG}': html.escape(slug),
+        '{ROOT_PATH}': relative_root
     }
     
     # Replace placeholders in template

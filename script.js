@@ -25,6 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const articleSlugMeta = document.querySelector('meta[name="article-slug"]');
             const articleSlug = articleSlugMeta ? articleSlugMeta.content : '';
 
+            const rootPathMeta = document.querySelector('meta[name="root-path"]');
+            const rootPath = rootPathMeta ? rootPathMeta.content : '/';
+
             // Configure marked renderer
             const renderer = new marked.Renderer();
 
@@ -76,16 +79,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!href) return '';
 
                 if (!href.startsWith('http') && !href.startsWith('/') && !href.startsWith('data:')) {
-                    // If path starts with 'Pic/', make it absolute '/Pic/'
+                    // If path starts with 'Pic/', make it relative to root using rootPath
                     if (href.startsWith('Pic/')) {
-                        href = '/' + href;
+                        href = rootPath + href;
                     } else {
                         // Otherwise, assume it is relative to the article's folder in Pic
                         // e.g. Pic/{SLUG}/image.png
                         if (articleSlug) {
-                            href = '/Pic/' + articleSlug + '/' + href;
+                            href = rootPath + 'Pic/' + articleSlug + '/' + href;
                         } else {
-                            href = '/' + href; // Fallback
+                            href = rootPath + href; // Fallback
                         }
                     }
                 }
