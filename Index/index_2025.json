@@ -18,8 +18,8 @@
       "filename": "About me.md"
     },
     {
-      "title": "Daily-Bio-Arxiv：利用AI自动化抓取BioArxiv 论文并生成摘要，部署在Github pages上",
-      "description": "Daily-Bio-Arxiv：利用AI自动化抓取BioArxiv 论文并生成摘要，部署在Github pages上 Daily-Bio-Arxiv 项目是一个简单的的工具，旨在简化跟踪最新科学研究的过程。它每天自动抓取 arXiv 存储库，重点关注生物学和计算机科学等特定类别。该项目利用大型语言模...",
+      "title": "Daily-Bio-Arxiv",
+      "description": "Daily-Bio-Arxiv Daily-Bio-Arxiv 项目是一个简单的的工具，旨在简化跟踪最新科学研究的过程。它每天自动抓取 arXiv 存储库，重点关注生物学和计算机科学等特定类别。该项目利用大型语言模型（LLM），以您选择的语言生成新论文的简洁摘要。这些摘要随后会自动发布到一个简洁、易...",
       "path": "Articles/daily-bio-arxiv.md",
       "date": "2025-11-09",
       "year": "2025",
