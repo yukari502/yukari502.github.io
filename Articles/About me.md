@@ -1,7 +1,5 @@
 # About Me
 
-Hello there! I'm thrilled to introduce myself and share a new project I've been passionately working on. I've recently launched a GitHub repository designed to streamline access to the latest research from BioRxiv.
-
-This innovative tool automatically crawls BioRxiv daily, leveraging AI to summarize new preprints. A JavaScript script then meticulously packages these summaries into a clean Markdown format, making them readily available for display on a dedicated webpage. My goal is to make staying updated with cutting-edge biological research as effortless and efficient as possible. Feel free to explore the repository and join me in this exciting endeavor!
-
-![Alt Text](test.png)
+我个人对音乐、动漫和语言学抱有浓厚的兴趣。目前，我也在学习多种语言，未来可能会分享一些与这些领域相关的文章。希望大家能在这里找到感兴趣的内容。
+本网站作为记录，记录我所见所闻。
+同时本网站也可以随意fork，包括其中所写文章，但所写仅代表个人观点，与任何组织无关，如有问题请联系我。

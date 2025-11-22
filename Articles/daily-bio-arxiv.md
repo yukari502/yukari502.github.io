@@ -1,23 +1,27 @@
-# Daily-Bio-Arxiv: Automating Scientific Discovery with AI
+# Daily-Bio-Arxiv：利用AI自动化科学发现
 
-This project, **Daily-Bio-Arxiv**, is a sophisticated tool designed to streamline the process of staying updated with the latest scientific research. It automatically crawls the arXiv repository daily, focusing on specific categories such as biology and computer science. Leveraging the power of Large Language Models (LLMs), it generates concise summaries of new papers in a language of your choice. These summaries are then automatically published to a clean, accessible GitHub Pages website, making cutting-edge research easily digestible.
+**Daily-Bio-Arxiv** 项目是一个简单的的工具，旨在简化跟踪最新科学研究的过程。它每天自动抓取 arXiv 存储库，重点关注生物学和计算机科学等特定类别。该项目利用大型语言模型（LLM），以您选择的语言生成新论文的简洁摘要。这些摘要随后会自动发布到一个简洁、易于访问的 GitHub Pages 网站，使获得的资料便于访问。
 
-## Key Features:
+### 这是网站界面
 
-*   **Daily Updates**: Automatically fetches new papers from arXiv.
-*   **AI-Powered Summaries**: Utilizes LLMs for efficient and accurate summarization.
-*   **Customizable**: Configure categories, LLM, and summary language.
-*   **Automated Deployment**: Publishes summaries to a GitHub Pages website.
+![Alt text](page1.png)
+![Alt text](page2.png)
 
-## Getting Started:
+## 主要特点
 
-To set up this project, you'll need to fork the repository, configure necessary secrets (like API keys for LLMs) and variables (such as arXiv categories and desired summary language) in your GitHub repository settings, and then run the provided GitHub Action.
+* **每日更新**：自动从 arXiv 获取新论文。
+* **AI 驱动的摘要**：利用 LLM 进行高效准确的摘要。
+* **可定制**：配置类别、LLM 和摘要语言。
+* **自动化部署**：将摘要发布到 GitHub Pages 网站。
 
-## Technologies Used:
+## 使用
 
-*   **Programming Language**: Python
-*   **Web Technologies**: HTML, CSS
-*   **Automation**: GitHub Actions, Shell scripting
-*   **AI**: LLMs for summarization
+要设置此项目，您需要 fork 存储库，在 GitHub 存储库设置中配置必要的秘密（例如 LLM 的 API 密钥）和变量（例如 arXiv 类别和所需的摘要语言），然后运行提供的 GitHub Action。
+具体流程请访问[Daily-Bio-Arxiv](https://github.com/yukari502/Daily-Bio-Arxiv)
 
-This project is a testament to how AI can be integrated into scientific workflows to enhance accessibility and understanding of complex research.
+## 使用的技术
+
+* **编程语言**：Python
+* **Web 技术**：HTML、CSS
+* **自动化**：GitHub Actions、Shell 脚本
+* **AI**：用于摘要的 LLM
