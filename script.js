@@ -138,20 +138,25 @@ document.addEventListener('DOMContentLoaded', () => {
             // Strip frontmatter if present
             const contentBody = text.replace(/^---\s*\n[\s\S]*?\n---\s*\n/, '');
 
-            // Configure renderer to rewrite image paths
-            const renderer = new marked.Renderer();
+            // Calculate folder name for images
             const filename = path.split('/').pop().replace(/\.md$/i, '');
-            const articleFolderName = decodeURIComponent(filename);
+            // We need the decoded name to match the folder on disk, but for the URL we might need encoding.
+            // Actually, since we are constructing a URL, we should use the encoded version for the path segment.
+            // But we already have the encoded version in 'filename' (e.g. 'About%20me').
+            // Let's just use 'filename' directly if it is already URL-safe/encoded.
+            // Wait, 'path' from articles.json is 'Articles/About%20me.md'.
+            // So 'filename' is 'About%20me'. This is perfect for the URL.
 
-            renderer.image = function (href, title, text) {
-                // Check if absolute or already pointing to Pic
-                if (href && !href.startsWith('http') && !href.startsWith('https') && !href.startsWith('/') && !href.startsWith('data:') && !href.startsWith('Pic/')) {
-                    href = `Pic/${articleFolderName}/${href}`;
+            const htmlContent = marked.parse(contentBody, {
+                walkTokens: (token) => {
+                    if (token.type === 'image') {
+                        const href = token.href;
+                        if (href && !href.startsWith('http') && !href.startsWith('https') && !href.startsWith('/') && !href.startsWith('data:') && !href.startsWith('Pic/')) {
+                            token.href = `Pic/${filename}/${href}`;
+                        }
+                    }
                 }
-                return `<img src="${href}" alt="${text}"${title ? ` title="${title}"` : ''}>`;
-            };
-
-            const htmlContent = marked.parse(contentBody, { renderer: renderer });
+            });
 
             // Check if the content already starts with an H1
             const tempDiv = document.createElement('div');
