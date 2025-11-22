@@ -1,7 +1,7 @@
 # Daily-Bio-Arxiv
 
 **Daily-Bio-Arxiv** 项目是一个简单的的工具，旨在简化跟踪最新科学研究的过程。它每天自动抓取 arXiv 存储库，重点关注生物学和计算机科学等特定类别。该项目利用大型语言模型（LLM），以您选择的语言生成新论文的简洁摘要。这些摘要随后会自动发布到一个简洁、易于访问的 GitHub Pages 网站，使获得的资料便于访问。
-网站链接为[Daily-Bio-Arxiv](https://github.com/yukari502/Daily-Bio-Arxiv)
+网站链接为[Daily-Bio-Arxiv](https://yukari502.github.io/Daily-Bio-Arxiv/)
 
 ### 这是网站界面预览
 
