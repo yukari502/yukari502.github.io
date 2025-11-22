@@ -112,11 +112,11 @@ ___这也是加粗斜体的文本___
 **示例：**
 
 ```markdown
-![Markdown Logo](https://www.markdown.cn/images/logo.png)
+![Markdown Logo](https://www.csdn.net/favicon.ico)
 ```
 
 **效果：**
-![Markdown Logo](https://www.markdown.cn/images/logo.png)
+![Markdown Logo](https://www.csdn.net/favicon.ico)
 
 ## 4. 代码块
 
