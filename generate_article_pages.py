@@ -81,7 +81,8 @@ def generate_article_html(article, template_content, base_url, output_dir):
         '{URL}': f"{base_url}{output_url}",
         '{DATE}': article.get('date', ''),
         '{CATEGORY}': article.get('category', 'Uncategorized'),
-        '{CONTENT}': markdown_content.replace('</script>', '<\\/script>')  # Prevent script injection
+        '{CONTENT}': markdown_content.replace('</script>', '<\\/script>'),  # Prevent script injection
+        '{SLUG}': html.escape(slug)
     }
     
     # Replace placeholders in template

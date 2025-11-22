@@ -189,6 +189,7 @@
             try {
                 const markdownSource = document.getElementById('markdown-source').textContent;
                 const contentDiv = document.getElementById('article-content');
+                const articleSlug = 'daily-bio-arxiv';
 
                 // Configure marked renderer for code blocks with macOS style
                 const renderer = new marked.Renderer();
@@ -204,6 +205,12 @@
                     }
 
                     textToHighlight = String(textToHighlight || '');
+
+                    // Check if hljs is loaded
+                    if (typeof hljs === 'undefined') {
+                        console.warn('Highlight.js not loaded');
+                        return `<pre><code class="hljs ${lang || ''}">${textToHighlight}</code></pre>`;
+                    }
 
                     const validLang = !!(lang && hljs.getLanguage(lang));
                     const highlighted = validLang ? hljs.highlight(textToHighlight, { language: lang }).value : hljs.highlightAuto(textToHighlight).value;
@@ -238,12 +245,9 @@
                         if (href.startsWith('Pic/')) {
                             href = '/' + href;
                         } else {
-                            // Otherwise, assume it might be relative to article, but for this blog structure
-                            // images seem to be in root Pic folder. 
-                            // Let's try to be smart: if it looks like a relative path to Pic, fix it.
-                            // Or just prepend / if it doesn't have it?
-                            // Safest for this specific user case:
-                            href = '/' + href;
+                            // Otherwise, assume it is relative to the article's folder in Pic
+                            // e.g. Pic/daily-bio-arxiv/image.png
+                            href = '/Pic/' + articleSlug + '/' + href;
                         }
                     }
 
