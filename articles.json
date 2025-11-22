@@ -11,6 +11,17 @@
     "url": "/posts/uncategorized/markdown语法学习.html"
   },
   {
+    "title": "植物生理学 水分代谢",
+    "description": "植物生理学 水分代谢 本章主要涵盖水在植物体内的吸收 (Absorption)、运输 (Transportation) 和散失 (Lost) 三个方面，重点探讨根系吸水、木质部运输和气孔运动的机理。  1. 水分吸收 (Sec 1 Water absorption)  1.1 土壤水的形态与性质 根...",
+    "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6%20%E6%B0%B4%E5%88%86%E4%BB%A3%E8%B0%A2.md",
+    "date": "2025-11-22",
+    "year": "2025",
+    "category": "植物生理学",
+    "filename": "植物生理学 水分代谢.md",
+    "slug": "植物生理学-水分代谢",
+    "url": "/posts/植物生理学/植物生理学-水分代谢.html"
+  },
+  {
     "title": "植物生理学 植物呼吸作用",
     "description": "植物生理学 植物呼吸作用  1. 呼吸作用的概念与生理意义  1.1 呼吸作用的概念 植物呼吸作用 (Plant respiration)：呼吸作用及其相关的碳代谢，以受控的方式释放储存在碳化合物中的能量供细胞使用。同时，它也为其他生物合成提供许多碳前体。  总反应：碳水化合物（如 $\\text{C...",
     "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6%20%E6%A4%8D%E7%89%A9%E5%91%BC%E5%90%B8%E4%BD%9C%E7%94%A8.md",
@@ -42,17 +53,6 @@
     "filename": "植物生理学 水与植物细胞.md",
     "slug": "植物生理学-水与植物细胞",
     "url": "/posts/植物生理学/植物生理学-水与植物细胞.html"
-  },
-  {
-    "title": "植物生理学 水分代谢",
-    "description": "植物生理学 水分代谢 本章主要涵盖水在植物体内的吸收 (Absorption)、运输 (Transportation) 和散失 (Lost) 三个方面，重点探讨根系吸水、木质部运输和气孔运动的机理。  1. 水分吸收 (Sec 1 Water absorption)  1.1 土壤水的形态与性质 根...",
-    "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6%20%E6%B0%B4%E5%88%86%E4%BB%A3%E8%B0%A2.md",
-    "date": "2025-11-22",
-    "year": "2025",
-    "category": "植物生理学",
-    "filename": "植物生理学 水分代谢.md",
-    "slug": "植物生理学-水分代谢",
-    "url": "/posts/植物生理学/植物生理学-水分代谢.html"
   },
   {
     "title": "About Me",
