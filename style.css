@@ -64,11 +64,12 @@ body {
 .sidebar {
     width: var(--sidebar-width);
     background-color: var(--bg-primary);
-    border-right: 1px solid var(--border-color);
+    border-left: 1px solid var(--border-color);
     padding: 2rem;
     display: flex;
     flex-direction: column;
     position: fixed;
+    right: 0;
     height: 100vh;
     z-index: 100;
     transition: transform 0.3s ease;
@@ -175,7 +176,7 @@ nav li {
 /* Main Content */
 .content-area {
     flex: 1;
-    margin-left: var(--sidebar-width);
+    margin-right: var(--sidebar-width);
     padding: 3rem 4rem;
     max-width: 1200px;
     width: 100%;
@@ -483,8 +484,9 @@ nav li {
         height: auto;
         position: relative;
         padding: 1rem;
-        border-right: none;
+        border-left: none;
         border-bottom: 1px solid var(--border-color);
+        right: auto;
     }
 
     .sidebar-header {

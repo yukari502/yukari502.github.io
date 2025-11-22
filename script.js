@@ -186,10 +186,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     backButton.addEventListener('click', () => {
-        // Go back to articles or home depending on where we came from? 
-        // For now, default to articles list or just previous state.
-        // Simplest: Go to 'articles' tab
-        navigateTo('articles');
+        // Go back to home
+        navigateTo('home');
     });
 
     // --- Search Functionality ---
