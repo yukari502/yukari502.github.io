@@ -121,19 +121,47 @@ nav li {
     overflow-y: auto;
 }
 
-.sidebar-pinned h3 {
+.pinned-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    padding: 0.5rem 0;
+}
+
+.pinned-header h3 {
     font-size: 0.875rem;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: var(--text-secondary);
-    margin-bottom: 1rem;
     font-weight: 600;
+    margin: 0;
+}
+
+.chevron-icon {
+    color: var(--text-secondary);
+    transition: transform 0.3s ease;
+}
+
+.pinned-header.collapsed .chevron-icon {
+    transform: rotate(-90deg);
 }
 
 .pinned-list {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    max-height: 500px; /* Arbitrary large height */
+    opacity: 1;
+    overflow: hidden;
+}
+
+.pinned-list.collapsed {
+    max-height: 0;
+    opacity: 0;
+    margin: 0;
 }
 
 .pinned-item {

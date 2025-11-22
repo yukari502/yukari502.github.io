@@ -9,6 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const articleView = document.getElementById('article-view');
     const markdownContent = document.getElementById('markdown-content');
     const backButton = document.getElementById('back-button');
+    const pinnedToggle = document.getElementById('pinned-toggle');
+
+    if (pinnedToggle) {
+        pinnedToggle.addEventListener('click', () => {
+            pinnedToggle.classList.toggle('collapsed');
+            pinnedArticlesList.classList.toggle('collapsed');
+        });
+    }
 
     // State
     let allArticles = [];
