@@ -33,15 +33,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Custom code block renderer
             renderer.code = function (code, language) {
-                code = String(code || '');
+                // Handle both string and token object from marked.js
+                // IMPORTANT: Check type BEFORE converting to string!
                 let textToHighlight = code;
                 let lang = language;
 
                 if (typeof code === 'object' && code !== null) {
+                    // If code is a token object, extract the actual code
                     textToHighlight = code.text || code.raw || '';
-                    lang = code.lang || language;
+                    lang = code.lang || language || '';
                 }
-
+                
+                // Now convert to string
                 textToHighlight = String(textToHighlight || '');
 
                 // Check if hljs is loaded
