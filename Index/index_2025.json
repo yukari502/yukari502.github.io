@@ -3,15 +3,15 @@
   "articles": [
     {
       "title": "About Me",
-      "description": "About Me Hello there! I'm thrilled to introduce myself and share a new project I've been passionately working on. I've recently launched a GitHub repo...",
+      "description": "About Me 我个人对音乐、动漫和语言学抱有浓厚的兴趣。目前，我也在学习多种语言，未来可能会分享一些与这些领域相关的文章。希望大家能在这里找到感兴趣的内容。 本网站作为记录，记录我所见所闻。 同时本网站也可以随意fork，包括其中所写文章，但所写仅代表个人观点，与任何组织无关，如有问题请联系我。",
       "path": "Articles/About%20me.md",
       "date": "2025-11-20",
       "year": "2025",
       "filename": "About me.md"
     },
     {
-      "title": "Daily-Bio-Arxiv: Automating Scientific Discovery with AI",
-      "description": "Daily-Bio-Arxiv: Automating Scientific Discovery with AI This project, Daily-Bio-Arxiv, is a sophisticated tool designed to streamline the process of ...",
+      "title": "Daily-Bio-Arxiv：利用AI自动化科学发现",
+      "description": "Daily-Bio-Arxiv：利用AI自动化科学发现 Daily-Bio-Arxiv 项目是一个简单的的工具，旨在简化跟踪最新科学研究的过程。它每天自动抓取 arXiv 存储库，重点关注生物学和计算机科学等特定类别。该项目利用大型语言模型（LLM），以您选择的语言生成新论文的简洁摘要。这些摘要随后...",
       "path": "Articles/daily-bio-arxiv.md",
       "date": "2025-11-09",
       "year": "2025",
