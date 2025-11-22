@@ -76,8 +76,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Custom image renderer to fix paths
             renderer.image = function (href, title, text) {
+                // Handle both string and token object from marked.js
+                if (typeof href === 'object' && href !== null) {
+                    // If href is a token object, extract the actual href
+                    href = href.href || href.raw || '';
+                }
+
+                // Convert to string and check if empty
+                href = String(href || '');
                 if (!href) return '';
 
+                // Process relative paths
                 if (!href.startsWith('http') && !href.startsWith('/') && !href.startsWith('data:')) {
                     // If path starts with 'Pic/', make it relative to root using rootPath
                     if (href.startsWith('Pic/')) {
@@ -94,8 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 // Escape quotes in text and title to prevent HTML breakage
-                const safeText = (text || '').replace(/"/g, '&quot;');
-                const safeTitle = (title || '').replace(/"/g, '&quot;');
+                const safeText = String(text || '').replace(/"/g, '&quot;');
+                const safeTitle = String(title || '').replace(/"/g, '&quot;');
 
                 let out = `<img src="${href}" alt="${safeText}"`;
                 if (title) {
