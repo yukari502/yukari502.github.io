@@ -63,15 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const card = document.createElement('div');
         card.className = 'article-card';
 
-        // Generate the static page URL
-        const category = article.category || 'uncategorized';
-        const filename = article.filename || '';
-        const slug = filename.replace(/\.md$/i, '')
-            .toLowerCase()
-            .replace(/[^\w\s-]/g, '')
-            .replace(/[-\s]+/g, '-')
-            .trim();
-        const staticUrl = `/${category.toLowerCase().replace(/[^\w\s-]/g, '').replace(/[-\s]+/g, '-')}/${slug}.html`;
+        // Use the pre-generated static URL
+        const staticUrl = article.url || '#';
 
         card.innerHTML = `
             <h3>${article.title}</h3>
@@ -82,7 +75,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Make the card clickable and link to static page
         card.style.cursor = 'pointer';
         card.addEventListener('click', () => {
-            window.location.href = staticUrl;
+            if (staticUrl !== '#') {
+                window.location.href = staticUrl;
+            }
         });
 
         return card;
@@ -345,17 +340,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const link = document.createElement('a');
                 link.className = 'pinned-item';
 
-                // Generate static URL
-                const category = article.category || 'uncategorized';
-                const filename = article.filename || '';
-                const slug = filename.replace(/\.md$/i, '')
-                    .toLowerCase()
-                    .replace(/[^\w\s-]/g, '')
-                    .replace(/[-\s]+/g, '-')
-                    .trim();
-                const staticUrl = `/${category.toLowerCase().replace(/[^\w\s-]/g, '').replace(/[-\s]+/g, '-')}/${slug}.html`;
+                // Use pre-generated static URL
+                link.href = article.url || '#';
 
-                link.href = staticUrl;
                 link.innerHTML = `
                     <h4>${article.title}</h4>
                     <span>${article.date}</span>
@@ -426,17 +413,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const link = document.createElement('a');
                 link.className = 'category-link';
 
-                // Generate static URL
-                const category = article.category || 'uncategorized';
-                const filename = article.filename || '';
-                const slug = filename.replace(/\.md$/i, '')
-                    .toLowerCase()
-                    .replace(/[^\w\s-]/g, '')
-                    .replace(/[-\s]+/g, '-')
-                    .trim();
-                const staticUrl = `/${category.toLowerCase().replace(/[^\w\s-]/g, '').replace(/[-\s]+/g, '-')}/${slug}.html`;
+                // Use pre-generated static URL
+                link.href = article.url || '#';
 
-                link.href = staticUrl;
                 link.textContent = article.title;
                 items.appendChild(link);
             });

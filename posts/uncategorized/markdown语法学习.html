@@ -10,14 +10,14 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://yukari502.github.io/uncategorized/markdown语法学习.html">
+    <meta property="og:url" content="https://yukari502.github.io/posts/uncategorized/markdown语法学习.html">
     <meta property="og:title" content="Markdown 语法学习">
     <meta property="og:description" content="Markdown 语法学习 这是一个 Markdown 语法学习文档  1. 多级标题 Markdown 支持六级标题，通过在行首添加不同数量的  符号来表示。  1.1 三级标题示例 markdown  这是一个三级标题  1.1.1 四级标题示例 markdown  这是一个四级标题  1.1....">
     <meta property="og:site_name" content="Digital Garden">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://yukari502.github.io/uncategorized/markdown语法学习.html">
+    <meta property="twitter:url" content="https://yukari502.github.io/posts/uncategorized/markdown语法学习.html">
     <meta property="twitter:title" content="Markdown 语法学习">
     <meta property="twitter:description" content="Markdown 语法学习 这是一个 Markdown 语法学习文档  1. 多级标题 Markdown 支持六级标题，通过在行首添加不同数量的  符号来表示。  1.1 三级标题示例 markdown  这是一个三级标题  1.1.1 四级标题示例 markdown  这是一个四级标题  1.1....">
 
@@ -110,6 +110,14 @@
             }
         }
     </style>
+    <script>
+        // Initialize theme immediately to prevent flash
+        (function () {
+            const savedTheme = localStorage.getItem('theme') ||
+                (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
 </head>
 
 <body>

@@ -109,16 +109,29 @@ def generate_hierarchical_index():
             # Get directory name
             category_dir = os.path.dirname(rel_path)
             
-            # If file is directly in Articles, category is "Uncategorized" or empty
-            # But user wants "Article 栏目...展示各种分类", so maybe "General" or just use the folder name if present.
-            # If category_dir is empty (root of Articles), let's call it "General" or "Others" if we want to group them,
-            # or just leave it empty and handle in UI.
-            # Let's use the first folder name as the top-level category.
             if category_dir and category_dir != '.':
                 # Use the first part of the path as the category
                 category = category_dir.split(os.sep)[0]
             else:
                 category = "Uncategorized"
+
+            # Slugify helper
+            def slugify(text):
+                import urllib.parse
+                text = urllib.parse.unquote(text)
+                text = text.replace('.md', '')
+                text = text.lower()
+                # Keep unicode characters (like Chinese)
+                text = re.sub(r'[^\w\s-]', '', text)
+                text = re.sub(r'[-\s]+', '-', text)
+                return text.strip('-')
+
+            # Generate slugs
+            file_slug = slugify(file_name)
+            category_slug = slugify(category)
+            
+            # Generate static URL
+            static_url = f"/posts/{category_slug}/{file_slug}.html"
 
             # 1. Title Extraction
             title = frontmatter.get('title')
@@ -192,7 +205,9 @@ def generate_hierarchical_index():
                 "date": formatted_date,
                 "year": year,
                 "category": category,
-                "filename": file_name
+                "filename": file_name,
+                "slug": file_slug,
+                "url": static_url
             }
             articles_data.append(article_info)
             print(f"Successfully parsed: {title} ({formatted_date})")

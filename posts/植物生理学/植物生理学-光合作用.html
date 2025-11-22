@@ -10,14 +10,14 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://yukari502.github.io/植物生理学/植物生理学-光合作用.html">
+    <meta property="og:url" content="https://yukari502.github.io/posts/植物生理学/植物生理学-光合作用.html">
     <meta property="og:title" content="植物生理学 光合作用">
     <meta property="og:description" content="植物生理学 光合作用  1. 光合作用概述 (Overview of Photosynthesis)  1.1 光合作用的发现历程 光合作用的认知是科学家们逐步积累的结果：  Jan Baptista van Helmont (1630s)：通过柳树实验推翻了植物生长完全依靠消耗土壤的古老理论，首次...">
     <meta property="og:site_name" content="Digital Garden">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://yukari502.github.io/植物生理学/植物生理学-光合作用.html">
+    <meta property="twitter:url" content="https://yukari502.github.io/posts/植物生理学/植物生理学-光合作用.html">
     <meta property="twitter:title" content="植物生理学 光合作用">
     <meta property="twitter:description" content="植物生理学 光合作用  1. 光合作用概述 (Overview of Photosynthesis)  1.1 光合作用的发现历程 光合作用的认知是科学家们逐步积累的结果：  Jan Baptista van Helmont (1630s)：通过柳树实验推翻了植物生长完全依靠消耗土壤的古老理论，首次...">
 
@@ -110,6 +110,14 @@
             }
         }
     </style>
+    <script>
+        // Initialize theme immediately to prevent flash
+        (function () {
+            const savedTheme = localStorage.getItem('theme') ||
+                (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
 </head>
 
 <body>
