@@ -140,6 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Custom code block renderer
             renderer.code = function (code, language) {
+                code = String(code || ''); // Ensure code is a string
                 const validLang = !!(language && hljs.getLanguage(language));
                 const highlighted = validLang ? hljs.highlight(code, { language }).value : hljs.highlightAuto(code).value;
                 const langLabel = language ? language.toUpperCase() : 'TEXT';
