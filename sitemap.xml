@@ -7,6 +7,24 @@
     <priority>1.0</priority>
   </url>
   <url>
+<<<<<<< HEAD
+=======
+    <loc>https://yukari502.github.io/posts/遗传学/真核生物的遗传分析.html</loc>
+    <lastmod>2025-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+<<<<<<< HEAD
+=======
+    <loc>https://yukari502.github.io/posts/遗传学/真核生物的遗传分析.html</loc>
+    <lastmod>2025-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+>>>>>>> 3624081 (fix)
+>>>>>>> f8752e3 (fix)
     <loc>https://yukari502.github.io/posts/遗传学/细菌的遗传分析.html</loc>
     <lastmod>2025-11-23</lastmod>
     <changefreq>monthly</changefreq>
@@ -43,6 +61,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 3624081 (fix)
+>>>>>>> f8752e3 (fix)
     <loc>https://yukari502.github.io/posts/uncategorized/markdown语法学习.html</loc>
     <lastmod>2025-11-22</lastmod>
     <changefreq>monthly</changefreq>
