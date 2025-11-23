@@ -77,18 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>`;
             };
 
-            // Custom heading renderer to generate IDs compatible with manual TOC
-            renderer.heading = function (text, level) {
-                // "1. 项目概述" -> "1-项目概述"
-                // "Project Topology" -> "project-topology"
-                const id = text
-                    .toLowerCase()
-                    .replace(/[^\w\u4e00-\u9fa5]+/g, '-') // Replace non-word chars (including space/dot) with dash
-                    .replace(/^-+|-+$/g, ''); // Trim dashes
-
-                return `<h${level} id="${id}">${text}</h${level}>`;
-            };
-
             // Custom image renderer to fix paths
             renderer.image = function (href, title, text) {
                 // Handle both string and token object from marked.js
