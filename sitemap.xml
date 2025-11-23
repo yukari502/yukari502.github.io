@@ -7,19 +7,13 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://yukari502.github.io/posts/遗传学/真核生物的遗传分析.html</loc>
-    <lastmod>2025-11-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://yukari502.github.io/posts/遗传学/细菌的遗传分析.html</loc>
     <lastmod>2025-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yukari502.github.io/posts/遗传学/连锁遗传分析.html</loc>
+    <loc>https://yukari502.github.io/posts/遗传学/真核生物的遗传分析.html</loc>
     <lastmod>2025-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -38,6 +32,12 @@
   </url>
   <url>
     <loc>https://yukari502.github.io/posts/遗传学/孟德尔遗传分析.html</loc>
+    <lastmod>2025-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://yukari502.github.io/posts/遗传学/连锁遗传分析.html</loc>
     <lastmod>2025-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -73,13 +73,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yukari502.github.io/posts/uncategorized/daily-bio-arxiv.html</loc>
+    <loc>https://yukari502.github.io/posts/uncategorized/本网站拓扑结构与技术文档.html</loc>
     <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yukari502.github.io/posts/uncategorized/本网站拓扑结构与技术文档.html</loc>
+    <loc>https://yukari502.github.io/posts/uncategorized/daily-bio-arxiv.html</loc>
     <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
