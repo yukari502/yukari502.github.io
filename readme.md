@@ -1,6 +1,6 @@
 # 项目拓扑结构与技术文档 (Project Topology & Technical Documentation)
 
-本文档详细描述 **Yukari502.github.io** (Digital Garden) 的完整架构、工作流、核心组件及维护指南。
+本文档详细描述 **Yukari502.github.io** 的完整架构、工作流、核心组件及维护指南。
 
 ---
 
@@ -206,7 +206,7 @@ graph TD
 
 ---
 
-## 5. 核心脚本详解
+## 5. 核心脚本与配置详解
 
 ### 5.1 `generate_articles_json.py`
 
@@ -382,19 +382,48 @@ relative_root = os.path.relpath('.', article_output_dir)
 
 ### 5.4 `cleanup_posts.py`
 
-**作用**：在 `posts/` 目录中删除已在 `Articles/` 中被移除的对应 HTML 文件，保持生成目录与源文章同步。
+**作用**：同步清理 `posts/` 目录，删除已在 `Articles/` 中移除的文章对应的 HTML 文件。
 
-**实现要点**：
-- 读取最新的 `articles.json`，获取所有有效的文章 URL（`url` 字段）。
-- 遍历 `posts/` 下的所有 `.html` 文件，若其相对路径不在有效 URL 集合中，则执行 `os.remove` 删除。
-- 删除后若目录为空，会自动移除空的分类文件夹。
-- 在 CI 中作为独立步骤运行，确保每次部署前目录干净。
+#### 关键逻辑
 
-**使用方式**（在本地）：
+1. **读取索引**：加载 `articles.json` 获取当前所有有效的文章路径。
+2. **扫描文件**：遍历 `posts/` 目录下的所有 `.html` 文件。
+3. **比对与删除**：
+   - 计算每个 HTML 文件的相对路径。
+   - 若路径不在有效列表中，则视为孤立文件并删除。
+4. **清理空目录**：递归删除清理后变为空的分类文件夹。
+
+#### 使用方式
+
+**本地运行**：
 ```bash
 python3 cleanup_posts.py
 ```
 
+**CI 集成**：
+已集成到 GitHub Actions 工作流中，在生成新页面后自动执行。
+
+
+---
+
+### 5.5 配置文件：`pinned-articles.json`
+
+**作用**：定义在首页置顶显示的文章列表。
+
+**格式**：JSON 数组，包含文章的相对路径（相对于项目根目录）。
+
+**示例**：
+```json
+[
+  "Articles/daily-bio-arxiv.md",
+  "Articles/Another-Article.md"
+]
+```
+
+**注意**：
+- 路径必须与 `articles.json` 中的 `path` 字段完全匹配（通常是 `Articles/filename.md`）。
+- 前端脚本 (`script.js`) 会读取此文件，并根据路径筛选出对应的文章对象，优先展示在首页顶部。
+- 如果文件不存在或为空数组，置顶区域将自动隐藏或显示无内容提示。
 
 ---
 
@@ -811,5 +840,5 @@ git push origin main --force
 ---
 
 **最后更新**：2025-11-22  
-**维护者**：Yukari502  
-**版本**：v2.0（修复图片路径问题后）
+**维护者**：Yukari502 & Gemini 3.0 pro
+**版本**：v2.1
