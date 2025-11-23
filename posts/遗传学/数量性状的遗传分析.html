@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="数量性状的遗传分析  5.1 数量性状及其特性  5.1.1 质量性状与数量性状     - 质量性状 (discrete trait)：指同一种相对性状的不同表现型之间不存在连续性的数量变化，只呈现质的变化的性状。它们在群体内的分布是不连续的。杂交后代的个体可明确分组。质量性状的遗传可以比较容易地...">
+    <meta name="keywords" content="遗传学, 数量性状的遗传分析">
+    <meta name="author" content="Yukari502">
+    <meta name="article-slug" content="数量性状的遗传分析">
+    <meta name="root-path" content="../../">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://yukari502.github.io/posts/遗传学/数量性状的遗传分析.html">
+    <meta property="og:title" content="数量性状的遗传分析">
+    <meta property="og:description" content="数量性状的遗传分析  5.1 数量性状及其特性  5.1.1 质量性状与数量性状     - 质量性状 (discrete trait)：指同一种相对性状的不同表现型之间不存在连续性的数量变化，只呈现质的变化的性状。它们在群体内的分布是不连续的。杂交后代的个体可明确分组。质量性状的遗传可以比较容易地...">
+    <meta property="og:site_name" content="Digital Garden">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yukari502.github.io/posts/遗传学/数量性状的遗传分析.html">
+    <meta property="twitter:title" content="数量性状的遗传分析">
+    <meta property="twitter:description" content="数量性状的遗传分析  5.1 数量性状及其特性  5.1.1 质量性状与数量性状     - 质量性状 (discrete trait)：指同一种相对性状的不同表现型之间不存在连续性的数量变化，只呈现质的变化的性状。它们在群体内的分布是不连续的。杂交后代的个体可明确分组。质量性状的遗传可以比较容易地...">
+
+    <title>数量性状的遗传分析 - Digital Garden</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- Mermaid.js for diagrams and flowcharts -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({
+            startOnLoad: false,
+            theme: 'dark',
+            themeVariables: {
+                primaryColor: '#8b5cf6',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#7c3aed',
+                lineColor: '#a78bfa',
+                secondaryColor: '#6d28d9',
+                tertiaryColor: '#5b21b6'
+            }
+        });
+        window.mermaid = mermaid;
+    </script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" href="../../ico/favicon.ico" type="image/x-icon">
+
+    <style>
+        .article-page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .article-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            transition: transform 0.2s;
+        }
+
+        .back-link:hover {
+            transform: translateX(-4px);
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .article-page {
+                padding: 1rem;
+            }
+
+            .article-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="article-page">
+        <a href="../../" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            返回主页
+        </a>
+
+        <div class="article-header">
+            <h1 class="article-title">数量性状的遗传分析</h1>
+            <div class="article-meta">
+                <span>📅 2025-11-23</span>
+                <span>📂 遗传学</span>
+            </div>
+        </div>
+
+        <article class="article-content markdown-body" id="article-content">
+            <!-- Content will be rendered here -->
+        </article>
+
+        <!-- Store markdown content in a script tag -->
+        <script type="text/markdown" id="markdown-source">
+# 数量性状的遗传分析
+## 5.1 数量性状及其特性
+### 5.1.1 质量性状与数量性状
+    - 质量性状 (discrete trait)：指同一种相对性状的不同表现型之间不存在连续性的数量变化，只呈现质的变化的性状。它们在群体内的分布是不连续的。杂交后代的个体可明确分组。质量性状的遗传可以比较容易地用遗传学三大定律来分析。
+    - 数量性状 (quantitative trait)：指个体间表现的差异只能用数量来区别，变异呈连续性的性状。它们在群体内的分布是连续的。杂交后代的个体不能明确分组，只能研究它们的概率分布。例如：作物产量、生育期、籽粒重、乳牛泌乳量、羊毛长度等。数量性状的遗传不容易用遗传学三大定律来分析。
+### 5.1.2 数量性状的多基因学说
+    - 主效基因 (major gene)：指由单个基因决定某一性状（质量性状）的基因。
+    - 微效基因 (minor gene, 多基因, polygene)：指对于数量性状的表型来讲，几个非等位基因中的每一个都只有部分的影响，每一个基因只有较小的一部分表型效应。
+    - 多基因学说 (polygene hypothesis, multiple factor hypothesis) 内容： 
+        1. 数量性状是许多对微效基因的联合效应所造成。
+        2. 微效基因的每一对基因对性状表型的表现所产生的效应是微小的，不能予个别辨认，只能按性状的表现一并研究。
+        3. 微效基因的效应是累加的 (加性基因, additive gene)。
+        4. 微效基因之间一般不存在显隐性关系（只讲效应，可分解为加性效应和显性效应）。
+        5. 微效基因对环境敏感，数量性状容易受环境因素影响而发生较大变化。
+        6. 多基因往往具有多效性 (pleiotropism)，同时可作为修饰基因 (modifier gene) 起作用，使之成为其他基因表现的遗传背景 (基因互作)。
+        7. 微效基因与主效基因一样由染色体所携带，并同样具有分离、重组、连锁等性质。
+粗略估计决定数量性状的基因数目： 如果 F2 代个体中没有找到 1 株和亲代相同的个体。
+### 5.1.3 数量性状的分类
+    - 连续性状 (continuous trait)：性状呈现一系列连续不断程度上的差异，带有这些差异的个体没有质的差别，只有量的不同，不可以严格分类的数量性状。
+    - 阈性状 (threshold trait)：表现为非连续变异，而遗传物质的数量呈潜在的连续变异的性状。只有超越某一遗传阈值 (threshold, th) 时才出现的性状。表现为一系列离散的值。 
+          - 一个阈值：将个体分为两类表型（如“发病”或“不发病”），称为二者居一性状或全或无 (all or none) 性状。
+          - 多个阈值：表型表现为可以计数的间断分布。例如：每胎产仔数、母鸡每天的产蛋量。
+### 5.1.4 数量性状的观测
+研究数量性状的方法特点：
+    1. 研究单位必须扩大到群体和许多世系。
+    2. 对群体中每个个体的性状进行测量或称重，在阈性状方面则予以计数。
+    3. 利用生物统计学的方法，计算性状的表型参数（平均数、方差等），在此基础上通过计算遗传参数（如遗传率、遗传相关系数等）进行研究。
+## 5.2 数量性状的遗传率及计算方法
+### 5.2.1 决定数量性状的因素
+    - 表型值 (P, Phenotype value) 及其剖分： $$\textbf{P} = \text{微效基因的效应} + \text{环境效应} + \text{总体平均值}$$ 或 $$\textbf{P} = \textbf{Gn} + \textbf{g} + \textbf{e} \text{ (环境效应)}$$ 其中 Gn (尽余值) 指无效基因的基本值，g (微效基因的效应) 指每个有效基因的作用，e 指环境对表型的作用。
+    - 表型方差 ($V_P$) 的分解： 如果 g (基因效应) 和 e (环境效应) 不相关时，群体的表型方差可以分解为： $$\textbf{V}_P = \textbf{V}_g + \textbf{V}_e$$ 其中 $V_g$ 为基因型方差，$V_e$ 为环境方差。如果 g 和 e 相关，则需要加上协方差。
+    - 基因的加性效应 (a, additive effect)：许多微效基因效应的总和，是在上下代遗传传递中可以固定的分量，又称育种值。
+    - 显性离差 (d, dominance deviation)：等位基因之间有显隐性关系造成的非加性的成分。
+    - 互作离差 (i, interaction, epistatic deviation)：非等位基因之间的相互作用对于基因型值所产生的效应，是一种非加性的基因作用。
+    - 基因型方差 ($V_g$) 的进一步剖分： $$\textbf{V}_g = \textbf{V}_A \text{ (育种值方差/加性方差)} + \textbf{V}_D \text{ (显性方差)} + \textbf{V}_I \text{ (互作方差)}$$
+          - 育种值方差 ($V_A$)：由于多基因的累加效应造成的遗传变异，是能遗传且固定的组分。
+          - 显性方差 ($V_D$)：非加性的遗传变异，能遗传但不能固定，是一种杂种优势现象。
+          - 互作方差 ($V_I$)：非加性的遗传变异，能遗传但不能固定。
+### 5.2.2 基因遗传率
+    1. 广义遗传率 ($H^2$, broad heritability)： 定义：表型方差中含有遗传方差的比率。衡量基因型值在表型值中的相对重要性。 $$\textbf{H}^2 = \frac{\textbf{V}_g}{\textbf{V}_P} = \frac{\textbf{V}_A + \textbf{V}_D + \textbf{V}_I}{\textbf{V}_A + \textbf{V}_D + \textbf{V}_I + \textbf{V}_e}$$
+    2. 狭义遗传率 ($h^2$, narrow heritability)： 定义：表型方差中含有育种值方差的比率。衡量育种值 (基因累加效应) 在表型值中的相对重要性。 $$\textbf{h}^2 = \frac{\textbf{V}_A}{\textbf{V}_P} = \frac{\textbf{V}_A}{\textbf{V}_A + \textbf{V}_D + \textbf{V}_I + \textbf{V}_e}$$
+广义遗传率 ($H^2$) 可以看成是狭义遗传率 ($h^2$) 的上限。
+### 5.2.3 估计遗传率的方法
+利用上下代（亲代-子代）相关关系计算狭义遗传率
+原理：
+    - 假设互作离差 ($V_I$) 和显性离差 ($V_D$) 相比于加性效应对数量性状的贡献小得多，它们通常被归于环境效应之内，连同环境效应 ($V_e$) 通称为剩余值 ($V_R$)。
+    - 因此，表型方差近似表示为：$\textbf{V}_P \approx \textbf{V}_A + \textbf{V}_R$。
+    - 狭义遗传率 ($h^2$) 可通过亲属间的相关系数 ($\textbf{r}{12}$) 和亲缘系数 ($\textbf{R}{12}$) 估算： $$\textbf{h}^2 \approx \frac{\textbf{r}{12}}{\textbf{R}{12}}$$
+利用人工选择估算狭义遗传率
+    - 选择差 (Selection differential, S)：$\textbf{S} = \textbf{P}_s - \textbf{P}$。 
+          - $\textbf{P}_s$：所选亲代的平均数。
+          - $\textbf{P}$：亲代的总体平均数。
+    - 选择反应 (Response, R)：$\textbf{R} = \textbf{O} - \textbf{P}$。 
+          - $\textbf{O}$：子代的总体平均数。
+    - 狭义遗传率 ($h^2$) 的估算： $$\textbf{h}^2 = \frac{\textbf{R}}{\textbf{S}}$$
+利用不同世代杂种群体方差计算狭义遗传率
+计算方式和原理： 该方法（利用 $F_2, B_1, B_2$ 等世代的方差）假定基因间没有互作（即 $V_I=0$）。通过分析不同杂交世代的方差组成（包含 $V_A, V_D, V_e$），可以消去环境方差 ($V_e$) 和显性方差 ($V_D$)，从而计算加性方差 ($V_A$) 和狭义遗传率 ($h^2$)。
+## 5.3 近亲繁殖与杂种优势
+### 5.3.1 近交与杂交的遗传学效应
+    - 近交 (inbreeding)：又称近亲繁殖、近亲婚配，是完全或不完全的同型交配 (assortative mating)。例如：自花授粉（自交）、回交、表兄妹交配。 
+          - 遗传学效应：近交使基因纯合（例如自交导致群体向 $AA$ 和 $aa$ 纯合）。近交使群体分化。近交降低群体基因型值的平均值（因纯合化会减弱显性效应和部分的互作效应）。
+    - 杂交 (crossbreeding, 远交, outbreeding)：亲缘关系较远或无亲缘关系的个体的相互交配，本质上是异型交配 (nonassortative mating)。 
+          - 遗传学效应：杂交使基因杂合（例如 $AA \times aa \rightarrow Aa$）。杂交使群体一致。杂交提高群体基因型值的平均值。
+### 5.3.2 杂种优势及其遗传理论
+    - 杂种优势 (heterosis)：指两个亲本杂交后代优于亲本的现象。
+          - 表现规律：两亲本差异愈大，优势愈强；两亲本愈纯，优势愈强；杂种优势以 $F_1$ 最强，$F_2$ 发生广泛分离，优势迅速减弱。
+    - 解释杂种优势的理论：
+        1. 显性说 (dominance hypothesis)：杂合态中，隐性有害基因被显性有利基因的效应所掩盖，杂种显示出优势。
+        2. 超显性说 (overdominance hypothesis)：基因处于杂合态时比两个纯合态都好。
+### 5.3.3 亲缘系数与近交系数
+    - 亲缘系数 ($R$, coefficient of relationship)：拥有共同祖先的两个个体，在某一位点上具有相同基因的概率。
+    - 近交系数 ($F$, coefficient of inbreeding)：从某一祖先得到一对纯合的相同基因的概率。
+计算方式和原理： 近交系数和亲缘系数是利用通径图 (path analysis) 计算的。
+    1. 近交系数 ($F_X$) 的计算：通常通过追踪共同祖先，计算个体 $X$ 从某一共同祖先 ($A$) 处获得一对纯合相同基因的概率。
+          - 原理：如果 $A$ 的近交系数为 $F_A$，那么 $A$ 的配子携带相同基因的概率为 $\frac{1}{2}(1 + F_A)$。
+    2. 亲缘系数 ($R_{XY}$) 的计算：
+          - 原理：亲缘系数 $R_{XY}$ 是两个个体 $X$ 和 $Y$ 具有共同基因的概率。它等于所有共同祖先 $A$ 产生的配子连接 $X$ 和 $Y$ 的所有独立路径的概率之和。
+## 5.4 数量性状基因座（QTL）
+    - 数量性状基因座 ($\text{QTL}$, quantitative trait locus)：指控制数量性状的基因在基因组中的位置。
+    - $\text{QTL}$ 的定位必须使用遗传分子标记 (Marker)，通过寻找分子标记和感兴趣的数量性状之间的联系，将一个或多个 $\text{QTL}$ 定位到遗传分子标记旁（即分子标记和 $\text{QTL}$ 是连锁的）。
+### 5.4.1 QTL基因座及QTL作图
+作图步骤：① 选择适合的分子标记；② 构建作图群体；③ 统计分析。
+判断分子标记和数量性状的相关程度：
+    - 一般应用极大似然估计方法 ($\text{MLE}$, Maximum Likelihood Estimate) 来研究样本集的相关概率密度。
+    - 计算 LOD 值：$\text{LOD} = \log_{10} \frac{\text{Prob}(\text{data}|\text{QTL})}{\text{Prob}(\text{data}|\text{no QTL})}$。$\text{LOD}$ 值越大，表明该区域存在 $\text{QTL}$ 的概率越高。
+### 5.4.2 全基因组关联分析（GWAS）
+    - 全基因组关联分析 ($\text{GWAS}$, Genome-wide association study)：指生物全基因组范围内找出存在的序列变异，即单核苷酸多态性 ($\text{SNP}$, single nucleotide polymorphism)，从中筛选出与性状相关的 $\text{SNPs}$。$\text{GWAS}$ 既适用于质量性状又适用于数量性状。
+    - 连锁不平衡 (linkage disequilibrium)：指分属两个或两个以上基因座位的等位基因同时出现在一条染色体上的几率，高于随机出现的频率。
+    - 单倍型块 (haplotype block)：是连续基因组区域的一系列遗传变异位点的组合，通常表现为高连锁不平衡、低重组。
+计算方式和原理：
+    - 在 $\text{GWAS}$ 中，可以使用卡方测验 ($\chi^2 \text{ test}$) 来评估表型与 $\text{SNP}$ 标记之间是否不相关。
+    - 原理：通过比较观测值 ($O$) 和期望值 ($E$) 之间的差异，判断两者是否符合自由组合或不相关的假设。
+卡方测验公式： $$\chi^2 = \sigma \frac{(O-E)^2}{E}$$ （注：源文件给出了两个 $\chi^2$ 计算示例，用于判断表型 $S$ 和 $D$ 与 $\text{SNP}$ 标记是否不相关。）
+        </script>
+    </div>
+
+    <script src="../../script.js"></script>
+</body>
+
+</html>

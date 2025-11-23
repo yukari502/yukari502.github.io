@@ -1,4 +1,4 @@
-# 本网站拓扑结构与技术文档 (Project Topology & Technical Documentation)
+# 本网站拓扑结构与技术文档
 
 本文档详细描述 **Yukari502.github.io** 的完整架构、工作流、核心组件及维护指南。
 

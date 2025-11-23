@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="连锁遗传分析  3.5 遗传学第三定律  3.5.1 连锁定律     - 连锁定律：指位于同一对同源染色体上的基因联合在一起伴同遗传的频率大于重新组合的频率。     - Morgan 发现连锁群的数目等于同源染色体的对数 ($2n$ 中的 $n$)。     - 基因重组的本质是减数分裂前期同源...">
+    <meta name="keywords" content="遗传学, 连锁遗传分析">
+    <meta name="author" content="Yukari502">
+    <meta name="article-slug" content="连锁遗传分析">
+    <meta name="root-path" content="../../">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://yukari502.github.io/posts/遗传学/连锁遗传分析.html">
+    <meta property="og:title" content="连锁遗传分析">
+    <meta property="og:description" content="连锁遗传分析  3.5 遗传学第三定律  3.5.1 连锁定律     - 连锁定律：指位于同一对同源染色体上的基因联合在一起伴同遗传的频率大于重新组合的频率。     - Morgan 发现连锁群的数目等于同源染色体的对数 ($2n$ 中的 $n$)。     - 基因重组的本质是减数分裂前期同源...">
+    <meta property="og:site_name" content="Digital Garden">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yukari502.github.io/posts/遗传学/连锁遗传分析.html">
+    <meta property="twitter:title" content="连锁遗传分析">
+    <meta property="twitter:description" content="连锁遗传分析  3.5 遗传学第三定律  3.5.1 连锁定律     - 连锁定律：指位于同一对同源染色体上的基因联合在一起伴同遗传的频率大于重新组合的频率。     - Morgan 发现连锁群的数目等于同源染色体的对数 ($2n$ 中的 $n$)。     - 基因重组的本质是减数分裂前期同源...">
+
+    <title>连锁遗传分析 - Digital Garden</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- Mermaid.js for diagrams and flowcharts -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({
+            startOnLoad: false,
+            theme: 'dark',
+            themeVariables: {
+                primaryColor: '#8b5cf6',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#7c3aed',
+                lineColor: '#a78bfa',
+                secondaryColor: '#6d28d9',
+                tertiaryColor: '#5b21b6'
+            }
+        });
+        window.mermaid = mermaid;
+    </script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" href="../../ico/favicon.ico" type="image/x-icon">
+
+    <style>
+        .article-page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .article-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            transition: transform 0.2s;
+        }
+
+        .back-link:hover {
+            transform: translateX(-4px);
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .article-page {
+                padding: 1rem;
+            }
+
+            .article-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="article-page">
+        <a href="../../" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            返回主页
+        </a>
+
+        <div class="article-header">
+            <h1 class="article-title">连锁遗传分析</h1>
+            <div class="article-meta">
+                <span>📅 2025-11-23</span>
+                <span>📂 遗传学</span>
+            </div>
+        </div>
+
+        <article class="article-content markdown-body" id="article-content">
+            <!-- Content will be rendered here -->
+        </article>
+
+        <!-- Store markdown content in a script tag -->
+        <script type="text/markdown" id="markdown-source">
+# 连锁遗传分析
+## 3.5 遗传学第三定律
+### 3.5.1 连锁定律
+    - 连锁定律：指位于同一对同源染色体上的基因联合在一起伴同遗传的频率大于重新组合的频率。
+    - Morgan 发现连锁群的数目等于同源染色体的对数 ($2n$ 中的 $n$)。
+    - 基因重组的本质是减数分裂前期同源染色体间非姐妹染色单体的交换。
+    - 交换 (crossing over) 也叫连锁互换、重组、遗传重组、同源重组。
+    - 重组体 (recombinant) 的产生是由于配子形成过程中同源染色体的非姐妹染色单体间发生了局部交换。
+    - Morgan 的重组模型：重组发生在减数分裂前期，同源染色体的非姐妹染色单体之间。控制体色和翅长的两对基因位于同一同源染色体上。
+    - 交换类型：根据交换次数可以分为：单交换 (single crossing over, SCO)、双交换 (double crossing over, DCO)、多交换 (multiple crossing over)。
+    - 减数分裂中的染色体行为： 
+          - 细线期：染色质开始初步螺旋，为偶线期的配对做准备。
+          - 偶线期：染色质进一步凝集，同源染色体上的 DNA同源序列发生联会，形成联会复合体 (synaptonemal complex)。
+          - 粗线期：同源染色体联会之后，染色体明显变粗变短，发生同源重组 (homologous recombination)。
+          - 双线期：染色体进一步变短，联会复合体逐渐消失，同源染色体相互分开，在非姐妹染色单体之间的某些部位上，可见其相互间有接触点，称为交叉 (chiasma)。
+影响重组的因素
+影响重组的因素包括温度、性别、射线、化学物质等等。
+    1. 性别：雄果蝇、雌蚕的同源染色体的非姐妹染色单体不发生交换。霍尔丹定律：凡是较少发生交换的个体必定是异配性别个体。
+    2. 温度：例如：家蚕第二对染色体上 $PS-Y$ 基因的重组率随着饲养温度的降低而升高（如 $30℃$ 时为 $21.48%$，$19℃$ 时为 $25.86%$）。
+    3. 基因位于染色体上的部位：离着丝点越近，其交换值越小，着丝点不发生交换。
+    4. 其它：年龄、染色体畸变等也会影响重组率值。
+### 3.5.2 重组率的计算
+重组率 (recombination frequency, RF) 等于交换型配子占总配子数的百分比。
+基本原理：
+    - 重组率可以表示为：测交后代中重组型数目占测交后代总数目（重组型 $+$ 亲本型）的百分率。
+    - 如果减数分裂时，同源染色体的非姐妹染色单体都发生了一次单交换 (SCO)，重组率 $= 50%$。
+    - 如果重组率小于 $50%$，则表示并非所有同源染色体的非姐妹染色单体都发生了一次单交换。
+    - 假设：每种重组性配子的百分率为 $a%$；每种亲本型配子的百分率为 $b%$。
+重组率计算方式：
+    - 重组率 $(%)$ $= 2a%$。
+    - 重组率 $(%)$ $= 1-2b%$。
+1. 运用测交法计算重组率
+    - 重组率 $(%)$ $= \frac{\text{重组型数目}}{\text{总数目}(\text{重组型数目} + \text{亲本型数目})} \times 100%$。
+    - 举例：玉米 $C/c, Sh/sh$ 测交后代粒数为：非重组（4032, 4035），重组（149, 152）。 $$重组率 (%) = \frac{149 + 152}{4032 + 149 + 152 + 4035} \times 100% \approx 3.6%$$。
+2. 运用自交法（相引组）计算重组率
+    - 相引组 (Coupling series)：重组率可以表示为：相引组杂交 F1 代自交后代 F2 中， $1 - \text{两对性状均为隐性的个体数目占 F2 后代总数目的平方根} \times 2$。
+    - 重组率 $(%)$ $= \frac{\text{两对性状均为隐性的个体数目}}{\text{F2代总数目}} \times 2$。
+    - 原理：对于相引组 $A/a, B/b$ F1 自交，其隐隐表型（$a/a, b/b$）的频率为 $(b%)^2$。
+    - 举例：香豌豆自交实验 F2 中，隐隐个体（红花、圆花粉粒 $p/p, l/l$）数目为 1338，总数 6952。 $$重组率 (%) = 1 - 2 \times \sqrt{\frac{1338}{6952}} \times 100% \approx 20.32% \text{ (根据公式 1-2乘以根号下的隐隐比例)} $$
+3. 运用自交法（相斥组）计算重组率
+    - 相斥组 (Repulsion series)：重组率可以表示为：相斥组杂交 F1 代自交后代 F2 中，两对性状均为隐性的个体数目占 F2 后代总数目的平方根乘以 2。
+    - 重组率 $(%)$ $= \sqrt{\frac{\text{两对性状均为隐性的个体数目}}{\text{F2代总数目}}} \times 2$。
+    - 原理：对于相斥组 $A/a, B/b$ F1 自交，其隐隐表型（$a/a, b/b$）的频率为 $(a%)^2$。$a%$ 即为重组配子比例，重组率 $= 2a%$。
+    - 举例：香豌豆自交实验 F2 中，隐隐个体（红花、圆花粉粒 $p/p, l/l$）数目为 1，总数 419。 $$重组率 (%) = \sqrt{\frac{1}{419}} \times 2 \times 100% \approx 9.77%$$
+### 3.5.3 多线交换与最大重组率
+    - 双交换 (DCO)：如果同源染色体的非姐妹染色单体都发生了二次随机的单交换，重组率 $= 50%$。
+    - 无论发生单/双/多交换，即使所有的同源染色体的非姐妹染色单体都发生交换，重组率也不会超过 $50%$。
+    - 重组率值变动在 $0-50%$ 之间。
+    - 重组率越接近 $0$，连锁强度越大；重组率越接近 $50%$，连锁强度越小。
+    - 当非等位基因为不完全连锁遗传时，重组率总是大于 $0$，小于 $50%$。
+    交换类型	重组率
+    二线双交换	0%
+    三线双交换	50%
+    四线双交换	50%
+## 3.6 染色体作图
+基础概念
+    - 基因定位 (gene mapping)：确定基因在染色体上的相对位置和排列顺序。
+    - 遗传图谱 (genetic map)：又称染色体图 (chromosome map) 或连锁图 (linkage map)，是根据测交实验计算出的特定基因之间重组率，或者其他方法确定连锁基因在染色体上相对位置而绘制的一种简单线性示意图。
+    - 图距 (map distance)：两个连锁基因在染色体图上相对距离的数量单位。
+    - 厘摩 (centimorgan, cM)：图距单位。1% 重组率去掉其百分率的数值定义为一个图距单位 (map unit, mu)；$1cM = 1%$ 重组率去掉 $%$ 的数值。
+作图方法
+1. 两点测交
+    - 方法：通过测交实验计算出两个基因之间的重组率（图距）。
+    - 缺点：繁琐（定位 3 个基因需 3 次杂交和 3 次测交）；粗放（亲本和测验者的遗传背景不同可能造成差异）；看不出双交换 (Double Cross-over, DCO)。
+2. 三点测交
+    - 优势：可以同时定位 3 个连锁基因（例如 $A-B-C$）。
+    - 双交换的影响：如果中间的基因 $B$ 重组，旁侧基因 $A$ 和 $C$ 无重组，则意味着 $A-C$ 间同时发生了两次交换（即双交换）。在这种情况下，计算出的 $A-C$ 之间的重组率低于实际的交换值。
+    - 双交换概率：如果两次同时发生的交换互不干扰，各自独立，则双交换发生的概率应是两个单交换概率的乘积。例如，两个单交换概率分别为 $12.3%$ 和 $6.4%$，则双交换概率应为 $12.3% \times 6.4% = 0.79%$。
+染色体干涉与并发系数
+    - 染色体干涉 (chromosome interference, I)：一次单交换可能影响他邻近发生一次单交换的可能性。
+    - 正干涉 (positive interference)：一次交换使他邻近发生一次单交换的可能性降低。
+    - 负干涉 (negative interference)：一次交换使他邻近发生一次单交换的可能性升高。
+    - 并发系数 (coefficient of coincidence, C)：衡量干涉程度的指标。当发生正干涉时，$I > 0$。
+    - 染色单体干涉 (chromatid interference)：指一对同源染色体的 4 条单体参与多线交换机会的随机性。 
+          - 正染色单体干涉 (positive chromatid interference)：四线双交换的频率 $ > 1/4$ 的现象。
+          - 负染色单体干涉 (negative chromatid interference)：二线双交换的频率 $ > 1/4$ 的现象。
+    - 影响：染色体干涉影响基因间的交换值；染色单体干涉影响交换发生的形式。
+作图函数（图距修正）
+当基因距离较远（可能出现多交换）时，重组率计算的图距不够准确，必须用作图函数计算图距（图距修正）。
+泊松分布 (Poisson distribution) 适合于描述单位时间（或空间）内随机事件发生的次数的概率。
+泊松分布用于交换的原理：
+    - 用 $\lambda$（或 $m$）代表基因间交换的平均次数（交换值）。
+    - $x$ 代表基因间交换发生的次数，取值为 $0, 1, 2, \dots$。
+    - 没有发生交换的概率 $(x=0)$ 为 $P(0) = e^{-m}$。
+    - 发生交换的概率为 $1 - e^{-m}$。
+    - 重组值 ($RF$) 与交换值 ($m$) 的关系：无论发生单/双/多交换，重组配子产生的概率 ($RF$) 为 $RF = \frac{1}{2} (1 - e^{-m})$。
+    - 修正的图距（即 $m$）：$m = -\ln(1 - 2RF)$。
+    - 当 $m$ 很小的时候，图距近似等于修正的图距 ($RF \approx m$)。
+修正图距的加和性：
+对于三个连锁基因 $A, B, C$，修正后的图距具有加和性： $$\text{修正图距}{A-C} = \text{修正图距}{A-B} + \text{修正图距}{B-C}$$ $$-\ln(1 - 2RF{AC}) = -\ln(1 - 2RF_{AB}) + (-\ln(1 - 2RF_{BC}))$$
+## 3.7 四分子作图
+四分子 (tetrad)：性母细胞经减数分裂后所产生的四个子细胞的总称。
+配子减数分裂与孢子减数分裂
+    - 配子减数分裂 (gametic meiosis)：减数分裂和配子的发生紧密联系在一起。 
+          - 在雄性动物中，1个精原细胞发生减数分裂形成 4 个精细胞。
+          - 在雌性动物中，一个卵母细胞经过减数分裂形成 1 个卵细胞、1 个第一极体和 2 个第二极体，极体会退化。
+    - 孢子减数分裂 (sporic meiosis)：减数分裂和配子发生没有直接的关系，减数分裂的结果是形成单倍体的配子体（小孢子和大孢子）。 
+          - 小孢子再经过两次有丝分裂形成包含一个营养核和两个雄配子（精子）的成熟花粉（雄配子体）。
+          - 大孢子经过三次有丝分裂形成胚囊（雌配子体），内含一个卵核、两个极核、3 个反足细胞和两个助细胞。
+    - 合子减数分裂 (zygotic meiosis)：仅见于真菌和某些原核生物，减数分裂发生于合子形成之后，形成单倍体的孢子，孢子通过有丝分裂产生新的单倍体后代（例如：粗糙脉孢菌，Neurospora crassa的生活史）。
+顺序四分子与非顺序四分子
+    - 顺序四分子 (ordered tetrad)：减数分裂的产物按顺序排列，其排列顺序显示了减数分裂过程的模式，这样的四分子称为顺序四分子。粗糙脉孢菌是着丝点作图的典型代表。
+    - 非顺序四分子 (unordered tetrad)：与顺序四分子相反。
+    - 顺序四分子的子囊孢子排列：第一对来自一条染色单体，第二对来自这条染色单体的姐妹染色单体，第三四对来自前一条染色体的同源染色体的姐妹染色单体。
+第一次分裂分离 (M1) 与第二次分裂分离 (M2)
+    - 第一次分裂分离 (M1)：在顺序四分子中，如果着丝点和基因间没有交换，等位基因的分离方式称为第一次分裂分离，产生两种子囊孢子排列方式。
+    - 第二次分裂分离 (M2)：如果着丝点和基因间发生了一次交换，等位基因的分离方式称为第二次分裂分离，产生四种子囊孢子排列方式。
+    - 着丝点作图 (centromere mapping)：只有顺序四分子才能进行着丝点作图。通过分析顺序四分子，以着丝点作为一个位点，估算某一基因与着丝点的重组率，进行基因定位。
+一个基因的着丝点作图（类似于两点测交）
+原理：M2 型子囊的形成是由于着丝粒和基因之间发生了交换。由于一次交换产生两个重组型配子和两个亲本型配子，所以交换型的子囊数（M2 型子囊数）乘以 $1/2$ 即为重组型配子的比率。
+计算方式： $$\textbf{RF (着丝粒} - \textbf{基因)} = \frac{\textbf{交换型子囊数（M2子囊数）} \times \frac{1}{2}}{\textbf{总子囊数}} \times 100%$$ $$\textbf{RF (着丝粒} - \textbf{基因)} = \frac{\textbf{M2} \times \frac{1}{2}}{\textbf{M1} + \textbf{M2}} \times 100%$$
+举例：如果 M2 型子囊数为 40，M1 型子囊数为 234，则： $$\textbf{RF (着丝粒} - \textbf{基因)} = \frac{(9+5+10+16) \times \frac{1}{2}}{(105+129)+(9+5+10+16)} \times 100% = 7.3%$$ 图距 $= 7.3cM$。
+两个基因的四分子作图（类似于三点测交）
+对于两个连锁基因的着丝粒作图，需要统计合子减数分裂后，子囊果的表型。
+子囊分型：根据子囊中两对基因的组合方式，将子囊分为三种类型：
+    1. 亲二型 (parental ditype，PD)。
+    2. 非亲二型 (non-parental ditype，NPD)。
+    3. 四型 (tetratype，T)。
+两对基因的分离类型：子囊可分为 $6 \times 6$ 种子囊类型，但根据M1和M2类型，主要分为四种分离类型：
+    1. M1 M1
+    2. M1 M2
+    3. M2 M1
+    4. M2 M2
+判断基因是否连锁：
+    - 观察 M1M1 中 PD 和 NPD 的数据。
+    - 如果 PD $\approx$ NPD，则两个基因不连锁，不在同一条染色体上，符合自由组合。
+1. 计算着丝粒与两对基因的重组率
+    - RF (着丝粒 $-\boldsymbol{n}$) 和 RF (着丝粒 $-\boldsymbol{a}$) 的计算方式与一个基因的着丝粒作图相同，即： $$\textbf{RF (着丝粒} - \textbf{基因)} = \frac{\textbf{M2} \times \frac{1}{2}}{\textbf{M1} + \textbf{M2}} \times 100%$$
+2. 计算两对基因的重组率 (RF)
+重组型配子包括 $\frac{1}{2}$ 的 T 型子囊和全部的 NPD 型子囊。
+计算方式： $$\textbf{RF (基因} - \textbf{基因)} = \frac{\textbf{T} \times \frac{1}{2} + \textbf{NPD}}{\textbf{T} + \textbf{NPD} + \textbf{PD}} \times 100%$$
+举例：假设总数为 1000，其中 $T$ 型有 $(90+5+5)$， $NPD$ 型有 $(1+1)$： $$\textbf{RF}(\boldsymbol{n}-\boldsymbol{a}) = \frac{(90 + 5 + 5) \times \frac{1}{2} + (1 + 1)}{1000} \times 100% = 5.20%$$
+3. 着丝点作图两基因间图距的修正
+实验统计的 NPD 型子囊数只能代表四线双交换的发生。由于双交换还包括二线双交换和三线双交换，RF 公式低估了交换率。
+低估的交换率 ($\boldsymbol{n}-\boldsymbol{a}$)： $$\text{低估的交换率 } (\boldsymbol{n}-\boldsymbol{a} ) = \frac{\textbf{NPD} \times 2}{\textbf{T} + \textbf{NPD} + \textbf{PD}} \times 100%$$
+修正后的图距（交换率）：将 RF ($\boldsymbol{n}-\boldsymbol{a}$) 加上低估的交换率 ($\boldsymbol{n}-\boldsymbol{a}$)。 $$\text{交换率}(\boldsymbol{n}-\boldsymbol{a}) = \frac{\textbf{T} \times \frac{1}{2} + \textbf{NPD}}{\textbf{T} + \textbf{NPD} + \textbf{PD}} \times 100% + \frac{\textbf{NPD} \times 2}{\textbf{T} + \textbf{NPD} + \textbf{PD}} \times 100%$$ $$\text{图距}(\boldsymbol{n}-\boldsymbol{a}) = \frac{\textbf{T} \times \frac{1}{2} + 3\textbf{NPD}}{\textbf{T} + \textbf{NPD} + \textbf{PD}} \times 100 = \frac{\textbf{T} + 6\textbf{NPD}}{\textbf{T} + \textbf{NPD} + \textbf{PD}} \times 50$$
+该公式同样适用于非顺序四分子计算两个基因之间的图距。
+修正图距举例：$T=44, NPD=4, PD=52$，总数 100： $$\text{交换率}(\boldsymbol{PY}-\boldsymbol{TH}) = \frac{44 \times \frac{1}{2} + 3 \times 4}{100} \times 100% = 34%$$ 修正的图距 $(\boldsymbol{PY}-\boldsymbol{TH}) = 34cM$。
+## 3.8 人类的基因定位
+### 3.8.1 系谱分析定位法
+系谱分析定位法 (pedigree analysis) 的特点：
+    - 只能够判断基因属于性染色体或常染色体，不能判断究竟属于哪一个常染色体。
+    - 只能分析 X 染色体连锁基因间的重组率和图距。
+定位方法：
+    1. Y 染色体连锁基因的定位：如果某种性状只在男性中出现，则决定性状的基因可定位在 Y 染色体上。
+    2. X 连锁基因的定位：外祖父决定某种性状的基因通过女儿传给外孙子（隔代遗传），可定位该基因在 X 染色体上（例如：色盲基因、血友病基因）。
+    3. 外祖父法 (grandfather method) 计算 X 连锁基因的重组率和图距： 原理：观察互引相的母亲所生的儿子中，重组型儿子的数量占儿子总数的比例，即为重组率。 计算方式： $$\textbf{RF}(A - G) = \frac{\textbf{重组型男孩数目}}{\textbf{总男孩数目}} \times 100%$$ 举例：母亲为 $A/a, G/g$ 互引相杂合体，生了 20 个男孩，其中 1 个重组型，则： $$\textbf{RF}(A - G) = \frac{1 + 0}{9 + 10 + 1 + 0} \times 100% = 5%$$ 图距 $(A - G) = 5cM$。
+### 3.8.2 细胞融合定位法
+    - 细胞融合 (cell fusion)：指在自发或人工诱导下，两个细胞或原生质体融合形成一个杂种细胞。
+    - 染色体排斥：刚刚形成的杂种细胞，因为不同亲本细胞相对生长速率不同，而随机丢失其中一个亲本染色体的现象。
+同线分析 (synteny analysis)：通过人、鼠细胞融合而形成的杂种细胞中两个基因的同时出现或同时不出现（通过分析基因产物）与人的某条染色体存在对应关系，即可确定这两个基因是连锁的。
+    - 由于该方法由体细胞进行，为了区别于家系分析法检出的连锁，故将体细胞中的基因连锁称为同线性。
+    - 同线分析结果：如果人类基因 1 和 3 在不同的杂种细胞系中存在与人类染色体 2 相似的共同存在或缺失模式，则它们同在 2 号染色体上。
+### 3.8.3 基因剂量效应法
+    - 基因剂量效应 (genetic dosage effect)：基因与其产物之间有一定的数量关系。
+    - 定位原理：如果某一个基因产物的量与染色体上某一片段拷贝数目有明显的比例变化关系，就可将该基因定位在这一染色体上或某一特定片段上。
+    - 举例：先天愚型患者（21 三体）的超氧化物歧化酶 1 ($\text{SOD-1}$) 的基因的活性为正常人的 1.5 倍。
+
+        </script>
+    </div>
+
+    <script src="../../script.js"></script>
+</body>
+
+</html>
