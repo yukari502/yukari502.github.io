@@ -90,6 +90,8 @@ def generate_hierarchical_index():
     # Get all markdown files recursively
     md_files = glob.glob(os.path.join(articles_dir, '**', '*.md'), recursive=True)
     print(f"Found {len(md_files)} markdown files")
+    for f in md_files:
+        print(f" - {f}")
     
     # Process all files into a list with metadata
     articles_data = []
@@ -150,6 +152,9 @@ def generate_hierarchical_index():
 
             # 2. Date Extraction
             date_str = frontmatter.get('date')
+            if isinstance(date_str, datetime.date):
+                date_str = date_str.strftime('%Y-%m-%d')
+            
             if not date_str:
                 # Try to get date from filename (YYYY-MM-DD-Title.md)
                 date_match = re.match(r'^(\d{4}-\d{2}-\d{2})', file_name)

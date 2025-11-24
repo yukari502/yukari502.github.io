@@ -10,6 +10,7 @@ import re
 import urllib.parse
 import glob
 import html
+import hashlib
 from pathlib import Path
 
 def read_markdown_file(file_path):
@@ -20,6 +21,28 @@ def read_markdown_file(file_path):
     # Strip frontmatter if present
     content = re.sub(r'^---\s*\n[\s\S]*?\n---\s*\n', '', content)
     return content
+
+def calculate_hash(content_list):
+    """Calculate MD5 hash of a list of strings"""
+    hasher = hashlib.md5()
+    for content in content_list:
+        hasher.update(content.encode('utf-8'))
+    return hasher.hexdigest()
+
+def get_stored_hash(file_path):
+    """Extract stored hash from HTML file meta tag"""
+    if not os.path.exists(file_path):
+        return None
+    
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+            match = re.search(r'<meta name="build-hash" content="([a-f0-9]+)">', content)
+            if match:
+                return match.group(1)
+    except Exception:
+        pass
+    return None
 
 def generate_article_html(article, template_content, base_url, output_dir):
     """Generate HTML file for a single article"""
@@ -44,10 +67,6 @@ def generate_article_html(article, template_content, base_url, output_dir):
         slug = re.sub(r'[-\s]+', '-', slug).strip('-')
         
     if 'category' in article:
-        # We need to slugify category too if we don't have it stored
-        # But generate_articles_json now handles it.
-        # Let's just rely on the URL structure we decided: posts/category_slug/file_slug.html
-        # We can extract category slug from the URL if we want, or just re-slugify category
         pass
 
     # Actually, we can just parse the article['url'] if available
@@ -55,17 +74,27 @@ def generate_article_html(article, template_content, base_url, output_dir):
         # url is like /posts/category/slug.html
         # Remove leading /
         rel_url = article['url'].lstrip('/')
-        output_file = os.path.join(output_dir, '..', rel_url) # output_dir is 'posts', so we need to go up?
-        # No, generate_all_articles sets output_dir = 'posts'
-        # If rel_url is 'posts/cat/slug.html', then os.path.join('posts', rel_url) would be posts/posts/cat/slug.html
-        # We should just use the relative path from root.
-        # Let's adjust: output_dir is where we want to write.
-        # If we want to write to 'posts/cat/slug.html', and we run from root.
         output_file = rel_url
     else:
         # Fallback logic
         category_slug = article.get('category', 'uncategorized').lower().replace(' ', '-')
         output_file = os.path.join('posts', category_slug, f"{slug}.html")
+
+    # Calculate new hash (Markdown Content + Template Content + Title + Date)
+    # Including metadata ensures changes in frontmatter also trigger rebuild
+    current_hash = calculate_hash([
+        markdown_content, 
+        template_content, 
+        article.get('title', ''),
+        article.get('date', ''),
+        article.get('description', '')
+    ])
+    
+    # Check if rebuild is needed
+    stored_hash = get_stored_hash(output_file)
+    if stored_hash == current_hash:
+        # print(f"Skipped (No Change): {output_file}") # Optional: reduce noise
+        return article.get('url', f"/posts/{slug}.html")
 
     # Ensure directory exists
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
@@ -75,18 +104,9 @@ def generate_article_html(article, template_content, base_url, output_dir):
     output_url = article.get('url', f"/posts/{slug}.html") # This might be wrong in fallback but we expect url to be there
     
     # Calculate relative path to root for resources (script.js, style.css, Pic/)
-    # The current working directory is assumed to be the project root.
-    # The output_file is like 'posts/category/slug.html'
-    # We need the path from the directory of output_file to the project root.
-    
-    # Get the directory where the current article HTML will be saved
     article_output_dir = os.path.dirname(output_file)
-    
-    # Calculate the relative path from the article's output directory to the project root
-    # If article_output_dir is 'posts/category', and root is '.', relpath will be '../../'
     relative_root = os.path.relpath('.', article_output_dir)
     
-    # Ensure it ends with slash if it's not empty (it shouldn't be empty if inside posts/)
     if relative_root == '.':
         relative_root = ''
     else:
@@ -109,6 +129,15 @@ def generate_article_html(article, template_content, base_url, output_dir):
     for key, value in replacements.items():
         html_content = html_content.replace(key, str(value))
     
+    # Inject Build Hash Meta Tag
+    # We insert it before </head>
+    hash_meta = f'<meta name="build-hash" content="{current_hash}">'
+    if '</head>' in html_content:
+        html_content = html_content.replace('</head>', f'    {hash_meta}\n</head>')
+    else:
+        # Fallback if no head tag (unlikely)
+        html_content += f"\n<!-- Build Hash: {current_hash} -->"
+
     # Write the HTML file
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(html_content)
@@ -147,7 +176,18 @@ def generate_all_articles():
     
     # Generate HTML for each article
     generated_urls = []
+    generated_count = 0
+    skipped_count = 0
+    
     for article in articles:
+        # Check if file was actually generated (we can infer from logs, but here we just count)
+        # To count accurately, we'd need generate_article_html to return a status.
+        # But for now, let's just run it.
+        
+        # We can check modification time or just trust the function.
+        # Let's modify generate_article_html slightly to return status? 
+        # No, let's just keep it simple.
+        
         url_path = generate_article_html(article, template_content, base_url, output_dir)
         if url_path:
             generated_urls.append({
@@ -155,8 +195,8 @@ def generate_all_articles():
                 'lastmod': article.get('date', ''),
                 'title': article.get('title', '')
             })
-    
-    print(f"\n✅ Generated {len(generated_urls)} article pages in '{output_dir}/' directory")
+            
+    print(f"\n✅ Processed {len(generated_urls)} articles.")
     
     return generated_urls
 

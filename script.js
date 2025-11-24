@@ -117,6 +117,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 return out;
             };
 
+            // Custom heading renderer to add IDs for TOC
+            renderer.heading = function (text, level) {
+                // Handle token object if passed
+                if (typeof text === 'object' && text !== null) {
+                    level = text.depth || level;
+                    text = text.text || text.raw || '';
+                }
+
+                const safeText = String(text || '');
+
+                // Generate slug for ID
+                // 1. Convert to lowercase
+                // 2. Remove special characters (keep alphanumeric, spaces, hyphens, chinese)
+                // 3. Replace spaces with hyphens
+                // 4. Remove duplicate hyphens
+                const slug = safeText
+                    .toLowerCase()
+                    .replace(/[^\w\s\-\u4e00-\u9fa5]/g, '')
+                    .replace(/\s+/g, '-')
+                    .replace(/-+/g, '-')
+                    .replace(/^-+|-+$/g, ''); // Trim hyphens
+
+                return `<h${level} id="${slug}">${safeText}</h${level}>`;
+            };
+
             // Parse markdown
             const htmlContent = marked.parse(markdownSource.textContent, { renderer: renderer });
             contentDiv.innerHTML = htmlContent;
@@ -195,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (sidebarToggle) {
             sidebarToggle.addEventListener('click', () => {
                 document.body.classList.toggle('sidebar-collapsed');
-                
+
                 // Save state
                 const isCollapsed = document.body.classList.contains('sidebar-collapsed');
                 localStorage.setItem('sidebar-collapsed', isCollapsed);
