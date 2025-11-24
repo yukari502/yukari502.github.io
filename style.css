@@ -907,12 +907,14 @@ body.sidebar-collapsed .sidebar {
 .content-area {
     margin-right: var(--sidebar-width);
     /* Default margin for right sidebar */
-    transition: margin-right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: margin-right 0.4s cubic-bezier(0.16, 1, 0.3, 1), max-width 0.4s ease;
 }
 
 body.sidebar-collapsed .content-area {
     margin-right: 0;
     /* Expand to fill space */
+    max-width: 100%;
+    /* Allow content to fill the screen */
 }
 
 /* Mobile adjustments */
