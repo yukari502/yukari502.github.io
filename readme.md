@@ -1,4 +1,4 @@
-# 本网站拓扑结构与技术文档
+# 本网站结构与技术文档
 
 本文档详细描述 **Yukari502.github.io** 的完整架构、工作流、核心组件及维护指南。
 
@@ -139,6 +139,7 @@ graph LR
    - 创建文件夹：`Pic/{article-slug}/`
    - 将图片放入此文件夹
    - Markdown 中使用相对路径引用：`![描述](image.png)`
+   - 注意Markdown 中默认引用路径为 `Pic/文章同名文件夹/image.png`
 
 4. **提交并推送**
    ```bash
@@ -649,13 +650,16 @@ const articleSlug = document.querySelector('meta[name="article-slug"]').content;
 ### 8.1 图片无法显示
 
 #### 症状
+
 - 文章页显示 "Error rendering content"
 - 控制台错误：`TypeError: href.startsWith is not a function`
 
 #### 根本原因
+
 `marked.js` 有时传递**对象（token）**而非字符串给 `renderer.image`。
 
 #### 解决方案（已修复）
+
 ```javascript
 // 在 renderer.image 开头添加类型检查
 if (typeof href === 'object' && href !== null) {
@@ -663,15 +667,17 @@ if (typeof href === 'object' && href !== null) {
 }
 href = String(href || '');
 ```
-
----
-
+ 
+ ---
+ 
 ### 8.2 代码块显示为 `[object Object]`
 
 #### 根本原因
+
 同上，`marked.js` 传递对象给 `renderer.code`。
 
 #### 解决方案
+
 ```javascript
 renderer.code = function (code, language) {
     code = String(code || '');
