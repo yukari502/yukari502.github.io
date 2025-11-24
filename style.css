@@ -917,57 +917,130 @@ body.sidebar-collapsed .content-area {
 
 /* Mobile adjustments */
 @media (max-width: 768px) {
-    .sidebar-toggle {
-        /* On mobile, maybe keep it simple or hide it? 
-           Let's keep it but adjust size/pos */
-        right: 0;
-        border-radius: 8px 0 0 8px;
-        border-right: none;
-        background-color: var(--bg-primary);
-        border: 1px solid var(--border-color);
+    .app-container {
+        flex-direction: column;
     }
-
-    /* When sidebar is open on mobile (it covers content usually) */
-    /* Wait, current mobile CSS makes sidebar relative/top. 
-       Let's fix mobile sidebar to be an overlay for this toggle to work best. */
 
     .sidebar {
-        position: fixed;
-        width: 80%;
-        max-width: 300px;
-        height: 100vh;
-        top: 0;
-        right: 0;
-        z-index: 999;
-        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
-        transform: translateX(100%);
-        /* Default hidden on mobile? Or default open? */
-        /* Let's respect the desktop-first approach but fix mobile behavior */
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 1rem;
+        border-left: none;
+        border-bottom: 1px solid var(--border-color);
+        right: auto;
+        left: auto;
+        transform: none !important;
+        /* Disable transition transforms */
+        display: flex;
+        flex-direction: column;
+        transition: max-height 0.4s ease, padding 0.4s ease;
+        overflow: hidden;
     }
 
-    /* Mobile: Default hidden */
-    /* We need to override the default 'open' state for mobile if we want it hidden by default.
-       But for now, let's just make the toggle work. */
-
-    body:not(.sidebar-collapsed) .sidebar {
-        transform: translateX(0);
-    }
+    /* Mobile Sidebar Collapsed State */
+    /* When collapsed, we only show the header (Logo + Theme Toggle) */
+    /* We need to restrict height */
 
     body.sidebar-collapsed .sidebar {
-        transform: translateX(100%);
+        max-height: 70px;
+        /* Approx height of header */
+        padding-bottom: 0;
+        border-bottom: none;
     }
 
-    /* Toggle button follows sidebar */
-    body:not(.sidebar-collapsed) .sidebar-toggle {
-        right: 80%;
-        /* Or sidebar width */
-        margin-right: -1px;
-        /* Overlap border */
+    body:not(.sidebar-collapsed) .sidebar {
+        max-height: 1000px;
+        /* Arbitrary large height */
+    }
+
+    .sidebar-header {
+        margin-bottom: 1rem;
+        flex-shrink: 0;
+    }
+
+    nav ul {
+        display: flex;
+        overflow-x: auto;
+        gap: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+    nav li {
+        margin-bottom: 0;
+    }
+
+    .nav-link {
+        white-space: nowrap;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    .sidebar-footer {
+        display: none;
+    }
+
+    /* Mobile Toggle Button - Bottom of Sidebar */
+    /* We need the toggle to be OUTSIDE the sidebar if sidebar collapses height. */
+    /* But HTML structure is: button, sidebar. */
+    /* We can use order in flexbox if container is flex column */
+
+    .app-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sidebar {
+        order: 1;
+    }
+
+    .sidebar-toggle {
+        order: 2;
+        position: relative;
+        top: auto;
+        right: auto;
+        left: auto;
+        transform: none;
+        width: 100%;
+        height: 32px;
+        border-radius: 0;
+        border: none;
+        border-bottom: 1px solid var(--border-color);
+        background-color: var(--bg-primary);
+        color: var(--text-secondary);
+    }
+
+    .sidebar-toggle:hover {
+        width: 100%;
+        background-color: var(--bg-tertiary);
+    }
+
+    /* Rotate icon to point up/down */
+    .sidebar-toggle svg {
+        transform: rotate(90deg);
+        /* Point Down (Expand) ? */
+    }
+
+    /* If collapsed (default open logic inverted for mobile?) */
+    /* Let's stick to: Collapsed = Sidebar Small. Open = Sidebar Big. */
+
+    /* Collapsed: Icon points Down (Expand) */
+    body.sidebar-collapsed .sidebar-toggle svg {
+        transform: rotate(90deg);
+    }
+
+    /* Open: Icon points Up (Collapse) */
+    body:not(.sidebar-collapsed) .sidebar-toggle svg {
+        transform: rotate(-90deg);
     }
 
     .content-area {
-        margin-right: 0;
-        /* Mobile content is full width */
-        padding: 1rem;
+        order: 3;
+        margin-right: 0 !important;
+        padding: 2rem 1.5rem;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
     }
 }
