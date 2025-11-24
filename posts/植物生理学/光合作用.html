@@ -537,23 +537,67 @@ $\text{CAM}$ 途径（景天科酸代谢）的特点是**时间上分离**了 $\
 *   **NAD-ME型 (如黍)：** 运送Aspartate；在BSC线粒体脱羧；产物Alanine。
 *   **PEP-CK型：** 运送Aspartate；在BSC细胞质脱羧；产物Alanine/Pyruvate。
 
-#### 2. CAM 途径 (Crassulacean Acid Metabolism)
-*(注：PDF第53页提及CAM植物使用PEPC进行初级羧化，具体步骤依据生物学知识补充)*
 
-**特点：** 时间上的分离 (夜间固定，白天同化)。
+### CAM 途径详细流程 (Crassulacean Acid Metabolism)
 
-1.  **夜间 (气孔打开)：**
-    *   淀粉降解产生 **PEP**。
-    *   **PEPC** 催化：PEP + HCO₃⁻ → **OAA**。
-    *   OAA 转化为 **Malate**，储存在 **液泡** 中 (以苹果酸形式)。
-
-2.  **白天 (气孔关闭)：**
-    *   Malate 从液泡释放。
-    *   Malate 脱羧释放 **CO₂**。
-    *   CO₂ 在叶绿体内参与 **卡尔文循环 (C3途径)**。
-    *   脱羧后的C3骨架转化为淀粉储存。
+**核心特点**：
+*   **夜间 (Dark)**：气孔开放，吸收CO₂，合成苹果酸（Malate）并储存在液泡中。
+*   **白天 (Light)**：气孔关闭，苹果酸脱羧释放CO₂，进入卡尔文循环；同时再生淀粉。
 
 ---
+
+#### 第一阶段：夜间 (Dark) —— 气孔开放，初级固碳
+
+这一阶段主要发生在**叶肉细胞 (Mesophyll cell) 的 细胞质 (Cytosol)** 中。
+
+*   **Step 1: CO₂ 水合反应 (Page 5)**
+    *   大气中的CO₂进入细胞。
+    *   **反应**：$CO_2 + H_2O \longrightarrow HCO_3^- + H^+$
+    *   **酶**：Carbonic Anhydrase (碳酸酐酶)
+
+*   **Step 2: 羧化反应 (Page 6)**
+    *   **反应**：$PEP + HCO_3^- \longrightarrow OAA + P_i$
+    *   **底物**：
+        *   PEP (Phosphoenolpyruvate, 磷酸烯醇式丙酮酸) —— 来自淀粉降解（糖酵解）。
+        *   OAA (Oxaloacetate, 草酰乙酸)。
+    *   **酶**：**PEPC** (Phosphoenolpyruvate carboxylase, 磷酸烯醇式丙酮酸羧化酶)。
+
+*   **Step 3: 还原与储存 (Page 7)**
+    *   **反应**：$OAA + NADH + H^+ \longrightarrow Mal + NAD^+$
+    *   **产物**：Mal (Malate, 苹果酸)。
+    *   **酶**：NAD-malate dehydrogenase (NAD-苹果酸脱氢酶)。
+    *   **去向**：苹果酸（Malic acid）被转运并**储存在液泡 (Vacuole)** 的酸性溶液中。
+    *   *注：这就是为什么CAM植物夜间细胞液pH值会下降（变酸）的原因。*
+
+---
+
+#### 第二阶段：白天 (Light) —— 气孔关闭，脱羧与再固定
+
+这一阶段涉及**液泡**、**细胞质**、**线粒体**或**叶绿体**。
+
+*   **苹果酸释放**：储存在液泡中的苹果酸（Malic acid）被转运回细胞质。
+
+*   **Step 4: 脱羧反应 (Decarboxylation) (Page 8, 9)**
+    *   资料中展示了两种主要的脱羧路径（取决于具体植物亚型）：
+    
+    *   **路径 A (叶绿体/细胞质型 - NADP-ME)**：
+        *   **反应**：$Mal + NADP^+ \longrightarrow Pyr + CO_2 + NADPH + H^+$
+        *   **酶**：NADP-malic enzyme (NADP-苹果酸酶)。
+        *   **场所**：叶绿体 (Chloroplast) 或 细胞质 (Cytosol)。
+        
+    *   **路径 B (线粒体型 - NAD-ME)**：
+        *   **反应**：$Mal + NAD^+ \longrightarrow Pyr + CO_2 + NADH + H^+$
+        *   **酶**：NAD-malic enzyme (NAD-苹果酸酶)。
+        *   **场所**：线粒体 (Mitochondrion)。
+
+    *   *(Page 9 还提及了 PEPCK 途径作为补充，将OAA转化为PEP，但主要路径为上述两种)*
+
+*   **结果去向**：
+    1.  **CO₂**：进入叶绿体，被 **Rubisco** 捕获，进入 **卡尔文循环 (Calvin Cycle / C3 cycle)** 合成糖类。
+    2.  **Pyr (丙酮酸)**：转化回淀粉 (Starch)，用于下一个夜晚再生PEP（这一过程称为糖异生）。
+
+---
+
 
 ### 四、 C3、C4 与 CAM 途径比较表
 
