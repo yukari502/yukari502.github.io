@@ -824,3 +824,150 @@ nav li {
 [data-theme="dark"] .mermaid {
     background-color: var(--bg-tertiary);
 }
+
+
+/* Sidebar Toggle Handle (Door Handle Style) */
+.sidebar-toggle {
+    position: fixed;
+    top: 50%;
+    right: var(--sidebar-width);
+    /* Attached to the left edge of the right sidebar */
+    transform: translateY(-50%);
+    z-index: 1000;
+
+    width: 24px;
+    height: 48px;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-right: none;
+    /* Merge with sidebar */
+    border-radius: 8px 0 0 8px;
+    /* Rounded on the left */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.05);
+
+    color: var(--text-secondary);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Match sidebar transition */
+}
+
+.sidebar-toggle:hover {
+    background-color: var(--bg-secondary);
+    color: var(--accent-color);
+    width: 28px;
+    /* Slightly expand on hover */
+}
+
+.sidebar-toggle svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.4s ease;
+}
+
+/* State: Sidebar Open (Default) */
+/* Icon points Right (>) indicating clicking will move it Right (Close) */
+.sidebar-toggle svg {
+    transform: rotate(0deg);
+}
+
+/* State: Sidebar Collapsed */
+body.sidebar-collapsed .sidebar-toggle {
+    right: 0;
+    /* Stick to the right edge of screen */
+    border-right: 1px solid var(--border-color);
+    /* Restore border */
+    border-radius: 8px 0 0 8px;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Icon points Left (<) indicating clicking will move it Left (Open) */
+body.sidebar-collapsed .sidebar-toggle svg {
+    transform: rotate(180deg);
+}
+
+/* Sidebar Transition */
+.sidebar {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Ensure sidebar is on the right */
+    right: 0;
+    left: auto;
+    border-left: 1px solid var(--border-color);
+}
+
+body.sidebar-collapsed .sidebar {
+    transform: translateX(100%);
+    /* Move to the right, off-screen */
+}
+
+/* Content Area Adjustment */
+.content-area {
+    margin-right: var(--sidebar-width);
+    /* Default margin for right sidebar */
+    transition: margin-right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.sidebar-collapsed .content-area {
+    margin-right: 0;
+    /* Expand to fill space */
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .sidebar-toggle {
+        /* On mobile, maybe keep it simple or hide it? 
+           Let's keep it but adjust size/pos */
+        right: 0;
+        border-radius: 8px 0 0 8px;
+        border-right: none;
+        background-color: var(--bg-primary);
+        border: 1px solid var(--border-color);
+    }
+
+    /* When sidebar is open on mobile (it covers content usually) */
+    /* Wait, current mobile CSS makes sidebar relative/top. 
+       Let's fix mobile sidebar to be an overlay for this toggle to work best. */
+
+    .sidebar {
+        position: fixed;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        top: 0;
+        right: 0;
+        z-index: 999;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+        transform: translateX(100%);
+        /* Default hidden on mobile? Or default open? */
+        /* Let's respect the desktop-first approach but fix mobile behavior */
+    }
+
+    /* Mobile: Default hidden */
+    /* We need to override the default 'open' state for mobile if we want it hidden by default.
+       But for now, let's just make the toggle work. */
+
+    body:not(.sidebar-collapsed) .sidebar {
+        transform: translateX(0);
+    }
+
+    body.sidebar-collapsed .sidebar {
+        transform: translateX(100%);
+    }
+
+    /* Toggle button follows sidebar */
+    body:not(.sidebar-collapsed) .sidebar-toggle {
+        right: 80%;
+        /* Or sidebar width */
+        margin-right: -1px;
+        /* Overlap border */
+    }
+
+    .content-area {
+        margin-right: 0;
+        /* Mobile content is full width */
+        padding: 1rem;
+    }
+}

@@ -190,6 +190,24 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        // --- Sidebar Toggle ---
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+        if (sidebarToggle) {
+            sidebarToggle.addEventListener('click', () => {
+                document.body.classList.toggle('sidebar-collapsed');
+                
+                // Save state
+                const isCollapsed = document.body.classList.contains('sidebar-collapsed');
+                localStorage.setItem('sidebar-collapsed', isCollapsed);
+            });
+
+            // Restore state
+            const savedState = localStorage.getItem('sidebar-collapsed');
+            if (savedState === 'true') {
+                document.body.classList.add('sidebar-collapsed');
+            }
+        }
+
         // State
         let allArticles = [];
 
