@@ -32,7 +32,7 @@
 - ✅ **代码高亮**：使用 `highlight.js` + 自定义 macOS 风格窗口
 - ✅ **数学公式**：使用 `KaTeX` 渲染
 - ✅ **图表渲染**：使用 `Mermaid.js` 渲染流程图、时序图等
-- ✅ **图片管理**：按文章 Slug 组织，支持相对路径
+- ✅ **图片管理**：按文章 Slug 组织，图片使用绝对路径引用
 - ✅ **SEO 优化**：自动生成 meta 标签、sitemap.xml
 - ✅ **响应式设计**：适配桌面和移动设备
 - ✅ **自动清理**：同步删除已移除文章的生成文件
@@ -138,8 +138,8 @@ graph LR
 3. **添加图片**
    - 创建文件夹：`Pic/{article-slug}/`
    - 将图片放入此文件夹
-   - Markdown 中使用相对路径引用：`![描述](image.png)`
-   - 注意Markdown 中默认引用路径为 `Pic/文章同名文件夹/image.png`
+   - Markdown 中使用绝对路径引用：`![描述](/Pic/article-slug/image.png)`
+   - 注意：必须使用以 `/Pic/` 开头的绝对路径，不再支持相对路径自动转换。
 
 4. **提交并推送**
    ```bash
@@ -199,7 +199,7 @@ graph TD
     D --> E[读取嵌入的 Markdown]
     E --> F[配置 marked.js renderer]
     F --> G[解析 Markdown]
-    G --> H[修正图片路径]
+    G --> H[渲染图片]
     H --> I[高亮代码]
     I --> J[渲染数学公式]
     J --> K[显示内容]
@@ -518,17 +518,8 @@ document.addEventListener('DOMContentLoaded', () => {
        
        // 处理相对路径
        if (!href.startsWith('http') && !href.startsWith('/') && !href.startsWith('data:')) {
-           if (href.startsWith('Pic/')) {
-               // 已包含 Pic/ 前缀
-               href = rootPath + href;
-           } else {
-               // 相对路径，需要拼接 Pic/{slug}/
-               if (articleSlug) {
-                   href = rootPath + 'Pic/' + articleSlug + '/' + href;
-               } else {
-                   href = rootPath + href;
-               }
-           }
+           // 提示：现在推荐使用绝对路径 /Pic/...
+           // 相对路径不再自动转换为 Pic/{slug}/...
        }
        
        // 转义 HTML 特殊字符
@@ -602,46 +593,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 ## 7. 图片路径解析机制
 
-### 7.1 问题背景
+### 7.1 路径规范
 
-- **Markdown 引用**：`![描述](image.png)`
+- **Markdown 引用**：`![描述](/Pic/article-slug/image.png)`
 - **实际位置**：`/Pic/article-slug/image.png`
-- **挑战**：
-  - 文章 HTML 在 `posts/category/article.html`
-  - 需要正确解析相对路径
+- **规则**：必须使用以 `/Pic/` 开头的绝对路径。
 
-### 7.2 解决方案
+### 7.2 路径示例
 
-#### 步骤1：Python 计算相对根路径
-```python
-# 在 generate_article_pages.py 中
-relative_root = os.path.relpath('.', article_output_dir)
-# 例如：posts/uncategorized/ -> "../../"
-```
-
-#### 步骤2：注入到 HTML Meta
-```html
-<meta name="root-path" content="../../">
-<meta name="article-slug" content="daily-bio-arxiv">
-```
-
-#### 步骤3：JavaScript 读取并拼接
-```javascript
-const rootPath = document.querySelector('meta[name="root-path"]').content;  // "../../"
-const articleSlug = document.querySelector('meta[name="article-slug"]').content;  // "daily-bio-arxiv"
-
-// 原始路径: image.png
-// 转换后: ../../Pic/daily-bio-arxiv/image.png
-```
-
-### 7.3 路径转换示例
-
-| Markdown 路径 | 转换后路径 |
+| Markdown 路径 | 说明 |
 |--------------|-----------|
-| `image.png` | `../../Pic/article-slug/image.png` |
-| `Pic/custom/img.jpg` | `../../Pic/custom/img.jpg` |
-| `/absolute/path.png` | `/absolute/path.png` (不变) |
-| `https://example.com/img.png` | `https://example.com/img.png` (不变) |
+| `/Pic/article-slug/image.png` | ✅ 正确（绝对路径） |
+| `image.png` | ❌ 错误（不再支持相对路径） |
+| `Pic/article-slug/image.png` | ❌ 错误（缺少开头的 /） |
+| `https://example.com/img.png` | ✅ 正确（外部链接） |
 
 ---
 
