@@ -225,6 +225,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const savedState = localStorage.getItem('sidebar-collapsed');
             if (savedState === 'true') {
                 document.body.classList.add('sidebar-collapsed');
+            } else if (savedState === null && window.innerWidth <= 768) {
+                // Default to collapsed on mobile
+                document.body.classList.add('sidebar-collapsed');
             }
         }
 
