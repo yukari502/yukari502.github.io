@@ -5,8 +5,8 @@
 
 ### 这是网站界面预览
 
-![Alt text](page1.png)
-![Alt text](page2.png)
+![Alt text](/Pic/daily-bio-arxiv/page1.png)
+![Alt text](/Pic/daily-bio-arxiv/page2.png)
 
 ## 主要特点
 

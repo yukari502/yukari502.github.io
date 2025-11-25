@@ -90,19 +90,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!href) return '';
 
                 // Process relative paths
+                // REMOVED: Automatic path conversion. User must provide correct path (e.g. absolute path /Pic/...)
                 if (!href.startsWith('http') && !href.startsWith('/') && !href.startsWith('data:')) {
-                    // If path starts with 'Pic/', make it relative to root using rootPath
-                    if (href.startsWith('Pic/')) {
-                        href = rootPath + href;
-                    } else {
-                        // Otherwise, assume it is relative to the article's folder in Pic
-                        // e.g. Pic/{SLUG}/image.png
-                        if (articleSlug) {
-                            href = rootPath + 'Pic/' + articleSlug + '/' + href;
-                        } else {
-                            href = rootPath + href; // Fallback
-                        }
-                    }
+                    // Optional: You could still prepend rootPath if you wanted to support relative paths from site root,
+                    // but the user requested "default absolute path", so we will leave it as is.
+                    // However, if they write 'Pic/...' and we are in 'posts/cat/', it won't work without rootPath.
+                    // But "default absolute path" usually implies starting with '/'.
+                    // If the user writes 'image.png', it will break unless they change it to '/Pic/...'.
+                    // I will strictly follow "delete automatic conversion".
                 }
 
                 // Escape quotes in text and title to prevent HTML breakage
