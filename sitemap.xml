@@ -2,9 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://yukari502.github.io/</loc>
-    <lastmod>2025-11-23</lastmod>
+    <lastmod>2025-11-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://yukari502.github.io/posts/植物生理学/植物矿质元素.html</loc>
+    <lastmod>2025-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yukari502.github.io/posts/遗传学/细菌的遗传分析.html</loc>

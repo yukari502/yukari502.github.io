@@ -2,6 +2,17 @@
   "year": "2025",
   "articles": [
     {
+      "title": "矿质营养的同化",
+      "description": "矿质营养的同化  1. 氮的同化 (Nitrogen Assimilation)  1.1 全球氮循环与固氮 全球氮循环 (global nitrogen cycle)：大气中 $\\text{N}_2$ 约占 77%。    哈伯-博施法 (Harbor-Bosch process)：工业上合成氨的...",
+      "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E6%A4%8D%E7%89%A9%E7%9F%BF%E8%B4%A8%E5%85%83%E7%B4%A0.md",
+      "date": "2025-11-25",
+      "year": "2025",
+      "category": "植物生理学",
+      "filename": "植物矿质元素.md",
+      "slug": "植物矿质元素",
+      "url": "/posts/植物生理学/植物矿质元素.html"
+    },
+    {
       "title": "细菌的遗传分析",
       "description": "细菌的遗传分析  6.1 细菌的染色体及其复制  6.1.1 细菌染色体的包装（大肠杆菌）     - 大肠杆菌染色体的包装依赖于 RNA 分子的连接作用。     - 在 RNA 的作用下形成 40-50 个环。     - 每个环又形成超螺旋。     - 细菌的染色体以高度的组装形式存在。  ...",
       "path": "Articles/%E9%81%97%E4%BC%A0%E5%AD%A6/%E7%BB%86%E8%8F%8C%E7%9A%84%E9%81%97%E4%BC%A0%E5%88%86%E6%9E%90.md",
@@ -145,5 +156,5 @@
       "url": "/posts/uncategorized/daily-bio-arxiv.html"
     }
   ],
-  "count": 13
+  "count": 14
 }
