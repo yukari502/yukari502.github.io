@@ -146,7 +146,7 @@
             opacity: 0.8;
         }
     </style>
-    <meta name="build-hash" content="7b472e39a8cc4d5a6f0e76fdd680f4d6">
+    <meta name="build-hash" content="9585a9537aade245cfaef4a0e874cb93">
 </head>
 
 <body>
@@ -304,7 +304,8 @@ graph TD
     A[葡萄糖 Glucose] -->|1. 己糖激酶/消耗ATP| B(G-6-P);
     B -->|2. 磷酸己糖异构酶| C(F-6-P);
     C -->|3. PF激酶/限速酶/消耗ATP| D(F-1,6-P);
-    D -->|4. 醛缩酶| E1(GAP 3-磷酸甘油醛) & E2(DHAP 二羟丙酮磷酸);
+    D -->|4. 醛缩酶| E1(GAP 3-磷酸甘油醛);
+    D -->|4. 醛缩酶| E2(DHAP 二羟丙酮磷酸);  
     E2 -->|5. 磷酸丙糖异构酶| E1;
     E1 -->|6. GAP脱氢酶/生成NADH| F(1,3-BGP);
     F -->|7. PGA激酶/生成ATP| G(3-PGA);
@@ -312,7 +313,7 @@ graph TD
     H -->|9. 烯醇化酶/脱水| I(PEP 磷酸烯醇式丙酮酸);
     I -->|10. 丙酮酸激酶/生成ATP| J[丙酮酸 Pyruvate];
 
-    subgraph 细胞质 (Cytoplasm)
+    subgraph "细胞质 (Cytoplasm)"
         A
         B
         C
@@ -339,8 +340,10 @@ $\text{TCA}$ 循环发生在**线粒体基质**中，将丙酮酸完全氧化降
 ```mermaid
 graph TD
     A[丙酮酸 Pyruvate] -->|① 丙酮酸脱氢酶复合体/释放CO2/生成NADH| B(乙酰CoA Acetyl CoA);
-    B + OAA(草酰乙酸 Oxaloacetate) -->|② 柠檬酸合酶| C(柠檬酸 Citrate);
-    C -->|③ 顺乌头酸酶| D(异柠檬酸 Isocitrate);
+    OAA[草酰乙酸 Oxaloacetate];
+    B -->|② 柠檬酸合酶| C;
+    OAA -->|② 柠檬酸合酶| C;
+    C(柠檬酸 Citrate) -->|③ 顺乌头酸酶| D(异柠檬酸 Isocitrate);
     D -->|④ 异柠檬酸酶/释放CO2/生成NADH| E(a-酮戊二酸 a-Ketoglutarate);
     E -->|⑤ a-酮戊二酸脱氢酶/释放CO2/生成NADH| F(琥珀酰CoA Succinyl CoA);
     F -->|⑥ 琥珀酸CoA合成酶/生成ATP| G(琥珀酸 Succinate);
@@ -348,7 +351,7 @@ graph TD
     H -->|⑧ 延胡索酸水化酶/水合| I(苹果酸 Malate);
     I -->|⑨ 苹果酸脱氢酶/生成NADH| OAA;
 
-    subgraph 线粒体基质 (Mitochondrial Matrix)
+    subgraph "线粒体基质 (Mitochondrial Matrix)"
         A
         B
         C
@@ -375,24 +378,24 @@ $\text{ETC}$ 位于**线粒体内膜**，通过复合体 ($\text{I}$ 到 $\text{
 
 ```mermaid
 graph LR
-    subgraph 线粒体基质 (Matrix)
+    subgraph "线粒体基质 (Matrix)"
         NADH(来自TCA/EMP/其他)
         FADH2(来自TCA)
-        ADP_Pi(ADP + Pi)
+        ADP_Pi("ADP + Pi")
     end
 
-    subgraph 线粒体内膜 (Inner Membrane)
-        C1(I: NADH 氧化还原酶)
-        C2(II: 琥珀酸脱氢酶)
+    subgraph "线粒体内膜 (Inner Membrane)"
+        C1("I: NADH 氧化还原酶")
+        C2("II: 琥珀酸脱氢酶")
         UQ(泛醌/电子载体)
-        C3(III: Cyt bc1 复合体)
-        Cytc(细胞色素 c/可移动色素蛋白)
-        C4(IV: Cyt c 氧化酶)
-        C5(V: ATP 合酶)
+        C3("III: Cyt bc1 复合体")
+        Cytc("细胞色素 c/可移动色素蛋白")
+        C4("IV: Cyt c 氧化酶")
+        C5("V: ATP 合酶")
     end
 
-    subgraph 膜间隙 (Intermembrane Space)
-        H_IMS[H+ 浓度高]
+    subgraph "膜间隙 (Intermembrane Space)"
+        H_IMS["H+ 浓度高"]
     end
 
     NADH -- 2 e-, 4 H+泵出 --> C1;
@@ -402,16 +405,16 @@ graph LR
     UQ -- 2 e-, 4 H+泵出 --> C3;
     C3 -- 2 e- --> Cytc;
     Cytc -- 2 e- --> C4;
-    C4 -- 2 e-, 2 H+泵出 --> O2[O2 + 4H+基质 -> 2H2O];
+    C4 -- 2 e-, 2 H+泵出 --> O2[\"O2 + 4H+基质 -> 2H2O\"];
 
-    C1, C3, C4, C5 --> H_IMS;
+    C1 -- "4 H+泵出" --> H_IMS;
+    C3 -- "4 H+泵出" --> H_IMS;
+    C4 -- "2 H+泵出" --> H_IMS;
 
     H_IMS -- H+流入基质 --> C5;
     C5 -- 合成ATP --> ATP(ATP);
     
     style C5 fill:#ccffcc,stroke:#333
-    style C4 stroke-dasharray: 5 5 
-    note for C4 "CN-, CO抑制"
 ```
 
 *   **质子转运**：复合体 $\text{I}$ 泵出 $4 \text{ H}^+$，复合体 $\text{III}$ 泵出 $4 \text{ H}^+$，复合体 $\text{IV}$ 泵出 $2 \text{ H}^+$。
@@ -423,26 +426,24 @@ graph LR
 
 ```mermaid
 graph LR
-    subgraph 线粒体内膜 (Inner Membrane)
+    subgraph "线粒体内膜 (Inner Membrane)"
         UQ_pool[泛醌池 UQH2]
         AOX(替代性氧化酶)
-        C4(IV: Cyt c 氧化酶)
+        C4("IV: Cyt c 氧化酶")
     end
 
     UQ_pool -->|主要途径| C3(III);
     UQ_pool -->|抗氰途径/CN-不敏感/SHAM抑制| AOX;
     C3 -->|经Cyt c| C4;
-    C4 --> H2O[H2O/产生ATP];
-    AOX --> H2O_Heat[H2O/产生热量];
+    C4 --> H2O["H2O/产生ATP"];
+    AOX --> H2O_Heat["H2O/产生热量"];
 
-    NADH_EXT(外部NADH) -->|NDB/不泵H+| UQ_pool;
-    NADH_INT(内部NADH) -->|NDA/不泵H+| UQ_pool;
+    NADH_EXT(外部NADH) -->|"NDB/不泵H+"| UQ_pool;
+    NADH_INT(内部NADH) -->|"NDA/不泵H+"| UQ_pool;
 
     style UQ_pool fill:#F7F4D2,stroke:#333
     style AOX fill:#EBC3D0,stroke:#333
     style C4 fill:#D2DFF7,stroke:#333
-    note for C4 "氰化物敏感"
-    note for AOX "产热效应"
 ```
 
 *   **机制**：$\text{AOX}$ 绕过了 $\text{Cyt}$ 途径的 $\text{Cyt bc}_1$ (复合体 $\text{III}$) 和 $\text{Cyt c}$ 氧化酶 (复合体 $\text{IV}$) 部分，直接将电子从 $\text{UQH}_2$ 传递给 $\text{O}_2$。此过程**不伴随质子泵出**，因此能量以热能形式耗散。
@@ -471,10 +472,13 @@ graph LR
 
 ```mermaid
 graph LR
-    subgraph 线粒体基质 (Matrix)
-        NADH -- e- & H+ --> C1(复合体 I);
-        FADH2 -- e- & H+ --> C2(复合体 II);
+    subgraph "线粒体基质 (Matrix)"
+        NADH["NADH"]
+        FADH2["FADH2"]
     end
+    
+    NADH -- "e- & H+" --> C1("复合体 I");
+    FADH2 -- "e- & H+" --> C2("复合体 II");
 
     C1 --> UQ;
     C2 --> UQ;
