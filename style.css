@@ -147,15 +147,23 @@ nav li {
     color: var(--accent-color);
 }
 
+/* Sidebar Content Container - Shared Scroll */
+.sidebar-content {
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-height: 0;
+    /* Important for flex children to enable scrolling */
+    display: flex;
+    flex-direction: column;
+}
+
 .sidebar-categories {
     margin-top: 1rem;
     flex-grow: 0;
-    flex-shrink: 1;
-    overflow-y: auto;
-    max-height: 40vh;
-    /* Limit height to allow scrolling */
-    min-height: 100px;
-    /* Ensure minimum visible area */
+    flex-shrink: 0;
+    /* No overflow or max-height - handled by parent */
 }
 
 .categories-header {
@@ -241,13 +249,9 @@ nav li {
 
 .sidebar-pinned {
     margin-top: 2rem;
-    flex-grow: 1;
-    flex-shrink: 1;
-    overflow-y: auto;
-    min-height: 200px;
-    /* Ensure minimum visible area */
-    max-height: calc(100vh - 400px);
-    /* Allow flexible height but with scroll */
+    flex-grow: 0;
+    flex-shrink: 0;
+    /* No overflow or max-height - handled by parent */
 }
 
 .pinned-header {
