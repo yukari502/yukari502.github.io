@@ -146,7 +146,7 @@
             opacity: 0.8;
         }
     </style>
-    <meta name="build-hash" content="b066c8140855b3525f718e4d71843719">
+    <meta name="build-hash" content="e4a1b3e06e502990b02ed0df444bf454">
 </head>
 
 <body>
@@ -276,95 +276,7 @@
   * **细胞色素 $\text{b}_{6}f$ 复合体** ($\text{Cyt b}_{6}f$) 均匀分布。
 
 ### 2.3 电子传递链 (ETC) 的组分与机制
-电子传递链是一系列位于生物膜上的蛋白质复合体和电子载体。它的核心功能是通过电子的传递释放能量，建立跨膜质子梯度，最终驱动 ATP 的合成。这一过程被称为氧化磷酸化。
- * 发生场所： 真核生物的线粒体内膜 (Inner Mitochondrial Membrane)。
- * 核心原理： 电子从高能状态流向低能状态，释放的能量用于将质子 (H^+) 从线粒体基质泵入膜间隙。
-1. 关键组件 (Key Components)
-电子传递链主要由四个蛋白质复合体和两个移动电子载体组成：
- * 复合体 I (NADH 脱氢酶)： 接收来自 NADH 的电子。
- * 复合体 II (琥珀酸脱氢酶)： 接收来自 FADH_2 的电子（它是三羧酸循环的一部分）。
- * 泛醌 (Coenzyme Q, Ubiquinone)： 一种脂溶性分子，在膜内移动，连接复合体 I/II 和复合体 III。
- * 复合体 III (细胞色素 bc1 复合体)： 将电子传递给细胞色素 c。
- * 细胞色素 c (Cytochrome c)： 位于膜外侧的水溶性蛋白，连接复合体 III 和 IV。
- * 复合体 IV (细胞色素 c 氧化酶)： 最终将电子传递给氧气。
-2. 电子传递流程图 (Mermaid Flowchart)
-以下流程图展示了电子如何从 NADH 和 FADH_2 开始，最终传递给氧气的过程：
-```mermaid
-graph LR
-    subgraph 线粒体基质 (电子供体)
-        NADH[NADH]
-        FADH2[FADH2]
-    end
 
-    subgraph 线粒体内膜 (电子传递链)
-        direction LR
-        C1[<b>复合体 I</b><br>NADH脱氢酶]
-        C2[<b>复合体 II</b><br>琥珀酸脱氢酶]
-        Q((<b>Q</b><br>泛醌))
-        C3[<b>复合体 III</b><br>细胞色素bc1]
-        CytC((<b>Cyt c</b><br>细胞色素c))
-        C4[<b>复合体 IV</b><br>细胞色素c氧化酶]
-    end
-
-    subgraph 最终受体
-        O2[氧气 O2]
-        H2O[水 H2O]
-    end
-
-    %% 电子流向
-    NADH -->|e- & H+| C1
-    C1 -->|e-| Q
-    FADH2 -->|e-| C2
-    C2 -->|e-| Q
-    Q -->|e-| C3
-    C3 -->|e-| CytC
-    CytC -->|e-| C4
-    C4 -->|e-| O2
-    O2 -->|生成| H2O
-
-    %% 质子泵出标注
-    C1 -.->|泵出 4H+| IMS[膜间隙]
-    C3 -.->|泵出 4H+| IMS
-    C4 -.->|泵出 2H+| IMS
-
-    style C1 fill:#ff9999,stroke:#333,stroke-width:2px
-    style C2 fill:#ff9999,stroke:#333,stroke-width:2px
-    style C3 fill:#ff9999,stroke:#333,stroke-width:2px
-    style C4 fill:#ff9999,stroke:#333,stroke-width:2px
-    style Q fill:#ffff99,stroke:#333
-    style CytC fill:#ffff99,stroke:#333
-    style O2 fill:#99ccff,stroke:#333
-```
-
-3. 详细步骤解析
-电子传递主要有两条路径进入链条：
-路径 A：NADH 氧化途径
- * 起始： NADH 在 复合体 I 处被氧化，释放出 2 个电子。
- * 传递： 电子经由 泛醌 (Q) 传递给 复合体 III，再经由 细胞色素 c 传递给 复合体 IV。
- * 质子泵出： 电子经过复合体 I、III、IV 时，驱动这些复合体将 H^+ 从基质泵入膜间隙。
-   * 贡献： 这是一个高效的产能不能，产生较大的质子梯度。
-路径 B：FADH_2 氧化途径
- * 起始： FADH_2 在 复合体 II 处被氧化。
- * 传递： 电子直接传递给 泛醌 (Q)，随后路径与 NADH 相同（Q \rightarrow III \rightarrow Cyt c \rightarrow IV）。
- * 质子泵出： 注意！ 复合体 II 不泵送 质子。因此，FADH_2 产生的能量（ATP）比 NADH 少。
-终点：水的生成
-在 复合体 IV，电子最终被传递给终端电子受体——氧气 (O_2)。氧气结合基质中的氢离子生成水。这是有氧呼吸必须需要氧气的原因。
-O_2 + 4e^- + 4H^+ \rightarrow 2H_2O
-4. 结果：化学渗透与 ATP 合成
-电子传递链本身不直接产生 ATP，它的作用是建立质子动力势 (Proton Motive Force)。
- * 建立梯度： 随着电子传递，H^+ 在膜间隙（Intermembrane Space）高浓度聚集，形成电化学梯度。
- * ATP 合成： H^+ 顺浓度梯度通过 ATP 合成酶 (Complex V) 流回基质。
- * 能量转化： 这种“质子流”驱动 ATP 合成酶旋转，将 ADP 和 Pi 合成为 ATP。
-> 能量总结：
->  * 1 个 NADH \approx 产生 2.5 个 ATP
->  * 1 个 FADH_2 \approx 产生 1.5 个 ATP
-> 
-5. 关键总结表
-| 特征 | 复合体 I | 复合体 II | 复合体 III | 复合体 IV |
-|---|---|---|---|---|
-| 输入电子 | NADH | FADH_2 (来自琥珀酸) | 来自 Q 的电子 | 来自 Cyt c 的电子 |
-| 泵送质子 (H^+) | 是 | 否 | 是 | 是 |
-| 辅基/中心 | FMN, Fe-S | FAD, Fe-S | Heme, Fe-S | Heme, Cu |
 
 
 
