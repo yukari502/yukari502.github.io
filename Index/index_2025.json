@@ -2,6 +2,17 @@
   "year": "2025",
   "articles": [
     {
+      "title": "Model Context Protocol (MCP) 简介",
+      "description": "Model Context Protocol (MCP) 简介  定义 Model Context Protocol (MCP) 是一种协议，允许软件系统通过统一的接口与外部服务器进行通信，从而扩展自身的功能。这些外部服务器被称为 MCP 服务器，它们可以提供工具（Tools）和资源（Resourc...",
+      "path": "Articles/MCP%E7%AE%80%E4%BB%8B.md",
+      "date": "2025-12-01",
+      "year": "2025",
+      "category": "Uncategorized",
+      "filename": "MCP简介.md",
+      "slug": "mcp简介",
+      "url": "/posts/uncategorized/mcp简介.html"
+    },
+    {
       "title": "矿质营养的同化",
       "description": "矿质营养的同化  1. 氮的同化 (Nitrogen Assimilation)  1.1 全球氮循环与固氮 全球氮循环 (global nitrogen cycle)：大气中 $\\text{N}_2$ 约占 77%。    哈伯-博施法 (Harbor-Bosch process)：工业上合成氨的...",
       "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E6%A4%8D%E7%89%A9%E7%9F%BF%E8%B4%A8%E5%85%83%E7%B4%A0.md",
@@ -156,5 +167,5 @@
       "url": "/posts/uncategorized/daily-bio-arxiv.html"
     }
   ],
-  "count": 14
+  "count": 15
 }
