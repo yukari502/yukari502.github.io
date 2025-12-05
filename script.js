@@ -267,6 +267,17 @@ document.addEventListener('DOMContentLoaded', () => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const target = link.dataset.target;
+
+                // If clicking Home, reset the article list to show all
+                if (target === 'home') {
+                    const articlesList = document.getElementById('articles-list');
+                    if (articlesList && allArticles.length > 0) {
+                        renderArticles(allArticles, articlesList);
+                        const header = document.querySelector('.section-header h2');
+                        if (header) header.textContent = 'All Articles';
+                    }
+                }
+
                 navigateTo(target);
             });
         });
@@ -497,10 +508,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 const items = document.createElement('div');
                 items.className = 'category-items collapsed'; // Default collapsed
 
-                // Toggle category collapse
+                // Toggle category collapse and filter main content
                 title.addEventListener('click', (e) => {
+                    // Update Sidebar Tree
                     items.classList.toggle('collapsed');
                     title.querySelector('.chevron-icon').style.transform = items.classList.contains('collapsed') ? 'rotate(-90deg)' : 'rotate(0deg)';
+
+                    // Filter Main Articles List
+                    const filteredArticles = categories[cat];
+                    const articlesList = document.getElementById('articles-list');
+                    if (articlesList) {
+                        renderArticles(filteredArticles, articlesList);
+
+                        // Update Header Text
+                        const header = document.querySelector('.section-header h2');
+                        if (header) header.textContent = cat;
+
+                        // Scroll to top and ensure home section is active
+                        window.scrollTo(0, 0);
+                        navigateTo('home');
+                    }
                 });
 
                 categories[cat].forEach(article => {
