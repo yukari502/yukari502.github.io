@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="macOS 原生词典制作与导入教程 (AppleDict) ---  1. 为什么选择原生词典？ macOS 的原生词典系统因其深度集成而备受推崇，特别是配合触控板的三指轻点取词功能，能够提供无与伦比的便捷查词体验。 然而，macOS 自带的词典库虽然质量上乘，但数量和种类有限，难以满足专业或特定语...">
+    <meta name="keywords" content="语言学习记录, macOS 原生词典制作与导入教程 (AppleDict)">
+    <meta name="author" content="Yukari502">
+    <meta name="article-slug" content="how-to-make-a-appledict">
+    <meta name="root-path" content="../../">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://yukari502.github.io/posts/语言学习记录/how-to-make-a-appledict.html">
+    <meta property="og:title" content="macOS 原生词典制作与导入教程 (AppleDict)">
+    <meta property="og:description" content="macOS 原生词典制作与导入教程 (AppleDict) ---  1. 为什么选择原生词典？ macOS 的原生词典系统因其深度集成而备受推崇，特别是配合触控板的三指轻点取词功能，能够提供无与伦比的便捷查词体验。 然而，macOS 自带的词典库虽然质量上乘，但数量和种类有限，难以满足专业或特定语...">
+    <meta property="og:site_name" content="Digital Garden">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yukari502.github.io/posts/语言学习记录/how-to-make-a-appledict.html">
+    <meta property="twitter:title" content="macOS 原生词典制作与导入教程 (AppleDict)">
+    <meta property="twitter:description" content="macOS 原生词典制作与导入教程 (AppleDict) ---  1. 为什么选择原生词典？ macOS 的原生词典系统因其深度集成而备受推崇，特别是配合触控板的三指轻点取词功能，能够提供无与伦比的便捷查词体验。 然而，macOS 自带的词典库虽然质量上乘，但数量和种类有限，难以满足专业或特定语...">
+
+    <title>macOS 原生词典制作与导入教程 (AppleDict) - D.RAY</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- Mermaid.js for diagrams and flowcharts -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({
+            startOnLoad: false,
+            theme: 'dark',
+            themeVariables: {
+                primaryColor: '#8b5cf6',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#7c3aed',
+                lineColor: '#a78bfa',
+                secondaryColor: '#6d28d9',
+                tertiaryColor: '#5b21b6'
+            }
+        });
+        window.mermaid = mermaid;
+    </script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" href="../../ico/favicon.ico" type="image/x-icon">
+
+    <style>
+        .article-page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .article-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            transition: transform 0.2s;
+        }
+
+        .back-link:hover {
+            transform: translateX(-4px);
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .article-page {
+                padding: 1rem;
+            }
+
+            .article-title {
+                font-size: 2rem;
+            }
+        }
+
+        .article-footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .article-footer .disclaimer {
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+            font-style: italic;
+            opacity: 0.8;
+        }
+    </style>
+    <meta name="build-hash" content="1e7e77ca0405a24ed11304001a86cd26">
+</head>
+
+<body>
+    <div class="article-page">
+        <a href="../../" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            返回主页
+        </a>
+
+        <div class="article-header">
+            <h1 class="article-title">macOS 原生词典制作与导入教程 (AppleDict)</h1>
+            <div class="article-meta">
+                <span>📅 2025-12-05</span>
+                <span>📂 语言学习记录</span>
+            </div>
+        </div>
+
+        <article class="article-content markdown-body" id="article-content">
+            <!-- Content will be rendered here -->
+        </article>
+
+        <!-- Store markdown content in a script tag -->
+        <script type="text/markdown" id="markdown-source">
+# macOS 原生词典制作与导入教程 (AppleDict)
+
+---
+
+## 1. 为什么选择原生词典？
+
+macOS 的原生词典系统因其深度集成而备受推崇，特别是配合触控板的**三指轻点**取词功能，能够提供无与伦比的便捷查词体验。
+
+然而，macOS 自带的词典库虽然质量上乘，但数量和种类有限，难以满足专业或特定语言学习的需求。为了突破这一限制，我们可以通过工具将第三方词典（如 `.mdx` 格式）转换为 macOS 原生支持的格式，实现高度的个性化定制。
+
+![convenient](/Pic/语言学习记录/1.png)
+
+---
+
+## 2. 环境部署与前期准备
+
+本教程主要依赖命令行工具，请确保你对终端（Terminal）有基本的操作认知。
+*参考项目：[pyglossary](https://github.com/ilius/pyglossary/blob/master/doc/apple.md)*
+
+### 2.1 安装 Homebrew
+如果您尚未安装 Homebrew，请先在终端执行以下命令进行安装（如果已安装请跳过）：
+
+```shell
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+### 2.2 搭建 Python 与 Git 环境
+我们需要安装 Python 3 和 Git，并安装转换所需的 Python 库。
+
+1. **安装基础工具**：
+   ```shell
+   brew install python git
+   ```
+
+2. **下载 Pyglossary 及依赖**：
+   建议在 `Downloads` 目录下进行操作，方便管理。
+   ```shell
+   cd ~/Downloads
+   
+   # 克隆 Pyglossary 仓库
+   git clone https://github.com/ilius/pyglossary.git
+   
+   # 安装必要的 Python 依赖库
+   sudo pip3 install lxml beautifulsoup4 html5lib
+   ```
+
+### 2.3 获取 Apple Dictionary Development Kit
+制作词典还需要苹果提供的开发工具包。
+
+*   **方法一（推荐）**：直接从 GitHub 克隆整理好的工具包。
+    ```shell
+    # 同样在 Downloads 目录下执行
+    git clone https://github.com/SebastianSzturo/Dictionary-Development-Kit.git
+    ```
+    *(工具来源：[Dictionary-Development-Kit](https://github.com/SebastianSzturo/Dictionary-Development-Kit))*
+
+*   **方法二**：从 Apple 官方下载 [Additional Tools for Xcode](https://developer.apple.com/download/all/?q=Command%20Line%20Tools)。下载后解压，找到 `Utilities/Dictionary Development Kit` 并将其放置在便于访问的路径（如 `/Applications/Utilities`）。
+
+---
+
+## 3. 准备词典源文件
+本教程以常见的 **.mdx** 格式为例。其他格式的支持情况可参考 Pyglossary 文档。
+
+**词典资源推荐：**
+*   [FreeMdict Forum](https://freemdict.com/)
+*   [FreeMdict Search](https://search.freemdict.com/)
+
+---
+
+## 4. 制作与安装步骤
+
+我下载了一本 `牛津高階英漢雙解詞典8th.mdx` 的词典文件，本文将以此为例。
+
+### 4.1 转换词典格式
+首先创建一个工作文件夹，将你的 `.mdx` 文件放入其中。然后在终端中运行 `pyglossary` 进行转换：
+
+```shell
+# 语法说明：python3 <pyglossary路径> --write-format=AppleDict "<源文件>" "<输出名称>"
+# 假设你在 Downloads 目录下：
+python3 ~/Downloads/pyglossary/main.py --write-format=AppleDict "牛津高階英漢雙解詞典8th.mdx" "牛津高階英漢雙解詞典8th"
+```
+
+执行成功后，会在当前目录下生成一个名为 `牛津高階英漢雙解詞典8th` 的文件夹，其结构如下：
+![tex](/Pic/语言学习记录/2.png)
+
+### 4.2 配置构建环境 (Makefile)
+进入生成的词典文件夹，找到 `Makefile` 文件并打开编辑。
+我们需要修改 `DICT_BUILD_TOOL_DIR` 变量，将其指向我们在 **2.3 节** 中下载的 Dictionary Development Kit 的路径。
+
+*例如，如果你使用的是 GitHub 克隆的工具包，路径可能是 `/Users/你的用户名/Downloads/Dictionary-Development-Kit`。*
+
+![DIR](/Pic/语言学习记录/3.png)
+
+### 4.3 编译词典
+在终端中进入该词典文件夹，并执行 `make` 命令：
+
+```shell
+cd "牛津高階英漢雙解詞典8th"
+make
+```
+
+编译完成后，你会在 `objects` 子文件夹中找到生成的 `.dictionary` 文件。
+![text](/Pic/语言学习记录/4.png)
+
+### 4.4 安装与启用
+1.  **安装**：将生成的 `.dictionary` 文件移动到 macOS 的词典存放目录：
+    *   路径：`~/Library/Dictionaries`
+    *   或者：打开「词典」应用，点击菜单栏 `文件` -> `打开词典文件夹`，然后将文件拖入。
+
+2.  **启用**：
+    *   打开「词典」应用。
+    *   点击菜单栏 `词典` -> `设置` (Preferences)。
+    *   在列表中找到你刚才添加的词典，勾选它。
+
+![text](/Pic/语言学习记录/5.png)
+
+---
+
+## 5. 最终效果
+现在，你可以使用三指轻点或在词典应用中直接查询单词。
+
+下面是我制作的日文词典效果。
+![text](/Pic/语言学习记录/６.png)
+
+        </script>
+
+        <footer class="article-footer">
+            <p>&copy; 2025 Yukari502. All rights reserved.</p>
+            <p class="disclaimer">Disclaimer: Portions of this content may be generated by AI. Please exercise
+                discretion and verify information independently.</p>
+        </footer>
+    </div>
+
+    <script src="../../script.js"></script>
+</body>
+
+</html>

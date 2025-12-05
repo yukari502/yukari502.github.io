@@ -2,12 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://yukari502.github.io/</loc>
-    <lastmod>2025-12-01</lastmod>
+    <lastmod>2025-12-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://yukari502.github.io/posts/uncategorized/mcp简介.html</loc>
+    <loc>https://yukari502.github.io/posts/语言学习记录/how-to-make-a-appledict.html</loc>
+    <lastmod>2025-12-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://yukari502.github.io/posts/什么都想学一点/mcp简介.html</loc>
     <lastmod>2025-12-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -61,12 +67,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yukari502.github.io/posts/uncategorized/markdown语法学习.html</loc>
-    <lastmod>2025-11-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://yukari502.github.io/posts/植物生理学/水分代谢.html</loc>
     <lastmod>2025-11-22</lastmod>
     <changefreq>monthly</changefreq>
@@ -86,6 +86,12 @@
   </url>
   <url>
     <loc>https://yukari502.github.io/posts/植物生理学/水与植物细胞.html</loc>
+    <lastmod>2025-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://yukari502.github.io/posts/什么都想学一点/markdown语法学习.html</loc>
     <lastmod>2025-11-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
