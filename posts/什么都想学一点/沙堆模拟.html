@@ -4,187 +4,482 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="1">
-    <meta name="keywords" content="什么都想学一点, 沙堆模拟">
-    <meta name="author" content="Yukari502">
-    <meta name="article-slug" content="沙堆模拟">
-    <meta name="root-path" content="../../">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://yukari502.github.io/posts/什么都想学一点/沙堆模拟.html">
-    <meta property="og:title" content="沙堆模拟">
-    <meta property="og:description" content="1">
-    <meta property="og:site_name" content="Digital Garden">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://yukari502.github.io/posts/什么都想学一点/沙堆模拟.html">
-    <meta property="twitter:title" content="沙堆模拟">
-    <meta property="twitter:description" content="1">
-
-    <title>沙堆模拟 - D.RAY</title>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-        rel="stylesheet">
-
-    <!-- Highlight.js -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-
-    <!-- KaTeX -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-
-    <!-- Marked.js for Markdown parsing -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
-    <!-- Mermaid.js for diagrams and flowcharts -->
-    <script type="module">
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-        mermaid.initialize({
-            startOnLoad: false,
-            theme: 'dark',
-            themeVariables: {
-                primaryColor: '#8b5cf6',
-                primaryTextColor: '#fff',
-                primaryBorderColor: '#7c3aed',
-                lineColor: '#a78bfa',
-                secondaryColor: '#6d28d9',
-                tertiaryColor: '#5b21b6'
-            }
-        });
-        window.mermaid = mermaid;
-    </script>
-
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="../../style.css">
-    <link rel="icon" href="../../ico/favicon.ico" type="image/x-icon">
-
+    <title>3D 沙堆模型 - 可变阈值版</title>
+    <meta name="build-hash" content="96f8b838d47890c28615945202a7715e">
     <style>
-        .article-page {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem;
+        /* --- 全局样式 --- */
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #0a0a15;
+            color: #eee;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            user-select: none;
         }
 
-        .article-header {
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 2px solid var(--border-color);
+        /* --- 右上角折叠统计面板 --- */
+        #stats-panel {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 280px;
+            background: rgba(25, 25, 35, 0.95);
+            border: 1px solid #445;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            transition: height 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
 
-        .article-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .article-meta {
+        #stats-header {
+            padding: 12px 15px;
+            cursor: pointer;
+            background: rgba(50, 50, 70, 0.5);
+            border-bottom: 1px solid #445;
+            border-radius: 8px 8px 0 0;
             display: flex;
-            gap: 1rem;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            color: #4fc3f7;
+            letter-spacing: 1px;
         }
 
-        .article-meta span {
+        #stats-header:hover {
+            background: rgba(70, 70, 90, 0.6);
+        }
+
+        #stats-content {
+            padding: 15px;
+            display: block;
+        }
+
+        #stats-panel.collapsed #stats-content {
+            display: none;
+        }
+
+        #stats-panel.collapsed #stats-header {
+            border-bottom: none;
+            border-radius: 8px;
+        }
+
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 13px;
+            color: #ccc;
+        }
+
+        .metric-val {
+            font-family: 'Consolas', monospace;
+            color: #fff;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .highlight-blue {
+            color: #4fc3f7;
+        }
+
+        .highlight-red {
+            color: #ff8a80;
+        }
+
+        /* --- 底部控制栏 --- */
+        #bottom-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: rgba(20, 20, 30, 0.95);
+            border-top: 1px solid #445;
             display: flex;
             align-items: center;
-            gap: 0.3rem;
+            justify-content: center;
+            gap: 15px;
+            z-index: 100;
+            padding: 0 20px;
+            box-sizing: border-box;
         }
 
-        .back-link {
-            display: inline-flex;
+        button {
+            background: #334;
+            color: #ddd;
+            border: 1px solid #556;
+            padding: 6px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 13px;
+        }
+
+        button:hover {
+            background: #445;
+            border-color: #4fc3f7;
+            color: #4fc3f7;
+        }
+
+        button.active {
+            background: #0277bd;
+            border-color: #039be5;
+            color: white;
+        }
+
+        .control-group {
+            display: flex;
             align-items: center;
-            gap: 0.5rem;
-            color: var(--accent-color);
-            text-decoration: none;
-            margin-bottom: 2rem;
-            font-weight: 500;
-            transition: transform 0.2s;
+            gap: 8px;
+            background: #223;
+            padding: 5px 12px;
+            border-radius: 30px;
+            border: 1px solid #445;
         }
 
-        .back-link:hover {
-            transform: translateX(-4px);
+        .label-text {
+            font-size: 12px;
+            color: #aaa;
+            white-space: nowrap;
         }
 
-        .article-content {
-            font-size: 1.1rem;
-            line-height: 1.8;
+        /* 滑动条 */
+        input[type=range] {
+            width: 100px;
+            cursor: pointer;
+            accent-color: #4fc3f7;
+            height: 4px;
         }
 
-        @media (max-width: 768px) {
-            .article-page {
-                padding: 1rem;
-            }
-
-            .article-title {
-                font-size: 2rem;
-            }
+        /* 数字输入框 */
+        input[type=number] {
+            width: 40px;
+            background: #111;
+            border: 1px solid #555;
+            color: #4fc3f7;
+            border-radius: 4px;
+            padding: 2px 5px;
+            font-family: 'Consolas', monospace;
+            font-weight: bold;
         }
 
-        .article-footer {
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-color);
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
+        /* 图表容器 */
+        .chart-container {
+            background: #1a1a25;
+            border-radius: 4px;
+            border: 1px solid #334;
+            padding: 5px;
+            position: relative;
         }
 
-        .article-footer .disclaimer {
-            font-size: 0.75rem;
-            margin-top: 0.5rem;
-            font-style: italic;
-            opacity: 0.8;
+        .chart-label {
+            position: absolute;
+            font-size: 10px;
+            color: #667;
         }
     </style>
+    <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.150.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.150.0/examples/jsm/"
+        }
+      }
+    </script>
     <meta name="build-hash" content="96f8b838d47890c28615945202a7715e">
 </head>
 
 <body>
-    <div class="article-page">
-        <a href="../../" class="back-link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="19" y1="12" x2="5" y2="12"></line>
-                <polyline points="12 19 5 12 12 5"></polyline>
-            </svg>
-            返回主页
-        </a>
 
-        <div class="article-header">
-            <h1 class="article-title">沙堆模拟</h1>
-            <div class="article-meta">
-                <span>📅 2025-12-12</span>
-                <span>📂 什么都想学一点</span>
+    <div id="stats-panel">
+        <div id="stats-header" onclick="toggleStats()">
+            <span>📊 幂律分布验证</span>
+            <span id="toggle-icon">▼</span>
+        </div>
+        <div id="stats-content">
+            <div class="metric-row"><span>投放总量 (Grains):</span> <span class="metric-val" id="disp-grains">0</span></div>
+            <div class="metric-row"><span>最大雪崩 (Max S):</span> <span class="metric-val highlight-red"
+                    id="disp-max">0</span></div>
+            <div class="metric-row"><span>当前雪崩 (Current S):</span> <span class="metric-val highlight-blue"
+                    id="disp-current-s">0</span></div>
+            <div class="metric-row"><span>当前阈值 (K):</span> <span class="metric-val" id="disp-k"
+                    style="color:#ffff00">4</span></div>
+
+            <div style="margin-top: 15px;">
+                <div style="font-size: 11px; color: #aaa; margin-bottom: 5px;">Log-Log Plot (双对数坐标)</div>
+                <div class="chart-container">
+                    <canvas id="chart-canvas" width="240" height="100"
+                        style="display: block; cursor: crosshair;"></canvas>
+                    <div class="chart-label" style="bottom: 2px; right: 5px;">Log(Size) →</div>
+                    <div class="chart-label"
+                        style="top: 5px; left: 2px; transform: rotate(-90deg); transform-origin: left top;">Log(Freq) →
+                    </div>
+                </div>
+            </div>
+
+            <div
+                style="margin-top:10px; font-size:11px; color:#778; border-top:1px solid #445; padding-top:5px; text-align: center;">
+                左键旋转 | 右键平移 | 滚轮缩放
             </div>
         </div>
-
-        <article class="article-content markdown-body" id="article-content">
-            <!-- Content will be rendered here -->
-        </article>
-
-        <!-- Store markdown content in a script tag -->
-        <script type="text/markdown" id="markdown-source">
-1
-        </script>
-
-        <footer class="article-footer">
-            <p>&copy; 2025 Yukari502. All rights reserved.</p>
-            <p class="disclaimer">Disclaimer: Portions of this content may be generated by AI. Please exercise
-                discretion and verify information independently.</p>
-        </footer>
     </div>
 
-    <script src="../../script.js"></script>
+    <div id="bottom-bar">
+        <button id="btn-toggle">暂停</button>
+        <button id="btn-reset">重置</button>
+
+        <div class="control-group">
+            <span class="label-text">速度</span>
+            <input type="range" id="speed-slider" min="1" max="200" value="50" step="1">
+            <span class="val-text" id="speed-val"
+                style="font-family:'Consolas'; color:#4fc3f7; font-size:12px; width:25px;">50</span>
+        </div>
+
+        <div class="control-group" style="border-color: #665; background: #2a2a35;">
+            <span class="label-text" style="color: #ffff8d;">阈值(K)</span>
+            <input type="number" id="k-input" min="2" max="8" value="4">
+        </div>
+    </div>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+        const CONFIG = {
+            gridSize: 60, cubeSize: 0.8, spacing: 1.0,
+            bgColor: 0x111122
+        };
+
+        const state = {
+            grid: new Int8Array(CONFIG.gridSize * CONFIG.gridSize).fill(0),
+            queue: [], totalGrains: 0, maxAvalancheSize: 0, currentAvalancheSize: 0,
+            frequencyMap: new Map(),
+            isRunning: true, speed: 50,
+            // 新增：动态阈值
+            criticalVal: 4
+        };
+
+        // --- Three.js Setup ---
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(CONFIG.bgColor);
+        scene.fog = new THREE.Fog(CONFIG.bgColor, 30, 120);
+
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(CONFIG.gridSize * 1.3, CONFIG.gridSize * 1.1, CONFIG.gridSize * 1.3);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
+        renderer.setSize(window.innerWidth, window.innerHeight); renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.2;
+        document.body.appendChild(renderer.domElement);
+
+        // --- 光照 (高能见度) ---
+        const ambientLight = new THREE.AmbientLight(0xccccff, 3.5);
+        scene.add(ambientLight);
+        const dirLight = new THREE.DirectionalLight(0xffffff, 4.0);
+        dirLight.position.set(80, 120, 60);
+        scene.add(dirLight);
+        const fillLight = new THREE.DirectionalLight(0xaaaaff, 1.5);
+        fillLight.position.set(-50, 50, -50);
+        scene.add(fillLight);
+
+        const controls = new OrbitControls(camera, renderer.domElement); controls.target.set(0, 0, 0); controls.enableDamping = true; controls.dampingFactor = 0.05;
+        controls.autoRotate = true; controls.autoRotateSpeed = 0.5;
+
+        const totalInstances = CONFIG.gridSize * CONFIG.gridSize;
+        // 材质：shininess 改回 30，保持柔和光泽
+        const material = new THREE.MeshPhongMaterial({ color: 0xffffff, flatShading: true, shininess: 30, specular: 0x444444 });
+        const mesh = new THREE.InstancedMesh(new THREE.BoxGeometry(CONFIG.cubeSize, 1, CONFIG.cubeSize), material, totalInstances);
+        scene.add(mesh);
+        const dummy = new THREE.Object3D();
+        const tempColor = new THREE.Color();
+        scene.add(new THREE.GridHelper(CONFIG.gridSize * CONFIG.spacing, CONFIG.gridSize, 0x666688, 0x333344));
+
+        // --- 颜色生成函数 (动态适配 K 值) ---
+        function getColorForVal(val, maxVal) {
+            if (val === 0) return 0x111122; // 底色
+            if (val >= maxVal) return 0xffffff; // 崩塌色
+
+            // 在蓝色区间内根据高度插值
+            // 使用 HSL: 色相固定为蓝色(0.6), 亮度从深(0.2)到亮(0.6)
+            const ratio = val / (maxVal - 1); // 0.0 ~ 1.0
+            const lightness = 0.2 + (ratio * 0.4);
+            tempColor.setHSL(0.6, 0.8, lightness);
+            return tempColor;
+        }
+
+        // --- 核心逻辑 ---
+        function updateVisuals() {
+            const offset = (CONFIG.gridSize * CONFIG.spacing) / 2 - (CONFIG.spacing / 2);
+            const K = state.criticalVal;
+
+            for (let i = 0; i < totalInstances; i++) {
+                const val = state.grid[i];
+                const x = (i % CONFIG.gridSize) * CONFIG.spacing - offset;
+                const z = Math.floor(i / CONFIG.gridSize) * CONFIG.spacing - offset;
+
+                // 动态高度：根据当前的 K 值归一化高度，保证 K=8 时不会冲出屏幕
+                // 基础高度 + (当前值 / 阈值) * 比例系数
+                let visualHeight = val === 0 ? 0.05 : (val / K) * 3.0;
+
+                // 崩塌时稍微拔高一点
+                if (val >= K) visualHeight = 3.5;
+
+                dummy.position.set(x, visualHeight / 2, z);
+                dummy.scale.set(1, visualHeight, 1);
+                dummy.updateMatrix();
+                mesh.setMatrixAt(i, dummy.matrix);
+
+                // 动态颜色
+                if (val === 0) tempColor.setHex(0x111122);
+                else if (val >= K) tempColor.setHex(0xffffff);
+                else {
+                    // 简单的插值颜色：深蓝 -> 亮蓝
+                    const t = (val - 1) / Math.max(1, K - 1); // 0~1
+                    tempColor.setHSL(0.6, 0.9, 0.2 + t * 0.4);
+                }
+
+                mesh.setColorAt(i, tempColor);
+            }
+            mesh.instanceMatrix.needsUpdate = true; mesh.instanceColor.needsUpdate = true;
+        }
+
+        function recordAvalanche(size) {
+            if (size <= 0) return;
+            if (size > state.maxAvalancheSize) state.maxAvalancheSize = size;
+            const count = state.frequencyMap.get(size) || 0;
+            state.frequencyMap.set(size, count + 1);
+            drawChart();
+        }
+
+        function simulationStep() {
+            if (!state.isRunning) return;
+            let ops = state.speed;
+            const total = CONFIG.gridSize * CONFIG.gridSize;
+            const K = state.criticalVal; // 获取当前阈值
+
+            while (ops > 0) {
+                if (state.queue.length > 0) {
+                    const idx = state.queue.shift();
+                    // 检查动态阈值
+                    if (state.grid[idx] < K) { ops--; continue; }
+
+                    // 崩塌逻辑：减去阈值
+                    state.grid[idx] -= K;
+                    state.currentAvalancheSize++;
+
+                    const neighbors = [idx - 1, idx + 1, idx - CONFIG.gridSize, idx + CONFIG.gridSize];
+                    for (let nIdx of neighbors) {
+                        if (nIdx >= 0 && nIdx < total && Math.abs((nIdx % CONFIG.gridSize) - (idx % CONFIG.gridSize)) <= 1) {
+                            state.grid[nIdx]++;
+                            // 动态阈值判断
+                            if (state.grid[nIdx] >= K) state.queue.push(nIdx);
+                        }
+                    }
+                    ops--;
+                } else {
+                    if (state.currentAvalancheSize > 0) {
+                        recordAvalanche(state.currentAvalancheSize);
+                        state.currentAvalancheSize = 0;
+                    }
+                    const idx = Math.floor(Math.random() * total);
+                    state.grid[idx]++; state.totalGrains++;
+                    // 动态阈值判断
+                    if (state.grid[idx] >= K) state.queue.push(idx);
+                    ops--;
+                }
+            }
+        }
+
+        // --- Log-Log 图表绘制 ---
+        const chartCanvas = document.getElementById('chart-canvas');
+        const chartCtx = chartCanvas.getContext('2d');
+
+        function drawChart() {
+            const w = chartCanvas.width; const h = chartCanvas.height;
+            chartCtx.clearRect(0, 0, w, h);
+            const data = Array.from(state.frequencyMap.entries());
+            if (data.length < 2) return;
+            let maxS = 0, maxF = 0;
+            data.forEach(([s, f]) => { maxS = Math.max(maxS, s); maxF = Math.max(maxF, f); });
+            const logMaxS = Math.log10(Math.max(maxS, 10));
+            const logMaxF = Math.log10(Math.max(maxF, 10));
+            const padding = 10;
+            const plotW = w - padding * 2;
+            const plotH = h - padding * 2;
+            chartCtx.fillStyle = '#4fc3f7';
+            data.forEach(([s, f]) => {
+                const x = padding + (Math.log10(s) / logMaxS) * plotW;
+                const y = h - padding - (Math.log10(f) / logMaxF) * plotH;
+                chartCtx.beginPath(); chartCtx.arc(x, y, 2, 0, Math.PI * 2); chartCtx.fill();
+            });
+        }
+
+        // --- UI & Interaction ---
+        window.toggleStats = function () {
+            const panel = document.getElementById('stats-panel');
+            document.getElementById('toggle-icon').innerText = panel.classList.toggle('collapsed') ? '◀' : '▼';
+        }
+        document.getElementById('btn-toggle').onclick = function () {
+            state.isRunning = !state.isRunning; this.innerText = state.isRunning ? "暂停" : "继续"; this.classList.toggle('active');
+            controls.autoRotate = !state.isRunning;
+        };
+        document.getElementById('btn-reset').onclick = function () {
+            state.grid.fill(0); state.queue = []; state.totalGrains = 0;
+            state.maxAvalancheSize = 0; state.currentAvalancheSize = 0;
+            state.frequencyMap.clear();
+            updateVisuals(); updateUI(0, true); drawChart();
+        };
+
+        const speedSlider = document.getElementById('speed-slider');
+        speedSlider.oninput = function () {
+            state.speed = parseInt(this.value);
+            document.getElementById('speed-val').innerText = state.speed;
+        };
+
+        // 阈值控制逻辑
+        const kInput = document.getElementById('k-input');
+        kInput.onchange = function () {
+            let val = parseInt(this.value);
+            if (val < 2) val = 2;
+            if (val > 8) val = 8; // 限制最大为8，防止颜色溢出
+            this.value = val;
+            state.criticalVal = val;
+            document.getElementById('disp-k').innerText = val;
+
+            // 注意：改变K值可能导致系统瞬间不稳定（如果K变小）或变得非常稳定（如果K变大）
+            // 下一帧 simulationStep 会自动处理新的 K 值逻辑
+            // 为了视觉一致性，立即刷新一次
+            updateVisuals();
+        };
+
+        let lastUiUpdate = 0;
+        function updateUI(timestamp, force = false) {
+            if (force || timestamp - lastUiUpdate > 150) {
+                document.getElementById('disp-grains').innerText = state.totalGrains;
+                document.getElementById('disp-max').innerText = state.maxAvalancheSize;
+                document.getElementById('disp-current-s').innerText = state.currentAvalancheSize;
+                lastUiUpdate = timestamp;
+            }
+        }
+
+        function animate(timestamp) {
+            requestAnimationFrame(animate);
+            simulationStep();
+            updateVisuals();
+            updateUI(timestamp);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+        renderer.domElement.addEventListener('mousedown', () => { controls.autoRotate = false; });
+
+        animate(0); drawChart();
+    </script>
 </body>
 
 </html>
