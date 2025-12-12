@@ -1,5 +1,27 @@
 [
   {
+    "title": "自组织临界性：从物理直觉得到数学形式",
+    "description": "自组织临界性：从物理直觉得到数学形式 Self-Organized Criticality: From Physical Intuition to Mathematical Formalism 1987年，Per Bak, Chao Tang 和 Kurt Wiesenfeld（BTW）在《物理评论...",
+    "path": "Articles/%E4%BB%80%E4%B9%88%E9%83%BD%E6%83%B3%E5%AD%A6%E4%B8%80%E7%82%B9/%E5%B9%82%E5%BE%8B.md",
+    "date": "2025-12-12",
+    "year": "2025",
+    "category": "什么都想学一点",
+    "filename": "幂律.md",
+    "slug": "幂律",
+    "url": "/posts/什么都想学一点/幂律.html"
+  },
+  {
+    "title": "沙堆模拟",
+    "description": "1",
+    "path": "Articles/%E4%BB%80%E4%B9%88%E9%83%BD%E6%83%B3%E5%AD%A6%E4%B8%80%E7%82%B9/%E6%B2%99%E5%A0%86%E6%A8%A1%E6%8B%9F.md",
+    "date": "2025-12-12",
+    "year": "2025",
+    "category": "什么都想学一点",
+    "filename": "沙堆模拟.md",
+    "slug": "沙堆模拟",
+    "url": "/posts/什么都想学一点/沙堆模拟.html"
+  },
+  {
     "title": "Research & Reports - AI Insights？",
     "description": "Research & Reports - AI Insights？ Research & Reports - AI Insights(https://yukari502.github.io/report-AI-insights/) 是一个全自动化的金融研报聚合网站。 该平台的核心使命是通过自动化技术...",
     "path": "Articles/Research_Reports_AI_Insights_Platform_Introduction.md",
