@@ -1,123 +1,87 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://yukari502.github.io/</loc>
-    <lastmod>2025-12-12</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://yukari502.github.io/posts/什么都想学一点/幂律.html</loc>
-    <lastmod>2025-12-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yukari502.github.io/posts/什么都想学一点/沙堆模拟.html</loc>
-    <lastmod>2025-12-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yukari502.github.io/posts/uncategorized/research_reports_ai_insights_platform_introduction.html</loc>
-    <lastmod>2025-12-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yukari502.github.io/posts/语言学习记录/how-to-make-a-appledict.html</loc>
-    <lastmod>2025-12-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yukari502.github.io/posts/什么都想学一点/mcp简介.html</loc>
-    <lastmod>2025-12-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yukari502.github.io/posts/植物生理学/植物矿质元素.html</loc>
-    <lastmod>2025-11-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yukari502.github.io/posts/遗传学/细菌的遗传分析.html</loc>
-    <lastmod>2025-11-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yukari502.github.io/posts/遗传学/真核生物的遗传分析.html</loc>
-    <lastmod>2025-11-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yukari502.github.io/posts/遗传学/数量性状的遗传分析.html</loc>
-    <lastmod>2025-11-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yukari502.github.io/posts/遗传学/性染色体与性别决定.html</loc>
-    <lastmod>2025-11-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yukari502.github.io/posts/遗传学/孟德尔遗传分析.html</loc>
-    <lastmod>2025-11-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yukari502.github.io/posts/遗传学/连锁遗传分析.html</loc>
-    <lastmod>2025-11-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yukari502.github.io/posts/uncategorized/本网站结构与技术文档.html</loc>
-    <lastmod>2025-11-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yukari502.github.io/posts/植物生理学/水分代谢.html</loc>
-    <lastmod>2025-11-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yukari502.github.io/posts/植物生理学/光合作用.html</loc>
-    <lastmod>2025-11-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yukari502.github.io/posts/植物生理学/植物呼吸作用.html</loc>
-    <lastmod>2025-11-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yukari502.github.io/posts/植物生理学/水与植物细胞.html</loc>
-    <lastmod>2025-11-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yukari502.github.io/posts/什么都想学一点/markdown语法学习.html</loc>
-    <lastmod>2025-11-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yukari502.github.io/posts/uncategorized/daily-bio-arxiv.html</loc>
-    <lastmod>2025-11-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+<url>
+<loc>https://yukari502.github.io/</loc>
+<lastmod>2025-11-25T23:30:43+08:00</lastmod>
+</url>
+<url>
+<loc>https://yukari502.github.io/article-template.html</loc>
+<lastmod>2025-11-24T23:44:26+08:00</lastmod>
+</url>
+<url>
+<loc>https://yukari502.github.io/posts/uncategorized/daily-bio-arxiv.html</loc>
+<lastmod>2025-11-25T12:30:41Z</lastmod>
+</url>
+<url>
+<loc>https://yukari502.github.io/posts/uncategorized/research_reports_ai_insights_platform_introduction.html</loc>
+<lastmod>2025-12-08T05:26:11Z</lastmod>
+</url>
+<url>
+<loc>https://yukari502.github.io/posts/uncategorized/本网站结构与技术文档.html</loc>
+<lastmod>2025-11-25T12:39:06Z</lastmod>
+</url>
+<url>
+<loc>https://yukari502.github.io/posts/什么都想学一点/markdown语法学习.html</loc>
+<lastmod>2025-12-12T11:25:26Z</lastmod>
+</url>
+<url>
+<loc>https://yukari502.github.io/posts/什么都想学一点/mcp简介.html</loc>
+<lastmod>2025-12-12T11:25:26Z</lastmod>
+</url>
+<url>
+<loc>https://yukari502.github.io/posts/什么都想学一点/幂律.html</loc>
+<lastmod>2025-12-12T11:27:34Z</lastmod>
+</url>
+<url>
+<loc>https://yukari502.github.io/posts/什么都想学一点/沙堆模拟.html</loc>
+<lastmod>2025-12-12T19:34:14+08:00</lastmod>
+</url>
+<url>
+<loc>https://yukari502.github.io/posts/植物生理学/光合作用.html</loc>
+<lastmod>2025-11-26T04:03:41Z</lastmod>
+</url>
+<url>
+<loc>https://yukari502.github.io/posts/植物生理学/植物呼吸作用.html</loc>
+<lastmod>2025-11-27T03:51:36Z</lastmod>
+</url>
+<url>
+<loc>https://yukari502.github.io/posts/植物生理学/植物矿质元素.html</loc>
+<lastmod>2025-11-25T14:46:44Z</lastmod>
+</url>
+<url>
+<loc>https://yukari502.github.io/posts/植物生理学/水与植物细胞.html</loc>
+<lastmod>2025-11-24T23:44:26+08:00</lastmod>
+</url>
+<url>
+<loc>https://yukari502.github.io/posts/植物生理学/水分代谢.html</loc>
+<lastmod>2025-11-24T23:44:26+08:00</lastmod>
+</url>
+<url>
+<loc>https://yukari502.github.io/posts/语言学习记录/how-to-make-a-appledict.html</loc>
+<lastmod>2025-12-08T05:26:11Z</lastmod>
+</url>
+<url>
+<loc>https://yukari502.github.io/posts/遗传学/孟德尔遗传分析.html</loc>
+<lastmod>2025-11-24T23:44:26+08:00</lastmod>
+</url>
+<url>
+<loc>https://yukari502.github.io/posts/遗传学/性染色体与性别决定.html</loc>
+<lastmod>2025-11-24T23:44:26+08:00</lastmod>
+</url>
+<url>
+<loc>https://yukari502.github.io/posts/遗传学/数量性状的遗传分析.html</loc>
+<lastmod>2025-11-24T23:44:26+08:00</lastmod>
+</url>
+<url>
+<loc>https://yukari502.github.io/posts/遗传学/真核生物的遗传分析.html</loc>
+<lastmod>2025-11-24T23:44:26+08:00</lastmod>
+</url>
+<url>
+<loc>https://yukari502.github.io/posts/遗传学/细菌的遗传分析.html</loc>
+<lastmod>2025-11-24T23:44:26+08:00</lastmod>
+</url>
+<url>
+<loc>https://yukari502.github.io/posts/遗传学/连锁遗传分析.html</loc>
+<lastmod>2025-11-24T23:44:26+08:00</lastmod>
+</url>
 </urlset>
