@@ -50,12 +50,9 @@ jobs:
           ls -R Index/
       
       - name: Generate sitemap.xml
-        run: |
-          python generate_sitemap.py
-          echo "Sitemap generated:"
-          ls -l sitemap.xml
-          echo "Generated article pages:"
-          ls -R posts/
+        uses: cicirello/generate-sitemap@v1
+        with:
+          base-url-path: https://yukari502.github.io
       
       - name: Generate article pages
         run: |
