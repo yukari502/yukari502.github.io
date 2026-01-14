@@ -112,8 +112,8 @@ def generate_hierarchical_index():
             category_dir = os.path.dirname(rel_path)
             
             if category_dir and category_dir != '.':
-                # Use the first part of the path as the category
-                category = category_dir.split(os.sep)[0]
+                # Use the full directory path as the category, normalizing separators to forward slashes
+                category = category_dir.replace(os.sep, '/')
             else:
                 category = "Uncategorized"
 

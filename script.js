@@ -466,85 +466,127 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!categoriesList) return;
 
+            // Remove existing listeners to avoid duplicates if called multiple times
             if (categoriesToggle) {
-                categoriesToggle.addEventListener('click', () => {
-                    categoriesToggle.classList.toggle('collapsed');
+                const newToggle = categoriesToggle.cloneNode(true);
+                categoriesToggle.parentNode.replaceChild(newToggle, categoriesToggle);
+
+                newToggle.addEventListener('click', () => {
+                    newToggle.classList.toggle('collapsed');
                     categoriesList.classList.toggle('collapsed');
                 });
             }
 
-            // Group by category
-            const categories = {};
+            // Build Tree
+            const categoryTree = { name: 'root', children: {}, articles: [] };
+
             articles.forEach(article => {
-                const cat = article.category || 'Uncategorized';
-                if (!categories[cat]) {
-                    categories[cat] = [];
-                }
-                categories[cat].push(article);
+                const catPath = article.category || 'Uncategorized';
+                // Split by / or \ (just in case)
+                const parts = catPath.split(/[/\\]/);
+
+                let currentNode = categoryTree;
+
+                parts.forEach((part, index) => {
+                    if (!currentNode.children[part]) {
+                        // Reconstruct full path for this node
+                        const currentPath = parts.slice(0, index + 1).join('/');
+
+                        currentNode.children[part] = {
+                            name: part,
+                            fullPath: currentPath,
+                            children: {},
+                            articles: []
+                        };
+                    }
+                    currentNode = currentNode.children[part];
+                });
+
+                currentNode.articles.push(article);
             });
 
             categoriesList.innerHTML = '';
 
-            // Sort categories (Uncategorized last)
-            const sortedCats = Object.keys(categories).sort((a, b) => {
-                if (a === 'Uncategorized') return 1;
-                if (b === 'Uncategorized') return -1;
-                return a.localeCompare(b);
-            });
-
-            sortedCats.forEach(cat => {
-                const group = document.createElement('div');
-                group.className = 'category-group';
-
-                const title = document.createElement('div');
-                title.className = 'category-title';
-                title.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon" style="transform: rotate(-90deg)">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                    ${cat}
-                `;
-
-                const items = document.createElement('div');
-                items.className = 'category-items collapsed'; // Default collapsed
-
-                // Toggle category collapse and filter main content
-                title.addEventListener('click', (e) => {
-                    // Update Sidebar Tree
-                    items.classList.toggle('collapsed');
-                    title.querySelector('.chevron-icon').style.transform = items.classList.contains('collapsed') ? 'rotate(-90deg)' : 'rotate(0deg)';
-
-                    // Filter Main Articles List
-                    const filteredArticles = categories[cat];
-                    const articlesList = document.getElementById('articles-list');
-                    if (articlesList) {
-                        renderArticles(filteredArticles, articlesList);
-
-                        // Update Header Text
-                        const header = document.querySelector('.section-header h2');
-                        if (header) header.textContent = cat;
-
-                        // Scroll to top and ensure home section is active
-                        window.scrollTo(0, 0);
-                        navigateTo('home');
-                    }
+            // Recursive Render Function
+            function renderChildren(parentNode, container) {
+                // Sort keys: Uncategorized last, others alphabetical
+                const keys = Object.keys(parentNode.children).sort((a, b) => {
+                    if (a === 'Uncategorized') return 1;
+                    if (b === 'Uncategorized') return -1;
+                    return a.localeCompare(b);
                 });
 
-                categories[cat].forEach(article => {
-                    const link = document.createElement('a');
-                    link.className = 'category-link';
+                keys.forEach(key => {
+                    const node = parentNode.children[key];
 
-                    // Use pre-generated static URL
-                    link.href = article.url || '#';
+                    const group = document.createElement('div');
+                    group.className = 'category-group';
 
-                    link.textContent = article.title;
-                    items.appendChild(link);
+                    const header = document.createElement('div');
+                    header.className = 'category-title';
+
+                    header.innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon" style="transform: rotate(-90deg)">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                        ${node.name}
+                    `;
+
+                    const itemsContainer = document.createElement('div');
+                    itemsContainer.className = 'category-items collapsed';
+
+                    // Click Handler
+                    header.addEventListener('click', (e) => {
+                        e.stopPropagation();
+
+                        itemsContainer.classList.toggle('collapsed');
+                        const icon = header.querySelector('.chevron-icon');
+                        if (icon) {
+                            icon.style.transform = itemsContainer.classList.contains('collapsed') ? 'rotate(-90deg)' : 'rotate(0deg)';
+                        }
+
+                        // Filter Logic
+                        const collectArticles = (n) => {
+                            let acc = [...n.articles];
+                            Object.values(n.children).forEach(child => {
+                                acc = acc.concat(collectArticles(child));
+                            });
+                            return acc;
+                        };
+                        const nodeArticles = collectArticles(node);
+
+                        const articlesList = document.getElementById('articles-list');
+                        if (articlesList && nodeArticles.length > 0) {
+                            renderArticles(nodeArticles, articlesList);
+
+                            const mainHeader = document.querySelector('.section-header h2');
+                            if (mainHeader) mainHeader.textContent = node.fullPath;
+
+                            window.scrollTo(0, 0);
+                            navigateTo('home');
+                        }
+                    });
+
+                    group.appendChild(header);
+                    group.appendChild(itemsContainer);
+
+                    // Render Direct Articles
+                    node.articles.forEach(article => {
+                        const link = document.createElement('a');
+                        link.className = 'category-link';
+                        link.href = article.url || '#';
+                        link.textContent = article.title;
+                        itemsContainer.appendChild(link);
+                    });
+
+                    // Recurse for children
+                    renderChildren(node, itemsContainer);
+
+                    container.appendChild(group);
                 });
+            }
 
-                group.appendChild(title);
-                group.appendChild(items);
-                categoriesList.appendChild(group);
-            });
+            renderChildren(categoryTree, categoriesList);
         }
 
         init();
