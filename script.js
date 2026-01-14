@@ -528,15 +528,45 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // --- Search Functionality ---
+        let fuse; // Fuse instance
+
         if (searchInput) {
             searchInput.addEventListener('input', (e) => {
-                const query = e.target.value.toLowerCase();
-                const filtered = allArticles.filter(article =>
-                    article.title.toLowerCase().includes(query) ||
-                    (article.description && article.description.toLowerCase().includes(query))
-                );
-                currentPage = 1; // Reset to first page on search
-                renderArticles(filtered, articlesList);
+                const query = e.target.value.trim();
+
+                // Initialize Fuse if needed
+                if (!fuse && allArticles.length > 0 && window.Fuse) {
+                    fuse = new Fuse(allArticles, {
+                        keys: [
+                            { name: 'title', weight: 0.7 },
+                            { name: 'description', weight: 0.3 }
+                        ],
+                        threshold: 0.4, // 0.0 = perfect match, 1.0 = match anything
+                        includeScore: true,
+                        ignoreLocation: true
+                    });
+                }
+
+                if (!query) {
+                    currentPage = 1;
+                    renderArticles(allArticles, articlesList);
+                    return;
+                }
+
+                if (fuse) {
+                    const results = fuse.search(query).map(result => result.item);
+                    currentPage = 1;
+                    renderArticles(results, articlesList);
+                } else {
+                    // Fallback to simple filter if Fuse not loaded
+                    const lowerQuery = query.toLowerCase();
+                    const filtered = allArticles.filter(article =>
+                        article.title.toLowerCase().includes(lowerQuery) ||
+                        (article.description && article.description.toLowerCase().includes(lowerQuery))
+                    );
+                    currentPage = 1;
+                    renderArticles(filtered, articlesList);
+                }
             });
         }
 
