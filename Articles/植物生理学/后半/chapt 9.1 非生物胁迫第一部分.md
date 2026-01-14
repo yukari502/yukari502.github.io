@@ -1,24 +1,15 @@
 # chapt 9.1 非生物胁迫第一部分
 
-
 ---
 
 ## 一、 重点名词解释
 
-根据您的要求，我将核心概念进行了规范化定义：
-
 - **逆境 (Stress)**: 物理学上指施加于物体的力，在生物学中指任何可能降低或不利地改变植物生长或发育的环境条件变化。例如：冻害、冷害、高温、干旱、洪水、盐渍、病虫害及空气污染等。
 - **抗性 (Resistance)**: 植物适应或耐受逆境的能力。包括 **适应 (Adaptation)**、**避免 (Avoidance)** 和 **耐受 (Tolerance)**。
-- **生物胁迫 (Biotic Stress)**: 由生物因子引起的对植物的不利影响。例如：病害 (Diseases)、食草动物 (Herbivory)、杂草 (Weeds) 和昆虫 (Insects)。
-- **非生物胁迫 (Abiotic Stress)**: 由非生物因子引起的对植物的不利影响。例如：水分、温度、光照、营养、盐分、重金属、氧气缺乏和辐射等。
-- **逆境逃避 (Stress Escape)**: 植物通过完成其生命周期来避开逆境发生的时期，不直接面对压力。例如：沙漠中的短命植物在干旱来临前完成生长周期。
-- **逆境避免 (Stress Avoidance)**: 植物通过物理或代谢屏障防止逆境因子进入组织内部，从而避免面对逆境，既不消耗代谢过程也不消耗能量。例如：植物在冷、热或干旱条件下休眠。
-- **逆境耐受 (Stress Tolerance)**: 植物在遭遇逆境时，通过形态、结构、生理、生化或分子生物学的调节来减少或修复伤害的抵抗反应。例如：复活草 (*Craterostigma plantagineum*) 忍受极端脱水。
 - **适应 (Adaptation)**: 由遗传决定的耐受性或抗性水平，是经过多代选择获得的永久性抗性，表现在形态结构、生理和生化上。例如：水生植物发达的通气组织，CAM 植物的气孔运动模式。
 - **驯化/锻炼 (Acclimation/Hardening)**: 植物在处于逆境条件时（或预先暴露于轻微逆境中），逐渐获得的对逆境的适应能力，通过此过程增加逆境耐受性。
 - **次级胁迫 (Secondary Stresses)**: 由主要施加的胁迫因子导致的其他形式的胁迫。例如：缺水可能导致叶片遭受热胁迫；冷冻胁迫会导致缺水和渗透胁迫；氧化胁迫通常由其他胁迫诱导产生。
 - **交叉耐受 (Cross-tolerance)**: 对一种逆境的驯化诱导了对另一种逆境的耐受性，暗示多种逆境的耐受机制具有许多共同特征。
-- **活性氧 (Reactive Oxygen Species, ROS/AOS)**: 包含过氧化氢、超氧阴离子、羟基自由基等含氧自由基。它们是双刃剑：既会造成氧化损伤，需通过抗氧化系统 (SOD, POD 等) 清除；又是重要的信号分子（第二信使）。
 - **生理干旱 (Physiological Drought)**: 由于土壤条件（如低温、盐碱等）阻碍植物根系正常的生理活动，导致植物虽在有水环境中却不能正常吸水而受害的现象。
 
 ---
@@ -74,24 +65,3 @@
 - **关键结果**： 发现 `LG2` 基因影响水稻的叶夹角 (Lamina joint angle) 和千粒重。过表达导致叶角增大，而突变体叶角变小。
 
 ---
-
-## 四、 问题回答 (Q&A)
-
-### Question 1: How do plant cells sense the stresses?
-
-**Answer**: 植物细胞通过质膜上的受体感知环境信号，另外膜流动性的变化也是一种物理感知方式。例如 `COLD1` 蛋白在水稻中参与低温感知。
-
-### Question 2: How are the stress signals transduced into cellular signals and transmitted to the nucleus?
-
-**Answer**: 信号通过第二信使 (如 Ca²⁺、ROS、IP3)、激酶级联反应 (如 MAPK cascade) 以及植物激素 (特别是 ABA) 进行转导。
-
-### Question 3: How is gene transcription affected by these stress signals?
-
-**Answer**: 信号激活特定的转录因子 (如 bZIP, DREB/CBF, MYC/MYB, NAC 等)，这些因子结合到逆境响应基因启动子区域的顺式作用元件 (如 ABRE, DRE) 上。
-
-### Question 4: How do the gene products function in stress tolerance?
-
-**Answer**: 蛋白质分为两类：
-
-1. **功能蛋白**： 直接参与细胞保护 (如 LEA 蛋白、抗冻蛋白、抗氧化酶)。
-2. **调节蛋白**： 如转录因子、蛋白激酶，负责进一步调控信号传导，最终导致代谢重编程以获得耐受性。
