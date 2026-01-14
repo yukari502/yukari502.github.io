@@ -114,7 +114,9 @@ body {
     position: sticky;
     top: 72px;
     z-index: 100;
-    transition: width 0.3s ease;
+    transition: width 0.3s ease, padding 0.3s ease;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .sidebar-collapsed .sidebar {

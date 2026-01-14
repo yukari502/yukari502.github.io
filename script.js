@@ -701,6 +701,10 @@ document.addEventListener('DOMContentLoaded', () => {
                             });
                             return acc;
                         };
+
+                        // Update sidebar width based on expansion depth
+                        updateSidebarWidth();
+
                         const nodeArticles = collectArticles(node);
 
                         const articlesList = document.getElementById('articles-list');
@@ -732,6 +736,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     container.appendChild(group);
                 });
+            }
+
+            function updateSidebarWidth() {
+                const baseWidth = 250; // Base width in px
+                const step = 30; // Width increase per level in px
+
+                const expandedItems = document.querySelectorAll('.category-items:not(.collapsed)');
+                let maxExpandedLevel = 0;
+
+                expandedItems.forEach(item => {
+                    let level = 1; // Base level
+                    let parent = item.parentElement.closest('.category-items');
+                    while (parent) {
+                        level++;
+                        parent = parent.parentElement.closest('.category-items');
+                    }
+                    if (level > maxExpandedLevel) maxExpandedLevel = level;
+                });
+
+                const newWidth = baseWidth + (maxExpandedLevel * step);
+                const maxWidth = window.innerWidth * 0.5; // Cap at 50% viewport
+                // Ensure we don't shrink below base width if nothing is expanded
+                const finalWidth = Math.max(baseWidth, Math.min(newWidth, maxWidth));
+
+                document.documentElement.style.setProperty('--sidebar-width', `${finalWidth}px`);
             }
 
             renderChildren(categoryTree, categoriesList);
