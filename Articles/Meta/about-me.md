@@ -7,6 +7,10 @@ category: Meta
 
 # About Me
 
+<div align="center">
+  <img src="/pic/Meta/About%20me/image.png" alt="image" />
+</div>
+
 我在学习多种语言，未来可能会分享一些与这些领域相关的文章。希望大家能在这里找到感兴趣的内容。
 
 本网站作为记录，记录我所见所闻。
