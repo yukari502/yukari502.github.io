@@ -1,14 +1,58 @@
 [
   {
-    "title": "About Me",
-    "description": "About the author and the purpose of this website.",
-    "path": "Articles/Meta/about-me.md",
+    "title": "chapt 11.10 多肽",
+    "description": "chapt 11.10 多肽  一、 重点名词解释 肽类激素 (Peptide hormones, N): 一类由 5-60 个氨基酸残基组成的小分子信号多肽。它们作为受体配体（Ligand），在极低浓度下（如飞摩尔级别 femtomolar）即可调节植物的生长、发育及逆境响应。例如系统素（Syst...",
+    "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/chapt%2011.10%20%E5%A4%9A%E8%82%BD.md",
     "date": "2026-01-14",
     "year": "2026",
-    "category": "Meta",
-    "filename": "about-me.md",
-    "slug": "about-me",
-    "url": "/posts/meta/about-me.html"
+    "category": "植物生理学/后半",
+    "filename": "chapt 11.10 多肽.md",
+    "slug": "chapt-1110-多肽",
+    "url": "/posts/植物生理学后半/chapt-1110-多肽.html"
+  },
+  {
+    "title": "chapt 9.2 非生物胁迫第二部分",
+    "description": "chapt 9.2 非生物胁迫第二部分  一、 重点名词解释 湿害 (Moisture injury, N): 指由于土壤充满水分而缺乏空气（缺氧）导致植物受到的伤害,。 涝害 (Flooding injury, N): 指由于洪水导致植物整体或地上部分被淹没在水中而受到的伤害，本质上是缺氧导致的,...",
+    "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/chapt%209.2%20%E9%9D%9E%E7%94%9F%E7%89%A9%E8%83%81%E8%BF%AB%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86.md",
+    "date": "2026-01-14",
+    "year": "2026",
+    "category": "植物生理学/后半",
+    "filename": "chapt 9.2 非生物胁迫第二部分.md",
+    "slug": "chapt-92-非生物胁迫第二部分",
+    "url": "/posts/植物生理学后半/chapt-92-非生物胁迫第二部分.html"
+  },
+  {
+    "title": "chapt 11.9 水杨酸",
+    "description": "chapt 11.9 水杨酸  一、 重点名词解释 水杨酸 (Salicylic Acid, SA): 一种酚类植物激素，结构简单（邻羟基苯甲酸）。它在植物抵御活体营养型病原菌 (Biotrophs)（如病毒、白粉菌）和刺吸式昆虫的免疫反应中起核心作用，诱导系统获得性抗性 (SAR) 和 PR 基因...",
+    "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/chapt%2011.9%20%E6%B0%B4%E6%9D%A8%E9%85%B8.md",
+    "date": "2026-01-14",
+    "year": "2026",
+    "category": "植物生理学/后半",
+    "filename": "chapt 11.9 水杨酸.md",
+    "slug": "chapt-119-水杨酸",
+    "url": "/posts/植物生理学后半/chapt-119-水杨酸.html"
+  },
+  {
+    "title": "chapt 9.3 植物成花与生殖生理第二部分",
+    "description": "chapt 9.3 植物成花与生殖生理第二部分 这份材料主要涵盖了光周期诱导的机理（成花素与光敏色素）、成花调控的分子网络、花器官发育的ABC模型、植物的性别分化以及受精生理。 以下是详细的解答：  一、 重点名词解释 光周期诱导 (Photoperiod induction，N): 植物在适宜或不...",
+    "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/chapt%209.3%20%E6%A4%8D%E7%89%A9%E6%88%90%E8%8A%B1%E4%B8%8E%E7%94%9F%E6%AE%96%E7%94%9F%E7%90%86%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86.md",
+    "date": "2026-01-14",
+    "year": "2026",
+    "category": "植物生理学/后半",
+    "filename": "chapt 9.3 植物成花与生殖生理第二部分.md",
+    "slug": "chapt-93-植物成花与生殖生理第二部分",
+    "url": "/posts/植物生理学后半/chapt-93-植物成花与生殖生理第二部分.html"
+  },
+  {
+    "title": "chapt 12.1 植物生长发育基础",
+    "description": "chapt 12.1 植物生长发育基础  1. 植物生长与发育内容归纳 本章节主要阐述了植物从微观细胞层面到宏观个体层面的形态建成与发育机制。核心逻辑如下：    生命周期与形态建成：植物的生命周期涵盖了从种子萌发、营养生长、生殖生长、受精、胚胎发生到种子果实发育及衰老的过程。这一过程中结构和器官的...",
+    "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/chapt%2012.1%20%E6%A4%8D%E7%89%A9%E7%94%9F%E9%95%BF%E5%8F%91%E8%82%B2%E5%9F%BA%E7%A1%80.md",
+    "date": "2026-01-14",
+    "year": "2026",
+    "category": "植物生理学/后半",
+    "filename": "chapt 12.1 植物生长发育基础.md",
+    "slug": "chapt-121-植物生长发育基础",
+    "url": "/posts/植物生理学后半/chapt-121-植物生长发育基础.html"
   },
   {
     "title": "chapt 10 同化物运输与分配",
@@ -22,6 +66,17 @@
     "url": "/posts/植物生理学后半/chapt-10-同化物运输与分配.html"
   },
   {
+    "title": "chapt 9.1 非生物胁迫第一部分",
+    "description": "chapt 9.1 非生物胁迫第一部分 ---  一、 重点名词解释 根据您的要求，我将核心概念进行了规范化定义： - 逆境 (Stress): 物理学上指施加于物体的力，在生物学中指任何可能降低或不利地改变植物生长或发育的环境条件变化。例如：冻害、冷害、高温、干旱、洪水、盐渍、病虫害及空气污染等。...",
+    "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/chapt%209.1%20%E9%9D%9E%E7%94%9F%E7%89%A9%E8%83%81%E8%BF%AB%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86.md",
+    "date": "2026-01-14",
+    "year": "2026",
+    "category": "植物生理学/后半",
+    "filename": "chapt 9.1 非生物胁迫第一部分.md",
+    "slug": "chapt-91-非生物胁迫第一部分",
+    "url": "/posts/植物生理学后半/chapt-91-非生物胁迫第一部分.html"
+  },
+  {
     "title": "chapt 11.1 植物激素：生长素",
     "description": "chapt 11.1 植物激素：生长素  一、 重点名词解释 植物激素 (Plant hormones, N): 由特定器官或组织产生，但不局限于单一类型细胞的化学物质。它们的作用不一定是长距离的（也可以是原位作用），其效应不仅取决于浓度，还取决于靶标的敏感性。 极性运输 (Polar transp...",
     "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/chapt%2011.1%20%E6%A4%8D%E7%89%A9%E6%BF%80%E7%B4%A0%EF%BC%9A%E7%94%9F%E9%95%BF%E7%B4%A0.md",
@@ -33,15 +88,26 @@
     "url": "/posts/植物生理学后半/chapt-111-植物激素生长素.html"
   },
   {
-    "title": "chapt 11.10 多肽",
-    "description": "chapt 11.10 多肽  一、 重点名词解释 肽类激素 (Peptide hormones, N): 一类由 5-60 个氨基酸残基组成的小分子信号多肽。它们作为受体配体（Ligand），在极低浓度下（如飞摩尔级别 femtomolar）即可调节植物的生长、发育及逆境响应。例如系统素（Syst...",
-    "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/chapt%2011.10%20%E5%A4%9A%E8%82%BD.md",
+    "title": "chapt 9.4 植物生理果实的成熟与衰老",
+    "description": "chapt 9.4 植物生理果实的成熟与衰老  一、 重点名词解释 呼吸跃变 (Respiratory climacteric, N): 指某些肉质果实从发育停止到衰老过程中，呼吸速率突然由平稳转为急剧升高的生理现象。伴随着乙烯的自我催化合成出现。具有这种特征的果实称为跃变型果实，例如苹果（Appl...",
+    "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/chapt%209.4%20%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E6%9E%9C%E5%AE%9E%E7%9A%84%E6%88%90%E7%86%9F%E4%B8%8E%E8%A1%B0%E8%80%81.md",
     "date": "2026-01-14",
     "year": "2026",
     "category": "植物生理学/后半",
-    "filename": "chapt 11.10 多肽.md",
-    "slug": "chapt-1110-多肽",
-    "url": "/posts/植物生理学后半/chapt-1110-多肽.html"
+    "filename": "chapt 9.4 植物生理果实的成熟与衰老.md",
+    "slug": "chapt-94-植物生理果实的成熟与衰老",
+    "url": "/posts/植物生理学后半/chapt-94-植物生理果实的成熟与衰老.html"
+  },
+  {
+    "title": "chapt 12.2 胚胎发生与器官发生",
+    "description": "chapt 12.2 胚胎发生与器官发生 本章节主要阐述了植物从受精卵发育为胚胎，再通过种子萌发进入营养生长，最终通过复杂的信号调控实现从幼年期向成年期及生殖期转变的过程。  1. 植物胚胎发生与器官发生内容归纳 本章节核心逻辑围绕植物发育的时空模式和调控机制展开：    胚胎发生 (Embryog...",
+    "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/chapt%2012.2%20%E8%83%9A%E8%83%8E%E5%8F%91%E7%94%9F%E4%B8%8E%E5%99%A8%E5%AE%98%E5%8F%91%E7%94%9F.md",
+    "date": "2026-01-14",
+    "year": "2026",
+    "category": "植物生理学/后半",
+    "filename": "chapt 12.2 胚胎发生与器官发生.md",
+    "slug": "chapt-122-胚胎发生与器官发生",
+    "url": "/posts/植物生理学后半/chapt-122-胚胎发生与器官发生.html"
   },
   {
     "title": "chapt 11.2 赤霉素",
@@ -53,17 +119,6 @@
     "filename": "chapt 11.2 赤霉素.md",
     "slug": "chapt-112-赤霉素",
     "url": "/posts/植物生理学后半/chapt-112-赤霉素.html"
-  },
-  {
-    "title": "chapt 11.6 油菜素甾醇",
-    "description": "chapt 11.6 油菜素甾醇  一、 重点名词解释 油菜素甾醇 (Brassinosteroids, BRs): 一类多羟基甾醇类植物激素，结构上与动物类固醇激素（如雄性激素、蜕皮激素）相似。它是植物体内第六大类激素，主要功能包括促进细胞伸长和分裂、维管束分化、生殖发育以及抗逆等。 油菜素内酯 ...",
-    "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/chapt%2011.6%20%E6%B2%B9%E8%8F%9C%E7%B4%A0%E7%94%BE%E9%86%87.md",
-    "date": "2026-01-14",
-    "year": "2026",
-    "category": "植物生理学/后半",
-    "filename": "chapt 11.6 油菜素甾醇.md",
-    "slug": "chapt-116-油菜素甾醇",
-    "url": "/posts/植物生理学后半/chapt-116-油菜素甾醇.html"
   },
   {
     "title": "chapt 11.7 茉莉酸",
@@ -88,39 +143,6 @@
     "url": "/posts/植物生理学后半/chapt-118-独脚金内酯.html"
   },
   {
-    "title": "chapt 11.9 水杨酸",
-    "description": "chapt 11.9 水杨酸  一、 重点名词解释 水杨酸 (Salicylic Acid, SA): 一种酚类植物激素，结构简单（邻羟基苯甲酸）。它在植物抵御活体营养型病原菌 (Biotrophs)（如病毒、白粉菌）和刺吸式昆虫的免疫反应中起核心作用，诱导系统获得性抗性 (SAR) 和 PR 基因...",
-    "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/chapt%2011.9%20%E6%B0%B4%E6%9D%A8%E9%85%B8.md",
-    "date": "2026-01-14",
-    "year": "2026",
-    "category": "植物生理学/后半",
-    "filename": "chapt 11.9 水杨酸.md",
-    "slug": "chapt-119-水杨酸",
-    "url": "/posts/植物生理学后半/chapt-119-水杨酸.html"
-  },
-  {
-    "title": "chapt 12.1 植物生长发育基础",
-    "description": "chapt 12.1 植物生长发育基础  1. 植物生长与发育内容归纳 本章节主要阐述了植物从微观细胞层面到宏观个体层面的形态建成与发育机制。核心逻辑如下：    生命周期与形态建成：植物的生命周期涵盖了从种子萌发、营养生长、生殖生长、受精、胚胎发生到种子果实发育及衰老的过程。这一过程中结构和器官的...",
-    "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/chapt%2012.1%20%E6%A4%8D%E7%89%A9%E7%94%9F%E9%95%BF%E5%8F%91%E8%82%B2%E5%9F%BA%E7%A1%80.md",
-    "date": "2026-01-14",
-    "year": "2026",
-    "category": "植物生理学/后半",
-    "filename": "chapt 12.1 植物生长发育基础.md",
-    "slug": "chapt-121-植物生长发育基础",
-    "url": "/posts/植物生理学后半/chapt-121-植物生长发育基础.html"
-  },
-  {
-    "title": "chapt 12.2 胚胎发生与器官发生",
-    "description": "chapt 12.2 胚胎发生与器官发生 本章节主要阐述了植物从受精卵发育为胚胎，再通过种子萌发进入营养生长，最终通过复杂的信号调控实现从幼年期向成年期及生殖期转变的过程。  1. 植物胚胎发生与器官发生内容归纳 本章节核心逻辑围绕植物发育的时空模式和调控机制展开：    胚胎发生 (Embryog...",
-    "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/chapt%2012.2%20%E8%83%9A%E8%83%8E%E5%8F%91%E7%94%9F%E4%B8%8E%E5%99%A8%E5%AE%98%E5%8F%91%E7%94%9F.md",
-    "date": "2026-01-14",
-    "year": "2026",
-    "category": "植物生理学/后半",
-    "filename": "chapt 12.2 胚胎发生与器官发生.md",
-    "slug": "chapt-122-胚胎发生与器官发生",
-    "url": "/posts/植物生理学后半/chapt-122-胚胎发生与器官发生.html"
-  },
-  {
     "title": "chapt 12.3 光与植物生长",
     "description": "chapt 12.3 光与植物生长 本章节主要探讨了光作为一种环境信号，如何通过植物体内的不同光受体（Photoreceptors）被感知，并转化为下游信号传导，从而调控植物从种子萌发到形态建成的全过程。  1. 光与植物生长内容归纳 本章节的核心逻辑围绕“光作为信号”调控植物发育（光形态建成）展开...",
     "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/chapt%2012.3%20%E5%85%89%E4%B8%8E%E6%A4%8D%E7%89%A9%E7%94%9F%E9%95%BF.md",
@@ -143,26 +165,15 @@
     "url": "/posts/植物生理学后半/chapt-124-运动与昼夜节律.html"
   },
   {
-    "title": "chapt 9.1 非生物胁迫第一部分",
-    "description": "chapt 9.1 非生物胁迫第一部分 ---  一、 重点名词解释 根据您的要求，我将核心概念进行了规范化定义： - 逆境 (Stress): 物理学上指施加于物体的力，在生物学中指任何可能降低或不利地改变植物生长或发育的环境条件变化。例如：冻害、冷害、高温、干旱、洪水、盐渍、病虫害及空气污染等。...",
-    "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/chapt%209.1%20%E9%9D%9E%E7%94%9F%E7%89%A9%E8%83%81%E8%BF%AB%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86.md",
+    "title": "chapt 11.6 油菜素甾醇",
+    "description": "chapt 11.6 油菜素甾醇  一、 重点名词解释 油菜素甾醇 (Brassinosteroids, BRs): 一类多羟基甾醇类植物激素，结构上与动物类固醇激素（如雄性激素、蜕皮激素）相似。它是植物体内第六大类激素，主要功能包括促进细胞伸长和分裂、维管束分化、生殖发育以及抗逆等。 油菜素内酯 ...",
+    "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/chapt%2011.6%20%E6%B2%B9%E8%8F%9C%E7%B4%A0%E7%94%BE%E9%86%87.md",
     "date": "2026-01-14",
     "year": "2026",
     "category": "植物生理学/后半",
-    "filename": "chapt 9.1 非生物胁迫第一部分.md",
-    "slug": "chapt-91-非生物胁迫第一部分",
-    "url": "/posts/植物生理学后半/chapt-91-非生物胁迫第一部分.html"
-  },
-  {
-    "title": "chapt 9.2 非生物胁迫第二部分",
-    "description": "chapt 9.2 非生物胁迫第二部分  一、 重点名词解释 湿害 (Moisture injury, N): 指由于土壤充满水分而缺乏空气（缺氧）导致植物受到的伤害,。 涝害 (Flooding injury, N): 指由于洪水导致植物整体或地上部分被淹没在水中而受到的伤害，本质上是缺氧导致的,...",
-    "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/chapt%209.2%20%E9%9D%9E%E7%94%9F%E7%89%A9%E8%83%81%E8%BF%AB%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86.md",
-    "date": "2026-01-14",
-    "year": "2026",
-    "category": "植物生理学/后半",
-    "filename": "chapt 9.2 非生物胁迫第二部分.md",
-    "slug": "chapt-92-非生物胁迫第二部分",
-    "url": "/posts/植物生理学后半/chapt-92-非生物胁迫第二部分.html"
+    "filename": "chapt 11.6 油菜素甾醇.md",
+    "slug": "chapt-116-油菜素甾醇",
+    "url": "/posts/植物生理学后半/chapt-116-油菜素甾醇.html"
   },
   {
     "title": "chapt 9.3 成花诱导第一部分",
@@ -176,26 +187,15 @@
     "url": "/posts/植物生理学后半/chapt-93-成花诱导第一部分.html"
   },
   {
-    "title": "chapt 9.3 植物成花与生殖生理第二部分",
-    "description": "chapt 9.3 植物成花与生殖生理第二部分 这份材料主要涵盖了光周期诱导的机理（成花素与光敏色素）、成花调控的分子网络、花器官发育的ABC模型、植物的性别分化以及受精生理。 以下是详细的解答：  一、 重点名词解释 光周期诱导 (Photoperiod induction，N): 植物在适宜或不...",
-    "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/chapt%209.3%20%E6%A4%8D%E7%89%A9%E6%88%90%E8%8A%B1%E4%B8%8E%E7%94%9F%E6%AE%96%E7%94%9F%E7%90%86%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86.md",
+    "title": "About Me",
+    "description": "About the author and the purpose of this website.",
+    "path": "Articles/Meta/about-me.md",
     "date": "2026-01-14",
     "year": "2026",
-    "category": "植物生理学/后半",
-    "filename": "chapt 9.3 植物成花与生殖生理第二部分.md",
-    "slug": "chapt-93-植物成花与生殖生理第二部分",
-    "url": "/posts/植物生理学后半/chapt-93-植物成花与生殖生理第二部分.html"
-  },
-  {
-    "title": "chapt 9.4 植物生理果实的成熟与衰老",
-    "description": "chapt 9.4 植物生理果实的成熟与衰老  一、 重点名词解释 呼吸跃变 (Respiratory climacteric, N): 指某些肉质果实从发育停止到衰老过程中，呼吸速率突然由平稳转为急剧升高的生理现象。伴随着乙烯的自我催化合成出现。具有这种特征的果实称为跃变型果实，例如苹果（Appl...",
-    "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/chapt%209.4%20%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E6%9E%9C%E5%AE%9E%E7%9A%84%E6%88%90%E7%86%9F%E4%B8%8E%E8%A1%B0%E8%80%81.md",
-    "date": "2026-01-14",
-    "year": "2026",
-    "category": "植物生理学/后半",
-    "filename": "chapt 9.4 植物生理果实的成熟与衰老.md",
-    "slug": "chapt-94-植物生理果实的成熟与衰老",
-    "url": "/posts/植物生理学后半/chapt-94-植物生理果实的成熟与衰老.html"
+    "category": "Meta",
+    "filename": "about-me.md",
+    "slug": "about-me",
+    "url": "/posts/meta/about-me.html"
   },
   {
     "title": "自组织临界性：从物理直觉得到数学形式",
@@ -264,37 +264,15 @@
     "url": "/posts/植物生理学上半/植物矿质元素.html"
   },
   {
-    "title": "孟德尔遗传分析",
-    "description": "孟德尔遗传第一定律（分离规律） 基础概念     - 性状 (character)：生物个体在形态或生理上表现出的特征。     - 单位性状 (unit character)：把总体性状区分为一个个的具体单位。例如：籽粒颜色，花朵颜色。     - 相对性状 (contrasting charac...",
-    "path": "Articles/%E9%81%97%E4%BC%A0%E5%AD%A6/%E5%AD%9F%E5%BE%B7%E5%B0%94%E9%81%97%E4%BC%A0%E5%88%86%E6%9E%90.md",
+    "title": "细菌的遗传分析",
+    "description": "细菌的遗传分析  6.1 细菌的染色体及其复制  6.1.1 细菌染色体的包装（大肠杆菌）     - 大肠杆菌染色体的包装依赖于 RNA 分子的连接作用。     - 在 RNA 的作用下形成 40-50 个环。     - 每个环又形成超螺旋。     - 细菌的染色体以高度的组装形式存在。  ...",
+    "path": "Articles/%E9%81%97%E4%BC%A0%E5%AD%A6/%E7%BB%86%E8%8F%8C%E7%9A%84%E9%81%97%E4%BC%A0%E5%88%86%E6%9E%90.md",
     "date": "2025-11-23",
     "year": "2025",
     "category": "遗传学",
-    "filename": "孟德尔遗传分析.md",
-    "slug": "孟德尔遗传分析",
-    "url": "/posts/遗传学/孟德尔遗传分析.html"
-  },
-  {
-    "title": "性染色体与性别决定",
-    "description": "性染色体与性别决定  3.1.1 性别与性染色体 历史发现     - Hening (1891) 首次在半翅目昆虫的精母细胞中发现了 X, Y 染色体，但并未发现它们与性别相关。     - Meclcrus (1902) 首次认为 X 染色体与性别有关。     - Wilson 等 (1905...",
-    "path": "Articles/%E9%81%97%E4%BC%A0%E5%AD%A6/%E6%80%A7%E6%9F%93%E8%89%B2%E4%BD%93%E4%B8%8E%E6%80%A7%E5%88%AB%E5%86%B3%E5%AE%9A.md",
-    "date": "2025-11-23",
-    "year": "2025",
-    "category": "遗传学",
-    "filename": "性染色体与性别决定.md",
-    "slug": "性染色体与性别决定",
-    "url": "/posts/遗传学/性染色体与性别决定.html"
-  },
-  {
-    "title": "数量性状的遗传分析",
-    "description": "数量性状的遗传分析  5.1 数量性状及其特性  5.1.1 质量性状与数量性状     - 质量性状 (discrete trait)：指同一种相对性状的不同表现型之间不存在连续性的数量变化，只呈现质的变化的性状。它们在群体内的分布是不连续的。杂交后代的个体可明确分组。质量性状的遗传可以比较容易地...",
-    "path": "Articles/%E9%81%97%E4%BC%A0%E5%AD%A6/%E6%95%B0%E9%87%8F%E6%80%A7%E7%8A%B6%E7%9A%84%E9%81%97%E4%BC%A0%E5%88%86%E6%9E%90.md",
-    "date": "2025-11-23",
-    "year": "2025",
-    "category": "遗传学",
-    "filename": "数量性状的遗传分析.md",
-    "slug": "数量性状的遗传分析",
-    "url": "/posts/遗传学/数量性状的遗传分析.html"
+    "filename": "细菌的遗传分析.md",
+    "slug": "细菌的遗传分析",
+    "url": "/posts/遗传学/细菌的遗传分析.html"
   },
   {
     "title": "真核生物的遗传重组",
@@ -308,15 +286,37 @@
     "url": "/posts/遗传学/真核生物的遗传分析.html"
   },
   {
-    "title": "细菌的遗传分析",
-    "description": "细菌的遗传分析  6.1 细菌的染色体及其复制  6.1.1 细菌染色体的包装（大肠杆菌）     - 大肠杆菌染色体的包装依赖于 RNA 分子的连接作用。     - 在 RNA 的作用下形成 40-50 个环。     - 每个环又形成超螺旋。     - 细菌的染色体以高度的组装形式存在。  ...",
-    "path": "Articles/%E9%81%97%E4%BC%A0%E5%AD%A6/%E7%BB%86%E8%8F%8C%E7%9A%84%E9%81%97%E4%BC%A0%E5%88%86%E6%9E%90.md",
+    "title": "数量性状的遗传分析",
+    "description": "数量性状的遗传分析  5.1 数量性状及其特性  5.1.1 质量性状与数量性状     - 质量性状 (discrete trait)：指同一种相对性状的不同表现型之间不存在连续性的数量变化，只呈现质的变化的性状。它们在群体内的分布是不连续的。杂交后代的个体可明确分组。质量性状的遗传可以比较容易地...",
+    "path": "Articles/%E9%81%97%E4%BC%A0%E5%AD%A6/%E6%95%B0%E9%87%8F%E6%80%A7%E7%8A%B6%E7%9A%84%E9%81%97%E4%BC%A0%E5%88%86%E6%9E%90.md",
     "date": "2025-11-23",
     "year": "2025",
     "category": "遗传学",
-    "filename": "细菌的遗传分析.md",
-    "slug": "细菌的遗传分析",
-    "url": "/posts/遗传学/细菌的遗传分析.html"
+    "filename": "数量性状的遗传分析.md",
+    "slug": "数量性状的遗传分析",
+    "url": "/posts/遗传学/数量性状的遗传分析.html"
+  },
+  {
+    "title": "性染色体与性别决定",
+    "description": "性染色体与性别决定  3.1.1 性别与性染色体 历史发现     - Hening (1891) 首次在半翅目昆虫的精母细胞中发现了 X, Y 染色体，但并未发现它们与性别相关。     - Meclcrus (1902) 首次认为 X 染色体与性别有关。     - Wilson 等 (1905...",
+    "path": "Articles/%E9%81%97%E4%BC%A0%E5%AD%A6/%E6%80%A7%E6%9F%93%E8%89%B2%E4%BD%93%E4%B8%8E%E6%80%A7%E5%88%AB%E5%86%B3%E5%AE%9A.md",
+    "date": "2025-11-23",
+    "year": "2025",
+    "category": "遗传学",
+    "filename": "性染色体与性别决定.md",
+    "slug": "性染色体与性别决定",
+    "url": "/posts/遗传学/性染色体与性别决定.html"
+  },
+  {
+    "title": "孟德尔遗传分析",
+    "description": "孟德尔遗传第一定律（分离规律） 基础概念     - 性状 (character)：生物个体在形态或生理上表现出的特征。     - 单位性状 (unit character)：把总体性状区分为一个个的具体单位。例如：籽粒颜色，花朵颜色。     - 相对性状 (contrasting charac...",
+    "path": "Articles/%E9%81%97%E4%BC%A0%E5%AD%A6/%E5%AD%9F%E5%BE%B7%E5%B0%94%E9%81%97%E4%BC%A0%E5%88%86%E6%9E%90.md",
+    "date": "2025-11-23",
+    "year": "2025",
+    "category": "遗传学",
+    "filename": "孟德尔遗传分析.md",
+    "slug": "孟德尔遗传分析",
+    "url": "/posts/遗传学/孟德尔遗传分析.html"
   },
   {
     "title": "连锁遗传分析",
@@ -330,26 +330,26 @@
     "url": "/posts/遗传学/连锁遗传分析.html"
   },
   {
-    "title": "本网站结构与技术文档",
-    "description": "本网站结构与技术文档 本文档详细描述 Yukari502.github.io 的完整架构、工作流、核心组件及维护指南。 ---  📋 目录 1. 项目概述(1-项目概述) 2. 技术栈(2-技术栈) 3. 目录结构(3-目录结构) 4. 工作流程(4-工作流程) 5. 核心脚本与配置详解(5-核心脚...",
-    "path": "Articles/Meta/%E6%9C%AC%E7%BD%91%E7%AB%99%E7%BB%93%E6%9E%84%E4%B8%8E%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3.md",
+    "title": "水与植物细胞",
+    "description": "水与植物细胞 本章的重点和难点在于细胞吸水的方式和机制，以及水势的概念。内容涵盖了水的生理生态功能、存在形式、理化性质、细胞水分关系及测定方法。  1. 水的生理生态功能与存在形式  1.1 水的生理生态功能 水在植物生命活动中具有多重重要意义：  原生质的主要组成部分（占 70% 至 90%）。 ...",
+    "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E4%B8%8A%E5%8D%8A/%E6%B0%B4%E4%B8%8E%E6%A4%8D%E7%89%A9%E7%BB%86%E8%83%9E.md",
     "date": "2025-11-22",
     "year": "2025",
-    "category": "Meta",
-    "filename": "本网站结构与技术文档.md",
-    "slug": "本网站结构与技术文档",
-    "url": "/posts/meta/本网站结构与技术文档.html"
+    "category": "植物生理学/上半",
+    "filename": "水与植物细胞.md",
+    "slug": "水与植物细胞",
+    "url": "/posts/植物生理学上半/水与植物细胞.html"
   },
   {
-    "title": "Markdown 语法学习",
-    "description": "Markdown 语法学习 这是一个 Markdown 语法学习文档  1. 多级标题 Markdown 支持六级标题，通过在行首添加不同数量的  符号来表示。  1.1 三级标题示例 markdown  这是一个三级标题  1.1.1 四级标题示例 markdown  这是一个四级标题  1.1....",
-    "path": "Articles/%E4%BB%80%E4%B9%88%E9%83%BD%E6%83%B3%E5%AD%A6%E4%B8%80%E7%82%B9/Markdown%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0.md",
+    "title": "水分代谢",
+    "description": "水分代谢 本章主要涵盖水在植物体内的吸收 (Absorption)、运输 (Transportation) 和散失 (Lost) 三个方面，重点探讨根系吸水、木质部运输和气孔运动的机理。  1. 水分吸收 (Sec 1 Water absorption)  1.1 土壤水的形态与性质 根据物理状态和...",
+    "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E4%B8%8A%E5%8D%8A/%E6%B0%B4%E5%88%86%E4%BB%A3%E8%B0%A2.md",
     "date": "2025-11-22",
     "year": "2025",
-    "category": "什么都想学一点",
-    "filename": "Markdown语法学习.md",
-    "slug": "markdown语法学习",
-    "url": "/posts/什么都想学一点/markdown语法学习.html"
+    "category": "植物生理学/上半",
+    "filename": "水分代谢.md",
+    "slug": "水分代谢",
+    "url": "/posts/植物生理学上半/水分代谢.html"
   },
   {
     "title": "光合作用",
@@ -374,26 +374,26 @@
     "url": "/posts/植物生理学上半/植物呼吸作用.html"
   },
   {
-    "title": "水与植物细胞",
-    "description": "水与植物细胞 本章的重点和难点在于细胞吸水的方式和机制，以及水势的概念。内容涵盖了水的生理生态功能、存在形式、理化性质、细胞水分关系及测定方法。  1. 水的生理生态功能与存在形式  1.1 水的生理生态功能 水在植物生命活动中具有多重重要意义：  原生质的主要组成部分（占 70% 至 90%）。 ...",
-    "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E4%B8%8A%E5%8D%8A/%E6%B0%B4%E4%B8%8E%E6%A4%8D%E7%89%A9%E7%BB%86%E8%83%9E.md",
+    "title": "Markdown 语法学习",
+    "description": "Markdown 语法学习 这是一个 Markdown 语法学习文档  1. 多级标题 Markdown 支持六级标题，通过在行首添加不同数量的  符号来表示。  1.1 三级标题示例 markdown  这是一个三级标题  1.1.1 四级标题示例 markdown  这是一个四级标题  1.1....",
+    "path": "Articles/%E4%BB%80%E4%B9%88%E9%83%BD%E6%83%B3%E5%AD%A6%E4%B8%80%E7%82%B9/Markdown%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0.md",
     "date": "2025-11-22",
     "year": "2025",
-    "category": "植物生理学/上半",
-    "filename": "水与植物细胞.md",
-    "slug": "水与植物细胞",
-    "url": "/posts/植物生理学上半/水与植物细胞.html"
+    "category": "什么都想学一点",
+    "filename": "Markdown语法学习.md",
+    "slug": "markdown语法学习",
+    "url": "/posts/什么都想学一点/markdown语法学习.html"
   },
   {
-    "title": "水分代谢",
-    "description": "水分代谢 本章主要涵盖水在植物体内的吸收 (Absorption)、运输 (Transportation) 和散失 (Lost) 三个方面，重点探讨根系吸水、木质部运输和气孔运动的机理。  1. 水分吸收 (Sec 1 Water absorption)  1.1 土壤水的形态与性质 根据物理状态和...",
-    "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E4%B8%8A%E5%8D%8A/%E6%B0%B4%E5%88%86%E4%BB%A3%E8%B0%A2.md",
+    "title": "本网站结构与技术文档",
+    "description": "本网站结构与技术文档 本文档详细描述 Yukari502.github.io 的完整架构、工作流、核心组件及维护指南。 ---  📋 目录 1. 项目概述(1-项目概述) 2. 技术栈(2-技术栈) 3. 目录结构(3-目录结构) 4. 工作流程(4-工作流程) 5. 核心脚本与配置详解(5-核心脚...",
+    "path": "Articles/Meta/%E6%9C%AC%E7%BD%91%E7%AB%99%E7%BB%93%E6%9E%84%E4%B8%8E%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3.md",
     "date": "2025-11-22",
     "year": "2025",
-    "category": "植物生理学/上半",
-    "filename": "水分代谢.md",
-    "slug": "水分代谢",
-    "url": "/posts/植物生理学上半/水分代谢.html"
+    "category": "Meta",
+    "filename": "本网站结构与技术文档.md",
+    "slug": "本网站结构与技术文档",
+    "url": "/posts/meta/本网站结构与技术文档.html"
   },
   {
     "title": "Daily-Bio-Arxiv",
