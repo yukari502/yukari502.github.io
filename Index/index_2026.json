@@ -187,7 +187,18 @@
       "filename": "Chapter 12.2 Embryogenesis and Organogenesis.md",
       "slug": "chapter-122-embryogenesis-and-organogenesis",
       "url": "/posts/植物生理学后半/chapter-122-embryogenesis-and-organogenesis.html"
+    },
+    {
+      "title": "About Me",
+      "description": "About the author and the purpose of this website.",
+      "path": "Articles/Meta/about-me.md",
+      "date": "2026-01-14",
+      "year": "2026",
+      "category": "Meta",
+      "filename": "about-me.md",
+      "slug": "about-me",
+      "url": "/posts/meta/about-me.html"
     }
   ],
-  "count": 17
+  "count": 18
 }
