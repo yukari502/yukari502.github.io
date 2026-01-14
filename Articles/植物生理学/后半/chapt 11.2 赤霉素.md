@@ -1,4 +1,4 @@
-# Chapter 11-2 赤霉素 (Gibberellins)
+# chapt 11.2 赤霉素
 
 ### 一、 重点名词解释
 

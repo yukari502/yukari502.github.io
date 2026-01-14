@@ -1,4 +1,4 @@
-# Stress Physiology 第二部分
+# chapt 9.2 非生物胁迫第二部分
 
 ### 一、 重点名词解释
 

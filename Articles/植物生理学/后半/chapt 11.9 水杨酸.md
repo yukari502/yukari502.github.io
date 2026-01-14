@@ -1,4 +1,4 @@
-# Chapter 11.9 水杨酸 (Salicylates SA)
+# chapt 11.9 水杨酸
 
 ### 一、 重点名词解释
 

@@ -1,4 +1,4 @@
-# Chapter 11-6 油菜素甾醇 (Brassinosteroids)
+# chapt 11.6 油菜素甾醇
 
 ### 一、 重点名词解释
 

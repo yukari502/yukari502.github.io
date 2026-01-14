@@ -1,4 +1,4 @@
-# Chapter 11-8 独脚金内酯 (Strigolactones)
+# chapt 11.8 独脚金内酯
 
 ### 一、 重点名词解释
 

@@ -1,4 +1,4 @@
-# Chapter 11-7 茉莉酸 (Jasmonates)
+# chapt 11.7 茉莉酸
 
 ## 一、 重点名词解释
 
