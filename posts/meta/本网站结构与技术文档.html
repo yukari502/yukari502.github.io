@@ -8,7 +8,7 @@
     <meta name="keywords" content="Meta, 本网站结构与技术文档">
     <meta name="author" content="Yukari502">
     <meta name="article-slug" content="本网站结构与技术文档">
-    <meta name="root-path" content="../../">
+    <meta name="root-path" content="..\../">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
@@ -64,12 +64,12 @@
     </script>
 
     <!-- Custom Styles -->
-    <link rel="stylesheet" href="../../style.css">
-    <link rel="icon" href="../../ico/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="..\../style.css">
+    <link rel="icon" href="..\../ico/favicon.ico" type="image/x-icon">
 
     <style>
         .article-page {
-            max-width: 900px;
+            max-width: 1150px;
             margin: 0 auto;
             padding: 2rem;
         }
@@ -146,12 +146,12 @@
             opacity: 0.8;
         }
     </style>
-    <meta name="build-hash" content="2ea82f06bd5becb35fa987c768c4e4f6">
+    <meta name="build-hash" content="79e0f87e4fc0570a4f9681959d4608a6">
 </head>
 
 <body>
     <div class="article-page">
-        <a href="../../" class="back-link">
+        <a href="..\../" class="back-link">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="19" y1="12" x2="5" y2="12"></line>
@@ -503,7 +503,7 @@ def generate_article_html(article, template_content, base_url, output_dir):
 | `{CATEGORY}` | `article['category']` | "Uncategorized" |
 | `{CONTENT}` | 文件内容（转义后） | Markdown 源码 |
 | `本网站结构与技术文档` | `article['slug']` | "daily-bio-arxiv" |
-| `../../` | 计算的相对路径 | "../../" |
+| `..\../` | 计算的相对路径 | "../../" |
 
 #### 关键逻辑
 
@@ -998,7 +998,7 @@ git push origin main --force
         </footer>
     </div>
 
-    <script src="../../script.js"></script>
+    <script src="..\../script.js"></script>
 </body>
 
 </html>
