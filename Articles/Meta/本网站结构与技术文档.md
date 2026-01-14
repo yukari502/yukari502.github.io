@@ -89,7 +89,6 @@
 │
 ├── generate_articles_json.py          # [构建脚本] 步骤1：解析 Markdown，生成索引
 ├── generate_article_pages.py          # [构建脚本] 步骤2：生成 HTML 页面
-├── generate_sitemap.py                # [构建脚本] 步骤3：生成 sitemap.xml
 ├── cleanup_posts.py                   # [维护脚本] 清理已删除文章的孤立HTML文件
 │
 ├── article-template.html              # [模板] 文章页面的 HTML 模板
@@ -98,7 +97,7 @@
 ├── style.css                          # [样式] 全局样式表
 │
 ├── .github/workflows/static.yml       # [CI/CD] GitHub Actions 配置
-├── sitemap.xml                        # [SEO] 网站地图
+├── sitemap.xml                        # [SEO] 网站地图 (GitHub Action 自动生成)
 ├── pinned-articles.json               # [配置] 置顶文章列表
 └── PROJECT_TOPOLOGY.md                # [文档] 本文档
 ```
@@ -157,7 +156,7 @@ graph TD
     C --> D[安装 Python 依赖]
     D --> E[运行 generate_articles_json.py]
     E --> F[运行 generate_article_pages.py]
-    F --> G[运行 generate_sitemap.py]
+    F --> G[运行 generate_sitemap (Action)]
     G --> J[运行 cleanup_posts.py]
     J --> H[提交生成的文件]
     H --> I[部署到 GitHub Pages]
@@ -181,9 +180,9 @@ graph TD
    - 替换模板中的占位符（`{TITLE}`, `{CONTENT}` 等）
    - 输出静态 HTML 到 `posts/` 目录
 
-4. **生成 Sitemap** (`generate_sitemap.py`)
-   - 收集所有文章 URL
-   - 生成 `sitemap.xml`
+4. **生成 Sitemap** (GitHub Action)
+   - 使用 `cicirello/generate-sitemap@v1` Action
+   - 自动扫描生成的文件并创建 `sitemap.xml`
 
 5. **部署**
    - 提交生成的文件到 Git
