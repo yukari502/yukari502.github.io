@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Stress Physiology 第二部分  一、 重点名词解释 湿害 (Moisture injury, N): 指由于土壤充满水分而缺乏空气（缺氧）导致植物受到的伤害,。 涝害 (Flooding injury, N): 指由于洪水导致植物整体或地上部分被淹没在水中而受到的伤害，本质上是缺氧导...">
+    <meta name="keywords" content="植物生理学, Stress Physiology 非生物胁迫第二部分">
+    <meta name="author" content="Yukari502">
+    <meta name="article-slug" content="stress-physiology-非生物胁迫第二部分">
+    <meta name="root-path" content="../../">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://yukari502.github.io/posts/植物生理学/stress-physiology-非生物胁迫第二部分.html">
+    <meta property="og:title" content="Stress Physiology 非生物胁迫第二部分">
+    <meta property="og:description" content="Stress Physiology 第二部分  一、 重点名词解释 湿害 (Moisture injury, N): 指由于土壤充满水分而缺乏空气（缺氧）导致植物受到的伤害,。 涝害 (Flooding injury, N): 指由于洪水导致植物整体或地上部分被淹没在水中而受到的伤害，本质上是缺氧导...">
+    <meta property="og:site_name" content="Digital Garden">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yukari502.github.io/posts/植物生理学/stress-physiology-非生物胁迫第二部分.html">
+    <meta property="twitter:title" content="Stress Physiology 非生物胁迫第二部分">
+    <meta property="twitter:description" content="Stress Physiology 第二部分  一、 重点名词解释 湿害 (Moisture injury, N): 指由于土壤充满水分而缺乏空气（缺氧）导致植物受到的伤害,。 涝害 (Flooding injury, N): 指由于洪水导致植物整体或地上部分被淹没在水中而受到的伤害，本质上是缺氧导...">
+
+    <title>Stress Physiology 非生物胁迫第二部分 - D.RAY</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- Mermaid.js for diagrams and flowcharts -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({
+            startOnLoad: false,
+            theme: 'dark',
+            themeVariables: {
+                primaryColor: '#8b5cf6',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#7c3aed',
+                lineColor: '#a78bfa',
+                secondaryColor: '#6d28d9',
+                tertiaryColor: '#5b21b6'
+            }
+        });
+        window.mermaid = mermaid;
+    </script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" href="../../ico/favicon.ico" type="image/x-icon">
+
+    <style>
+        .article-page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .article-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            transition: transform 0.2s;
+        }
+
+        .back-link:hover {
+            transform: translateX(-4px);
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .article-page {
+                padding: 1rem;
+            }
+
+            .article-title {
+                font-size: 2rem;
+            }
+        }
+
+        .article-footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .article-footer .disclaimer {
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+            font-style: italic;
+            opacity: 0.8;
+        }
+    </style>
+    <meta name="build-hash" content="dc04984b324e7a30c7b73ec3befd82e1">
+</head>
+
+<body>
+    <div class="article-page">
+        <a href="../../" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            返回主页
+        </a>
+
+        <div class="article-header">
+            <h1 class="article-title">Stress Physiology 非生物胁迫第二部分</h1>
+            <div class="article-meta">
+                <span>📅 2026-01-14</span>
+                <span>📂 植物生理学</span>
+            </div>
+        </div>
+
+        <article class="article-content markdown-body" id="article-content">
+            <!-- Content will be rendered here -->
+        </article>
+
+        <!-- Store markdown content in a script tag -->
+        <script type="text/markdown" id="markdown-source">
+Stress Physiology 第二部分
+
+### 一、 重点名词解释
+
+**湿害 (Moisture injury, N):** 指由于土壤充满水分而缺乏空气（缺氧）导致植物受到的伤害,。
+
+**涝害 (Flooding injury, N):** 指由于洪水导致植物整体或地上部分被淹没在水中而受到的伤害，本质上是缺氧导致的,。
+
+**冷害 (Chilling injury, N):** 热带或亚热带植物在冰点以上（>0°C）的低温下受到的伤害。例如玉米、棉花苗期在10°C左右受害，香蕉在13°C受害,。
+
+**冻害 (Freezing/Frost injury, N):** 由于冰点以下（<0°C）的低温伴随结冰现象对植物造成的伤害,。
+
+**胞间结冰 (Intercellular freezing, N):** 当环境温度缓慢下降时，冰晶首先在细胞间隙形成。这会导致原生质脱水和机械损伤,。
+
+**胞内结冰 (Intracellular freezing, N):** 当环境温度骤降时，细胞间隙和细胞内同时结冰。这对生物膜、细胞器和细胞区室化造成直接且严重的不可逆机械损伤，通常导致细胞死亡,。
+
+**抗寒锻炼 (Cold hardening/acclimation, N):** 植物在冬季来临前（或人工低温处理下）发生的一系列生理生化变化，使其抗寒能力逐渐增强的过程。例如桦树经锻炼后可耐受-40°C低温,。
+
+**热激蛋白 (Heat shock proteins, HSPs):** 生物体（从细菌到人类）在高温下新合成的一组蛋白质，具有分子伴侣功能，能保护或修复受热损伤的蛋白质、核酸和生物膜,。
+
+**生理干旱 (Physiological drought, N):** 指由于土壤溶液浓度过高（如盐胁迫），导致渗透势降低，植物根系难以吸水甚至水分外渗，造成植物体内缺水的现象,。
+
+**盐生植物 (Halophytes, N):** 能够生长在高盐土壤中的植物。例如碱蓬 (*Suaeda maritima*) 和大米草 (*Spartina* sp.),。
+
+---
+
+### 二、 植物生理学重点内容归纳
+
+**1. 水分胁迫：涝害 (Flood Stress)**
+*   **伤害机理：** 核心是**缺氧 (O2 deficiency)**。缺氧导致有氧呼吸受抑，无氧呼吸增强，产生酒精、乙醛、乳酸等有毒物质；同时导致ATP合成减少，营养吸收受阻（N, P, K, Ca流失），并引起激素失衡（IAA, CTK下降，乙烯增加导致偏上生长和茎中空）,。
+*   **耐受机制：** 形态上形成**通气组织 (Aerenchyma)**；代谢上琥珀酸脱氢酶活性增加，或利用磷酸戊糖途径 (PPP) 代替糖酵解 (EMP) 以减少酒精产生,。
+
+**2. 温度胁迫：低温 (Temperature Stress: Low Temp)**
+*   **冷害 (Chilling)：** 主要发生在热带/亚热带植物。
+    *   **膜相变：** 膜脂由**液晶态 (liquid-crystalline)** 转变为 **凝胶态 (solid-gel)**，导致膜收缩、破裂，透性增加，电解质渗漏,。
+    *   **代谢紊乱：** 呼吸速率先升后降，光合速率降低，活性氧积累,。
+*   **冻害 (Freezing)：**
+    *   **胞间结冰：** 导致原生质脱水（溶质势降低导致水分外流）和冰晶机械挤压。
+    *   **胞内结冰：** 致命的机械损伤,。
+    *   **伤害假说：** **膜伤害假说**（膜脂被拉破，透性丧失）和 **巯基假说**（蛋白质脱水导致-SH氧化形成二硫键-S-S-，复水时结构无法恢复）,。
+*   **适应性 (Hardening)：** 锻炼期间，植物含水量（特别是自由水）下降，呼吸减弱，ABA增加，积累保护性物质（可溶性糖、脯氨酸Pro、抗冻蛋白AFP、LEA蛋白等）,。
+
+**3. 温度胁迫：高温 (Temperature Stress: High Temp)**
+*   **直接伤害：** 蛋白质变性，**膜脂液化 (Lipid liquefaction)**（与低温相反，流动性过高导致结构解体）,。
+*   **间接伤害：** **饥饿 (Starvation)**（呼吸作用强于光合作用，Pn < Rd），毒性物质积累（氨、醛）,。
+*   **抗热机制：** 积累饱和脂肪酸以降低膜流动性，合成热激蛋白 (HSP)，CAM植物通过有机酸代谢适应,。
+
+**4. 盐胁迫 (Salt Stress)**
+*   **伤害机理：** **生理干旱**、单盐毒害 (Na+, Cl-, SO42-)、代谢损伤（叶绿素和Rubisco下降，蛋白质降解）,。
+*   **抗盐类型：**
+    *   **拒盐植物 (Salt regulator):** 如红树林，根系不吸收盐分或通过盐腺排出。
+    *   **积盐植物 (Salt accumulator):** 将盐分积累在液泡中。
+    *   **耐盐非盐生植物:** 具有一定耐性但不如盐生植物,。
+
+**5. 病害抗性 (Disease Resistance)**
+*   **反应类型：** 抗病、感病、耐病。
+*   **抗性机制：** 形成保护性结构，**过敏性反应 (Hypersensitive response, HR)**，合成植保素 (Phytoalexins) 和病程相关蛋白 (PRs),。
+
+---
+
+### 三、 重点实验概述
+
+**1. 巯基假说 (Sulfhydryl group hypothesis) 的验证实验**
+*   **实验内容：** 检测植物组织在冷冻处理前后的蛋白质巯基 (-SH) 和二硫键 (-S-S-) 含量变化。
+*   **关键结果：**
+    *   冷冻后，组织内 -S-S- 增加，可溶性 -SH 减少。
+    *   抗冻植物中的 -S-S- 含量较少。
+    *   富含自由巯基（如谷胱甘肽）的植物抗冻性更强。
+    *   人工施用巯基试剂（如巯基乙醇）可提高植物抗低温能力。
+*   **结论：** 支持了蛋白质因脱水导致巯基氧化形成二硫键从而变性受损的假说,。
+
+**2. COLD1 介导的水稻低温感知 (Cold Sensing Mechanism)**
+*   **实验内容：** 比较籼稻 (Indica, *COLD1*<sup>ind</sup>) 和粳稻 (Japonica, *COLD1*<sup>jap</sup>) 在低温下的反应（基于图示）。
+*   **简要概述：** COLD1 是一个膜蛋白，与 G蛋白 (RGA1) 互作。在低温刺激下，粳稻中的 COLD1<sup>jap</sup> 能有效激活钙离子通道，导致 Ca2+ 内流进入细胞质，从而触发下游抗寒信号；而籼稻的 COLD1<sup>ind</sup> 变体在特定位点（Met187 vs Lys187）存在差异，无法有效触发此反应。这解释了粳稻比籼稻更耐寒的分子机制,。
+
+**3. DREB1A 转录因子的抗逆功能验证**
+*   **实验内容：** 将 *DREB1A* 基因转入植物，在冷冻、干旱和高盐条件下观察其生长情况。
+*   **关键结果：** 与野生型 (wt) 相比，转基因植株 (35S:DREB1A) 在冷冻、干旱和高盐胁迫下均表现出显著的存活优势和生长状态（保持绿色，未枯死）。
+*   **结论：** 单个胁迫诱导转录因子 (DREB1A) 的表达可以赋予植物对多种非生物胁迫（交叉耐受）的抗性,。
+
+---
+
+### 四、 问题回答 (Q&A)
+
+针对材料末尾提出的三个问题，基于全文内容回答如下：
+
+**Question 1: How does drought injury damage the plants in morphology and physiology? (干旱/缺水如何在形态和生理上伤害植物？)**
+*   **Answer:** 虽然本部分主要侧重第二部分，但根据“盐胁迫引起生理干旱”及“逆境的一般反应”部分可归纳：
+    *   **形态上：** 引起萎蔫、叶片卷曲、气孔关闭、生长受抑。
+    *   **生理上：** 膜系统受损导致电解质渗漏；代谢紊乱（合成减弱、分解增强）；水分亏缺导致光合作用下降；激素平衡改变（ABA增加）。(注：盐胁迫部分明确提到生理干旱机制导致代谢损伤, 及一般逆境反应,)。
+
+**Question 2: How does plant response to low temperature? (植物如何响应低温？)**
+*   **Answer:**
+    *   **主要伤害：** 膜脂相变（液晶态变凝胶态）、代谢失调（呼吸爆发后衰竭）、胞外或胞内结冰引起的机械损伤和脱水。
+    *   **适应性反应（锻炼）：** 降低自由水含量，增加束缚水；积累保护性物质（糖、脯氨酸、抗冻蛋白、LEA蛋白）；膜脂不饱和脂肪酸含量增加以维持流动性；ABA激素含量升高诱导休眠,,。
+
+**Question 3: Which of stresses make water potential decrease of plant leaf and why can they do it? (哪些胁迫会使植物叶片水势降低，为什么？)**
+*   **Answer:**
+    *   **盐胁迫 (Salt Stress):** 土壤中盐分过多降低了土壤水势，导致根系吸水困难甚至水分外流（生理干旱），进而导致叶片水势降低,。
+    *   **冻害 (Freezing Stress):** **胞间结冰**会降低细胞间隙的水势（冰的蒸汽压低于同温度下的液态水），导致细胞内的液态水向胞间移动（由高水势向低水势），造成原生质脱水，从而降低细胞水势,。
+    *   **干旱 (Drought):** (基于生理干旱概念) 物理缺水直接导致水势降低。
+        </script>
+
+        <footer class="article-footer">
+            <p>&copy; 2025 Yukari502. All rights reserved.</p>
+            <p class="disclaimer">Disclaimer: Portions of this content may be generated by AI. Please exercise
+                discretion and verify information independently.</p>
+        </footer>
+    </div>
+
+    <script src="../../script.js"></script>
+</body>
+
+</html>
