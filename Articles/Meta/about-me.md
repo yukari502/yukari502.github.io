@@ -8,7 +8,9 @@ category: Meta
 # About Me
 
 <div align="center">
-  <img src="/pic/Meta/About%20me/image.png" alt="image" />
+
+![image](/Pic/Meta/About%20me/image.png)
+
 </div>
 
 我在学习多种语言，未来可能会分享一些与这些领域相关的文章。希望大家能在这里找到感兴趣的内容。
