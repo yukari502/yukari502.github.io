@@ -301,6 +301,14 @@ body {
     border: 1px solid transparent;
 }
 
+.article-container {
+    max-width: 1200px;
+    /* Increased from default/implicit width */
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 1rem;
+}
+
 .pinned-item:hover {
     background-color: var(--bg-tertiary);
     border-color: var(--border-color);
@@ -332,9 +340,9 @@ body {
 .content-area {
     flex: 1;
     padding: 2rem;
-    max-width: 1400px;
     width: 100%;
     background-color: var(--bg-primary);
+    transition: all 0.3s ease;
 }
 
 /* Section Headers - Forum Filter Bar Style */
@@ -499,6 +507,50 @@ body {
     border-color: var(--accent-color);
     width: 250px;
     background-color: var(--bg-secondary);
+}
+
+/* Pagination Styles */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.pagination-btn {
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    min-width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border-color: var(--accent-color);
+}
+
+.pagination-btn.active {
+    background-color: var(--accent-color);
+    color: #fff;
+    /* Always white for active state contrast */
+    border-color: var(--accent-color);
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 /* Content Footer */
@@ -854,7 +906,6 @@ body {
 .articles-grid {
     grid-template-columns: 1fr;
 }
-}
 
 /* Mermaid Diagram Styles */
 .mermaid {
@@ -880,223 +931,18 @@ body {
 }
 
 
-/* Sidebar Toggle Handle (Door Handle Style) */
-.sidebar-toggle {
-    position: fixed;
-    top: 50%;
-    right: var(--sidebar-width);
-    /* Attached to the left edge of the right sidebar */
-    transform: translateY(-50%);
-    z-index: 1000;
-
-    width: 24px;
-    height: 48px;
-    background-color: var(--bg-primary);
-    border: 1px solid var(--border-color);
-    border-right: none;
-    /* Merge with sidebar */
-    border-radius: 8px 0 0 8px;
-    /* Rounded on the left */
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.05);
-
-    color: var(--text-secondary);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    /* Match sidebar transition */
-}
-
-.sidebar-toggle:hover {
-    background-color: var(--bg-secondary);
-    color: var(--accent-color);
-    width: 28px;
-    /* Slightly expand on hover */
-}
-
-.sidebar-toggle svg {
-    width: 16px;
-    height: 16px;
-    transition: transform 0.4s ease;
-}
-
-/* State: Sidebar Open (Default) */
-/* Icon points Right (>) indicating clicking will move it Right (Close) */
-.sidebar-toggle svg {
-    transform: rotate(0deg);
-}
-
-/* State: Sidebar Collapsed */
-body.sidebar-collapsed .sidebar-toggle {
-    right: 0;
-    /* Stick to the right edge of screen */
-    border-right: 1px solid var(--border-color);
-    /* Restore border */
-    border-radius: 8px 0 0 8px;
-    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Icon points Left (<) indicating clicking will move it Left (Open) */
-body.sidebar-collapsed .sidebar-toggle svg {
-    transform: rotate(180deg);
-}
-
-/* Sidebar Transition */
 .sidebar {
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    /* Ensure sidebar is on the right */
-    right: 0;
-    left: auto;
-    border-left: 1px solid var(--border-color);
+    left: 0;
+    right: auto;
+    border-right: 1px solid var(--border-color);
+    border-left: none;
 }
 
 body.sidebar-collapsed .sidebar {
-    transform: translateX(100%);
-    /* Move to the right, off-screen */
+    transform: translateX(-100%);
 }
 
-/* Content Area Adjustment */
 .content-area {
-    margin-right: var(--sidebar-width);
-    /* Default margin for right sidebar */
-    transition: margin-right 0.4s cubic-bezier(0.16, 1, 0.3, 1), max-width 0.4s ease;
-}
-
-body.sidebar-collapsed .content-area {
+    margin-left: 0;
     margin-right: 0;
-    /* Expand to fill space */
-    max-width: 100%;
-    /* Allow content to fill the screen */
-}
-
-/* Mobile adjustments */
-@media (max-width: 768px) {
-    .app-container {
-        flex-direction: column;
-    }
-
-    .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-        padding: 1rem;
-        border-left: none;
-        border-bottom: 1px solid var(--border-color);
-        right: auto;
-        left: auto;
-        transform: none !important;
-        /* Disable transition transforms */
-        display: flex;
-        flex-direction: column;
-        transition: max-height 0.4s ease, padding 0.4s ease;
-        overflow: hidden;
-    }
-
-    /* Mobile Sidebar Collapsed State */
-    /* When collapsed, we only show the header (Logo + Theme Toggle) */
-    /* We need to restrict height */
-
-    body.sidebar-collapsed .sidebar {
-        max-height: 70px;
-        /* Approx height of header */
-        padding-bottom: 0;
-        border-bottom: none;
-    }
-
-    body:not(.sidebar-collapsed) .sidebar {
-        max-height: 1000px;
-        /* Arbitrary large height */
-    }
-
-    .sidebar-header {
-        margin-bottom: 1rem;
-        flex-shrink: 0;
-    }
-
-    nav ul {
-        display: flex;
-        overflow-x: auto;
-        gap: 0.5rem;
-        padding-bottom: 0.5rem;
-    }
-
-    nav li {
-        margin-bottom: 0;
-    }
-
-    .nav-link {
-        white-space: nowrap;
-        padding: 0.5rem 0.75rem;
-        font-size: 0.9rem;
-    }
-
-    .sidebar-footer {
-        display: none;
-    }
-
-    /* Mobile Toggle Button - Bottom of Sidebar */
-    /* We need the toggle to be OUTSIDE the sidebar if sidebar collapses height. */
-    /* But HTML structure is: button, sidebar. */
-    /* We can use order in flexbox if container is flex column */
-
-    .app-container {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .sidebar {
-        order: 1;
-    }
-
-    .sidebar-toggle {
-        order: 2;
-        position: relative;
-        top: auto;
-        right: auto;
-        left: auto;
-        transform: none;
-        width: 100%;
-        height: 32px;
-        border-radius: 0;
-        border: none;
-        border-bottom: 1px solid var(--border-color);
-        background-color: var(--bg-primary);
-        color: var(--text-secondary);
-    }
-
-    .sidebar-toggle:hover {
-        width: 100%;
-        background-color: var(--bg-tertiary);
-    }
-
-    /* Rotate icon to point up/down */
-    .sidebar-toggle svg {
-        transform: rotate(90deg);
-        /* Point Down (Expand) ? */
-    }
-
-    /* If collapsed (default open logic inverted for mobile?) */
-    /* Let's stick to: Collapsed = Sidebar Small. Open = Sidebar Big. */
-
-    /* Collapsed: Icon points Down (Expand) */
-    body.sidebar-collapsed .sidebar-toggle svg {
-        transform: rotate(90deg);
-    }
-
-    /* Open: Icon points Up (Collapse) */
-    body:not(.sidebar-collapsed) .sidebar-toggle svg {
-        transform: rotate(-90deg);
-    }
-
-    .content-area {
-        order: 3;
-        margin-right: 0 !important;
-        padding: 2rem 1.5rem;
-    }
-
-    .hero h1 {
-        font-size: 2.5rem;
-    }
 }

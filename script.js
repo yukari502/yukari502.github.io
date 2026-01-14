@@ -231,10 +231,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+
         // State
         let allArticles = [];
-
-        // --- Navigation Logic ---
+        let currentPage = 1;
+        const ITEMS_PER_PAGE = 30;
+        let currentFilteredSet = []; // To track the current set of articles for pagination
         function navigateTo(targetId) {
             // Update Nav Links
             navLinks.forEach(link => {
@@ -265,13 +267,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
-                e.preventDefault();
                 const target = link.dataset.target;
+                if (!target) return; // Allow normal navigation for links without data-target
+
+                e.preventDefault();
 
                 // If clicking Home, reset the article list to show all
                 if (target === 'home') {
                     const articlesList = document.getElementById('articles-list');
                     if (articlesList && allArticles.length > 0) {
+                        currentPage = 1; // Reset to first page
                         renderArticles(allArticles, articlesList);
                         const header = document.querySelector('.section-header h2');
                         if (header) header.textContent = 'All Articles';
@@ -313,14 +318,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function renderArticles(articles, container) {
             container.innerHTML = '';
+            const paginationContainer = document.getElementById('pagination-container');
+            if (paginationContainer) paginationContainer.innerHTML = ''; // Clear pagination
+
+            // Update current set reference for pagination clicks
+            currentFilteredSet = articles;
 
             // Filter out internal meta articles like "About Me"
             const filteredArticles = articles.filter(a => a.title.toLowerCase() !== 'about me');
+
+            // Update global state for pagination re-renders
+            currentFilteredSet = articles; // Note: We should store the 'input' articles or the 'filtered' ones? 
+            // Better to store what was passed in, but the filter for "About Me" is intrinsic to rendering.
+            // Let's store the filtered set actually, so we don't re-filter on every page click.
+            // Wait, if we call renderArticles(currentFilteredSet) recursively, we might filter again.
+            // Let's separate the concern. renderArticles takes a set. If we pass the full list again, it filters again.
+            // To be safe: currentFilteredSet should trigger the *source* for the view.
+            currentFilteredSet = articles;
+
+            // Actually, let's optimize:
+            // The 'articles' arg passed to renderArticles is usually the result of a category filter or search.
+            // So we should save THAT as our working set.
+            // However, the internal "About Me" filter happens *inside*.
+            // If we paginate, we are just slicing.
+            // Let's refine the logic in the next block.
 
             if (filteredArticles.length === 0) {
                 container.innerHTML = '<p style="text-align: center; color: var(--text-secondary); padding: 2rem;">No topics found.</p>';
                 return;
             }
+
+            // Pagination Logic
+            const totalItems = filteredArticles.length;
+            const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
+
+            // Validate currentPage
+            if (currentPage < 1) currentPage = 1;
+            if (currentPage > totalPages) currentPage = totalPages;
+
+            const start = (currentPage - 1) * ITEMS_PER_PAGE;
+            const end = start + ITEMS_PER_PAGE;
+            const paginatedItems = filteredArticles.slice(start, end);
 
             // Add List Header if not already there (only once per render context)
             const header = document.createElement('div');
@@ -331,9 +369,100 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             container.appendChild(header);
 
-            filteredArticles.forEach(article => {
+            paginatedItems.forEach(article => {
                 container.appendChild(createArticleCard(article));
             });
+
+            // Render Pagination Controls
+            if (totalPages > 1 && paginationContainer) {
+                renderPagination(paginationContainer, totalPages);
+            }
+        }
+
+        function renderPagination(container, totalPages) {
+            container.innerHTML = '';
+
+            // Previous Button
+            const prevBtn = document.createElement('button');
+            prevBtn.className = 'pagination-btn';
+            prevBtn.innerHTML = '&lt;';
+            prevBtn.disabled = currentPage === 1;
+            prevBtn.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    const articlesList = document.getElementById('articles-list');
+                    // We need to re-render with the ORIGINAL filtered list context.
+                    // Ideally, renderArticles should know the current context or we re-trigger it.
+                    // For simplicity in this structure: we assume 'currentArticlesContext' holds the list we are viewing.
+                    // BUT renderArticles takes 'articles' as arg.
+                    // Strategy: We need to store the current working set of articles globally or re-pass it.
+                    // Let's use a global 'currentFilteredSet' state.
+                    renderArticles(currentFilteredSet, articlesList);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+            container.appendChild(prevBtn);
+
+            // Page Numbers
+            // Simple logic: Show all if <= 7 pages, else show start, end, and current window
+            // For now, let's implement a simple window: 1 ... current-1 current current+1 ... last
+
+            function createPageBtn(page) {
+                const btn = document.createElement('button');
+                btn.className = `pagination-btn ${currentPage === page ? 'active' : ''}`;
+                btn.textContent = page;
+                btn.addEventListener('click', () => {
+                    if (currentPage !== page) {
+                        currentPage = page;
+                        const articlesList = document.getElementById('articles-list');
+                        renderArticles(currentFilteredSet, articlesList);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                });
+                return btn;
+            }
+
+            // Always show first
+            container.appendChild(createPageBtn(1));
+
+            if (currentPage > 3) {
+                const span = document.createElement('span');
+                span.textContent = '...';
+                span.style.color = 'var(--text-secondary)';
+                container.appendChild(span);
+            }
+
+            for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) {
+                container.appendChild(createPageBtn(i));
+            }
+
+            if (currentPage < totalPages - 2) {
+                const span = document.createElement('span');
+                span.textContent = '...';
+                span.style.color = 'var(--text-secondary)';
+                container.appendChild(span);
+            }
+
+            // Always show last if > 1
+            if (totalPages > 1) {
+                container.appendChild(createPageBtn(totalPages));
+            }
+
+
+            // Next Button
+            const nextBtn = document.createElement('button');
+            nextBtn.className = 'pagination-btn';
+            nextBtn.innerHTML = '&gt;';
+            nextBtn.disabled = currentPage === totalPages;
+            nextBtn.addEventListener('click', () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    const articlesList = document.getElementById('articles-list');
+                    renderArticles(currentFilteredSet, articlesList);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+            container.appendChild(nextBtn);
         }
 
         // --- Data Fetching ---
@@ -406,6 +535,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     article.title.toLowerCase().includes(query) ||
                     (article.description && article.description.toLowerCase().includes(query))
                 );
+                currentPage = 1; // Reset to first page on search
                 renderArticles(filtered, articlesList);
             });
         }
