@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Chapter 11-2 赤霉素 (Gibberellins)  一、 重点名词解释 赤霉素 (Gibberellins, GAs): 一类四环二萜类植物激素，最早在研究水稻“恶苗病”时由致病真菌（Gibberella fujikuroi）分泌物中发现。具有促进茎伸长、诱导种子萌发、促进开花和果实发...">
+    <meta name="keywords" content="植物生理学, Chapter 11-2 赤霉素 (Gibberellins)">
+    <meta name="author" content="Yukari502">
+    <meta name="article-slug" content="chapter-11-2-赤霉素-gibberellins">
+    <meta name="root-path" content="../../">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://yukari502.github.io/posts/植物生理学/chapter-11-2-赤霉素-gibberellins.html">
+    <meta property="og:title" content="Chapter 11-2 赤霉素 (Gibberellins)">
+    <meta property="og:description" content="Chapter 11-2 赤霉素 (Gibberellins)  一、 重点名词解释 赤霉素 (Gibberellins, GAs): 一类四环二萜类植物激素，最早在研究水稻“恶苗病”时由致病真菌（Gibberella fujikuroi）分泌物中发现。具有促进茎伸长、诱导种子萌发、促进开花和果实发...">
+    <meta property="og:site_name" content="Digital Garden">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yukari502.github.io/posts/植物生理学/chapter-11-2-赤霉素-gibberellins.html">
+    <meta property="twitter:title" content="Chapter 11-2 赤霉素 (Gibberellins)">
+    <meta property="twitter:description" content="Chapter 11-2 赤霉素 (Gibberellins)  一、 重点名词解释 赤霉素 (Gibberellins, GAs): 一类四环二萜类植物激素，最早在研究水稻“恶苗病”时由致病真菌（Gibberella fujikuroi）分泌物中发现。具有促进茎伸长、诱导种子萌发、促进开花和果实发...">
+
+    <title>Chapter 11-2 赤霉素 (Gibberellins) - D.RAY</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- Mermaid.js for diagrams and flowcharts -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({
+            startOnLoad: false,
+            theme: 'dark',
+            themeVariables: {
+                primaryColor: '#8b5cf6',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#7c3aed',
+                lineColor: '#a78bfa',
+                secondaryColor: '#6d28d9',
+                tertiaryColor: '#5b21b6'
+            }
+        });
+        window.mermaid = mermaid;
+    </script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" href="../../ico/favicon.ico" type="image/x-icon">
+
+    <style>
+        .article-page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .article-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            transition: transform 0.2s;
+        }
+
+        .back-link:hover {
+            transform: translateX(-4px);
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .article-page {
+                padding: 1rem;
+            }
+
+            .article-title {
+                font-size: 2rem;
+            }
+        }
+
+        .article-footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .article-footer .disclaimer {
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+            font-style: italic;
+            opacity: 0.8;
+        }
+    </style>
+    <meta name="build-hash" content="845209d2253229a8ba1e9cd7c75f3a66">
+</head>
+
+<body>
+    <div class="article-page">
+        <a href="../../" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            返回主页
+        </a>
+
+        <div class="article-header">
+            <h1 class="article-title">Chapter 11-2 赤霉素 (Gibberellins)</h1>
+            <div class="article-meta">
+                <span>📅 2026-01-14</span>
+                <span>📂 植物生理学</span>
+            </div>
+        </div>
+
+        <article class="article-content markdown-body" id="article-content">
+            <!-- Content will be rendered here -->
+        </article>
+
+        <!-- Store markdown content in a script tag -->
+        <script type="text/markdown" id="markdown-source">
+# Chapter 11-2 赤霉素 (Gibberellins)
+
+### 一、 重点名词解释
+
+**赤霉素 (Gibberellins, GAs):** 一类四环二萜类植物激素，最早在研究水稻“恶苗病”时由致病真菌（*Gibberella fujikuroi*）分泌物中发现。具有促进茎伸长、诱导种子萌发、促进开花和果实发育等多种生理功能。目前已鉴定出136种GAs，但只有少数（如GA1, GA3, GA4）具有生物活性。
+
+**恶苗病 (Foolish seedling disease, N):** 1926年日本科学家 E. Kurosawa 研究的一种水稻病害。受真菌感染的水稻植株生长极快，看起来细长、苍白且容易折断。这是人类发现赤霉素的起源。
+
+**DELLA蛋白 (DELLA proteins, N):** 赤霉素信号转导途径中的关键**负调控因子**（阻遏蛋白）。其N端包含保守的氨基酸序列（D-E-L-L-A）。在低GA水平下，DELLA蛋白抑制植物生长；在高GA水平下，它被降解，从而解除抑制。拟南芥中的 RGA 和 GAI，以及水稻中的 SLR1 均属于此类蛋白。
+
+**GID1 (GIBBERELLIN INSENSITIVE DWARF1, N):** 可溶性的**赤霉素受体**。当赤霉素与 GID1 结合后，会导致 GID1 的构象改变，进而使其能与 DELLA 蛋白结合，形成 GA-GID1-DELLA 复合物，这是启动 GA 信号转导的第一步。
+
+**绿色革命 (Green Revolution, N):** 20世纪中叶，通过引入**半矮秆**（semi-dwarf）作物未种极大提高粮食产量的农业变革。其核心机制涉及赤霉素途径的改变：例如水稻的 *sd1* 基因突变导致 GA20ox 酶功能缺失，减少了活性 GA 的合成，导致植株变矮，增强了抗倒伏能力并提高了收获指数。Norman Borlaug 因此获得诺贝尔和平奖。
+
+**Sub1A (Submergence 1A, N):** 赋予水稻耐涝性的关键基因。它是一个乙烯响应因子（ERF），在洪水淹没时表达，能促进 DELLA 蛋白（SLR1）的积累，从而抑制赤霉素介导的伸长生长。这使水稻在淹水时保持休眠状态（"坐以待毙"策略），保存能量以存活，直到洪水退去。
+
+---
+
+### 二、 植物生理学重点内容归纳
+
+**1. 赤霉素的发现与化学结构**
+*   **发现：** 源于对水稻恶苗病真菌分泌物的研究（1926年），后由 West 和 Phinney 在高等植物中分离证实。
+*   **结构：** 属于二萜类（Diterpenoids），具有 ent-赤霉烷骨架。分为 C20-GAs 和 C19-GAs。通常 **C19-GAs**（如 GA1, GA3, GA4）具有生物活性，而 C20-GAs 多为前体。
+
+**2. 合成与代谢 (Biosynthesis and Metabolism)**
+合成主要发生在茎尖和幼嫩叶片中，分为三个阶段：
+*   **第一阶段（质体）：** GGDP $\rightarrow$ ent-Kaurene（贝壳杉烯）。关键酶：CPS, KS。
+*   **第二阶段（质体/ER）：** ent-Kaurene $\rightarrow$ GA12。关键酶：KO, KAO。
+*   **第三阶段（细胞质）：** GA12 $\rightarrow$ 活性GAs（如GA4, GA1）。
+    *   **关键限速酶：** **GA20ox**（GA 20-氧化酶）和 **GA3ox**（GA 3-氧化酶），负责生成活性 GA。
+*   **失活（Deactivation）：**
+    *   **GA2ox**（GA 2-氧化酶）：通过2号位羟基化使 GA 失活，是调节体内活性 GA 水平的关键。
+    *   其他方式：甲基化（GAMT）、环氧化（EUI）。
+
+**3. 生理功能 (Physiological Roles)**
+*   **促进茎伸长：** 许多矮化突变体（如豌豆 *le*, 水稻 *sd1*, 拟南芥 *ga1-5*）都是由于 GA 合成受阻或信号转导缺陷造成的。
+*   **种子萌发：** 解除种子休眠。GA 从胚运输到糊粉层（Aleurone layer），诱导 **$\alpha$-淀粉酶**（$\alpha$-amylase）和其他水解酶的合成，分解胚乳中的淀粉为胚生长提供营养。
+*   **幼年期转变与开花：** 诱导长日照植物（如甘蓝）在短日照条件下**抽薹**（Bolting）和开花；促进某些植物（如巨杉）从幼年期向成年期转变。
+*   **果实发育：** 诱导单性结实（无籽果实），如无籽葡萄的处理。
+
+**4. 信号转导 (Signal Transduction)**
+*   **核心模型：** **解除抑制模型 (Relief of Repression)**。
+*   **组件：** 受体 (GID1) + 阻遏蛋白 (DELLA) + F-box蛋白 (SLY1/GID2) + E3泛素连接酶 (SCF)。
+*   **过程：**
+    1.  GA 结合受体 GID1。
+    2.  GA-GID1 复合物识别并结合 DELLA 蛋白。
+    3.  SCF$^{SLY1/GID2}$ 复合物识别 DELLA，使其被泛素化。
+    4.  DELLA 蛋白被 26S 蛋白酶体降解。
+    5.  转录因子被释放，启动下游生长基因表达。
+
+---
+
+### 三、 重点实验概述
+
+**1. 糊粉层 $\alpha$-淀粉酶诱导实验**
+*   **原理：** 大麦/水稻种子萌发时，胚产生的 GA 扩散至糊粉层。
+*   **观察：** 糊粉层细胞在 GA 诱导下重新合成并分泌 $\alpha$-淀粉酶进入胚乳。
+*   **结论：** 确立了 GA 在动员种子贮藏物质中的核心调节作用。
+
+**2. 绿色荧光蛋白 (GFP) 标记的 DELLA 降解实验**
+*   **内容：** 构建表达 *GFP-RGA*（RGA为拟南芥DELLA蛋白）的转基因植株。在显微镜下观察根尖细胞核的荧光。
+*   **结果：**
+    *   对照组：细胞核中有明亮的绿色荧光（RGA积累）。
+    *   GA处理组：荧光迅速消失（RGA被降解）。
+    *   多效唑（PAC，GA合成抑制剂）处理组：荧光增强（RGA更加稳定）。
+*   **结论：** 直观证明了 GA 诱导 DELLA 蛋白的降解，且该过程依赖于蛋白酶体途径。
+
+**3. 水稻耐涝机制研究 (Sub1A)**
+*   **对比：** 敏感水稻 vs 耐涝水稻（携带 *Sub1A*）。
+*   **现象：** 洪水淹没时，敏感品种徒长（赤霉素反应），耗尽能量后死亡；耐涝品种生长停止。
+*   **分子机制：** *Sub1A* 基因表达限制了赤霉素的反应（通过稳定 SLR1/DELLA 蛋白），抑制了徒长，使植株进入“节能模式”存活。
+
+---
+
+### 四、 问题解答 (Q&A)
+
+**Q1: How did the Green Revolution increase crop yield through Gibberellin pathway? (绿色革命是如何通过赤霉素途径增加作物产量的？)**
+**A:** 绿色革命利用了赤霉素合成或信号转导的突变体。例如，水稻的“绿色革命”基因 *sd1* 编码由缺陷的 **GA20ox**（赤霉素合成关键酶），导致体内活性 GA 含量降低。这使得植株呈**半矮秆 (Semi-dwarf)** 表型，增强了抗倒伏能力（Lodging resistance），并将更多的光合产物分配给籽粒（提高收获指数），从而显著增加了产量。
+
+**Q2: What is the molecular mechanism of GA perception and signaling? (GA 感知和信号转导的分子机制是什么？)**
+**A:** GA 信号转导是一个蛋白降解介导的去抑制过程。
+1.  **感知：** 可溶性受体 **GID1** 结合生物活性 GA。
+2.  **复合物形成：** GA-GID1 复合物构象改变，招募并结合负调控因子 **DELLA 蛋白**。
+3.  **泛素化：** 该三元复合物被 F-box 蛋白（拟南芥中为 **SLY1**，水稻中为 **GID2**）识别，后者是 **SCF E3 泛素连接酶**复合体的一部分。
+4.  **降解：** DELLA 蛋白被泛素化标记，随后被 **26S 蛋白酶体**降解。
+5.  **响应：** DELLA 的去除释放了被其抑制的转录因子（如 PIF），从而激活下游生长基因的转录。
+
+**Q3: Why is "foolish seedling" disease called so, and what causes it? (为什么恶苗病被称为“疯苗”，是什么引起的？)**
+**A:** 被称为“疯苗”是因为感染的水稻幼苗生长异常迅速，长得比正常植株极高、细弱且苍白，往往在结实前倒伏或枯死。这是由寄生真菌 *Gibberella fujikuroi*（藤仓赤霉菌）分泌过量的**赤霉素 (Gibberellin)** 刺激植株过度伸长引起的。
+        </script>
+
+        <footer class="article-footer">
+            <p>&copy; 2025 Yukari502. All rights reserved.</p>
+            <p class="disclaimer">Disclaimer: Portions of this content may be generated by AI. Please exercise
+                discretion and verify information independently.</p>
+        </footer>
+    </div>
+
+    <script src="../../script.js"></script>
+</body>
+
+</html>
