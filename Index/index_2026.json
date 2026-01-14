@@ -2,7 +2,29 @@
   "year": "2026",
   "articles": [
     {
-      "title": "Stress Physiology 非生物胁迫第二部分",
+      "title": "植物成花与生殖生理第二部分",
+      "description": "植物成花与生殖生理第二部分 这份材料主要涵盖了光周期诱导的机理（成花素与光敏色素）、成花调控的分子网络、花器官发育的ABC模型、植物的性别分化以及受精生理。 以下是详细的解答：  一、 重点名词解释 光周期诱导 (Photoperiod induction，N): 植物在适宜或不适宜的光周期条件下，...",
+      "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/%E6%A4%8D%E7%89%A9%E6%88%90%E8%8A%B1%E4%B8%8E%E7%94%9F%E6%AE%96%E7%94%9F%E7%90%86%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86.md",
+      "date": "2026-01-14",
+      "year": "2026",
+      "category": "植物生理学",
+      "filename": "植物成花与生殖生理第二部分.md",
+      "slug": "植物成花与生殖生理第二部分",
+      "url": "/posts/植物生理学/植物成花与生殖生理第二部分.html"
+    },
+    {
+      "title": "成花诱导第一部分",
+      "description": "成花诱导第一部分  一、 重点名词解释 成花诱导 (Floral induction, N): 植物感受环境信号（如光周期、温度），从营养生长转向生殖生长的诱导过程。此时植物分生组织接收信号，准备进行成花转变。 成花决定态 (Floral determinated state, N): 植物分生组织...",
+      "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/%E6%88%90%E8%8A%B1%E8%AF%B1%E5%AF%BC%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86.md",
+      "date": "2026-01-14",
+      "year": "2026",
+      "category": "植物生理学",
+      "filename": "成花诱导第一部分.md",
+      "slug": "成花诱导第一部分",
+      "url": "/posts/植物生理学/成花诱导第一部分.html"
+    },
+    {
+      "title": "Stress Physiology 第二部分",
       "description": "Stress Physiology 第二部分  一、 重点名词解释 湿害 (Moisture injury, N): 指由于土壤充满水分而缺乏空气（缺氧）导致植物受到的伤害,。 涝害 (Flooding injury, N): 指由于洪水导致植物整体或地上部分被淹没在水中而受到的伤害，本质上是缺氧导...",
       "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/Stress%20Physiology%20%E9%9D%9E%E7%94%9F%E7%89%A9%E8%83%81%E8%BF%AB%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86.md",
       "date": "2026-01-14",
@@ -22,7 +44,18 @@
       "filename": "Stress Physiology 非生物胁迫第一部分.md",
       "slug": "stress-physiology-非生物胁迫第一部分",
       "url": "/posts/植物生理学/stress-physiology-非生物胁迫第一部分.html"
+    },
+    {
+      "title": "植物的成熟、衰老与脱落",
+      "description": "植物的成熟、衰老与脱落  一、 重点名词解释 呼吸跃变 (Respiratory climacteric, N): 指某些肉质果实从发育停止到衰老过程中，呼吸速率突然由平稳转为急剧升高的生理现象。伴随着乙烯的自我催化合成出现。具有这种特征的果实称为跃变型果实，例如苹果（Apple）、香蕉（Banan...",
+      "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E6%9E%9C%E5%AE%9E%E7%9A%84%E6%88%90%E7%86%9F%E4%B8%8E%E8%A1%B0%E8%80%81.md",
+      "date": "2026-01-14",
+      "year": "2026",
+      "category": "植物生理学",
+      "filename": "植物生理果实的成熟与衰老.md",
+      "slug": "植物生理果实的成熟与衰老",
+      "url": "/posts/植物生理学/植物生理果实的成熟与衰老.html"
     }
   ],
-  "count": 2
+  "count": 5
 }
