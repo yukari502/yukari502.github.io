@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="12.3 Light and Plant Growth 本章节主要探讨了光作为一种环境信号，如何通过植物体内的不同光受体（Photoreceptors）被感知，并转化为下游信号传导，从而调控植物从种子萌发到形态建成的全过程。  1. 光与植物生长内容归纳 本章节的核心逻辑围绕“光作为信号”调控植物发...">
+    <meta name="keywords" content="植物生理学/后半, 12.3 Light and Plant Growth">
+    <meta name="author" content="Yukari502">
+    <meta name="article-slug" content="chapter-123-light-and-plant-growth">
+    <meta name="root-path" content="../../">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://yukari502.github.io/posts/植物生理学后半/chapter-123-light-and-plant-growth.html">
+    <meta property="og:title" content="12.3 Light and Plant Growth">
+    <meta property="og:description" content="12.3 Light and Plant Growth 本章节主要探讨了光作为一种环境信号，如何通过植物体内的不同光受体（Photoreceptors）被感知，并转化为下游信号传导，从而调控植物从种子萌发到形态建成的全过程。  1. 光与植物生长内容归纳 本章节的核心逻辑围绕“光作为信号”调控植物发...">
+    <meta property="og:site_name" content="Digital Garden">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yukari502.github.io/posts/植物生理学后半/chapter-123-light-and-plant-growth.html">
+    <meta property="twitter:title" content="12.3 Light and Plant Growth">
+    <meta property="twitter:description" content="12.3 Light and Plant Growth 本章节主要探讨了光作为一种环境信号，如何通过植物体内的不同光受体（Photoreceptors）被感知，并转化为下游信号传导，从而调控植物从种子萌发到形态建成的全过程。  1. 光与植物生长内容归纳 本章节的核心逻辑围绕“光作为信号”调控植物发...">
+
+    <title>12.3 Light and Plant Growth - D.RAY</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- Mermaid.js for diagrams and flowcharts -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({
+            startOnLoad: false,
+            theme: 'dark',
+            themeVariables: {
+                primaryColor: '#8b5cf6',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#7c3aed',
+                lineColor: '#a78bfa',
+                secondaryColor: '#6d28d9',
+                tertiaryColor: '#5b21b6'
+            }
+        });
+        window.mermaid = mermaid;
+    </script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" href="../../ico/favicon.ico" type="image/x-icon">
+
+    <style>
+        .article-page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .article-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            transition: transform 0.2s;
+        }
+
+        .back-link:hover {
+            transform: translateX(-4px);
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .article-page {
+                padding: 1rem;
+            }
+
+            .article-title {
+                font-size: 2rem;
+            }
+        }
+
+        .article-footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .article-footer .disclaimer {
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+            font-style: italic;
+            opacity: 0.8;
+        }
+    </style>
+    <meta name="build-hash" content="7848f1c17215dd8932df72b0db5df0d2">
+</head>
+
+<body>
+    <div class="article-page">
+        <a href="../../" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            返回主页
+        </a>
+
+        <div class="article-header">
+            <h1 class="article-title">12.3 Light and Plant Growth</h1>
+            <div class="article-meta">
+                <span>📅 2026-01-14</span>
+                <span>📂 植物生理学/后半</span>
+            </div>
+        </div>
+
+        <article class="article-content markdown-body" id="article-content">
+            <!-- Content will be rendered here -->
+        </article>
+
+        <!-- Store markdown content in a script tag -->
+        <script type="text/markdown" id="markdown-source">
+# 12.3 Light and Plant Growth
+
+本章节主要探讨了光作为一种环境信号，如何通过植物体内的不同光受体（Photoreceptors）被感知，并转化为下游信号传导，从而调控植物从种子萌发到形态建成的全过程。
+
+### 1. 光与植物生长内容归纳
+
+本章节的核心逻辑围绕“光作为信号”调控植物发育（光形态建成）展开，区别于光作为能量（光合作用）：
+
+*   **光的作用双重性**：
+    1.  **能量 (Energy)**：高能光驱动光合作用，产生ATP和NADPH，固定$CO_2$生成糖类。
+    2.  **信号 (Signal)**：低能光作为环境线索（Cues），通过光受体感知，调控植物的形态建成（Morphogenesis）。
+
+*   **两种发育模式**：
+    *   **光形态建成 (Photomorphogenesis)**：光照下的发育模式，特征为短胚轴、子叶展开、弯钩消失、根系发育、叶绿素和花青素合成。
+    *   **暗形态建成 (Skotomorphogenesis)**：黑暗下的发育模式（黄化苗），特征为长胚轴、顶端弯钩（Apical hook）、子叶闭合、无叶绿素。
+
+*   **光受体系统 (Photoreceptors)**：植物进化出了感知不同波长光的受体系统：
+    1.  **光敏色素 (Phytochrome, PHY)**：感知红光（R, 660nm）和远红光（FR, 730nm）。分为光不稳定型（Type I, 如PHYA）和光稳定型（Type II, 如PHYB-E）。
+    2.  **隐花色素 (Cryptochrome, CRY)**：感知蓝光/UV-A（320-500nm），结构类似DNA光解酶但无修复活性。
+    3.  **向光素 (Phototropin, PHOT)**：感知蓝光/UV-A，调控向光性、气孔开放和叶绿体运动。
+    4.  **UVR8**：感知UV-B（280-320nm）。
+
+*   **光敏色素的作用机制**：
+    *   **光可逆性**：存在非活性形式 **Pr**（吸收红光）和活性形式 **Pfr**（吸收远红光）。红光使Pr转化为Pfr，远红光使其逆转。Pfr是生理活性形式。
+    *   **信号转导**：
+        *   **核定位**：Pr位于细胞质，转化为Pfr后转移至细胞核。
+        *   **PIF途径**：在核内，Pfr与 **PIFs**（光敏色素互作因子，负调控因子）相互作用，导致PIFs磷酸化并通过26S蛋白酶体途径降解，从而解除对光形态建成的抑制。
+        *   **COP1/HY5途径**：黑暗中，**COP1**（E3泛素连接酶）促进转录因子 **HY5**（正调控因子）的降解，抑制光形态建成；光照下，光敏色素抑制COP1活性，HY5积累，促进光形态建成。
+
+### 2. 重点名词解释
+
+**形态建成(Morphogenesis, En)**: 这是一个导致生物体形成其形状的生物学过程，它是发育生物学的三大基本方面之一，另外两个是细胞生长控制和细胞分化。
+
+**光形态建成(Photomorphogenesis, En)**: 这是一个由光控制或介导的形态建成过程，特征包括短胚轴、子叶展开、叶绿素合成等。
+
+**暗形态建成(Skotomorphogenesis, En)**: 这是一个在黑暗中发生的形态建成过程，表现为黄化苗特征（细长的胚轴、闭合的子叶、顶端弯钩）。
+
+**光敏色素(Phytochrome, En)**: 这是一个水溶性的二聚体色素蛋白（约250 KD），每个亚基由脱辅基蛋白（Apoprotein）和生色团（Chromophore）组成。它能感知红光（R）和远红光（FR），并在Pr（红光吸收型，非活性）和Pfr（远红光吸收型，活性）两种形式之间发生可逆转换。
+
+**生色团(Chromophore, En)**: 这是一个与光敏色素脱辅基蛋白结合的开链四吡咯环结构分子（phytochromobilin），它通过硫醚键与蛋白连接，并在红光/远红光刺激下发生顺反异构化。
+
+**极低辐照度反应(Very low fluence responses, VLFR)**: 这是一个由极低光通量（1-100 nmol/m2）诱导的光反应，主要由PHYA介导，不可逆，且不遵循互惠定律（Reciprocity law）。
+
+**低辐照反应(Low fluence responses, LFR)**: 这是一个由低光通量（1-1000 $\mu mol/m^2$）诱导的典型光可逆反应（红光诱导，远红光逆转），遵循互惠定律，例如莴苣种子的萌发。
+
+**高辐射反应(High irradiance response, HIR)**: 这是一个需要长时间、高辐照度（> 10 mmol/m2）光照才能诱发的反应，具有辐照度依赖性，不可光逆转，例如花青素的合成。
+
+**隐花色素(Cryptochrome, En)**: 这是一个动植物中存在的黄素蛋白（Flavoproteins），结合FAD和MTHF作为辅基，感知蓝光和UV-A。其结构与DNA光解酶（Photolyase）高度同源，但缺乏光解酶活性。
+
+**向光素(Phototropin, En)**: 这是一个感知蓝光和UV-A的光受体，N端含有两个LOV结构域（Light, Oxygen and Voltage），C端具有丝氨酸/苏氨酸激酶活性。它主要调控向光性（Phototropism）、气孔开放和叶绿体运动。
+
+**COP1(Constitutive Photomorphogenic 1, En)**: 这是一个光形态建成的抑制因子（E3泛素连接酶）。在黑暗中，COP1 促进光形态建成正调控因子（如 HY5）的降解；在光照下，其活性被光敏色素抑制。
+
+### 3. 重要实验与机制概述
+
+**1. 莴苣种子萌发的光可逆性实验 (Borthwick et al., 1952)**
+*   **实验内容**：用红光（R）和远红光（FR）交替照射莴苣种子。
+*   **结果**：
+    *   R -> 萌发率 98%
+    *   R + FR -> 萌发率 54% (被抑制)
+    *   R + FR + R -> 萌发率 100%
+    *   R + FR + R + FR -> 萌发率 43%
+*   **结论**：种子的萌发取决于最后一次照射的光质。红光促进萌发，远红光逆转红光的作用。这证明了光敏色素存在两种可逆转换的形式（Pr和Pfr），且Pfr是促进萌发的活性形式。
+
+**2. 光敏色素作用的分子机制模型 (PIFs 和 COP1)**
+*   **PIF 途径**：
+    *   **黑暗中**：PIF蛋白（如PIF3）位于细胞核内，结合DNA，抑制光形态建成基因的表达（或促进暗形态建成基因）。
+    *   **光照下**：光敏色素（phy）转化为Pfr形式并进入细胞核，与PIF结合并使其磷酸化，导致PIF通过26S蛋白酶体途径降解，从而解除抑制，启动光形态建成。
+*   **COP1/HY5 途径**：
+    *   **黑暗中**：COP1在核内形成复合物，泛素化并降解HY5（转录因子），阻止光形态建成。
+    *   **光照下**：Pfr形式的光敏色素进入细胞核，抑制COP1-SPA复合物的活性，甚至促使COP1排出核外。HY5得以积累，结合启动子激活光形态建成相关基因。
+
+**3. 避阴反应 (Shade Avoidance)**
+*   **现象**：植物在树荫或群体中（远红光比例高，R:FR比值低）会表现出胚轴过度伸长。
+*   **机制**：植物通过光敏色素感知环境中的 R:FR 比值。低 R:FR 比值会导致 Pfr 比例下降，解除对生长的抑制（或激活生长促进因子），导致徒长以争取光照。
+        </script>
+
+        <footer class="article-footer">
+            <p>&copy; 2025 Yukari502. All rights reserved.</p>
+            <p class="disclaimer">Disclaimer: Portions of this content may be generated by AI. Please exercise
+                discretion and verify information independently.</p>
+        </footer>
+    </div>
+
+    <script src="../../script.js"></script>
+</body>
+
+</html>

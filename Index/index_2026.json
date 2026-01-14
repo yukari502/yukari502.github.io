@@ -24,6 +24,17 @@
       "url": "/posts/植物生理学后半/植物成花与生殖生理第二部分.html"
     },
     {
+      "title": "12.3 Light and Plant Growth",
+      "description": "12.3 Light and Plant Growth 本章节主要探讨了光作为一种环境信号，如何通过植物体内的不同光受体（Photoreceptors）被感知，并转化为下游信号传导，从而调控植物从种子萌发到形态建成的全过程。  1. 光与植物生长内容归纳 本章节的核心逻辑围绕“光作为信号”调控植物发...",
+      "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/Chapter%2012.3%20Light%20and%20Plant%20Growth.md",
+      "date": "2026-01-14",
+      "year": "2026",
+      "category": "植物生理学/后半",
+      "filename": "Chapter 12.3 Light and Plant Growth.md",
+      "slug": "chapter-123-light-and-plant-growth",
+      "url": "/posts/植物生理学后半/chapter-123-light-and-plant-growth.html"
+    },
+    {
       "title": "成花诱导第一部分",
       "description": "成花诱导第一部分  一、 重点名词解释 成花诱导 (Floral induction, N): 植物感受环境信号（如光周期、温度），从营养生长转向生殖生长的诱导过程。此时植物分生组织接收信号，准备进行成花转变。 成花决定态 (Floral determinated state, N): 植物分生组织...",
       "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/%E6%88%90%E8%8A%B1%E8%AF%B1%E5%AF%BC%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86.md",
@@ -44,6 +55,17 @@
       "filename": "Stress Physiology 非生物胁迫第二部分.md",
       "slug": "stress-physiology-非生物胁迫第二部分",
       "url": "/posts/植物生理学后半/stress-physiology-非生物胁迫第二部分.html"
+    },
+    {
+      "title": "12.4 Movement and circadian rhythm",
+      "description": "12.4 Movement and circadian rhythm 本章节主要探讨了植物如何通过运动响应环境刺激，以及如何通过内源生物钟适应地球的昼夜周期。  1. 植物运动与生物钟内容归纳 本章节内容主要分为两大板块：植物的运动 (Movements of Plants) 和 植物生物钟 (Pl...",
+      "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/Chapter%2012.4%20Movement%20and%20circadian%20rhythm.md",
+      "date": "2026-01-14",
+      "year": "2026",
+      "category": "植物生理学/后半",
+      "filename": "Chapter 12.4 Movement and circadian rhythm.md",
+      "slug": "chapter-124-movement-and-circadian-rhythm",
+      "url": "/posts/植物生理学后半/chapter-124-movement-and-circadian-rhythm.html"
     },
     {
       "title": "Chapter 11-1 植物激素：生长素 (Auxin)",
@@ -88,6 +110,17 @@
       "filename": "Chapter 11.9 水杨酸 (Salicylates SA).md",
       "slug": "chapter-119-水杨酸-salicylates-sa",
       "url": "/posts/植物生理学后半/chapter-119-水杨酸-salicylates-sa.html"
+    },
+    {
+      "title": "12.1 basics of plant growth and development",
+      "description": "12.1 basics of plant growth and development  1. 植物生长与发育内容归纳 本章节主要阐述了植物从微观细胞层面到宏观个体层面的形态建成与发育机制。核心逻辑如下：    生命周期与形态建成：植物的生命周期涵盖了从种子萌发、营养生长、生殖生长、受精、胚胎发生到...",
+      "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/Chapter%2012.1%20basics%20of%20plant%20growth%20and%20development.md",
+      "date": "2026-01-14",
+      "year": "2026",
+      "category": "植物生理学/后半",
+      "filename": "Chapter 12.1 basics of plant growth and development.md",
+      "slug": "chapter-121-basics-of-plant-growth-and-development",
+      "url": "/posts/植物生理学后半/chapter-121-basics-of-plant-growth-and-development.html"
     },
     {
       "title": "Chapter 11-2 赤霉素 (Gibberellins)",
@@ -143,7 +176,18 @@
       "filename": "Chapter 11.10-peptides.md",
       "slug": "chapter-1110-peptides",
       "url": "/posts/植物生理学后半/chapter-1110-peptides.html"
+    },
+    {
+      "title": "12.2 Embryogenesis and Organogenesis",
+      "description": "12.2 Embryogenesis and Organogenesis 本章节主要阐述了植物从受精卵发育为胚胎，再通过种子萌发进入营养生长，最终通过复杂的信号调控实现从幼年期向成年期及生殖期转变的过程。  1. 植物胚胎发生与器官发生内容归纳 本章节核心逻辑围绕植物发育的时空模式和调控机制展开： ...",
+      "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/Chapter%2012.2%20Embryogenesis%20and%20Organogenesis.md",
+      "date": "2026-01-14",
+      "year": "2026",
+      "category": "植物生理学/后半",
+      "filename": "Chapter 12.2 Embryogenesis and Organogenesis.md",
+      "slug": "chapter-122-embryogenesis-and-organogenesis",
+      "url": "/posts/植物生理学后半/chapter-122-embryogenesis-and-organogenesis.html"
     }
   ],
-  "count": 13
+  "count": 17
 }
