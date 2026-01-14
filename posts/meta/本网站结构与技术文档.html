@@ -8,7 +8,7 @@
     <meta name="keywords" content="Meta, 本网站结构与技术文档">
     <meta name="author" content="Yukari502">
     <meta name="article-slug" content="本网站结构与技术文档">
-    <meta name="root-path" content="..\../">
+    <meta name="root-path" content="../../">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
@@ -64,8 +64,8 @@
     </script>
 
     <!-- Custom Styles -->
-    <link rel="stylesheet" href="..\../style.css">
-    <link rel="icon" href="..\../ico/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" href="../../ico/favicon.ico" type="image/x-icon">
 
     <style>
         .article-page {
@@ -146,12 +146,12 @@
             opacity: 0.8;
         }
     </style>
-    <meta name="build-hash" content="031f1600c1e8443bcc7222c4a1260564">
+    <meta name="build-hash" content="2ea82f06bd5becb35fa987c768c4e4f6">
 </head>
 
 <body>
     <div class="article-page">
-        <a href="..\../" class="back-link">
+        <a href="../../" class="back-link">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="19" y1="12" x2="5" y2="12"></line>
@@ -265,7 +265,6 @@
 │
 ├── generate_articles_json.py          # [构建脚本] 步骤1：解析 Markdown，生成索引
 ├── generate_article_pages.py          # [构建脚本] 步骤2：生成 HTML 页面
-├── generate_sitemap.py                # [构建脚本] 步骤3：生成 sitemap.xml
 ├── cleanup_posts.py                   # [维护脚本] 清理已删除文章的孤立HTML文件
 │
 ├── article-template.html              # [模板] 文章页面的 HTML 模板
@@ -274,7 +273,7 @@
 ├── style.css                          # [样式] 全局样式表
 │
 ├── .github/workflows/static.yml       # [CI/CD] GitHub Actions 配置
-├── sitemap.xml                        # [SEO] 网站地图
+├── sitemap.xml                        # [SEO] 网站地图 (GitHub Action 自动生成)
 ├── pinned-articles.json               # [配置] 置顶文章列表
 └── PROJECT_TOPOLOGY.md                # [文档] 本文档
 ```
@@ -333,7 +332,7 @@ graph TD
     C --> D[安装 Python 依赖]
     D --> E[运行 generate_articles_json.py]
     E --> F[运行 generate_article_pages.py]
-    F --> G[运行 generate_sitemap.py]
+    F --> G[运行 generate_sitemap (Action)]
     G --> J[运行 cleanup_posts.py]
     J --> H[提交生成的文件]
     H --> I[部署到 GitHub Pages]
@@ -357,9 +356,9 @@ graph TD
    - 替换模板中的占位符（`{TITLE}`, `{CONTENT}` 等）
    - 输出静态 HTML 到 `posts/` 目录
 
-4. **生成 Sitemap** (`generate_sitemap.py`)
-   - 收集所有文章 URL
-   - 生成 `sitemap.xml`
+4. **生成 Sitemap** (GitHub Action)
+   - 使用 `cicirello/generate-sitemap@v1` Action
+   - 自动扫描生成的文件并创建 `sitemap.xml`
 
 5. **部署**
    - 提交生成的文件到 Git
@@ -504,7 +503,7 @@ def generate_article_html(article, template_content, base_url, output_dir):
 | `{CATEGORY}` | `article['category']` | "Uncategorized" |
 | `{CONTENT}` | 文件内容（转义后） | Markdown 源码 |
 | `本网站结构与技术文档` | `article['slug']` | "daily-bio-arxiv" |
-| `..\../` | 计算的相对路径 | "../../" |
+| `../../` | 计算的相对路径 | "../../" |
 
 #### 关键逻辑
 
@@ -999,7 +998,7 @@ git push origin main --force
         </footer>
     </div>
 
-    <script src="..\../script.js"></script>
+    <script src="../../script.js"></script>
 </body>
 
 </html>
