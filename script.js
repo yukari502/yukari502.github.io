@@ -282,6 +282,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
+
+
         // --- Article Rendering ---
         function createArticleCard(article) {
             const card = document.createElement('div');
@@ -291,9 +293,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const staticUrl = article.url || '#';
 
             card.innerHTML = `
-                <h3>${article.title}</h3>
+                <div class="article-info-col">
+                    <h3>${article.title}</h3>
+                    <div class="category-badge">${article.category || 'General'}</div>
+                </div>
                 <p class="article-meta">${article.date}</p>
-                <p class="article-desc">${article.description || 'No description available.'}</p>
             `;
 
             // Make the card clickable and link to static page
@@ -309,11 +313,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function renderArticles(articles, container) {
             container.innerHTML = '';
-            if (articles.length === 0) {
-                container.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-secondary);">No articles found.</p>';
+
+            // Filter out internal meta articles like "About Me"
+            const filteredArticles = articles.filter(a => a.title.toLowerCase() !== 'about me');
+
+            if (filteredArticles.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: var(--text-secondary); padding: 2rem;">No topics found.</p>';
                 return;
             }
-            articles.forEach(article => {
+
+            // Add List Header if not already there (only once per render context)
+            const header = document.createElement('div');
+            header.className = 'list-header';
+            header.innerHTML = `
+                <div>Topic</div>
+                <div>Activity</div>
+            `;
+            container.appendChild(header);
+
+            filteredArticles.forEach(article => {
                 container.appendChild(createArticleCard(article));
             });
         }
