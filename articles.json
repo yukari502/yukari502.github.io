@@ -222,13 +222,13 @@
   {
     "title": "Research & Reports - AI Insights？",
     "description": "Research & Reports - AI Insights？ Research & Reports - AI Insights(https://yukari502.github.io/report-AI-insights/) 是一个全自动化的金融研报聚合网站。 该平台的核心使命是通过自动化技术...",
-    "path": "Articles/Meta/Research_Reports_AI_Insights_Platform_Introduction.md",
+    "path": "Articles/Research_Reports_AI_Insights_Platform_Introduction.md",
     "date": "2025-12-07",
     "year": "2025",
-    "category": "Meta",
+    "category": "Uncategorized",
     "filename": "Research_Reports_AI_Insights_Platform_Introduction.md",
     "slug": "research_reports_ai_insights_platform_introduction",
-    "url": "/posts/meta/research_reports_ai_insights_platform_introduction.html"
+    "url": "/posts/uncategorized/research_reports_ai_insights_platform_introduction.html"
   },
   {
     "title": "macOS 原生词典制作与导入教程 (AppleDict)",
@@ -330,6 +330,17 @@
     "url": "/posts/遗传学/连锁遗传分析.html"
   },
   {
+    "title": "本网站结构与技术文档",
+    "description": "本网站结构与技术文档 本文档详细描述 Yukari502.github.io 的完整架构、工作流、核心组件及维护指南。 ---  📋 目录 1. 项目概述(1-项目概述) 2. 技术栈(2-技术栈) 3. 目录结构(3-目录结构) 4. 工作流程(4-工作流程) 5. 核心脚本与配置详解(5-核心脚...",
+    "path": "Articles/%E6%9C%AC%E7%BD%91%E7%AB%99%E7%BB%93%E6%9E%84%E4%B8%8E%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3.md",
+    "date": "2025-11-22",
+    "year": "2025",
+    "category": "Uncategorized",
+    "filename": "本网站结构与技术文档.md",
+    "slug": "本网站结构与技术文档",
+    "url": "/posts/uncategorized/本网站结构与技术文档.html"
+  },
+  {
     "title": "水与植物细胞",
     "description": "水与植物细胞 本章的重点和难点在于细胞吸水的方式和机制，以及水势的概念。内容涵盖了水的生理生态功能、存在形式、理化性质、细胞水分关系及测定方法。  1. 水的生理生态功能与存在形式  1.1 水的生理生态功能 水在植物生命活动中具有多重重要意义：  原生质的主要组成部分（占 70% 至 90%）。 ...",
     "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E4%B8%8A%E5%8D%8A/%E6%B0%B4%E4%B8%8E%E6%A4%8D%E7%89%A9%E7%BB%86%E8%83%9E.md",
@@ -385,25 +396,14 @@
     "url": "/posts/什么都想学一点/markdown语法学习.html"
   },
   {
-    "title": "本网站结构与技术文档",
-    "description": "本网站结构与技术文档 本文档详细描述 Yukari502.github.io 的完整架构、工作流、核心组件及维护指南。 ---  📋 目录 1. 项目概述(1-项目概述) 2. 技术栈(2-技术栈) 3. 目录结构(3-目录结构) 4. 工作流程(4-工作流程) 5. 核心脚本与配置详解(5-核心脚...",
-    "path": "Articles/Meta/%E6%9C%AC%E7%BD%91%E7%AB%99%E7%BB%93%E6%9E%84%E4%B8%8E%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3.md",
-    "date": "2025-11-22",
-    "year": "2025",
-    "category": "Meta",
-    "filename": "本网站结构与技术文档.md",
-    "slug": "本网站结构与技术文档",
-    "url": "/posts/meta/本网站结构与技术文档.html"
-  },
-  {
     "title": "Daily-Bio-Arxiv",
     "description": "Daily-Bio-Arxiv Daily-Bio-Arxiv 项目是一个简单的的工具，旨在简化跟踪最新科学研究的过程。它每天自动抓取 arXiv 存储库，重点关注生物学和计算机科学等特定类别。该项目利用大型语言模型（LLM），以您选择的语言生成新论文的简洁摘要。这些摘要随后会自动发布到一个简洁、易...",
-    "path": "Articles/Meta/daily-bio-arxiv.md",
+    "path": "Articles/daily-bio-arxiv.md",
     "date": "2025-11-09",
     "year": "2025",
-    "category": "Meta",
+    "category": "Uncategorized",
     "filename": "daily-bio-arxiv.md",
     "slug": "daily-bio-arxiv",
-    "url": "/posts/meta/daily-bio-arxiv.html"
+    "url": "/posts/uncategorized/daily-bio-arxiv.html"
   }
 ]
