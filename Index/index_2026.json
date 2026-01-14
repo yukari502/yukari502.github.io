@@ -2,6 +2,17 @@
   "year": "2026",
   "articles": [
     {
+      "title": "Chapter 11-2 赤霉素 (Gibberellins)",
+      "description": "Chapter 11-2 赤霉素 (Gibberellins)  一、 重点名词解释 赤霉素 (Gibberellins, GAs): 一类四环二萜类植物激素，最早在研究水稻“恶苗病”时由致病真菌（Gibberella fujikuroi）分泌物中发现。具有促进茎伸长、诱导种子萌发、促进开花和果实发...",
+      "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/Chapter%2011-2%20%E8%B5%A4%E9%9C%89%E7%B4%A0%20%28Gibberellins%29.md",
+      "date": "2026-01-14",
+      "year": "2026",
+      "category": "植物生理学",
+      "filename": "Chapter 11-2 赤霉素 (Gibberellins).md",
+      "slug": "chapter-11-2-赤霉素-gibberellins",
+      "url": "/posts/植物生理学/chapter-11-2-赤霉素-gibberellins.html"
+    },
+    {
       "title": "植物成花与生殖生理第二部分",
       "description": "植物成花与生殖生理第二部分 这份材料主要涵盖了光周期诱导的机理（成花素与光敏色素）、成花调控的分子网络、花器官发育的ABC模型、植物的性别分化以及受精生理。 以下是详细的解答：  一、 重点名词解释 光周期诱导 (Photoperiod induction，N): 植物在适宜或不适宜的光周期条件下，...",
       "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/%E6%A4%8D%E7%89%A9%E6%88%90%E8%8A%B1%E4%B8%8E%E7%94%9F%E6%AE%96%E7%94%9F%E7%90%86%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86.md",
@@ -35,6 +46,50 @@
       "url": "/posts/植物生理学/stress-physiology-非生物胁迫第二部分.html"
     },
     {
+      "title": "Chapter 10 同化物运输与分配",
+      "description": "Chapter 10 同化物运输与分配  标题：植物同化物运输与分配生理  一、 重点名词解释 光合同化物 (Photoassimilates/Photosynthates, N): 植物通过光合作用固定的碳化合物，主要指糖类。它们是植物生长和生产力的基础，需要从合成部位运输到利用或贮藏部位,。 源...",
+      "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/Chapter%2010%20%E5%90%8C%E5%8C%96%E7%89%A9%E8%BF%90%E8%BE%93%E4%B8%8E%E5%88%86%E9%85%8D.md",
+      "date": "2026-01-14",
+      "year": "2026",
+      "category": "植物生理学",
+      "filename": "Chapter 10 同化物运输与分配.md",
+      "slug": "chapter-10-同化物运输与分配",
+      "url": "/posts/植物生理学/chapter-10-同化物运输与分配.html"
+    },
+    {
+      "title": "Chapter 11-1 植物激素：生长素 (Auxin)",
+      "description": "Chapter 11-1 植物激素：生长素 (Auxin)  一、 重点名词解释 植物激素 (Plant hormones, N): 由特定器官或组织产生，但不局限于单一类型细胞的化学物质。它们的作用不一定是长距离的（也可以是原位作用），其效应不仅取决于浓度，还取决于靶标的敏感性。 极性运输 (Po...",
+      "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/Chapter%2011-1%20%E6%A4%8D%E7%89%A9%E6%BF%80%E7%B4%A0%EF%BC%9A%E7%94%9F%E9%95%BF%E7%B4%A0%20%28Auxin%29.md",
+      "date": "2026-01-14",
+      "year": "2026",
+      "category": "植物生理学",
+      "filename": "Chapter 11-1 植物激素：生长素 (Auxin).md",
+      "slug": "chapter-11-1-植物激素生长素-auxin",
+      "url": "/posts/植物生理学/chapter-11-1-植物激素生长素-auxin.html"
+    },
+    {
+      "title": "Chapter 11-7 茉莉酸 (Jasmonates)",
+      "description": "Chapter 11-7 茉莉酸 (Jasmonates)  一、 重点名词解释 茉莉酸类 (Jasmonates, JAs): 一类源自游离脂肪酸（如亚麻酸）氧化的氧化脂类 (Oxylipins) 植物激素。包括茉莉酸 (JA)、茉莉酸甲酯 (MeJA) 和活性形式茉莉酸-异亮氨酸 (JA-Ile...",
+      "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/Chapter%2011-7%20%E8%8C%89%E8%8E%89%E9%85%B8%20%28Jasmonates%29.md",
+      "date": "2026-01-14",
+      "year": "2026",
+      "category": "植物生理学",
+      "filename": "Chapter 11-7 茉莉酸 (Jasmonates).md",
+      "slug": "chapter-11-7-茉莉酸-jasmonates",
+      "url": "/posts/植物生理学/chapter-11-7-茉莉酸-jasmonates.html"
+    },
+    {
+      "title": "11-8",
+      "description": "",
+      "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/11-8.md",
+      "date": "2026-01-14",
+      "year": "2026",
+      "category": "植物生理学",
+      "filename": "11-8.md",
+      "slug": "11-8",
+      "url": "/posts/植物生理学/11-8.html"
+    },
+    {
       "title": "Stress Physiology 非生物胁迫 (第一部分)",
       "description": "Stress Physiology 非生物胁迫 (第一部分) ---  一、 重点名词解释 根据您的要求，我将核心概念进行了规范化定义： - 逆境 (Stress): 物理学上指施加于物体的力，在生物学中指任何可能降低或不利地改变植物生长或发育的环境条件变化。例如：冻害、冷害、高温、干旱、洪水、盐渍...",
       "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/Stress%20Physiology%20%E9%9D%9E%E7%94%9F%E7%89%A9%E8%83%81%E8%BF%AB%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86.md",
@@ -55,7 +110,18 @@
       "filename": "植物生理果实的成熟与衰老.md",
       "slug": "植物生理果实的成熟与衰老",
       "url": "/posts/植物生理学/植物生理果实的成熟与衰老.html"
+    },
+    {
+      "title": "Chapter 11-6 油菜素甾醇 (Brassinosteroids)",
+      "description": "Chapter 11-6 油菜素甾醇 (Brassinosteroids)  一、 重点名词解释 油菜素甾醇 (Brassinosteroids, BRs): 一类多羟基甾醇类植物激素，结构上与动物类固醇激素（如雄性激素、蜕皮激素）相似。它是植物体内第六大类激素，主要功能包括促进细胞伸长和分裂、维管...",
+      "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/Chapter%2011-6%20%E6%B2%B9%E8%8F%9C%E7%B4%A0%E7%94%BE%E9%86%87%20%28Brassinosteroids%29.md",
+      "date": "2026-01-14",
+      "year": "2026",
+      "category": "植物生理学",
+      "filename": "Chapter 11-6 油菜素甾醇 (Brassinosteroids).md",
+      "slug": "chapter-11-6-油菜素甾醇-brassinosteroids",
+      "url": "/posts/植物生理学/chapter-11-6-油菜素甾醇-brassinosteroids.html"
     }
   ],
-  "count": 5
+  "count": 11
 }
