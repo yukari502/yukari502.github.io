@@ -7,7 +7,7 @@
 **极性运输 (Polar transport, N):** 生长素在植物体内主要从形态学上端向形态学下端（向基部）进行的单向运输过程。这种运输独立于重力方向。
 
 **化学渗透模型 (Chemiosmotic Model, N):** 解释生长素极性运输机制的模型。主要包括：1. 细胞壁由 H+-ATPase 维持酸性，使部分 IAA 呈质子化形式 (IAAH)；2. IAAH 被动进入或 IAA- 通过次级主动共转运 (AUX1) 进入细胞；3. 胞质呈中性，IAA 解离为 IAA-；4. IAA- 通过集中在细胞基部的输出载体 (PINs) 流出细胞。
-![alt text](/pic/植物生理学/后半/1.png)
+![pic](/pic/植物生理学/后半/1.png)
 
 **PIN蛋白 (PIN proteins, N):** 生长素外排载体（Efflux carriers），以 "pin-formed" 突变体命名。它们在植物细胞中呈不对称分布（如 PIN1 通常在基部，PIN2 在根皮层基部/表皮顶部），其极性分布决定了生长素流动的方向。
 
