@@ -2,17 +2,6 @@
   "year": "2026",
   "articles": [
     {
-      "title": "chapt 11.10 多肽",
-      "description": "chapt 11.10 多肽  一、 重点名词解释 肽类激素 (Peptide hormones, N): 一类由 5-60 个氨基酸残基组成的小分子信号多肽。它们作为受体配体（Ligand），在极低浓度下（如飞摩尔级别 femtomolar）即可调节植物的生长、发育及逆境响应。例如系统素（Syst...",
-      "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/chapt%2011.10%20%E5%A4%9A%E8%82%BD.md",
-      "date": "2026-01-14",
-      "year": "2026",
-      "category": "植物生理学/后半",
-      "filename": "chapt 11.10 多肽.md",
-      "slug": "chapt-1110-多肽",
-      "url": "/posts/植物生理学后半/chapt-1110-多肽.html"
-    },
-    {
       "title": "chapt 9.2 非生物胁迫第二部分",
       "description": "chapt 9.2 非生物胁迫第二部分  一、 重点名词解释 湿害 (Moisture injury, N): 指由于土壤充满水分而缺乏空气（缺氧）导致植物受到的伤害,。 涝害 (Flooding injury, N): 指由于洪水导致植物整体或地上部分被淹没在水中而受到的伤害，本质上是缺氧导致的,...",
       "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/chapt%209.2%20%E9%9D%9E%E7%94%9F%E7%89%A9%E8%83%81%E8%BF%AB%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86.md",
@@ -22,6 +11,17 @@
       "filename": "chapt 9.2 非生物胁迫第二部分.md",
       "slug": "chapt-92-非生物胁迫第二部分",
       "url": "/posts/植物生理学后半/chapt-92-非生物胁迫第二部分.html"
+    },
+    {
+      "title": "chapt 11.10 小肽",
+      "description": "chapt 11.10 小肽  一、 重点名词解释 肽类激素 (Peptide hormones, N): 一类由 5-60 个氨基酸残基组成的小分子信号多肽。它们作为受体配体（Ligand），在极低浓度下（如飞摩尔级别 femtomolar）即可调节植物的生长、发育及逆境响应。例如系统素（Syst...",
+      "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/chapt%2011.10%20%E5%B0%8F%E8%82%BD.md",
+      "date": "2026-01-14",
+      "year": "2026",
+      "category": "植物生理学/后半",
+      "filename": "chapt 11.10 小肽.md",
+      "slug": "chapt-1110-小肽",
+      "url": "/posts/植物生理学后半/chapt-1110-小肽.html"
     },
     {
       "title": "chapt 11.9 水杨酸",
@@ -168,7 +168,7 @@
     },
     {
       "title": "chapt 11.6 油菜素甾醇",
-      "description": "chapt 11.6 油菜素甾醇  一、 重点名词解释 油菜素甾醇 (Brassinosteroids, BRs): 一类多羟基甾醇类植物激素，结构上与动物类固醇激素（如雄性激素、蜕皮激素）相似。它是植物体内第六大类激素，主要功能包括促进细胞伸长和分裂、维管束分化、生殖发育以及抗逆等。 油菜素内酯 ...",
+      "description": "chapt 11.6 油菜素甾醇  一、 重点名词解释 油菜素甾醇 (Brassinosteroids, BRs): 一类多羟基甾醇类植物激素，结构上与动物类固醇激素（如雄性激素、蜕皮激素）相似。它是植物体内第六大类激素，主要功能包括促进细胞伸长和分裂、维管束分化、生殖发育以及抗逆等。 ---  二...",
       "path": "Articles/%E6%A4%8D%E7%89%A9%E7%94%9F%E7%90%86%E5%AD%A6/%E5%90%8E%E5%8D%8A/chapt%2011.6%20%E6%B2%B9%E8%8F%9C%E7%B4%A0%E7%94%BE%E9%86%87.md",
       "date": "2026-01-14",
       "year": "2026",
