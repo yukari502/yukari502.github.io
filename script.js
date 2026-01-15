@@ -752,6 +752,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     group.appendChild(header);
                     group.appendChild(itemsContainer);
 
+                    // Sort node.articles alphabetically by title
+                    node.articles.sort((a, b) => {
+                        return a.title.localeCompare(b.title, undefined, { numeric: true, sensitivity: 'base' });
+                    });
+
                     // Render Direct Articles
                     node.articles.forEach(article => {
                         const link = document.createElement('a');
