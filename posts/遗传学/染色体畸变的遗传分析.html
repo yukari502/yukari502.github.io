@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="染色体畸变的遗传分析  1. 章节核心内容归纳 本章主要探讨了染色体在结构和数目上的变异（统称为染色体畸变），以及这些变异产生的遗传学效应、在基因定位和进化中的作用，并涉及了相关的人类疾病。 1. 染色体结构变异 (Chromosome Structural Variations) 染色体发生断裂后...">
+    <meta name="keywords" content="遗传学, 染色体畸变的遗传分析">
+    <meta name="author" content="Yukari502">
+    <meta name="article-slug" content="染色体畸变的遗传分析">
+    <meta name="root-path" content="../../">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://yukari502.github.io/posts/遗传学/染色体畸变的遗传分析.html">
+    <meta property="og:title" content="染色体畸变的遗传分析">
+    <meta property="og:description" content="染色体畸变的遗传分析  1. 章节核心内容归纳 本章主要探讨了染色体在结构和数目上的变异（统称为染色体畸变），以及这些变异产生的遗传学效应、在基因定位和进化中的作用，并涉及了相关的人类疾病。 1. 染色体结构变异 (Chromosome Structural Variations) 染色体发生断裂后...">
+    <meta property="og:site_name" content="Digital Garden">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yukari502.github.io/posts/遗传学/染色体畸变的遗传分析.html">
+    <meta property="twitter:title" content="染色体畸变的遗传分析">
+    <meta property="twitter:description" content="染色体畸变的遗传分析  1. 章节核心内容归纳 本章主要探讨了染色体在结构和数目上的变异（统称为染色体畸变），以及这些变异产生的遗传学效应、在基因定位和进化中的作用，并涉及了相关的人类疾病。 1. 染色体结构变异 (Chromosome Structural Variations) 染色体发生断裂后...">
+
+    <title>染色体畸变的遗传分析 - D.RAY</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- Mermaid.js for diagrams and flowcharts -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({
+            startOnLoad: false,
+            theme: 'dark',
+            themeVariables: {
+                primaryColor: '#8b5cf6',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#7c3aed',
+                lineColor: '#a78bfa',
+                secondaryColor: '#6d28d9',
+                tertiaryColor: '#5b21b6'
+            }
+        });
+        window.mermaid = mermaid;
+    </script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" href="../../ico/favicon.ico" type="image/x-icon">
+
+    <style>
+        .article-page {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .article-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            transition: transform 0.2s;
+        }
+
+        .back-link:hover {
+            transform: translateX(-4px);
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .article-page {
+                padding: 1rem;
+            }
+
+            .article-title {
+                font-size: 2rem;
+            }
+        }
+
+        .article-footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .article-footer .disclaimer {
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+            font-style: italic;
+            opacity: 0.8;
+        }
+    </style>
+    <meta name="build-hash" content="83553c0ee8dc55644ba59b4094353459">
+</head>
+
+<body>
+    <div class="article-page">
+        <a href="../../" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            返回主页
+        </a>
+
+        <div class="article-header">
+            <h1 class="article-title">染色体畸变的遗传分析</h1>
+            <div class="article-meta">
+                <span>📅 2026-01-19</span>
+                <span>📂 遗传学</span>
+            </div>
+        </div>
+
+        <article class="article-content markdown-body" id="article-content">
+            <!-- Content will be rendered here -->
+        </article>
+
+        <!-- Store markdown content in a script tag -->
+        <script type="text/markdown" id="markdown-source">
+# 染色体畸变的遗传分析
+
+### 1. 章节核心内容归纳
+
+本章主要探讨了染色体在结构和数目上的变异（统称为染色体畸变），以及这些变异产生的遗传学效应、在基因定位和进化中的作用，并涉及了相关的人类疾病。
+
+**1. 染色体结构变异 (Chromosome Structural Variations)**
+染色体发生断裂后异常重接或重复DNA间发生交换，导致结构改变。主要有四种类型：
+*   **缺失 (Deletion)**：染色体片段丢失。
+    *   **遗传效应**：杂合体在减数分裂联会时形成**缺失环 (Deletion loop)**；由于显性基因缺失，同源染色体上的隐性基因得以表达，称为**假显性 (Pseudodominance)**；纯合体通常致死。
+*   **重复 (Duplication)**：染色体片段增加。
+    *   **类型**：串联重复、反向串联重复等。
+    *   **遗传效应**：**剂量效应**（如果蝇棒眼*Bar*突变，重复越多眼越小）和**位置效应**（基因位置改变影响表型）；为生物进化提供原材料（基因家族的形成）。
+*   **倒位 (Inversion)**：染色体片段180°颠倒。
+    *   **类型**：臂内倒位（不含着丝粒）和臂间倒位（含着丝粒）。
+    *   **遗传效应**：联会时形成**倒位环**；**交换抑制**（Crossover suppression），实际上是因为倒位杂合体在倒位圈内发生交换会产生缺失或重复的配子（如双着丝粒桥和无着丝粒片段），导致配子败育，从而在后代中观察不到重组型；可用于建立**平衡致死系**。
+*   **易位 (Translocation)**：非同源染色体间片段转移。
+    *   **类型**：相互易位（Reciprocal）、罗伯逊易位（Robertsonian，着丝粒融合）。
+    *   **遗传效应**：联会时形成“十字形”构象（四价体）；**半不育**（Semisterility），由于相邻式分离产生遗传物质不平衡的配子（只有交替式分离产生可育配子）；**假连锁**（Pseudolinkage），即非同源染色体上的基因表现为连锁；**位置效应花斑**（如*w*基因移至异染色质附近）。
+
+**2. 染色体数目变异 (Chromosome Number Variations)**
+*   **整倍体 (Euploid)**：染色体数是基数（x）的整倍数。
+    *   **单倍体 (Haploid)**：在育种中用于快速获得纯系（花药离体培养）。
+    *   **同源多倍体 (Autopolyploid)**：染色体组来自同一物种（如同源四倍体 $AAAA$）。联会紊乱（形成多价体），育性低（如三倍体无籽西瓜）。
+    *   **异源多倍体 (Allopolyploid)**：染色体组来自不同物种。如萝卜甘蓝、小黑麦、普通小麦（六倍体）。异源多倍体通常可育（双二倍体）。
+*   **非整倍体 (Aneuploid)**：染色体数非基数整倍（$2n \pm k$）。
+    *   **单体 (Monosomy, $2n-1$)**：二倍体中通常致死，多倍体（如小麦）中可存活，用于基因定位。
+    *   **三体 (Trisomy, $2n+1$)**：如曼陀罗的12种三体。
+
+**3. 染色体畸变的应用**
+*   **基因定位**：
+    *   **利用缺失**：通过假显性现象，若杂交后代隐性性状表现，说明显性基因位于缺失段内。
+    *   **利用单体/三体**：通过观察F1或F2代的异常分离比（如单体定位隐性基因出现“全为显性”或“显:隐=1:0”等偏离孟德尔比例的情况）来确定基因所在的染色体。
+*   **育种**：单倍体育种（缩短年限）、多倍体育种（巨大性、无籽）。
+
+**4. 染色体畸变与人类疾病**
+*   **结构异常**：猫叫综合征（5号染色体短臂缺失）、慢性粒细胞白血病（t(9;22)易位形成费城染色体，激活*abl*癌基因）、Burkitt淋巴瘤（t(8;14)）。
+*   **数目异常**：
+    *   常染色体：唐氏综合征（21三体）、13三体、18三体。
+    *   性染色体：特纳氏综合征（XO）、克氏综合征（XXY）、超雌（XXX）、XYY。
+
+**5. 染色体变异与进化**
+*   染色体融合（如人类2号染色体由猿类两条染色体融合而来）。
+*   倒位导致生殖隔离和多态性。
+
+---
+
+### 2. 重点名词解释
+
+**多线染色体 (Polytene chromosome, P):** 是一种巨大的染色体，常见于双翅目昆虫（如果蝇）的唾液腺细胞中；由核内有丝分裂（DNA复制但细胞不分裂）产生，多条染色单体平行排列，具有明显的横纹带和能够反映基因活跃转录的疏松区（Puff）。
+
+**假显性 (Pseudodominance, P):** 在杂合体中，由于一条染色体发生缺失，导致对应同源染色体上的隐性等位基因不再被显性基因掩盖而表现出隐性性状的现象；常用于基因的物理定位。
+
+**交换抑制 (Crossover suppression, C):** 指在倒位杂合体中，倒位环内的非姐妹染色单体发生交换后，产生的重组配子往往含有缺失或重复（如形成双着丝粒桥和无着丝粒片段），导致配子致死或后代不能存活，从而在存活的后代中观察不到重组型的现象。
+
+**假连锁 (Pseudolinkage, P):** 在相互易位杂合体中，由于只有交替式分离（Alternate segregation）能产生可育配子，导致位于两条非同源染色体上的基因表现出连锁遗传的假象。
+
+**罗伯逊易位 (Robertsonian translocation, R):** 发生于两条近端着丝粒染色体之间的易位；两条染色体的长臂融合成为一条较大的染色体，短臂往往丢失；这种易位会导致染色体数目减少，但遗传物质总量基本不变。
+
+**同源多倍体 (Autopolyploid, A):** 由同一物种的染色体组加倍而成的多倍体（如AAAA）；减数分裂时常形成多价体，导致分离不均，育性通常较低。
+
+**异源多倍体 (Allopolyploid, A):** 由不同物种杂交并经染色体加倍后形成的多倍体（如AABB）；若染色体组间无同源性，减数分裂时可形成正常的二价体，育性正常（又称双二倍体）。
+
+**费城染色体 (Philadelphia chromosome, Ph):** 指人类22号染色体长臂发生易位形成的异常短小染色体（t(9;22)）；易位导致*c-abl*原癌基因与*bcr*基因融合，产生异常蛋白，与慢性粒细胞白血病（CML）密切相关。
+
+---
+
+### 3. 重要实验与分析方法概述
+
+**1. 利用缺失进行基因定位 (Deletion Mapping)**
+*   **原理**：假显性。
+*   **方法**：将隐性突变体（aa）与一系列已知的缺失杂合体（Df/+）杂交。
+*   **结果分析**：如果F1代出现突变型表型（假显性），说明该基因位于缺失的区段内；如果F1全为野生型，说明基因不在缺失区段内。
+
+**2. 小麦单体系统的基因定位**
+*   **背景**：普通小麦是异源六倍体，能容忍单体（2n-1）状态。
+*   **隐性基因定位**：
+    *   用隐性纯合体（rr）与21种不同的显性单体（2n-1, R0）母本杂交。
+    *   **关键逻辑**：如果基因**不在**该单体染色体上，F1为Rr（显性）；如果基因**在**该单体染色体上，F1产生单体（r0，表现隐性）和二体（Rr，表现显性）。通过观察F1或F2的分离比是否偏离正常孟德尔比例来判断。
+
+**3. 萝卜甘蓝的合成 (Raphanobrassica)**
+*   **实验**：Karpechenko将萝卜（2n=18）与甘蓝（2n=18）杂交。
+*   **F1**：有18条染色体（9R+9B），无同源对，减数分裂联会紊乱，不育。
+*   **加倍**：F1偶然加倍或人工加倍形成异源四倍体（2n=36, 18R+18B）。
+*   **结果**：形成“双二倍体”，减数分裂正常（R配R，B配B），可育。这证明了异源多倍体是物种形成的一种途径。
+
+---
+
+### 4. 文中Questions的回答
+
+文档末尾的“章节作业”中提出了两个具体的遗传学问题，解答如下：
+
+**题目 1：关于易位杂合体联会形式的比例**
+*   **问题**：假设甲：$abcd // efcd$，乙：$abcd // hgcd \;\; efgh // abgh \;\; efba // efgh$（注：原文此处符号混乱，根据上下文通常考察易位杂合体）。
+*   **解析**：易位杂合体在减数分裂时，四条涉及易位的染色体会联会形成**十字形（Cross-shaped）**构象，或者形成**四价体环（Ring of four）**。
+*   **比例**：这取决于分离方式。
+    *   **交替式分离 (Alternate)**：约占50%，产生平衡可育配子。
+    *   **相邻式分离 (Adjacent-1 和 Adjacent-2)**：约占50%，产生重复/缺失的不平衡不育配子。
+
+**题目 2：烟草（Nicotiana tabacum）单体杂交分析**
+*   **背景**：烟草有A和B两个位点，双隐性aabb为黄色(yellow burley)，只要有A或B存在即为绿色。
+*   **问题 (1)**：一条染色体是单体的纯合绿色品系（设为ABB，实际上是指某一位点处于单体状态，例如A所在的染色体单体，基因型为$A0BB$）与二体黄色品系（$aabb$）杂交，F1单体和二体的表型？
+    *   **设定**：P1为单体绿色（$A0BB$），P2为二体黄色（$aabb$）。这里假设A基因位于单体染色体上。
+    *   **配子**：P1产生 $AB$ ($n$) 和 $0B$ ($n-1$)；P2产生 $ab$ ($n$)。
+    *   **F1结合**：
+        *   $AB \times ab \rightarrow AaBb$ (二体)。因为有A和B，表现为**绿色**。
+        *   $0B \times ab \rightarrow 0aBb$ (单体)。虽然缺失了A基因（位点为0a），但含有B基因（Bb）。根据题意“有A或B存在时呈绿色”，所以该单体也表现为**绿色**。
+    *   **结论 (1)**：F1的单体和二体**均为绿色**。
+
+*   **问题 (2)**：如果F1的单体和二体分别自交，预期F2表型比？
+    *   **二体自交 ($AaBb \times AaBb$)**：
+        *   这是典型的双基因杂交（互补作用/重叠作用）。
+        *   只有 $aabb$ 是黄色（1/16）。其他 ($A-B-, A-bb, aaB-$) 都是绿色（15/16）。
+        *   **结果**：**绿色 : 黄色 = 15 : 1**。
+    *   **单体自交 ($0aBb \times 0aBb$)**：
+        *   **分析位点1 (0a)**：单体自交。通常n-1花粉不育，n花粉可育；n-1卵可育。
+            *   雄配子：$a$ (只有n配子能授粉)。
+            *   雌配子：$a$ 和 $0$ (假设各50%或0传递率高，通常简化模型下0和a都有)。
+            *   子代基因型：$aa$ 和 $0a$。注意：无论哪种，该位点都**没有显性基因A**。
+        *   **分析位点2 (Bb)**：正常二体自交。
+            *   子代：$3/4 B-$ (有B，绿色) : $1/4 bb$ (无B)。
+        *   **综合表型**：
+            *   因为位点1始终没有A，植物的颜色完全取决于位点2是否有B。
+            *   如果位点2是 $B-$ (3/4)，则绿色。
+            *   如果位点2是 $bb$ (1/4)，则因既无A也无B，表现为黄色。
+        *   **结果**：**绿色 : 黄色 = 3 : 1**。
+
+希望这份详细的解答能帮助你掌握第12章的核心内容！
+        </script>
+
+        <footer class="article-footer">
+            <p>&copy; 2025 Yukari502. All rights reserved.</p>
+            <p class="disclaimer">Disclaimer: Portions of this content may be generated by AI. Please exercise
+                discretion and verify information independently.</p>
+        </footer>
+    </div>
+
+    <script src="../../script.js"></script>
+</body>
+
+</html>
